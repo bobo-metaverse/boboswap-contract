@@ -13,6 +13,8 @@ async function createFactory(deployer) {
     
     var boboFarmer = await BoboFarmer.deployed();
     boboFarmer.addAuthorized(boboFactory.address);
+
+    
 }
 
 async function getPair(deployer, factoryAddr, tokenA, tokenB) {

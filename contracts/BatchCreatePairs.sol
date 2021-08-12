@@ -68,6 +68,10 @@ contract BatchCreatPairs {
         orderNFT = OrderNFT(_orderNFT);
         orderDetailNFT = OrderDetailNFT(_orderDetailNFT);
     }
+
+    function setFactory(address _factory) public {
+        boboFactory = BoboFactoryOnMatic(_factory);
+    }
     
     function creatOnePair(address _quoteToken, address _baseToken) public {        
         address pairAddr = boboFactory.createPair(_quoteToken, _baseToken);

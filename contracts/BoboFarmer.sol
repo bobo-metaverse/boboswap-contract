@@ -301,4 +301,6 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
             IERC20(boboTokenAddr).transfer(_to, _boboAmt);
         }
     }
+
+    function transferOwner(address )
 }

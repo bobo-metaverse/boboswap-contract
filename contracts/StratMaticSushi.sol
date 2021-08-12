@@ -54,7 +54,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
 
     // 开发者基金，默认提10%
     address public devFundAddr;
-    uint256 public devFundFee = 8000; 
+    uint256 public devFundFee = 1000; 
     uint256 public constant devFundFeeUL = 2000;
 
     modifier onlyGov() {
@@ -67,6 +67,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         address _boboFarmer
     ) public {
         govAddress = msg.sender;
+        devFundAddr = msg.sender;
         BOBO = _boboAddr;
         burnedTokenAddress = _boboAddr;
         
@@ -78,6 +79,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         curPidMap[USDC][USDT] = 0x08;
 
         transferOwnership(_boboFarmer);
+        setAllowedBalance();
     }
     
     // 迁移策略过程中，由farmer调用，初始化新策略的股份和抵押金额
@@ -120,7 +122,18 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
             curPidMap[_token1s[i]][_token0s[i]] = _pids[i];
         }
         
+        setAllowedBalance();
+        
         _farm();
+    }
+
+    function setAllowedBalance() private {
+        IERC20(USDT).safeIncreaseAllowance(curRouter, uint256(-1));
+        IERC20(USDC).safeIncreaseAllowance(curRouter, uint256(-1));
+        IERC20(SUSHI).safeIncreaseAllowance(curRouter, uint256(-1));
+        IERC20(WMATIC).safeIncreaseAllowance(curRouter, uint256(-1));
+        address pairAddr = ICommonFactory(curFactory).getPair(USDT, USDC);
+        IERC20(pairAddr).safeIncreaseAllowance(curRouter, uint256(-1));
     }
     
     // 获取交易对的资产数量
@@ -181,14 +194,6 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         uint256 tokenBBalance = IERC20(_tokenB).balanceOf(address(this));
         
         if (tokenABalance > minFarmAmount && tokenBBalance > minFarmAmount && curPidMap[_tokenA][_tokenB] > 0) {                
-            IERC20(_tokenA).safeIncreaseAllowance(
-                curRouter,
-                tokenABalance
-            );
-            IERC20(_tokenB).safeIncreaseAllowance(
-                curRouter,
-                tokenBBalance
-            );
             (,,uint256 liquidity) = ICommonRouter(curRouter).addLiquidity(_tokenA, _tokenB, tokenABalance, tokenBBalance, 0, 0, address(this), now);
             
             address pairAddr = ICommonFactory(curFactory).getPair(_tokenA, _tokenB);
@@ -228,13 +233,11 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
 
         uint256 compoundAmountTokenOne = earnedAmountTokenOne.mul(compoundRate).div(BasePercent);
         uint256 compoundAmountTokenTwo = earnedAmountTokenTwo.mul(compoundRate).div(BasePercent);
-        
-        IERC20(earnedTokenOne).safeIncreaseAllowance(curRouter, compoundAmountTokenOne);
-        IERC20(earnedTokenTwo).safeIncreaseAllowance(curRouter, compoundAmountTokenTwo);
 
         uint256 tokenABalance = IERC20(_tokenA).balanceOf(address(this));
         uint256 tokenBBalance = IERC20(_tokenB).balanceOf(address(this));
         
+        // 将挖矿所得的代币ONE(sushi)兑换成TokenA（USDT）和TokenB（USDC）
         if (compoundAmountTokenOne > 0) {
             ICommonRouter(curRouter)
                 .swapExactTokensForTokens(
@@ -253,6 +256,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
                 now
             );
         }
+        // 将挖矿所得的代币TWO(matic)兑换成TokenA（USDT）和TokenB（USDC）
         if (compoundAmountTokenTwo > 0) {
             ICommonRouter(curRouter)
                 .swapExactTokensForTokens(
@@ -274,7 +278,8 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
 
         uint256 tokenANewBalance = IERC20(_tokenA).balanceOf(address(this));
         uint256 tokenBNewBalance = IERC20(_tokenB).balanceOf(address(this));
-
+        
+        // 由于上面兑换出了USDT和USDC，所以此处需要增加wantLockedTotalMap
         wantLockedTotalMap[_tokenA] = wantLockedTotalMap[_tokenA].add(tokenANewBalance.sub(tokenABalance));
         wantLockedTotalMap[_tokenB] = wantLockedTotalMap[_tokenB].add(tokenBNewBalance.sub(tokenBBalance));
 
@@ -284,7 +289,6 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         uint256 burnedAmountTokenOne = 0;
         if (burnedBOBORate > 0) {
             burnedAmountTokenOne = earnedAmountTokenOne.mul(burnedBOBORate).div(BasePercent);
-            IERC20(earnedTokenOne).safeIncreaseAllowance(curRouter, burnedAmountTokenOne);
             ICommonRouter(curRouter)
                 .swapExactTokensForTokens(
                     burnedAmountTokenOne,
@@ -298,7 +302,6 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         uint256 burnedAmountTokenTwo = 0;
         if (burnedBOBORate > 0) {
             burnedAmountTokenTwo = earnedAmountTokenOne.mul(burnedBOBORate).div(BasePercent);
-            IERC20(earnedTokenTwo).safeIncreaseAllowance(curRouter, burnedAmountTokenTwo);
             ICommonRouter(curRouter)
                 .swapExactTokensForTokens(
                     burnedAmountTokenTwo,
@@ -312,11 +315,11 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         // 3：剩余部分归项目方
         uint256 leftAmountTokenOne = earnedAmountTokenOne.sub(compoundAmountTokenOne).sub(burnedAmountTokenOne);
         if (leftAmountTokenOne > 0)
-            IERC20(earnedTokenOne).safeTransferFrom(address(this), devFundAddr, leftAmountTokenOne);
+            IERC20(earnedTokenOne).safeTransfer(devFundAddr, leftAmountTokenOne);
 
         uint256 leftAmountTokenTwo = earnedAmountTokenTwo.sub(compoundAmountTokenTwo).sub(burnedAmountTokenTwo);
         if (leftAmountTokenTwo > 0)
-            IERC20(earnedTokenTwo).safeTransferFrom(address(this), devFundAddr, leftAmountTokenTwo);
+            IERC20(earnedTokenTwo).safeTransfer(devFundAddr, leftAmountTokenTwo);
     }
 
     function earn() public {
@@ -324,16 +327,36 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
     }
 
     // 从满足数量要求的LP中提取token，并将token直接转到调用者（此处为farmer合约）
-    function withdrawOneToken(uint256 _wantAmt, address _withdrawToken, address _token0) internal returns(uint256) {
-        (uint256 amount0, ) = getBalances(_withdrawToken, _token0);  
-        if (amount0 >= _wantAmt) {
-            withdrawToken0FromLP(_wantAmt, amount0, _withdrawToken, _token0);
-        } else if (amount0 > 0) {
-            withdrawToken0FromLP(amount0, amount0, _withdrawToken, _token0);
+    function withdrawOneToken(uint256 _wantAmt, address _withdrawToken, address _peerToken) internal returns(uint256) {
+        uint256 curAmount = IERC20(_withdrawToken).balanceOf(address(this));
+        if (curAmount < _wantAmt) {
+            uint256 restAmountOut = _wantAmt.sub(curAmount);
+            (uint256 amount0, ) = getBalances(_withdrawToken, _peerToken);  // 获取当前流动性挖矿中的token数量
+
+            // 从流动性挖矿中提取出token
+            if (amount0 >= restAmountOut) {
+                withdrawToken0FromLP(restAmountOut, amount0, _withdrawToken, _peerToken);
+                restAmountOut = 0;
+            } else if (amount0 > 0) {
+                withdrawToken0FromLP(amount0, amount0, _withdrawToken, _peerToken);  // 此处已把所有流动性都取出了
+                restAmountOut = restAmountOut.sub(amount0);
+            }
+            if (restAmountOut > 0) {
+                uint256[] memory amounts = ICommonRouter(curRouter).getAmountsIn(restAmountOut, convertTwoPath([_peerToken, _withdrawToken]));
+                uint256 curPeerTokenAmount = IERC20(_peerToken).balanceOf(address(this));
+                require(curPeerTokenAmount >= amounts[0], "StratMaticSushi: left amount is NOT enough!");
+                ICommonRouter(curRouter)
+                    .swapTokensForExactTokens(
+                        restAmountOut,
+                        uint256(-1),
+                        convertTwoPath([_peerToken, _withdrawToken]),
+                        address(this),
+                        now
+                );
+            }
         }
-        uint256 amount = IERC20(_withdrawToken).balanceOf(address(this));
-        if (_wantAmt > amount) _wantAmt = amount;
-        IERC20(_withdrawToken).safeTransferFrom(address(this), msg.sender, _wantAmt);
+        
+        IERC20(_withdrawToken).safeTransfer(msg.sender, _wantAmt);
         return _wantAmt;
     }
 
@@ -346,7 +369,8 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         (myLPBalance, ) = ICommonMasterChef(curMasterChef).userInfo(curPidMap[_token0][_token1], address(this));
 
         uint256 withdrawLPBalance = _withrawAmount.mul(myLPBalance).div(_totalAmount);
-        ICommonMasterChef(curMasterChef).withdraw(curPidMap[_token0][_token1], withdrawLPBalance, address(this));  // 此处会提取WMATIC奖励
+        // 此处会提取指定数量的LP token，以及所有WMATIC&Sushi奖励
+        ICommonMasterChef(curMasterChef).withdrawAndHarvest(curPidMap[_token0][_token1], withdrawLPBalance, address(this));  
 
         ICommonRouter(curRouter).removeLiquidity(
             _token0,
@@ -363,7 +387,8 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         (uint256 myLPBalance, ) = ICommonMasterChef(curMasterChef).userInfo(curPidMap[_token0][_token1], address(this));
         
         if (myLPBalance > 0) {
-            ICommonMasterChef(curMasterChef).withdraw(curPidMap[_token0][_token1], myLPBalance, address(this));  // 此处会提取WMATIC奖励
+            // 此处会提取WMATIC奖励，以及LP token
+            ICommonMasterChef(curMasterChef).withdrawAndHarvest(curPidMap[_token0][_token1], myLPBalance, address(this));
     
             ICommonRouter(curRouter).removeLiquidity(
                 _token0,
@@ -395,7 +420,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
             sharesRemoved = sharesTotalMap[_wantAddr];
         }
         sharesTotalMap[_wantAddr] = sharesTotalMap[_wantAddr].sub(sharesRemoved);
-        wantLockedTotalMap[_wantAddr] = wantLockedTotalMap[_wantAddr].sub(_wantAmt);
+        wantLockedTotalMap[_wantAddr] = wantLockedTotalMap[_wantAddr].sub(realAmount);
 
         return sharesRemoved;
     }
