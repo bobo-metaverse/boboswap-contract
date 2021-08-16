@@ -312,7 +312,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
             );
         }
         
-        // 3：剩余部分归项目方
+        // 3：剩余部分归基金会
         uint256 leftAmountTokenOne = earnedAmountTokenOne.sub(compoundAmountTokenOne).sub(burnedAmountTokenOne);
         if (leftAmountTokenOne > 0)
             IERC20(earnedTokenOne).safeTransfer(devFundAddr, leftAmountTokenOne);
@@ -320,6 +320,9 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         uint256 leftAmountTokenTwo = earnedAmountTokenTwo.sub(compoundAmountTokenTwo).sub(burnedAmountTokenTwo);
         if (leftAmountTokenTwo > 0)
             IERC20(earnedTokenTwo).safeTransfer(devFundAddr, leftAmountTokenTwo);
+
+        // 4：复投
+        _farm();
     }
 
     function earn() public {
@@ -416,6 +419,9 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
 
         // 2. 计算出用户占有的股份数，从总数中减去        
         uint256 sharesRemoved = realAmount.mul(sharesTotalMap[_wantAddr]).div(wantLockedTotalMap[_wantAddr]);
+        if (sharesRemoved.mul(wantLockedTotalMap[_wantAddr]) < realAmount.mul(sharesTotalMap[_wantAddr])) {
+            sharesRemoved = sharesRemoved.add(1);
+        }
         if (sharesRemoved > sharesTotalMap[_wantAddr]) {
             sharesRemoved = sharesTotalMap[_wantAddr];
         }

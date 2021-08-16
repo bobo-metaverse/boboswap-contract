@@ -6,28 +6,38 @@ import "../common/BasicStruct.sol";
 contract EXManager is Ownable {
     using SafeMath for uint256;
 
+    address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
+    address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;
+    address public constant swapFactory = 0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32;      // quickswap
+
     uint256 constant public vipBaseline = 10;
-    mapping(address => uint256) public usableTradeCountMap;  // 用户剩余可用的交易次数
+    mapping(address => uint256) public usableTradePointsMap;  // 用户剩余可用的点卡金额，手续费可由此出
     
+    uint256 public constant FACTOR = 1e8;
+    uint256 public feePercent = 5;
+    uint256 constant public BasePercent = 10000;
     uint256 public maxFreePointPerAccount = 10;
-    uint256 public minDepositValue = 1e18;
-    uint256 public orderCountPerToken = 100;    // 最小充值金额对应的可交易次数
+    uint256 public minDepositValue = 1e6;       // 充值点卡时的最小金额U
     uint256 public maxNumberPerAMMSwap = 10;    // 一次最多可成交的AMM订单数
     address public feeEarnedContract;           // 项目方抽成资金需打入此合约中，此合约可关联矿池
-    mapping(address => uint256) public tokenInvestRateMap;   // 各资产抵押率，用户挂单时，需要抵押到矿池中的资产比例
     mapping(address => bool) public _auth;
-    mapping(address => uint256) public accountFreePointMap;
-    mapping(address => uint256) public tokenMinAmountMap;
+    mapping(address => uint256) public accountFreePointMap;   // 账号免手续费交易次数，累加
+    mapping(address => uint256) public tokenMinAmountMap;     // 一次交易最小金额
+    mapping(address => address) public tokenAggregatorMap;    // token对应的chainlink聚合器合约地址
     uint256 public stopFreeBlockNum;
+
+    address public boboToken;
+    uint256 public maxBoboTokenAmount;  // 至少拥有此数量的Bobo可为手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
 
     modifier onlyAuth {
         require(_auth[msg.sender], "no permission");
         _;
     }
     
-    constructor () public {
-        usableTradeCountMap[msg.sender] = 10000;
+    constructor (address _boboToken) public {
+        usableTradePointsMap[msg.sender] = 10000;
         stopFreeBlockNum = block.number + 300000;
+        boboToken = _boboToken;
     }
     
     function addAuth(address _addr) public onlyOwner {
@@ -37,19 +47,23 @@ contract EXManager is Ownable {
     function removeAuth(address _addr) public onlyOwner {
         _auth[_addr] = false;
     }
-    
-    function setTokenInvestRate(address _tokenAddr, uint256 _investRate) public onlyOwner {
-        require(_investRate <= 100, "EXManager: invest rate is too large.");
-        tokenInvestRateMap[_tokenAddr] = _investRate;
+
+    function setMaxBoboTokenAmount(uint256 _maxBoboTokenAmount) public onlyOwner {
+        maxBoboTokenAmount = _maxBoboTokenAmount;
     }
 
+    // 根据Bobo持有数量获取折扣比例，最大50%，最小5%
+    function getScalePercent(address _userAddr) public {
+        uint256 boboAmount = ERC20(boboToken).balanceOf(_userAddr);
+        if (boboAmount < _maxBoboTokenAmount.div(10)) return 10000;
+
+        if (boboAmount > _maxBoboTokenAmount.div(10)) boboAmount = _maxBoboTokenAmount;
+
+        return boboAmount.mul(5000).div(_maxBoboTokenAmount);
+    }
     
     function setTokenMinAmount(address _tokenAddr, uint256 _minAmount) public onlyOwner {
         tokenMinAmountMap[_tokenAddr] = _minAmount;
-    }
-    
-    function setOrderCountPerToken(uint256 _orderCountPerToken) public onlyOwner {
-        orderCountPerToken = _orderCountPerToken;
     }
     
     function setMaxNumberPerAMMSwap(uint256 _maxNumber) public onlyOwner {
@@ -66,36 +80,92 @@ contract EXManager is Ownable {
     }
     
     // 充值平台币，购买点数，需要按整数充值
-    function buyTradePoints() payable public {
-        require(msg.value >= minDepositValue, "EXManager: Deposit must be bigger than minDepositValue.");
-        uint256 baseAmount = msg.value.div(minDepositValue);
-        uint256 leftAmount = msg.value.mod(minDepositValue);
-        usableTradeCountMap[msg.sender] = usableTradeCountMap[msg.sender].add(baseAmount.mul(orderCountPerToken));
-        if (leftAmount > 0)
-            msg.sender.transfer(leftAmount);
+    function buyTradePoints(uint256 _usdtAmount) public {
+        require(_usdtAmount >= minDepositValue, "EXManager: USDT amount must be bigger than minDepositValue.");
+        ERC20(USDT).transferFrom(msg.sender, address(this), _usdtAmount);
+        usableTradePointsMap[msg.sender] = usableTradePointsMap[msg.sender].add(_usdtAmount);
     }
 
-    function addTradePoints(address _userAddr, uint256 _burnedNumber) public onlyOwner {
-        usableTradeCountMap[_userAddr] = usableTradeCountMap[_userAddr].add(_burnedNumber);
+    function transferTradePoints(address _userAddr, uint256 _transferAmount) public {
+        require(usableTradePointsMap[msg.sender] >= _transferAmount, "EXManager: your left trade points must be bigger than _transferAmount.");
+
+        usableTradePointsMap[msg.sender] = usableTradePointsMap[msg.sender].sub(_transferAmount);
+        usableTradePointsMap[_userAddr] = usableTradePointsMap[_userAddr].add(_transferAmount);
     }
 
-    function burnTradePoints(address _userAddr, uint256 _burnedNumber) public onlyAuth returns(bool) {
+    // 消耗点卡
+    // 在到达区块(区块号为stopFreeBlockNum)之前，前十次(maxFreePointPerAccount)交易免交易费
+    function burnTradePoints(address _userAddr, address _token, uint256 _amountIn) public onlyAuth returns(bool) {
         if (accountFreePointMap[_userAddr] < maxFreePointPerAccount && block.number < stopFreeBlockNum) {
             accountFreePointMap[_userAddr]++;
             return true;
         }
-        if (usableTradeCountMap[_userAddr] < _burnedNumber) {
+
+        uint256 tokenPrice = getTokenPrice(_token);
+        
+        uint256 scalePercent = getScalePercent(_userAddr);
+        uint256 feeAmount = _amountIn.mul(feePercent).mul(10000 - scalePercent).div(BasePercent).div(BasePercent);
+
+
+        if (usableTradePointsMap[_userAddr] < _burnedAmount) {
             return false;
         }
-        usableTradeCountMap[_userAddr] = usableTradeCountMap[_userAddr].sub(_burnedNumber);
+        usableTradePointsMap[_userAddr] = usableTradePointsMap[_userAddr].sub(_burnedAmount);
         return true;
+    }
+
+    function getTokenPrice(address _token) public view returns(uint256) {
+        uint256 priceOnAMM = getTokenPriceOnAMM(_token);
+        uint256 priceOnChainlink = getTokenPriceOnChainlink(_token);
+        if(priceOnChainlink == 0) return priceOnAMM;
+
+        uint256 gap = 0;
+        if (priceOnAMM > priceOnChainlink) {
+            gap = priceOnAMM.sub(priceOnChainlink).mul(1000).div(priceOnChainlink);
+        } else {
+            gap = priceOnChainlink.sub(priceOnAMM).mul(1000).div(priceOnAMM);
+        }
+        require(gap <= 100, "EXManager: the price gap between chainlink and AMM is large than 10%.");
+        return priceOnChainlink;
+    }
+
+    function getTokenPriceOnAMM(address _token) public view returns(uint256) {
+        if (_token == USDT || _token == USDC) return 1;
+
+        (address token0, address token1) = USDT < _token ? (USDT, _token) : (_token, USDT);
+        address pairAddr = ICommonFactory(swapFactory).getPair(token0, token1);
+        (uint256 reserveA, uint256 reserveB,) = ICommonPair(pairAddr).getReserves();
+        uint256 decimalsGap = ERC20(_token).decimals() - ERC20(USDT).decimals();
+        // 为匹配chainlink，此处的价格也乘上10^8（FACTOR）
+        return token0 == USDT ? reserveA.mul(FACTOR).mul(decimalsGap).div(reserveB) : reserveB.mul(FACTOR).mul(decimalsGap).div(reserveA);
+    }
+    
+    // chainlink返回的价格是U，但乘上了10^8
+    function getTokenPriceOnChainlink() public view returns(uint256) {
+        if (_token == USDT || _token == USDC) return 1;
+
+        address aggregatorAddr = tokenAggregatorMap[_token];
+        if (aggregatorAddr == address(0)) return 0;
+
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(aggregatorAddr);
+        (, int price,,,) = priceFeed.latestRoundData();
+        return uint256(price);
     }
     
     function setStopFreeBlockNum(uint256 _blockNum) public onlyOwner {
         stopFreeBlockNum = _blockNum;
     }
+
+    function setFeePercent(uint256 _feePercent) public onlyOwner {
+        feePercent = _feePercent;
+    }
     
-    function withdraw() public onlyOwner {
-        msg.sender.transfer(address(this).balance);
+    function withdraw(address _token, address _receiver) public onlyOwner {
+        uint256 amount = ERC20(_token).balanceOf(address(this));
+        ERC20(_token).transfer(_receiver, amount);
+    }
+    
+    function addAggregtor(address _token, address _aggregator) public onlyOwner {
+        tokenAggregatorMap[_token] = _aggregator;
     }
 }

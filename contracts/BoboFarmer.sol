@@ -285,12 +285,12 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
         PoolInfo storage pool = poolInfo[pid];
         
         (uint256 totalShares, uint256 totalLocked) = IStrategy(pool.strat).clearAndTransferTokens(_tokenAddr);
-        IStrategy(pool.strat).initTotalShareAndLocked(_tokenAddr, totalShares, totalLocked);
+        IStrategy(_newStratAddr).initTotalShareAndLocked(_tokenAddr, totalShares, totalLocked);
         pool.strat = _newStratAddr;
         uint256 amount = IERC20(_tokenAddr).balanceOf(address(this));
         if (amount > 0)
             IERC20(_tokenAddr).transfer(_newStratAddr, amount);
-        IStrategy(pool.strat).farm();
+        IStrategy(_newStratAddr).farm();
     }
 
     function safeBOBOTransfer(address _to, uint256 _boboAmt) internal {
@@ -302,5 +302,10 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
         }
     }
 
-    function transferOwner(address )
+    function returnU4Test() public {
+        address USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
+        address USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;
+        IERC20(USDT).transfer(msg.sender, IERC20(USDT).balanceOf(address(this)));
+        IERC20(USDC).transfer(msg.sender, IERC20(USDC).balanceOf(address(this)));
+    }
 }
