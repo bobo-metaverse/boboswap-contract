@@ -120,7 +120,7 @@ contract BoboPair is Ownable, OrderStore {
         if (bestSwapInfo.totalAmountOut >= minOutAmount) {  
             uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
             if (deductAmount > 0) {
-                ERC20(_token).transferFrom(msg.sender, address(exManager), deductAmount);
+                ERC20(inToken).transferFrom(msg.sender, address(exManager), deductAmount);
             }
             swap(orderId, bestSwapInfo, inToken, outToken, _amountIn.sub(deductAmount), false);
         } else {
@@ -139,7 +139,7 @@ contract BoboPair is Ownable, OrderStore {
 
         uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
         if (deductAmount > 0) {
-            ERC20(_token).transferFrom(msg.sender, address(exManager), deductAmount);
+            ERC20(inToken).transferFrom(msg.sender, address(exManager), deductAmount);
         }
         _amountIn = _amountIn.sub(deductAmount);
 
@@ -226,9 +226,9 @@ contract BoboPair is Ownable, OrderStore {
         
         uint256 deductAmount = exManager.deductTradeFee(orderInfo.owner, inToken, orderInfo.inAmount);
         if (deductAmount > 0) {
-            ERC20(_token).transferFrom(msg.sender, address(exManager), deductAmount);
+            ERC20(inToken).transferFrom(msg.sender, address(exManager), deductAmount);
         }
-        uint256 amountIn = amountIn.sub(deductAmount);
+        uint256 amountIn = orderInfo.inAmount.sub(deductAmount);
 
         (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, amountIn);
         if (bestSwapInfo.totalAmountOut >= orderInfo.minOutAmount) {

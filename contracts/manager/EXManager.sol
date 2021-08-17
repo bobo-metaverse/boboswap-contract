@@ -2,6 +2,7 @@
 pragma solidity ^0.6.0;
 
 import "../common/BasicStruct.sol";
+import "../SwapInterfaces.sol";
 
 contract EXManager is Ownable {
     using SafeMath for uint256;
@@ -53,13 +54,13 @@ contract EXManager is Ownable {
     }
 
     // 根据Bobo持有数量获取折扣比例，最大50%，最小5%
-    function getScalePercent(address _userAddr) public {
+    function getScalePercent(address _userAddr) view public returns(uint256) {
         uint256 boboAmount = ERC20(boboToken).balanceOf(_userAddr);
-        if (boboAmount < _maxBoboTokenAmount.div(10)) return 10000;
+        if (boboAmount < maxBoboTokenAmount.div(10)) return 10000;
 
-        if (boboAmount > _maxBoboTokenAmount.div(10)) boboAmount = _maxBoboTokenAmount;
+        if (boboAmount > maxBoboTokenAmount.div(10)) boboAmount = maxBoboTokenAmount;
 
-        return 10000 - boboAmount.mul(5000).div(_maxBoboTokenAmount);
+        return 10000 - boboAmount.mul(5000).div(maxBoboTokenAmount);
     }
     
     function setTokenMinAmount(address _tokenAddr, uint256 _minAmount) public onlyOwner {
@@ -98,7 +99,7 @@ contract EXManager is Ownable {
     function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) public onlyAuth returns(uint256) {
         if (accountFreePointMap[_userAddr] < maxFreePointPerAccount && block.number < stopFreeBlockNum) {
             accountFreePointMap[_userAddr]++;
-            return true;
+            return 0;
         }
 
         uint256 usdtDecimals = ERC20(USDT).decimals();
@@ -160,7 +161,7 @@ contract EXManager is Ownable {
     }
     
     // chainlink返回的价格是U，但乘上了10^8
-    function getTokenPriceOnChainlink() public view returns(uint256) {
+    function getTokenPriceOnChainlink(address _token) public view returns(uint256) {
         if (_token == USDT || _token == USDC) return 1;
 
         address aggregatorAddr = tokenAggregatorMap[_token];
