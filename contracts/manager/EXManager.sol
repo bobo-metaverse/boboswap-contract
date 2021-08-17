@@ -59,7 +59,7 @@ contract EXManager is Ownable {
 
         if (boboAmount > _maxBoboTokenAmount.div(10)) boboAmount = _maxBoboTokenAmount;
 
-        return boboAmount.mul(5000).div(_maxBoboTokenAmount);
+        return 10000 - boboAmount.mul(5000).div(_maxBoboTokenAmount);
     }
     
     function setTokenMinAmount(address _tokenAddr, uint256 _minAmount) public onlyOwner {
@@ -95,23 +95,42 @@ contract EXManager is Ownable {
 
     // 消耗点卡
     // 在到达区块(区块号为stopFreeBlockNum)之前，前十次(maxFreePointPerAccount)交易免交易费
-    function burnTradePoints(address _userAddr, address _token, uint256 _amountIn) public onlyAuth returns(bool) {
+    function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) public onlyAuth returns(uint256) {
         if (accountFreePointMap[_userAddr] < maxFreePointPerAccount && block.number < stopFreeBlockNum) {
             accountFreePointMap[_userAddr]++;
             return true;
         }
 
-        uint256 tokenPrice = getTokenPrice(_token);
+        uint256 usdtDecimals = ERC20(USDT).decimals();
+        uint256 tokenDecimals = ERC20(_token).decimals();
+        uint256 tokenPrice = getTokenPrice(_token);  // *10^8
         
-        uint256 scalePercent = getScalePercent(_userAddr);
-        uint256 feeAmount = _amountIn.mul(feePercent).mul(10000 - scalePercent).div(BasePercent).div(BasePercent);
+        uint256 scalePercent = getScalePercent(_userAddr);  // 根据用户当前持有的BOBO数量获取折扣比例
+        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent * 2);
 
-
-        if (usableTradePointsMap[_userAddr] < _burnedAmount) {
-            return false;
+        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).div(10**FACTOR.add(tokenDecimals).sub(usdtDecimals));
+        if (usableTradePointsMap[_userAddr] >= usdtAmount4Fee) {
+            usableTradePointsMap[_userAddr] = usableTradePointsMap[_userAddr].sub(usdtAmount4Fee);
+            return 0;
+        } else {
+            return tokenAmount4Fee;
         }
-        usableTradePointsMap[_userAddr] = usableTradePointsMap[_userAddr].sub(_burnedAmount);
-        return true;
+    }
+
+    function evaluateDeductedAmountIn(address _userAddr, address _token, uint256 _amountIn) view public returns(uint256, uint256) {
+        uint256 usdtDecimals = ERC20(USDT).decimals();
+        uint256 tokenDecimals = ERC20(_token).decimals();
+        uint256 tokenPrice = getTokenPrice(_token);  // *10^8
+        
+        uint256 scalePercent = getScalePercent(_userAddr);  // 根据用户当前持有的BOBO数量获取折扣比例
+        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent * 2);
+
+        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).div(10**FACTOR.add(tokenDecimals).sub(usdtDecimals));
+        if (usableTradePointsMap[_userAddr] >= usdtAmount4Fee) {
+            return (0, usdtAmount4Fee);
+        } else {
+            return (tokenAmount4Fee, usdtAmount4Fee);
+        }
     }
 
     function getTokenPrice(address _token) public view returns(uint256) {

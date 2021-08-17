@@ -5,7 +5,8 @@ pragma experimental ABIEncoderV2;
 import "./common/OrderStore.sol";
 
 interface IExchangeManager {
-    function burnTradePoints(address _userAddr, uint256 _burnedNumber) external returns(bool);
+    function evaluateDeductedAmountIn(address _userAddr, address _token, uint256 _amountIn) view external returns(uint256, uint256);
+    function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) external returns(uint256);
     function feeEarnedContract() view external returns(uint256);
     function maxNumberPerAMMSwap() view external returns(uint256);
     function tokenInvestRateMap(address _tokenAddr) view external returns(uint256);
@@ -112,16 +113,16 @@ contract BoboPair is Ownable, OrderStore {
         (address inToken, address outToken) = _bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
         require(_amountIn >= exManager.tokenMinAmountMap(inToken), "BoboPair: inAmount MUST larger than min amount.");
 
-        (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, _amountIn);
+        (uint256 deductedAmountIn, ) = exManager.evaluateDeductedAmountIn(msg.sender, inToken, _amountIn);
+        (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, _amountIn.sub(deductedAmountIn));
         
         // 下限价单时满足交易条件
         if (bestSwapInfo.totalAmountOut >= minOutAmount) {  
-            bool bSuccess = exManager.burnTradePoints(msg.sender, 1);
-            if (bSuccess) {
-                swap(orderId, bestSwapInfo, inToken, outToken, _amountIn, false);
-            } else {
-                setExceptionOrder(orderId, "Trade points is NOT enough.");
+            uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
+            if (deductAmount > 0) {
+                ERC20(_token).transferFrom(msg.sender, address(exManager), deductAmount);
             }
+            swap(orderId, bestSwapInfo, inToken, outToken, _amountIn.sub(deductAmount), false);
         } else {
             ERC20(inToken).transferFrom(msg.sender, address(this), _amountIn);
             if (boboFarmer.tokenPidMap(inToken) > 0) {
@@ -136,17 +137,18 @@ contract BoboPair is Ownable, OrderStore {
         (address inToken, address outToken) = _bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
         require(_amountIn >= exManager.tokenMinAmountMap(inToken), "BoboPair: inAmount MUST larger than min amount.");
 
+        uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
+        if (deductAmount > 0) {
+            ERC20(_token).transferFrom(msg.sender, address(exManager), deductAmount);
+        }
+        _amountIn = _amountIn.sub(deductAmount);
+
         (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, _amountIn);
         require(bestSwapInfo.totalAmountOut >= _minOutAmount, "BoboPair: can NOT satisfy your trade request.");
         // 下限价单时满足交易条件
         uint256 spotPrice = _bBuyQuoteToken ? _amountIn.mul(10**quoteTokenDecimals).div(_minOutAmount) : _minOutAmount.mul(10**quoteTokenDecimals).div(_amountIn);
         uint256 orderId = addOrder(_bBuyQuoteToken, spotPrice, _amountIn, _minOutAmount);
-        bool bSuccess = exManager.burnTradePoints(msg.sender, 1);
-        if (bSuccess) {
-            swap(orderId, bestSwapInfo, inToken, outToken, _amountIn, false);
-        } else {
-            setExceptionOrder(orderId, "Trade points is NOT enough.");
-        }
+        swap(orderId, bestSwapInfo, inToken, outToken, _amountIn, false);
     }
        
     function makeStatistic(uint256 _amount) private {
@@ -221,17 +223,19 @@ contract BoboPair is Ownable, OrderStore {
     function executeInnerOrder(uint256 _orderId) private returns(uint256 amountOut) {
         NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId); 
         (address inToken, address outToken) = orderInfo.bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
-        (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, orderInfo.inAmount);
+        
+        uint256 deductAmount = exManager.deductTradeFee(orderInfo.owner, inToken, orderInfo.inAmount);
+        if (deductAmount > 0) {
+            ERC20(_token).transferFrom(msg.sender, address(exManager), deductAmount);
+        }
+        uint256 amountIn = amountIn.sub(deductAmount);
+
+        (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, amountIn);
         if (bestSwapInfo.totalAmountOut >= orderInfo.minOutAmount) {
-            bool bSuccess = exManager.burnTradePoints(orderInfo.owner, 1);
-            if (bSuccess) {
-                if (boboFarmer.tokenPidMap(inToken) > 0) {
-                    boboFarmer.withdraw(inToken, orderInfo.owner, orderInfo.inAmount);
-                }
-                amountOut = swap(_orderId, bestSwapInfo, inToken, outToken, orderInfo.inAmount, true);
-            } else {
-                setExceptionOrder(_orderId, "Trade points is NOT enough.");
+            if (boboFarmer.tokenPidMap(inToken) > 0) {
+                boboFarmer.withdraw(inToken, orderInfo.owner, amountIn);
             }
+            amountOut = swap(_orderId, bestSwapInfo, inToken, outToken, amountIn, true);
         } else {
             setExceptionOrder(_orderId, "Amount out can NOT satisfy the min amount out of order.");
         }
