@@ -66,6 +66,7 @@ interface IOrderNFT is IERC721 {
     function orderDetailIds(uint256 _nftId) view external returns(uint256[] memory ids);
     function getOrderDetailNumber(uint256 _nftId) view external returns(uint256);
     function sealNFT(uint256 _nftId, OrderStatus _status, uint256 _outAmount, string memory _comment) external;
+    function getWeight(uint256 _nftId) view external returns(uint256 weight);
 }
 
 interface IOrderDetailNFT is IERC721 {

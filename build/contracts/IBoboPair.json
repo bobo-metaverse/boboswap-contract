@@ -90,14 +90,14 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_authAddr\",\"type\":\"address\"}],\"name\":\"addAuth\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_userAddr\",\"type\":\"address\"}],\"name\":\"getTotalHangingTokenAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"baseTokenAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"quoteTokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token0\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_token1\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_authAddr\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_boboFarmer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderNFT\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderDetailNFT\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_router\",\"type\":\"address\"}],\"name\":\"setRouter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BoboFactory.sol\":\"IBoboPair\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xf7c39c7e6d06ed3bda90cfefbcbf2ddc32c599c3d6721746546ad64946efccaa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cb57a28e189cd8b05748db44bdd51d608e6f1364dd1b35ad921e1bc82c10631e\",\"dweb:/ipfs/QmaWWTBbVu2pRR9XUbE4iC159NoP59cRF9ZJwhf4ghFN9i\"]},\"@openzeppelin/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0xd6b90e604fb2eb2d641c7110c72440bf2dc999ec6ab8ff60f200e71ca75d1d90\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b92d8ab83b21ff984b1f0d6d66897d5afb1f2052004cbcb133cea023e0ae468\",\"dweb:/ipfs/QmTarypkQrFp4UMjTh7Zzhz2nZLz5uPS4nJQtHDEuwBVe6\"]},\"@openzeppelin/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xf70bc25d981e4ec9673a995ad2995d5d493ea188d3d8f388bba9c227ce09fb82\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd970f51e3a77790c2f02b5b1759827c3b897c3d98c407b3631e8af32e3dc93c\",\"dweb:/ipfs/QmPF85Amgbqjk3SNZKsPCsqCw8JfwYEPMnnhvMJUyX58je\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xcbd85c86627a47fd939f1f4ee3ba626575ff2a182e1804b29f5136394449b538\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53c6a80c519bb9356aad28efa9a1ec31603860eb759d2dc57f545fcae1dd1aca\",\"dweb:/ipfs/QmfRS6TtMNUHhvgLHXK21qKNnpn2S7g2Yd1fKaHKyFiJsR\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0xf12dfbe97e6276980b83d2830bb0eb75e0cf4f3e626c2471137f82158ae6a0fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3a849c2d95e85463909e5b5c920b13e7a11216ca14127085e16d22b9379d52a\",\"dweb:/ipfs/QmUg3CZDbCCcQdroEpexBy5ZFd5vD1UWijWQq9qHZjtJNQ\"]},\"@openzeppelin/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x5a3de7f7f76e47a071195cf42e2a702265694a6b32037de709463bd8ad784fb5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://678cbad1f972a4d8c9d47bc39fa6d39560b4fc143c8d9c812a63fe99bb13062e\",\"dweb:/ipfs/QmUhLDvUndcbQLakDNg9G4UXz8UPzRqC6S3rWGKupB6DYs\"]},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x5a9f5c29bd7cf0b345e14d97d5f685f68c07e1e5bfdd47e5bcec045e81b0b6ac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://321cbaa1412fc8d013d8ad3fb5f98c0db7401ddacfb09b70828ea2cebe37397e\",\"dweb:/ipfs/Qmd3Hoc71w6rmxAR6A5VKW9at677VP1L5KDcJnyvu4ksu3\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0xe6bd1b1218338b6f9fe17776f48623b4ac3d8a40405f74a44bc23c00abe2ca13\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0c354c3f6e9c487759aa7869be4fba68e0b2efc777b514d289c4cbd3ff8f7e1a\",\"dweb:/ipfs/QmdF9LcSYVmiUCL7JxLEYmSLrjga6zJsujfi6sgEJD4M1z\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol\":{\"keccak256\":\"0xccb917776f826ac6b68bd5a15a5f711e3967848a52ba11e6104d9a4f593314a7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://430255ad2229ced6d880e61a67bdc6e48dbbaed8354a7c1fe918cd8b8714a886\",\"dweb:/ipfs/QmTHY56odzqEpEC6v6tafaWMYY7vmULw25q5XHJLCCAeox\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x52146049d6709c870e8ddcd988b5155cb6c5d640cfcd8978aee52bc1ba2ec4eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ada84513617b7c1b2f890b44503735abaec73a1acd030112a17aac7e6c66a4a1\",\"dweb:/ipfs/QmaiFwdio67iJrfjAdkMac24eJ5sS1qD7CZW6PhUU6KjiK\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0xa6a15ddddcbf29d2922a1e0d4151b5d2d33da24b93cc9ebc12390e0d855532f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c119bcaecfa853d564ac88d312777f75fa1126a3bca88a3371adb0ad9f35cb0\",\"dweb:/ipfs/QmY9UPuXeSKq86Zh38fE43VGQPhKMN34mkuFSFqPcr6nvZ\"]},\"@openzeppelin/contracts/utils/EnumerableMap.sol\":{\"keccak256\":\"0xf6bdf22fe038e5310b6f0372ecd01f221e2c0b248b45efc404542d94fcac9133\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e798f3492180627d6616fa94925b61a9f105347eed9e895f3e18a0eb3dfcd3d\",\"dweb:/ipfs/QmQcTro5nv3Lopf4c4rEe1BuykCfPsjRsJmysdNXtHNUdt\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0xae0992eb1ec30fd1ecdf2e04a6036decfc9797bf11dc1ec84b546b74318d5ec2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b61f99a64e999682ad7bfbb3a1c762a20a0a5b30f9f2011693fa857969af61f\",\"dweb:/ipfs/QmZystFY76wkWCf7V3yKh3buZuKVKbswiE7y6yU62kk3zi\"]},\"@openzeppelin/contracts/utils/Pausable.sol\":{\"keccak256\":\"0x065360ef3924db6b63c2160886b5de737497dd64a917e362dd8d857cda1f5ae2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://946fe57f3b935f0f4a41345b3eedb617c30912ba5e802bd6b430b394114048ab\",\"dweb:/ipfs/QmRVgUK6yHgqiVWoFn51aUGYejR8romW2ZqwVvSFMnhnJW\"]},\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"keccak256\":\"0x8bbbc2f5c10065ee272592ae0a7a6ceb23de2fbd81564ee0bb015ecf404d5f61\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b95e56c1640d0ef789fc5c16269e141e992f6c8ac97cc6d377bd3825e9cab182\",\"dweb:/ipfs/QmVzaxJZY51EhagrcNnkxoU6Uq17RhATe7aHvtkC6wUkgK\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x16b5422892fbdd9648f12e59de85b42efd57d76b6d6b2358cb46e0f6d4a71aaf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ef38821a4ee756757dc1ce9074ef6096d1b5c760627e92c0852d788dc636ea7\",\"dweb:/ipfs/QmdGwP6BtRMcp4VVJUWwTmXEjYmL52A8WZpBdFJYmzc9pJ\"]},\"project:/contracts/BoboFactory.sol\":{\"keccak256\":\"0x84905eb02fbbf246aa9b6772374b80eff8ffaa67066406a2d11ffc409f4233ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cdf500ede470169c80ff519402db2e6ef81087ce1cbea153c43921bc5648ea0\",\"dweb:/ipfs/QmYQ2SEx7m9Rv45x9WXHGhXPzGgH9NQNi4hm49DBPdYYAp\"]},\"project:/contracts/BoboPair.sol\":{\"keccak256\":\"0xaf2f4f9454a3b7bcd33d558bb1a7797be7e110b56af71da349fc5b13cbb9828d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3c12e62f14ea0784017b55f7e0c5e7e2a104eccc2ed2deb8da9356628f7f5bb\",\"dweb:/ipfs/QmZT2UgTVjkQ73SMEvXKsFwYV3bcZdxbqCqVbZBdVH79aq\"]},\"project:/contracts/common/BasicStruct.sol\":{\"keccak256\":\"0xa1a08957c618c341bbaeab762e55bda67afbb3e349586237a71714b3df9860df\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f093a3ecd0afa50d27305c30e6897d404a83e8c8b94202ae9558c6ed4f979ff4\",\"dweb:/ipfs/QmZYxsmGCSACpzWdrh9b24gkLtAnLcQSLLCDrcz7BUiK8u\"]},\"project:/contracts/common/MathEX.sol\":{\"keccak256\":\"0xf8053b2fea148c9b8fed31fca6fb7e8bbacde0f91611c3f5894dcab19c85bc35\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15b5c0659193b6782563cb09f4faedfa3ff8be9542517a5640d96ba6f15e0186\",\"dweb:/ipfs/QmVhXQM1dJ4XRSytz21LXWEkVodtY31ECdKbdT3q5CV954\"]},\"project:/contracts/common/OrderStore.sol\":{\"keccak256\":\"0x1f67cf2180d087794e6438388ae16d9a8da4c2cbde387a7e152e48391e495c55\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0f7a74575f68c18592939b2d1321b93fac5015b3ed18ea6689e6f1584142265d\",\"dweb:/ipfs/QmWuyuCDNHXup78VgrbgY7SD2EbLikHvLqGaoT1iou93QZ\"]},\"project:/contracts/common/StructuredLinkedList.sol\":{\"keccak256\":\"0xc6f34db8c7bfde84b2ab1d91f407313a470a35fd26751fe1ef5f5839a179b174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ffa90df7021f915c83e0cb121a300cd185aea9dc4e64842228b4b40cec990579\",\"dweb:/ipfs/QmbNxtcVRnmbdxE5ZXnjjB76EzSHMvPdT3VswLYibEpLd5\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_authAddr\",\"type\":\"address\"}],\"name\":\"addAuth\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_userAddr\",\"type\":\"address\"}],\"name\":\"getTotalHangingTokenAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"baseTokenAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"quoteTokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token0\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_token1\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_authAddr\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_boboFarmer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderNFT\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderDetailNFT\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_router\",\"type\":\"address\"}],\"name\":\"setRouter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BoboFactory.sol\":\"IBoboPair\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xf7c39c7e6d06ed3bda90cfefbcbf2ddc32c599c3d6721746546ad64946efccaa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cb57a28e189cd8b05748db44bdd51d608e6f1364dd1b35ad921e1bc82c10631e\",\"dweb:/ipfs/QmaWWTBbVu2pRR9XUbE4iC159NoP59cRF9ZJwhf4ghFN9i\"]},\"@openzeppelin/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0xd6b90e604fb2eb2d641c7110c72440bf2dc999ec6ab8ff60f200e71ca75d1d90\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b92d8ab83b21ff984b1f0d6d66897d5afb1f2052004cbcb133cea023e0ae468\",\"dweb:/ipfs/QmTarypkQrFp4UMjTh7Zzhz2nZLz5uPS4nJQtHDEuwBVe6\"]},\"@openzeppelin/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xf70bc25d981e4ec9673a995ad2995d5d493ea188d3d8f388bba9c227ce09fb82\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd970f51e3a77790c2f02b5b1759827c3b897c3d98c407b3631e8af32e3dc93c\",\"dweb:/ipfs/QmPF85Amgbqjk3SNZKsPCsqCw8JfwYEPMnnhvMJUyX58je\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xcbd85c86627a47fd939f1f4ee3ba626575ff2a182e1804b29f5136394449b538\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53c6a80c519bb9356aad28efa9a1ec31603860eb759d2dc57f545fcae1dd1aca\",\"dweb:/ipfs/QmfRS6TtMNUHhvgLHXK21qKNnpn2S7g2Yd1fKaHKyFiJsR\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0xf12dfbe97e6276980b83d2830bb0eb75e0cf4f3e626c2471137f82158ae6a0fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3a849c2d95e85463909e5b5c920b13e7a11216ca14127085e16d22b9379d52a\",\"dweb:/ipfs/QmUg3CZDbCCcQdroEpexBy5ZFd5vD1UWijWQq9qHZjtJNQ\"]},\"@openzeppelin/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x5a3de7f7f76e47a071195cf42e2a702265694a6b32037de709463bd8ad784fb5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://678cbad1f972a4d8c9d47bc39fa6d39560b4fc143c8d9c812a63fe99bb13062e\",\"dweb:/ipfs/QmUhLDvUndcbQLakDNg9G4UXz8UPzRqC6S3rWGKupB6DYs\"]},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x5a9f5c29bd7cf0b345e14d97d5f685f68c07e1e5bfdd47e5bcec045e81b0b6ac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://321cbaa1412fc8d013d8ad3fb5f98c0db7401ddacfb09b70828ea2cebe37397e\",\"dweb:/ipfs/Qmd3Hoc71w6rmxAR6A5VKW9at677VP1L5KDcJnyvu4ksu3\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0xe6bd1b1218338b6f9fe17776f48623b4ac3d8a40405f74a44bc23c00abe2ca13\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0c354c3f6e9c487759aa7869be4fba68e0b2efc777b514d289c4cbd3ff8f7e1a\",\"dweb:/ipfs/QmdF9LcSYVmiUCL7JxLEYmSLrjga6zJsujfi6sgEJD4M1z\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol\":{\"keccak256\":\"0xccb917776f826ac6b68bd5a15a5f711e3967848a52ba11e6104d9a4f593314a7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://430255ad2229ced6d880e61a67bdc6e48dbbaed8354a7c1fe918cd8b8714a886\",\"dweb:/ipfs/QmTHY56odzqEpEC6v6tafaWMYY7vmULw25q5XHJLCCAeox\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x52146049d6709c870e8ddcd988b5155cb6c5d640cfcd8978aee52bc1ba2ec4eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ada84513617b7c1b2f890b44503735abaec73a1acd030112a17aac7e6c66a4a1\",\"dweb:/ipfs/QmaiFwdio67iJrfjAdkMac24eJ5sS1qD7CZW6PhUU6KjiK\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0xa6a15ddddcbf29d2922a1e0d4151b5d2d33da24b93cc9ebc12390e0d855532f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c119bcaecfa853d564ac88d312777f75fa1126a3bca88a3371adb0ad9f35cb0\",\"dweb:/ipfs/QmY9UPuXeSKq86Zh38fE43VGQPhKMN34mkuFSFqPcr6nvZ\"]},\"@openzeppelin/contracts/utils/EnumerableMap.sol\":{\"keccak256\":\"0xf6bdf22fe038e5310b6f0372ecd01f221e2c0b248b45efc404542d94fcac9133\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e798f3492180627d6616fa94925b61a9f105347eed9e895f3e18a0eb3dfcd3d\",\"dweb:/ipfs/QmQcTro5nv3Lopf4c4rEe1BuykCfPsjRsJmysdNXtHNUdt\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0xae0992eb1ec30fd1ecdf2e04a6036decfc9797bf11dc1ec84b546b74318d5ec2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b61f99a64e999682ad7bfbb3a1c762a20a0a5b30f9f2011693fa857969af61f\",\"dweb:/ipfs/QmZystFY76wkWCf7V3yKh3buZuKVKbswiE7y6yU62kk3zi\"]},\"@openzeppelin/contracts/utils/Pausable.sol\":{\"keccak256\":\"0x065360ef3924db6b63c2160886b5de737497dd64a917e362dd8d857cda1f5ae2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://946fe57f3b935f0f4a41345b3eedb617c30912ba5e802bd6b430b394114048ab\",\"dweb:/ipfs/QmRVgUK6yHgqiVWoFn51aUGYejR8romW2ZqwVvSFMnhnJW\"]},\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"keccak256\":\"0x8bbbc2f5c10065ee272592ae0a7a6ceb23de2fbd81564ee0bb015ecf404d5f61\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b95e56c1640d0ef789fc5c16269e141e992f6c8ac97cc6d377bd3825e9cab182\",\"dweb:/ipfs/QmVzaxJZY51EhagrcNnkxoU6Uq17RhATe7aHvtkC6wUkgK\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x16b5422892fbdd9648f12e59de85b42efd57d76b6d6b2358cb46e0f6d4a71aaf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ef38821a4ee756757dc1ce9074ef6096d1b5c760627e92c0852d788dc636ea7\",\"dweb:/ipfs/QmdGwP6BtRMcp4VVJUWwTmXEjYmL52A8WZpBdFJYmzc9pJ\"]},\"project:/contracts/BoboFactory.sol\":{\"keccak256\":\"0x84905eb02fbbf246aa9b6772374b80eff8ffaa67066406a2d11ffc409f4233ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cdf500ede470169c80ff519402db2e6ef81087ce1cbea153c43921bc5648ea0\",\"dweb:/ipfs/QmYQ2SEx7m9Rv45x9WXHGhXPzGgH9NQNi4hm49DBPdYYAp\"]},\"project:/contracts/BoboPair.sol\":{\"keccak256\":\"0xaf2f4f9454a3b7bcd33d558bb1a7797be7e110b56af71da349fc5b13cbb9828d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3c12e62f14ea0784017b55f7e0c5e7e2a104eccc2ed2deb8da9356628f7f5bb\",\"dweb:/ipfs/QmZT2UgTVjkQ73SMEvXKsFwYV3bcZdxbqCqVbZBdVH79aq\"]},\"project:/contracts/common/BasicStruct.sol\":{\"keccak256\":\"0xa723dd45fec1eee62638dc9df993b7eaec3c570ee5407e8e90c1b461614d22d0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://df70442c0ab5b4fa16cd58814e49d29873bee231511e727f9b46d92beb6338bc\",\"dweb:/ipfs/QmXUCFaj3dg2cB3nxdagZzNEvSUpaom1jdsSemLybVenYd\"]},\"project:/contracts/common/MathEX.sol\":{\"keccak256\":\"0xf8053b2fea148c9b8fed31fca6fb7e8bbacde0f91611c3f5894dcab19c85bc35\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15b5c0659193b6782563cb09f4faedfa3ff8be9542517a5640d96ba6f15e0186\",\"dweb:/ipfs/QmVhXQM1dJ4XRSytz21LXWEkVodtY31ECdKbdT3q5CV954\"]},\"project:/contracts/common/OrderStore.sol\":{\"keccak256\":\"0x1f67cf2180d087794e6438388ae16d9a8da4c2cbde387a7e152e48391e495c55\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0f7a74575f68c18592939b2d1321b93fac5015b3ed18ea6689e6f1584142265d\",\"dweb:/ipfs/QmWuyuCDNHXup78VgrbgY7SD2EbLikHvLqGaoT1iou93QZ\"]},\"project:/contracts/common/StructuredLinkedList.sol\":{\"keccak256\":\"0xc6f34db8c7bfde84b2ab1d91f407313a470a35fd26751fe1ef5f5839a179b174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ffa90df7021f915c83e0cb121a300cd185aea9dc4e64842228b4b40cec990579\",\"dweb:/ipfs/QmbNxtcVRnmbdxE5ZXnjjB76EzSHMvPdT3VswLYibEpLd5\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.6.0;\n\nimport \"./common/OrderStore.sol\";\nimport \"./BoboPair.sol\";\n\n\ninterface IBoboPair {\n    function initialize(address _token0, address _token1, address _authAddr, address _boboFarmer, address _orderNFT, address _orderDetailNFT) external;\n    function setRouter(address _router) external;\n    function addAuth(address _authAddr) external;\n    function getTotalHangingTokenAmount(address _userAddr) view external returns(uint256 baseTokenAmount, uint256 quoteTokenAmount);\n}\n\ncontract BoboFactoryOnMatic is Ownable {\n    using SafeMath for uint256;\n    using SafeERC20 for IERC20;\n    using EnumerableSet for EnumerableSet.UintSet;\n    using EnumerableSet for EnumerableSet.AddressSet;\n    \n    \n    address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;\n    address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;\n    address public constant WMATIC = 0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270;\n    \n    address[] public allPairs;  // 交易对列表\n    mapping(address => mapping(address => address)) public getPair;\n    mapping(address => address[]) public baseTokenPairs;\n\n    IBoboFarmer public boboFarmer;\n    address public orderNFT;\n    address public orderDetailNFT;\n    \n    EnumerableSet.AddressSet private baseTokens;\n    \n    event PairCreated(address indexed token0, address indexed token1, address pair, uint);\n    \n    constructor (address _orderNFT, address _orderDetailNFT, address _boboFarmer) public {  \n        baseTokens.add(USDT);\n        baseTokens.add(USDC);\n        orderNFT = _orderNFT;\n        orderDetailNFT = _orderDetailNFT;\n        boboFarmer = IBoboFarmer(_boboFarmer);\n    }\n\n    function setBoboFarmer(address _boboFarmer) public onlyOwner {\n        boboFarmer = IBoboFarmer(_boboFarmer);\n    }\n    \n    function addBaseToken(address _baseToken) public onlyOwner {\n        require (!baseTokens.contains(_baseToken), \"BoboFactory: EXIST\");\n        baseTokens.add(_baseToken);\n    }\n    \n    function createPair(address _quoteToken, address _baseToken) public onlyOwner returns (address pairAddr) {\n        require(baseTokens.contains(_baseToken), \"BoboFactory: base token ERROR.\");\n        require(_quoteToken != _baseToken, \"BoboFactory: IDENTICAL_ADDRESSES\");\n        require(_quoteToken != address(0), \"BoboFactory: ZERO_ADDRESS\");\n        require(getPair[_quoteToken][_baseToken] == address(0), \"BoboFactory: PAIR_EXISTS\"); // single check is sufficient\n        bytes memory bytecode = type(BoboPair).creationCode;\n        bytes32 salt = keccak256(abi.encodePacked(_quoteToken, _baseToken));\n        assembly {\n            pairAddr := create2(0, add(bytecode, 32), mload(bytecode), salt)\n        }\n        IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT, orderDetailNFT);\n        getPair[_quoteToken][_baseToken] = pairAddr;\n        getPair[_baseToken][_quoteToken] = pairAddr; // populate mapping in the reverse direction\n        allPairs.push(pairAddr);\n        baseTokenPairs[_baseToken].push(_quoteToken);\n        emit PairCreated(_quoteToken, _baseToken, pairAddr, allPairs.length);\n    }\n    \n    // 批量增加支持的交易对\n    function createPairs(address[] memory _quoteTokens, address _baseToken) public onlyOwner {\n        for (uint256 i = 0; i < _quoteTokens.length; i++) {\n            createPair(_quoteTokens[i], _baseToken);\n        }\n    }\n\n    function pairNumber() view public returns(uint256) {\n        return allPairs.length;\n    }\n    \n    function setPairRouter(address _quoteToken, address _baseToken, address _router) external onlyOwner {\n        address pairAddr = getPair[_quoteToken][_baseToken];\n        require(pairAddr != address(0), 'BoboFactory: PAIR_NOT_EXISTS');\n        IBoboPair(pairAddr).setRouter(_router);\n    }\n    \n    function addPairAuth(address _quoteToken, address _baseToken, address _auth) external onlyOwner {\n        address pairAddr = getPair[_quoteToken][_baseToken];\n        require(pairAddr != address(0), 'BoboFactory: PAIR_NOT_EXISTS');\n        IBoboPair(pairAddr).addAuth(_auth);\n    }\n\n    function getBaseTokenPairLength(address _baseToken) view external returns(uint256) {\n        return baseTokenPairs[_baseToken].length;\n    }\n\n    function getTotalHangingTokenAmount(address _baseToken, address _userAddr) view public returns(uint256) {\n        uint256 totalBaseTokenAmount;\n        address[] memory quoteTokens = baseTokenPairs[_baseToken];\n        for (uint256 i = 0; i < quoteTokens.length; i++) {\n            address pairAddr = getPair[quoteTokens[i]][_baseToken];\n            (uint256 baseTokenAmount,) = IBoboPair(pairAddr).getTotalHangingTokenAmount(_userAddr);\n            totalBaseTokenAmount = totalBaseTokenAmount.add(baseTokenAmount);\n        }\n        return totalBaseTokenAmount;\n    }\n\n    function getClaimBaseTokenAmount(address _baseToken, address _userAddr) view public returns(uint256) {\n        uint256 hangingBaseTokenAmount = boboFarmer.stakedWantTokens(_baseToken, _userAddr);\n        uint256 baseTokenAmount = getTotalHangingTokenAmount(_baseToken, _userAddr);\n        return hangingBaseTokenAmount.sub(baseTokenAmount);\n    }\n    // 此接口调用前提：需要在boboFarmer合约上为Factory合约开通权限\n    function claimBaseToken(address _baseToken) public {\n        uint256 amount = getClaimBaseTokenAmount(_baseToken, msg.sender);\n        if (boboFarmer.tokenPidMap(_baseToken) > 0) {\n            uint256 preBaseTokenAmount = IERC20(_baseToken).balanceOf(address(this));\n            boboFarmer.withdraw(_baseToken, msg.sender, amount);\n            uint256 newBaseTokenAmount = IERC20(_baseToken).balanceOf(address(this));\n            IERC20(_baseToken).transfer(msg.sender, newBaseTokenAmount.sub(preBaseTokenAmount));\n        }\n    }\n}",
-  "sourcePath": "/Users/sam/go/src/github.com/bobo-metaverse/boboswap-contract/contracts/BoboFactory.sol",
+  "sourcePath": "/Users/mryu/blockchain/bobo-metaverse/boboswap-contract/contracts/BoboFactory.sol",
   "ast": {
     "absolutePath": "project:/contracts/BoboFactory.sol",
     "exportedSymbols": {
@@ -129,7 +129,7 @@
         "id": 4116,
         "nodeType": "ImportDirective",
         "scope": 4691,
-        "sourceUnit": 13625,
+        "sourceUnit": 14680,
         "src": "57:33:21",
         "symbolAliases": [],
         "unitAlias": ""
@@ -140,7 +140,7 @@
         "id": 4117,
         "nodeType": "ImportDirective",
         "scope": 4691,
-        "sourceUnit": 7333,
+        "sourceUnit": 8381,
         "src": "91:24:21",
         "symbolAliases": [],
         "unitAlias": ""
@@ -626,7 +626,7 @@
         "contractDependencies": [
           22,
           131,
-          7332
+          8380
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1075,7 +1075,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+              "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
               "typeString": "contract IBoboFarmer"
             },
             "typeName": {
@@ -1083,10 +1083,10 @@
               "id": 4190,
               "name": "IBoboFarmer",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 6083,
+              "referencedDeclaration": 7131,
               "src": "1173:11:21",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                 "typeString": "contract IBoboFarmer"
               }
             },
@@ -1574,7 +1574,7 @@
                       "referencedDeclaration": 4191,
                       "src": "1656:10:21",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
@@ -1608,10 +1608,10 @@
                         "name": "IBoboFarmer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6083,
+                        "referencedDeclaration": 7131,
                         "src": "1669:11:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$6083_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$7131_$",
                           "typeString": "type(contract IBoboFarmer)"
                         }
                       },
@@ -1626,13 +1626,13 @@
                       "src": "1669:24:21",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
                     "src": "1656:37:21",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                      "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                       "typeString": "contract IBoboFarmer"
                     }
                   },
@@ -1779,7 +1779,7 @@
                       "referencedDeclaration": 4191,
                       "src": "1777:10:21",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
@@ -1813,10 +1813,10 @@
                         "name": "IBoboFarmer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 6083,
+                        "referencedDeclaration": 7131,
                         "src": "1790:11:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$6083_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$7131_$",
                           "typeString": "type(contract IBoboFarmer)"
                         }
                       },
@@ -1831,13 +1831,13 @@
                       "src": "1790:24:21",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
                     "src": "1777:37:21",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                      "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                       "typeString": "contract IBoboFarmer"
                     }
                   },
@@ -2910,10 +2910,10 @@
                           "name": "BoboPair",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 7332,
+                          "referencedDeclaration": 8380,
                           "src": "2521:8:21",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$7332_$",
+                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$8380_$",
                             "typeString": "type(contract BoboPair)"
                           }
                         }
@@ -2921,7 +2921,7 @@
                       "expression": {
                         "argumentTypes": [
                           {
-                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$7332_$",
+                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$8380_$",
                             "typeString": "type(contract BoboPair)"
                           }
                         ],
@@ -2947,7 +2947,7 @@
                       "src": "2516:14:21",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_magic_meta_type_t_contract$_BoboPair_$7332",
+                        "typeIdentifier": "t_magic_meta_type_t_contract$_BoboPair_$8380",
                         "typeString": "type(contract BoboPair)"
                       }
                     },
@@ -3312,7 +3312,7 @@
                             "referencedDeclaration": 4191,
                             "src": "2812:10:21",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                              "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                               "typeString": "contract IBoboFarmer"
                             }
                           }
@@ -3320,7 +3320,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                              "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                               "typeString": "contract IBoboFarmer"
                             }
                           ],
@@ -6710,7 +6710,7 @@
                         "referencedDeclaration": 4191,
                         "src": "4996:10:21",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                          "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                           "typeString": "contract IBoboFarmer"
                         }
                       },
@@ -6721,7 +6721,7 @@
                       "lValueRequested": false,
                       "memberName": "stakedWantTokens",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 6075,
+                      "referencedDeclaration": 7123,
                       "src": "4996:27:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$returns$_t_uint256_$",
@@ -7212,7 +7212,7 @@
                           "referencedDeclaration": 4191,
                           "src": "5430:10:21",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                            "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                             "typeString": "contract IBoboFarmer"
                           }
                         },
@@ -7223,7 +7223,7 @@
                         "lValueRequested": false,
                         "memberName": "tokenPidMap",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 6082,
+                        "referencedDeclaration": 7130,
                         "src": "5430:22:21",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -7553,7 +7553,7 @@
                               "referencedDeclaration": 4191,
                               "src": "5570:10:21",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                                "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                                 "typeString": "contract IBoboFarmer"
                               }
                             },
@@ -7564,7 +7564,7 @@
                             "lValueRequested": false,
                             "memberName": "withdraw",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 6057,
+                            "referencedDeclaration": 7105,
                             "src": "5570:19:21",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -8071,7 +8071,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 13625,
+          "SourceUnit": 14680,
           "absolutePath": "project:/contracts/common/OrderStore.sol",
           "file": "./common/OrderStore.sol",
           "scope": 4691,
@@ -8086,7 +8086,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 7333,
+          "SourceUnit": 8381,
           "absolutePath": "project:/contracts/BoboPair.sol",
           "file": "./BoboPair.sol",
           "scope": 4691,
@@ -8610,7 +8610,7 @@
           "contractDependencies": [
             22,
             131,
-            7332
+            8380
           ],
           "contractKind": "contract",
           "documentation": null,
@@ -9085,7 +9085,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "IBoboFarmer",
-                  "referencedDeclaration": 6083,
+                  "referencedDeclaration": 7131,
                   "type": "contract IBoboFarmer"
                 },
                 "id": 4190,
@@ -9761,7 +9761,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6083,
+                                  "referencedDeclaration": 7131,
                                   "type": "type(contract IBoboFarmer)",
                                   "value": "IBoboFarmer"
                                 },
@@ -9950,7 +9950,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 6083,
+                                  "referencedDeclaration": 7131,
                                   "type": "type(contract IBoboFarmer)",
                                   "value": "IBoboFarmer"
                                 },
@@ -11194,7 +11194,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_type$_t_contract$_BoboPair_$7332_$",
+                                      "typeIdentifier": "t_type$_t_contract$_BoboPair_$8380_$",
                                       "typeString": "type(contract BoboPair)"
                                     }
                                   ],
@@ -11215,7 +11215,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 7332,
+                                  "referencedDeclaration": 8380,
                                   "type": "type(contract BoboPair)",
                                   "value": "BoboPair"
                                 },
@@ -11640,7 +11640,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_IBoboFarmer_$6083",
+                                      "typeIdentifier": "t_contract$_IBoboFarmer_$7131",
                                       "typeString": "contract IBoboFarmer"
                                     }
                                   ],
@@ -15142,7 +15142,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "stakedWantTokens",
-                              "referencedDeclaration": 6075,
+                              "referencedDeclaration": 7123,
                               "type": "function (address,address) view external returns (uint256)"
                             },
                             "children": [
@@ -15651,7 +15651,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "tokenPidMap",
-                                  "referencedDeclaration": 6082,
+                                  "referencedDeclaration": 7130,
                                   "type": "function (address) view external returns (uint256)"
                                 },
                                 "children": [
@@ -15957,7 +15957,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "withdraw",
-                                      "referencedDeclaration": 6057,
+                                      "referencedDeclaration": 7105,
                                       "type": "function (address,address,uint256) external"
                                     },
                                     "children": [
@@ -16495,8 +16495,8 @@
     "version": "0.6.12+commit.27d51765.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.2",
-  "updatedAt": "2021-08-17T01:40:14.671Z",
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-08-20T15:32:38.918Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

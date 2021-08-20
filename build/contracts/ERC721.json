@@ -26506,8 +26506,8 @@
     "version": "0.6.12+commit.27d51765.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.2",
-  "updatedAt": "2021-08-17T01:40:14.638Z",
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-08-20T15:32:38.840Z",
   "devdoc": {
     "details": "see https://eips.ethereum.org/EIPS/eip-721",
     "kind": "dev",

@@ -324,14 +324,14 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_boboRouter\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_farmer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_exManager\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderNFT\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderDetailNFT\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"USDC\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"USDC_PEERS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"USDT\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"USDT_PEERS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WMATIC\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"boboFactory\",\"outputs\":[{\"internalType\":\"contract BoboFactoryOnMatic\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"boboFarmer\",\"outputs\":[{\"internalType\":\"contract BoboFarmer\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"boboRouter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_quoteToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_baseToken\",\"type\":\"address\"}],\"name\":\"creatOnePair\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fromIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_toIndex\",\"type\":\"uint256\"}],\"name\":\"creatUSDCPeers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fromIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_toIndex\",\"type\":\"uint256\"}],\"name\":\"creatUSDTPeers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"exManager\",\"outputs\":[{\"internalType\":\"contract EXManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"orderDetailNFT\",\"outputs\":[{\"internalType\":\"contract OrderDetailNFT\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"orderNFT\",\"outputs\":[{\"internalType\":\"contract OrderNFT\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_boboRouter\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_farmer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_exManager\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderNFT\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderDetailNFT\",\"type\":\"address\"}],\"name\":\"setAddrs\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"}],\"name\":\"setFactory\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"strat\",\"outputs\":[{\"internalType\":\"contract StratMaticSushi\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferAllOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BatchCreatePairs.sol\":\"BatchCreatPairs\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xf7c39c7e6d06ed3bda90cfefbcbf2ddc32c599c3d6721746546ad64946efccaa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cb57a28e189cd8b05748db44bdd51d608e6f1364dd1b35ad921e1bc82c10631e\",\"dweb:/ipfs/QmaWWTBbVu2pRR9XUbE4iC159NoP59cRF9ZJwhf4ghFN9i\"]},\"@openzeppelin/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0xd6b90e604fb2eb2d641c7110c72440bf2dc999ec6ab8ff60f200e71ca75d1d90\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b92d8ab83b21ff984b1f0d6d66897d5afb1f2052004cbcb133cea023e0ae468\",\"dweb:/ipfs/QmTarypkQrFp4UMjTh7Zzhz2nZLz5uPS4nJQtHDEuwBVe6\"]},\"@openzeppelin/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xf70bc25d981e4ec9673a995ad2995d5d493ea188d3d8f388bba9c227ce09fb82\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd970f51e3a77790c2f02b5b1759827c3b897c3d98c407b3631e8af32e3dc93c\",\"dweb:/ipfs/QmPF85Amgbqjk3SNZKsPCsqCw8JfwYEPMnnhvMJUyX58je\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xcbd85c86627a47fd939f1f4ee3ba626575ff2a182e1804b29f5136394449b538\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53c6a80c519bb9356aad28efa9a1ec31603860eb759d2dc57f545fcae1dd1aca\",\"dweb:/ipfs/QmfRS6TtMNUHhvgLHXK21qKNnpn2S7g2Yd1fKaHKyFiJsR\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0xf12dfbe97e6276980b83d2830bb0eb75e0cf4f3e626c2471137f82158ae6a0fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3a849c2d95e85463909e5b5c920b13e7a11216ca14127085e16d22b9379d52a\",\"dweb:/ipfs/QmUg3CZDbCCcQdroEpexBy5ZFd5vD1UWijWQq9qHZjtJNQ\"]},\"@openzeppelin/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x5a3de7f7f76e47a071195cf42e2a702265694a6b32037de709463bd8ad784fb5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://678cbad1f972a4d8c9d47bc39fa6d39560b4fc143c8d9c812a63fe99bb13062e\",\"dweb:/ipfs/QmUhLDvUndcbQLakDNg9G4UXz8UPzRqC6S3rWGKupB6DYs\"]},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x5a9f5c29bd7cf0b345e14d97d5f685f68c07e1e5bfdd47e5bcec045e81b0b6ac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://321cbaa1412fc8d013d8ad3fb5f98c0db7401ddacfb09b70828ea2cebe37397e\",\"dweb:/ipfs/Qmd3Hoc71w6rmxAR6A5VKW9at677VP1L5KDcJnyvu4ksu3\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0xe6bd1b1218338b6f9fe17776f48623b4ac3d8a40405f74a44bc23c00abe2ca13\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0c354c3f6e9c487759aa7869be4fba68e0b2efc777b514d289c4cbd3ff8f7e1a\",\"dweb:/ipfs/QmdF9LcSYVmiUCL7JxLEYmSLrjga6zJsujfi6sgEJD4M1z\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol\":{\"keccak256\":\"0xccb917776f826ac6b68bd5a15a5f711e3967848a52ba11e6104d9a4f593314a7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://430255ad2229ced6d880e61a67bdc6e48dbbaed8354a7c1fe918cd8b8714a886\",\"dweb:/ipfs/QmTHY56odzqEpEC6v6tafaWMYY7vmULw25q5XHJLCCAeox\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x52146049d6709c870e8ddcd988b5155cb6c5d640cfcd8978aee52bc1ba2ec4eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ada84513617b7c1b2f890b44503735abaec73a1acd030112a17aac7e6c66a4a1\",\"dweb:/ipfs/QmaiFwdio67iJrfjAdkMac24eJ5sS1qD7CZW6PhUU6KjiK\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0xa6a15ddddcbf29d2922a1e0d4151b5d2d33da24b93cc9ebc12390e0d855532f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c119bcaecfa853d564ac88d312777f75fa1126a3bca88a3371adb0ad9f35cb0\",\"dweb:/ipfs/QmY9UPuXeSKq86Zh38fE43VGQPhKMN34mkuFSFqPcr6nvZ\"]},\"@openzeppelin/contracts/utils/EnumerableMap.sol\":{\"keccak256\":\"0xf6bdf22fe038e5310b6f0372ecd01f221e2c0b248b45efc404542d94fcac9133\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e798f3492180627d6616fa94925b61a9f105347eed9e895f3e18a0eb3dfcd3d\",\"dweb:/ipfs/QmQcTro5nv3Lopf4c4rEe1BuykCfPsjRsJmysdNXtHNUdt\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0xae0992eb1ec30fd1ecdf2e04a6036decfc9797bf11dc1ec84b546b74318d5ec2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b61f99a64e999682ad7bfbb3a1c762a20a0a5b30f9f2011693fa857969af61f\",\"dweb:/ipfs/QmZystFY76wkWCf7V3yKh3buZuKVKbswiE7y6yU62kk3zi\"]},\"@openzeppelin/contracts/utils/Pausable.sol\":{\"keccak256\":\"0x065360ef3924db6b63c2160886b5de737497dd64a917e362dd8d857cda1f5ae2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://946fe57f3b935f0f4a41345b3eedb617c30912ba5e802bd6b430b394114048ab\",\"dweb:/ipfs/QmRVgUK6yHgqiVWoFn51aUGYejR8romW2ZqwVvSFMnhnJW\"]},\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"keccak256\":\"0x8bbbc2f5c10065ee272592ae0a7a6ceb23de2fbd81564ee0bb015ecf404d5f61\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b95e56c1640d0ef789fc5c16269e141e992f6c8ac97cc6d377bd3825e9cab182\",\"dweb:/ipfs/QmVzaxJZY51EhagrcNnkxoU6Uq17RhATe7aHvtkC6wUkgK\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x16b5422892fbdd9648f12e59de85b42efd57d76b6d6b2358cb46e0f6d4a71aaf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ef38821a4ee756757dc1ce9074ef6096d1b5c760627e92c0852d788dc636ea7\",\"dweb:/ipfs/QmdGwP6BtRMcp4VVJUWwTmXEjYmL52A8WZpBdFJYmzc9pJ\"]},\"project:/contracts/BatchCreatePairs.sol\":{\"keccak256\":\"0xc65c5cc433389091085d74d10dea1e92782aabe3f99961180e7745715b865b0f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8f77ac9665d161293974c9fcfa5d36e1a2631fdfd13a7967b4962fdaf7790014\",\"dweb:/ipfs/QmULuxuc6rjBWaeXRbrNqqbxwV3FnoA8nXvsgrGjHpoXJa\"]},\"project:/contracts/BoboFactory.sol\":{\"keccak256\":\"0x84905eb02fbbf246aa9b6772374b80eff8ffaa67066406a2d11ffc409f4233ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cdf500ede470169c80ff519402db2e6ef81087ce1cbea153c43921bc5648ea0\",\"dweb:/ipfs/QmYQ2SEx7m9Rv45x9WXHGhXPzGgH9NQNi4hm49DBPdYYAp\"]},\"project:/contracts/BoboFarmer.sol\":{\"keccak256\":\"0x6996019de9ceb67aaa90106848025f17ce89d807c22a89c518a8c7167c09030d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d2d5875065e1f58bf3a3aa65d9e93fa632df88a38cfaaf8b660d7953a60f88df\",\"dweb:/ipfs/QmNT9PD2mHfZ5RXaMz53ki5oNqDxJRwUorYHv33PdjStse\"]},\"project:/contracts/BoboPair.sol\":{\"keccak256\":\"0xaf2f4f9454a3b7bcd33d558bb1a7797be7e110b56af71da349fc5b13cbb9828d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3c12e62f14ea0784017b55f7e0c5e7e2a104eccc2ed2deb8da9356628f7f5bb\",\"dweb:/ipfs/QmZT2UgTVjkQ73SMEvXKsFwYV3bcZdxbqCqVbZBdVH79aq\"]},\"project:/contracts/BoboRouter.sol\":{\"keccak256\":\"0x6a7ae7e34681b19028031ed760db0d803ba55f460243ac7340955ba964cbf44a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://68a8e0b4ed3b77ce7c419644615079a695162fd2e08efba3ea5af11c65c19781\",\"dweb:/ipfs/QmfVKJdSDxHSbzFHdEqCcvBwhd6b68k2QL1cxuVc2yNRVN\"]},\"project:/contracts/StratMaticSushi.sol\":{\"keccak256\":\"0xcc7b44a1664f6f823453b8de42536b8e2dd0872be3a4705479a3158744434c48\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://17dbe53edf83cbeb19a53503621cf9e1c6d2ce09a99d2c3f484070c5bfffe913\",\"dweb:/ipfs/QmUMiugM19GXzh93XNRsUMdjY8CqAvWkiydX9UraRhCdxU\"]},\"project:/contracts/SwapInterfaces.sol\":{\"keccak256\":\"0xc80917fb06d7d0c4eee82b69d7b52bbb25eebc9c6774cf2ec5d0f058a0a7b272\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b699f016470e299f4f1d9e22980a3870e13e5b9315b5fc64c4c69497487e262\",\"dweb:/ipfs/QmV6wrttVpv5NdxCSDiSk4JeDoauX5B3zMCbvVeooycCgb\"]},\"project:/contracts/common/BasicStruct.sol\":{\"keccak256\":\"0xa1a08957c618c341bbaeab762e55bda67afbb3e349586237a71714b3df9860df\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f093a3ecd0afa50d27305c30e6897d404a83e8c8b94202ae9558c6ed4f979ff4\",\"dweb:/ipfs/QmZYxsmGCSACpzWdrh9b24gkLtAnLcQSLLCDrcz7BUiK8u\"]},\"project:/contracts/common/MathEX.sol\":{\"keccak256\":\"0xf8053b2fea148c9b8fed31fca6fb7e8bbacde0f91611c3f5894dcab19c85bc35\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15b5c0659193b6782563cb09f4faedfa3ff8be9542517a5640d96ba6f15e0186\",\"dweb:/ipfs/QmVhXQM1dJ4XRSytz21LXWEkVodtY31ECdKbdT3q5CV954\"]},\"project:/contracts/common/Minter.sol\":{\"keccak256\":\"0xb1fd4752db69897176e8e7bf663ccca40f0619a9271cfe1b8c62167054d9a988\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://36cd323626cdd1698fc39a00679e6e2dac7dc77a9d3ce885b1599af861e02b3b\",\"dweb:/ipfs/QmUbGJ9Fv2L5LhioXo62k2szCAsLWqsuPy8uLo1AYRuE4A\"]},\"project:/contracts/common/MixinAuthorizable.sol\":{\"keccak256\":\"0x184cb86c20cd3ffeeb9644c86116791f1012c0927b3f29826d37cc2b15d8bf0b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c521e3eb9589a595d082b21b6b92bf0ec337b4a0bc3740f528b9c213e384bd11\",\"dweb:/ipfs/QmSF8aBddSrii2DGyGKEokxK5KZhj26irvY62ZvVMHYcTg\"]},\"project:/contracts/common/OrderStore.sol\":{\"keccak256\":\"0x1f67cf2180d087794e6438388ae16d9a8da4c2cbde387a7e152e48391e495c55\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0f7a74575f68c18592939b2d1321b93fac5015b3ed18ea6689e6f1584142265d\",\"dweb:/ipfs/QmWuyuCDNHXup78VgrbgY7SD2EbLikHvLqGaoT1iou93QZ\"]},\"project:/contracts/common/StructuredLinkedList.sol\":{\"keccak256\":\"0xc6f34db8c7bfde84b2ab1d91f407313a470a35fd26751fe1ef5f5839a179b174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ffa90df7021f915c83e0cb121a300cd185aea9dc4e64842228b4b40cec990579\",\"dweb:/ipfs/QmbNxtcVRnmbdxE5ZXnjjB76EzSHMvPdT3VswLYibEpLd5\"]},\"project:/contracts/common/orderDetailNFT.sol\":{\"keccak256\":\"0x014836d62b81f57fcae92b9b0604626b63a78cb99549a9c17a70b95f4a7edcff\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://380193e43749f5c78521f70943a5e61f798ba1997d31983cdce480710217fb46\",\"dweb:/ipfs/QmWYFnTyuKpso1U8Gv4oSVGLUh8fKdy3J84YkWXjv7mKwN\"]},\"project:/contracts/common/orderNFT.sol\":{\"keccak256\":\"0x0876bf81c0c43122641a6df9dbd15195c4c543f4a4dcb3db8f2baa69819a58c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0052b06d1f446c6b55316ec9ee18d7c3982d3e69a45a98a5d6d896a063590172\",\"dweb:/ipfs/QmRVwSFKVLuqcKdC1qQ74NQHKTxyA7RsyCAHvdGU3JcYrZ\"]},\"project:/contracts/manager/EXManager.sol\":{\"keccak256\":\"0xa5d9984d1412e4781be307f0e01e1cea5979e05ca7e7abd054028f621e161144\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://deb6fcc16441cd46aaf86f465a1d77d6d663c70533f37ec2d548b9c2f0c4322d\",\"dweb:/ipfs/QmVvWpE8RPdCFYxriNxX2uizi7t58eQ9pxebTjwzizAmEw\"]}},\"version\":1}",
-  "bytecode": "0x6101a0604052730d500b1d8e8ef31e21c99d1db9a6444d3adf12706080908152737ceb23fd6bc0add59e62ac25578270cff1b9f61960a052731bfd67037b42cf73acf2047067bd4f2c47d9bfd660c052732791bca1f2de4661ed88a30c99a7a9449aa8417460e052738f3cf7ad23cd3cadbd9735aff958023239c6a063610100527353e0bca35ec356bd5dddfebbd1fc0fd03fabad3961012052739c2c5fd7b07e95ee044ddeba0e97a665f142394f6101405273b33eaad8d922b1083446dc23f610c2567fb5180f6101605273d6df932a45c0f255f85145f286ea0b292b21c90b610180526100f290600090600961035a565b506040805161010081018252730d500b1d8e8ef31e21c99d1db9a6444d3adf12708152737ceb23fd6bc0add59e62ac25578270cff1b9f6196020820152731bfd67037b42cf73acf2047067bd4f2c47d9bfd691810191909152738f3cf7ad23cd3cadbd9735aff958023239c6a06360608201527353e0bca35ec356bd5dddfebbd1fc0fd03fabad396080820152739c2c5fd7b07e95ee044ddeba0e97a665f142394f60a082015273b33eaad8d922b1083446dc23f610c2567fb5180f60c082015273d6df932a45c0f255f85145f286ea0b292b21c90b60e08201526101db90600190600861035a565b50600280546001600160a01b0319908116730326d887a6dde69e874ea70fd842658125eafc411790915560038054821673d79df7ec6ff4f5ddc53a3d60ecaf25316a532bad179055600680548216737a29befcb6d0c6febdd33003fa08b139c63c23671790556007805482167304673384398379a84d05895456ae02fc05b4a509179055600880549091167375508a1de2183a1f2bf1822d6794698c953a178817905534801561028a57600080fd5b50604051610f80380380610f80833981810160405260c08110156102ad57600080fd5b508051602082015160408301516060840151608085015160a09095015193949293919290916102e08686868686866102eb565b5050505050506103de565b600580546001600160a01b03199081166001600160a01b0398891617909155600280548216968816969096179095556003805486169487169490941790935560068054851692861692909217909155600780548416918516919091179055600880549092169216919091179055565b8280548282559060005260206000209081019282156103af579160200282015b828111156103af57825182546001600160a01b0319166001600160a01b0390911617825560209092019160019091019061037a565b506103bb9291506103bf565b5090565b5b808211156103bb5780546001600160a01b03191681556001016103c0565b610b93806103ed6000396000f3fe608060405234801561001057600080fd5b50600436106101165760003560e01c80638e80f160116100a2578063acd17aaa11610071578063acd17aaa146102a9578063c54e44eb146102b1578063d4d728da146102b9578063d57116a2146102c1578063fb1157ce146102c957610116565b80638e80f16014610213578063941f7cc71461023657806397d87393146102845780639ccae9171461028c57610116565b80634d95cad9116100e95780634d95cad91461019d5780635bb47808146101a557806375970e5b146101cb57806389a30271146101e85780638ce6b675146101f057610116565b8063059b2a101461011b578063155f48e81461013f5780631960e232146101675780632039a7f51461016f575b600080fd5b6101236102d1565b604080516001600160a01b039092168252519081900360200190f35b6101656004803603602081101561015557600080fd5b50356001600160a01b03166102e0565b005b6101236104e1565b6101656004803603604081101561018557600080fd5b506001600160a01b03813581169160200135166104f0565b610123610821565b610165600480360360208110156101bb57600080fd5b50356001600160a01b0316610839565b610123600480360360208110156101e157600080fd5b503561085b565b610123610882565b6101656004803603604081101561020657600080fd5b508035906020013561089a565b6101656004803603604081101561022957600080fd5b508035906020013561098f565b610165600480360360c081101561024c57600080fd5b506001600160a01b038135811691602081013582169160408201358116916060810135821691608082013581169160a0013516610a7e565b610123610aed565b610123600480360360208110156102a257600080fd5b5035610afc565b610123610b09565b610123610b18565b610123610b30565b610123610b3f565b610123610b4e565b6004546001600160a01b031681565b6002546040805163f2fde38b60e01b81526001600160a01b0384811660048301529151919092169163f2fde38b91602480830192600092919082900301818387803b15801561032e57600080fd5b505af1158015610342573d6000803e3d6000fd5b50506003546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561039457600080fd5b505af11580156103a8573d6000803e3d6000fd5b50506006546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156103fa57600080fd5b505af115801561040e573d6000803e3d6000fd5b50506007546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561046057600080fd5b505af1158015610474573d6000803e3d6000fd5b50506008546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156104c657600080fd5b505af11580156104da573d6000803e3d6000fd5b5050505050565b6003546001600160a01b031681565b600254604080516364e329cb60e11b81526001600160a01b03858116600483015284811660248301529151600093929092169163c9c653969160448082019260209290919082900301818787803b15801561054a57600080fd5b505af115801561055e573d6000803e3d6000fd5b505050506040513d602081101561057457600080fd5b505160065460408051631d33a31960e31b81526001600160a01b03928316600482015290519293509083169163e99d18c89160248082019260009290919082900301818387803b1580156105c757600080fd5b505af11580156105db573d6000803e3d6000fd5b50506005546040805163c0d7865560e01b81526001600160a01b0392831660048201529051918516935063c0d78655925060248082019260009290919082900301818387803b15801561062d57600080fd5b505af1158015610641573d6000803e3d6000fd5b505060075460408051634c1d96ab60e11b81526001600160a01b038681166004830152915191909216935063983b2d56925060248083019260209291908290030181600087803b15801561069457600080fd5b505af11580156106a8573d6000803e3d6000fd5b505050506040513d60208110156106be57600080fd5b505060085460408051634c1d96ab60e11b81526001600160a01b0384811660048301529151919092169163983b2d569160248083019260209291908290030181600087803b15801561070f57600080fd5b505af1158015610723573d6000803e3d6000fd5b505050506040513d602081101561073957600080fd5b50506003546040805163678e18b560e11b81526001600160a01b0384811660048301529151919092169163cf1c316a9160248083019260209291908290030181600087803b15801561078a57600080fd5b505af115801561079e573d6000803e3d6000fd5b505050506040513d60208110156107b457600080fd5b505060065460408051632a11112760e11b81526001600160a01b03848116600483015291519190921691635422224e91602480830192600092919082900301818387803b15801561080457600080fd5b505af1158015610818573d6000803e3d6000fd5b50505050505050565b730d500b1d8e8ef31e21c99d1db9a6444d3adf127081565b600280546001600160a01b0319166001600160a01b0392909216919091179055565b6001818154811061086857fe5b6000918252602090912001546001600160a01b0316905081565b732791bca1f2de4661ed88a30c99a7a9449aa8417481565b815b8181101561098a576000600182815481106108b357fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b0393841660048201819052732791bca1f2de4661ed88a30c99a7a9449aa8417460248301529151919650919092169263e6a4390592604480840193829003018186803b15801561092857600080fd5b505afa15801561093c573d6000803e3d6000fd5b505050506040513d602081101561095257600080fd5b50516001600160a01b031614156109815761098181732791bca1f2de4661ed88a30c99a7a9449aa841746104f0565b5060010161089c565b505050565b815b8181101561098a5760008082815481106109a757fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b039384166004820181905273c2132d05d31c914a87c6611c10748aeb04b58e8f60248301529151919650919092169263e6a4390592604480840193829003018186803b158015610a1c57600080fd5b505afa158015610a30573d6000803e3d6000fd5b505050506040513d6020811015610a4657600080fd5b50516001600160a01b03161415610a7557610a758173c2132d05d31c914a87c6611c10748aeb04b58e8f6104f0565b50600101610991565b600580546001600160a01b03199081166001600160a01b0398891617909155600280548216968816969096179095556003805486169487169490941790935560068054851692861692909217909155600780548416918516919091179055600880549092169216919091179055565b6006546001600160a01b031681565b6000818154811061086857fe5b6005546001600160a01b031681565b73c2132d05d31c914a87c6611c10748aeb04b58e8f81565b6007546001600160a01b031681565b6002546001600160a01b031681565b6008546001600160a01b03168156fea2646970667358221220b883c5cad50295b238da1b0ea0de934c88c027c61f7c2ce27face890a14c6ddf64736f6c634300060c0033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101165760003560e01c80638e80f160116100a2578063acd17aaa11610071578063acd17aaa146102a9578063c54e44eb146102b1578063d4d728da146102b9578063d57116a2146102c1578063fb1157ce146102c957610116565b80638e80f16014610213578063941f7cc71461023657806397d87393146102845780639ccae9171461028c57610116565b80634d95cad9116100e95780634d95cad91461019d5780635bb47808146101a557806375970e5b146101cb57806389a30271146101e85780638ce6b675146101f057610116565b8063059b2a101461011b578063155f48e81461013f5780631960e232146101675780632039a7f51461016f575b600080fd5b6101236102d1565b604080516001600160a01b039092168252519081900360200190f35b6101656004803603602081101561015557600080fd5b50356001600160a01b03166102e0565b005b6101236104e1565b6101656004803603604081101561018557600080fd5b506001600160a01b03813581169160200135166104f0565b610123610821565b610165600480360360208110156101bb57600080fd5b50356001600160a01b0316610839565b610123600480360360208110156101e157600080fd5b503561085b565b610123610882565b6101656004803603604081101561020657600080fd5b508035906020013561089a565b6101656004803603604081101561022957600080fd5b508035906020013561098f565b610165600480360360c081101561024c57600080fd5b506001600160a01b038135811691602081013582169160408201358116916060810135821691608082013581169160a0013516610a7e565b610123610aed565b610123600480360360208110156102a257600080fd5b5035610afc565b610123610b09565b610123610b18565b610123610b30565b610123610b3f565b610123610b4e565b6004546001600160a01b031681565b6002546040805163f2fde38b60e01b81526001600160a01b0384811660048301529151919092169163f2fde38b91602480830192600092919082900301818387803b15801561032e57600080fd5b505af1158015610342573d6000803e3d6000fd5b50506003546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561039457600080fd5b505af11580156103a8573d6000803e3d6000fd5b50506006546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156103fa57600080fd5b505af115801561040e573d6000803e3d6000fd5b50506007546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561046057600080fd5b505af1158015610474573d6000803e3d6000fd5b50506008546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156104c657600080fd5b505af11580156104da573d6000803e3d6000fd5b5050505050565b6003546001600160a01b031681565b600254604080516364e329cb60e11b81526001600160a01b03858116600483015284811660248301529151600093929092169163c9c653969160448082019260209290919082900301818787803b15801561054a57600080fd5b505af115801561055e573d6000803e3d6000fd5b505050506040513d602081101561057457600080fd5b505160065460408051631d33a31960e31b81526001600160a01b03928316600482015290519293509083169163e99d18c89160248082019260009290919082900301818387803b1580156105c757600080fd5b505af11580156105db573d6000803e3d6000fd5b50506005546040805163c0d7865560e01b81526001600160a01b0392831660048201529051918516935063c0d78655925060248082019260009290919082900301818387803b15801561062d57600080fd5b505af1158015610641573d6000803e3d6000fd5b505060075460408051634c1d96ab60e11b81526001600160a01b038681166004830152915191909216935063983b2d56925060248083019260209291908290030181600087803b15801561069457600080fd5b505af11580156106a8573d6000803e3d6000fd5b505050506040513d60208110156106be57600080fd5b505060085460408051634c1d96ab60e11b81526001600160a01b0384811660048301529151919092169163983b2d569160248083019260209291908290030181600087803b15801561070f57600080fd5b505af1158015610723573d6000803e3d6000fd5b505050506040513d602081101561073957600080fd5b50506003546040805163678e18b560e11b81526001600160a01b0384811660048301529151919092169163cf1c316a9160248083019260209291908290030181600087803b15801561078a57600080fd5b505af115801561079e573d6000803e3d6000fd5b505050506040513d60208110156107b457600080fd5b505060065460408051632a11112760e11b81526001600160a01b03848116600483015291519190921691635422224e91602480830192600092919082900301818387803b15801561080457600080fd5b505af1158015610818573d6000803e3d6000fd5b50505050505050565b730d500b1d8e8ef31e21c99d1db9a6444d3adf127081565b600280546001600160a01b0319166001600160a01b0392909216919091179055565b6001818154811061086857fe5b6000918252602090912001546001600160a01b0316905081565b732791bca1f2de4661ed88a30c99a7a9449aa8417481565b815b8181101561098a576000600182815481106108b357fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b0393841660048201819052732791bca1f2de4661ed88a30c99a7a9449aa8417460248301529151919650919092169263e6a4390592604480840193829003018186803b15801561092857600080fd5b505afa15801561093c573d6000803e3d6000fd5b505050506040513d602081101561095257600080fd5b50516001600160a01b031614156109815761098181732791bca1f2de4661ed88a30c99a7a9449aa841746104f0565b5060010161089c565b505050565b815b8181101561098a5760008082815481106109a757fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b039384166004820181905273c2132d05d31c914a87c6611c10748aeb04b58e8f60248301529151919650919092169263e6a4390592604480840193829003018186803b158015610a1c57600080fd5b505afa158015610a30573d6000803e3d6000fd5b505050506040513d6020811015610a4657600080fd5b50516001600160a01b03161415610a7557610a758173c2132d05d31c914a87c6611c10748aeb04b58e8f6104f0565b50600101610991565b600580546001600160a01b03199081166001600160a01b0398891617909155600280548216968816969096179095556003805486169487169490941790935560068054851692861692909217909155600780548416918516919091179055600880549092169216919091179055565b6006546001600160a01b031681565b6000818154811061086857fe5b6005546001600160a01b031681565b73c2132d05d31c914a87c6611c10748aeb04b58e8f81565b6007546001600160a01b031681565b6002546001600160a01b031681565b6008546001600160a01b03168156fea2646970667358221220b883c5cad50295b238da1b0ea0de934c88c027c61f7c2ce27face890a14c6ddf64736f6c634300060c0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_boboRouter\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_farmer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_exManager\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderNFT\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderDetailNFT\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"USDC\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"USDC_PEERS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"USDT\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"USDT_PEERS\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WMATIC\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"boboFactory\",\"outputs\":[{\"internalType\":\"contract BoboFactoryOnMatic\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"boboFarmer\",\"outputs\":[{\"internalType\":\"contract BoboFarmer\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"boboRouter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_quoteToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_baseToken\",\"type\":\"address\"}],\"name\":\"creatOnePair\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fromIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_toIndex\",\"type\":\"uint256\"}],\"name\":\"creatUSDCPeers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fromIndex\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_toIndex\",\"type\":\"uint256\"}],\"name\":\"creatUSDTPeers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"exManager\",\"outputs\":[{\"internalType\":\"contract EXManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"orderDetailNFT\",\"outputs\":[{\"internalType\":\"contract OrderDetailNFT\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"orderNFT\",\"outputs\":[{\"internalType\":\"contract OrderNFT\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_boboRouter\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_farmer\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_exManager\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderNFT\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_orderDetailNFT\",\"type\":\"address\"}],\"name\":\"setAddrs\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_factory\",\"type\":\"address\"}],\"name\":\"setFactory\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"strat\",\"outputs\":[{\"internalType\":\"contract StratMaticSushi\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newOwner\",\"type\":\"address\"}],\"name\":\"transferAllOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BatchCreatePairs.sol\":\"BatchCreatPairs\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0xf7c39c7e6d06ed3bda90cfefbcbf2ddc32c599c3d6721746546ad64946efccaa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://cb57a28e189cd8b05748db44bdd51d608e6f1364dd1b35ad921e1bc82c10631e\",\"dweb:/ipfs/QmaWWTBbVu2pRR9XUbE4iC159NoP59cRF9ZJwhf4ghFN9i\"]},\"@openzeppelin/contracts/introspection/ERC165.sol\":{\"keccak256\":\"0xd6b90e604fb2eb2d641c7110c72440bf2dc999ec6ab8ff60f200e71ca75d1d90\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7b92d8ab83b21ff984b1f0d6d66897d5afb1f2052004cbcb133cea023e0ae468\",\"dweb:/ipfs/QmTarypkQrFp4UMjTh7Zzhz2nZLz5uPS4nJQtHDEuwBVe6\"]},\"@openzeppelin/contracts/introspection/IERC165.sol\":{\"keccak256\":\"0xf70bc25d981e4ec9673a995ad2995d5d493ea188d3d8f388bba9c227ce09fb82\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bd970f51e3a77790c2f02b5b1759827c3b897c3d98c407b3631e8af32e3dc93c\",\"dweb:/ipfs/QmPF85Amgbqjk3SNZKsPCsqCw8JfwYEPMnnhvMJUyX58je\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xcbd85c86627a47fd939f1f4ee3ba626575ff2a182e1804b29f5136394449b538\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53c6a80c519bb9356aad28efa9a1ec31603860eb759d2dc57f545fcae1dd1aca\",\"dweb:/ipfs/QmfRS6TtMNUHhvgLHXK21qKNnpn2S7g2Yd1fKaHKyFiJsR\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0xf12dfbe97e6276980b83d2830bb0eb75e0cf4f3e626c2471137f82158ae6a0fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3a849c2d95e85463909e5b5c920b13e7a11216ca14127085e16d22b9379d52a\",\"dweb:/ipfs/QmUg3CZDbCCcQdroEpexBy5ZFd5vD1UWijWQq9qHZjtJNQ\"]},\"@openzeppelin/contracts/token/ERC721/ERC721.sol\":{\"keccak256\":\"0x5a3de7f7f76e47a071195cf42e2a702265694a6b32037de709463bd8ad784fb5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://678cbad1f972a4d8c9d47bc39fa6d39560b4fc143c8d9c812a63fe99bb13062e\",\"dweb:/ipfs/QmUhLDvUndcbQLakDNg9G4UXz8UPzRqC6S3rWGKupB6DYs\"]},\"@openzeppelin/contracts/token/ERC721/IERC721.sol\":{\"keccak256\":\"0x5a9f5c29bd7cf0b345e14d97d5f685f68c07e1e5bfdd47e5bcec045e81b0b6ac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://321cbaa1412fc8d013d8ad3fb5f98c0db7401ddacfb09b70828ea2cebe37397e\",\"dweb:/ipfs/Qmd3Hoc71w6rmxAR6A5VKW9at677VP1L5KDcJnyvu4ksu3\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol\":{\"keccak256\":\"0xe6bd1b1218338b6f9fe17776f48623b4ac3d8a40405f74a44bc23c00abe2ca13\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0c354c3f6e9c487759aa7869be4fba68e0b2efc777b514d289c4cbd3ff8f7e1a\",\"dweb:/ipfs/QmdF9LcSYVmiUCL7JxLEYmSLrjga6zJsujfi6sgEJD4M1z\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol\":{\"keccak256\":\"0xccb917776f826ac6b68bd5a15a5f711e3967848a52ba11e6104d9a4f593314a7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://430255ad2229ced6d880e61a67bdc6e48dbbaed8354a7c1fe918cd8b8714a886\",\"dweb:/ipfs/QmTHY56odzqEpEC6v6tafaWMYY7vmULw25q5XHJLCCAeox\"]},\"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol\":{\"keccak256\":\"0x52146049d6709c870e8ddcd988b5155cb6c5d640cfcd8978aee52bc1ba2ec4eb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ada84513617b7c1b2f890b44503735abaec73a1acd030112a17aac7e6c66a4a1\",\"dweb:/ipfs/QmaiFwdio67iJrfjAdkMac24eJ5sS1qD7CZW6PhUU6KjiK\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0xa6a15ddddcbf29d2922a1e0d4151b5d2d33da24b93cc9ebc12390e0d855532f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7c119bcaecfa853d564ac88d312777f75fa1126a3bca88a3371adb0ad9f35cb0\",\"dweb:/ipfs/QmY9UPuXeSKq86Zh38fE43VGQPhKMN34mkuFSFqPcr6nvZ\"]},\"@openzeppelin/contracts/utils/EnumerableMap.sol\":{\"keccak256\":\"0xf6bdf22fe038e5310b6f0372ecd01f221e2c0b248b45efc404542d94fcac9133\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6e798f3492180627d6616fa94925b61a9f105347eed9e895f3e18a0eb3dfcd3d\",\"dweb:/ipfs/QmQcTro5nv3Lopf4c4rEe1BuykCfPsjRsJmysdNXtHNUdt\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0xae0992eb1ec30fd1ecdf2e04a6036decfc9797bf11dc1ec84b546b74318d5ec2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b61f99a64e999682ad7bfbb3a1c762a20a0a5b30f9f2011693fa857969af61f\",\"dweb:/ipfs/QmZystFY76wkWCf7V3yKh3buZuKVKbswiE7y6yU62kk3zi\"]},\"@openzeppelin/contracts/utils/Pausable.sol\":{\"keccak256\":\"0x065360ef3924db6b63c2160886b5de737497dd64a917e362dd8d857cda1f5ae2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://946fe57f3b935f0f4a41345b3eedb617c30912ba5e802bd6b430b394114048ab\",\"dweb:/ipfs/QmRVgUK6yHgqiVWoFn51aUGYejR8romW2ZqwVvSFMnhnJW\"]},\"@openzeppelin/contracts/utils/ReentrancyGuard.sol\":{\"keccak256\":\"0x8bbbc2f5c10065ee272592ae0a7a6ceb23de2fbd81564ee0bb015ecf404d5f61\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b95e56c1640d0ef789fc5c16269e141e992f6c8ac97cc6d377bd3825e9cab182\",\"dweb:/ipfs/QmVzaxJZY51EhagrcNnkxoU6Uq17RhATe7aHvtkC6wUkgK\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x16b5422892fbdd9648f12e59de85b42efd57d76b6d6b2358cb46e0f6d4a71aaf\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4ef38821a4ee756757dc1ce9074ef6096d1b5c760627e92c0852d788dc636ea7\",\"dweb:/ipfs/QmdGwP6BtRMcp4VVJUWwTmXEjYmL52A8WZpBdFJYmzc9pJ\"]},\"project:/contracts/BatchCreatePairs.sol\":{\"keccak256\":\"0xc65c5cc433389091085d74d10dea1e92782aabe3f99961180e7745715b865b0f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8f77ac9665d161293974c9fcfa5d36e1a2631fdfd13a7967b4962fdaf7790014\",\"dweb:/ipfs/QmULuxuc6rjBWaeXRbrNqqbxwV3FnoA8nXvsgrGjHpoXJa\"]},\"project:/contracts/BoboFactory.sol\":{\"keccak256\":\"0x84905eb02fbbf246aa9b6772374b80eff8ffaa67066406a2d11ffc409f4233ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cdf500ede470169c80ff519402db2e6ef81087ce1cbea153c43921bc5648ea0\",\"dweb:/ipfs/QmYQ2SEx7m9Rv45x9WXHGhXPzGgH9NQNi4hm49DBPdYYAp\"]},\"project:/contracts/BoboFarmer.sol\":{\"keccak256\":\"0x6996019de9ceb67aaa90106848025f17ce89d807c22a89c518a8c7167c09030d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d2d5875065e1f58bf3a3aa65d9e93fa632df88a38cfaaf8b660d7953a60f88df\",\"dweb:/ipfs/QmNT9PD2mHfZ5RXaMz53ki5oNqDxJRwUorYHv33PdjStse\"]},\"project:/contracts/BoboPair.sol\":{\"keccak256\":\"0xaf2f4f9454a3b7bcd33d558bb1a7797be7e110b56af71da349fc5b13cbb9828d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3c12e62f14ea0784017b55f7e0c5e7e2a104eccc2ed2deb8da9356628f7f5bb\",\"dweb:/ipfs/QmZT2UgTVjkQ73SMEvXKsFwYV3bcZdxbqCqVbZBdVH79aq\"]},\"project:/contracts/BoboRouter.sol\":{\"keccak256\":\"0x6a7ae7e34681b19028031ed760db0d803ba55f460243ac7340955ba964cbf44a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://68a8e0b4ed3b77ce7c419644615079a695162fd2e08efba3ea5af11c65c19781\",\"dweb:/ipfs/QmfVKJdSDxHSbzFHdEqCcvBwhd6b68k2QL1cxuVc2yNRVN\"]},\"project:/contracts/StratMaticSushi.sol\":{\"keccak256\":\"0xcc7b44a1664f6f823453b8de42536b8e2dd0872be3a4705479a3158744434c48\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://17dbe53edf83cbeb19a53503621cf9e1c6d2ce09a99d2c3f484070c5bfffe913\",\"dweb:/ipfs/QmUMiugM19GXzh93XNRsUMdjY8CqAvWkiydX9UraRhCdxU\"]},\"project:/contracts/SwapInterfaces.sol\":{\"keccak256\":\"0xc80917fb06d7d0c4eee82b69d7b52bbb25eebc9c6774cf2ec5d0f058a0a7b272\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3b699f016470e299f4f1d9e22980a3870e13e5b9315b5fc64c4c69497487e262\",\"dweb:/ipfs/QmV6wrttVpv5NdxCSDiSk4JeDoauX5B3zMCbvVeooycCgb\"]},\"project:/contracts/common/BasicStruct.sol\":{\"keccak256\":\"0xa723dd45fec1eee62638dc9df993b7eaec3c570ee5407e8e90c1b461614d22d0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://df70442c0ab5b4fa16cd58814e49d29873bee231511e727f9b46d92beb6338bc\",\"dweb:/ipfs/QmXUCFaj3dg2cB3nxdagZzNEvSUpaom1jdsSemLybVenYd\"]},\"project:/contracts/common/MathEX.sol\":{\"keccak256\":\"0xf8053b2fea148c9b8fed31fca6fb7e8bbacde0f91611c3f5894dcab19c85bc35\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://15b5c0659193b6782563cb09f4faedfa3ff8be9542517a5640d96ba6f15e0186\",\"dweb:/ipfs/QmVhXQM1dJ4XRSytz21LXWEkVodtY31ECdKbdT3q5CV954\"]},\"project:/contracts/common/Minter.sol\":{\"keccak256\":\"0xb1fd4752db69897176e8e7bf663ccca40f0619a9271cfe1b8c62167054d9a988\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://36cd323626cdd1698fc39a00679e6e2dac7dc77a9d3ce885b1599af861e02b3b\",\"dweb:/ipfs/QmUbGJ9Fv2L5LhioXo62k2szCAsLWqsuPy8uLo1AYRuE4A\"]},\"project:/contracts/common/MixinAuthorizable.sol\":{\"keccak256\":\"0x184cb86c20cd3ffeeb9644c86116791f1012c0927b3f29826d37cc2b15d8bf0b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c521e3eb9589a595d082b21b6b92bf0ec337b4a0bc3740f528b9c213e384bd11\",\"dweb:/ipfs/QmSF8aBddSrii2DGyGKEokxK5KZhj26irvY62ZvVMHYcTg\"]},\"project:/contracts/common/OrderStore.sol\":{\"keccak256\":\"0x1f67cf2180d087794e6438388ae16d9a8da4c2cbde387a7e152e48391e495c55\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0f7a74575f68c18592939b2d1321b93fac5015b3ed18ea6689e6f1584142265d\",\"dweb:/ipfs/QmWuyuCDNHXup78VgrbgY7SD2EbLikHvLqGaoT1iou93QZ\"]},\"project:/contracts/common/StructuredLinkedList.sol\":{\"keccak256\":\"0xc6f34db8c7bfde84b2ab1d91f407313a470a35fd26751fe1ef5f5839a179b174\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ffa90df7021f915c83e0cb121a300cd185aea9dc4e64842228b4b40cec990579\",\"dweb:/ipfs/QmbNxtcVRnmbdxE5ZXnjjB76EzSHMvPdT3VswLYibEpLd5\"]},\"project:/contracts/common/orderDetailNFT.sol\":{\"keccak256\":\"0x014836d62b81f57fcae92b9b0604626b63a78cb99549a9c17a70b95f4a7edcff\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://380193e43749f5c78521f70943a5e61f798ba1997d31983cdce480710217fb46\",\"dweb:/ipfs/QmWYFnTyuKpso1U8Gv4oSVGLUh8fKdy3J84YkWXjv7mKwN\"]},\"project:/contracts/common/orderNFT.sol\":{\"keccak256\":\"0x0876bf81c0c43122641a6df9dbd15195c4c543f4a4dcb3db8f2baa69819a58c2\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0052b06d1f446c6b55316ec9ee18d7c3982d3e69a45a98a5d6d896a063590172\",\"dweb:/ipfs/QmRVwSFKVLuqcKdC1qQ74NQHKTxyA7RsyCAHvdGU3JcYrZ\"]},\"project:/contracts/manager/EXManager.sol\":{\"keccak256\":\"0xa5d9984d1412e4781be307f0e01e1cea5979e05ca7e7abd054028f621e161144\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://deb6fcc16441cd46aaf86f465a1d77d6d663c70533f37ec2d548b9c2f0c4322d\",\"dweb:/ipfs/QmVvWpE8RPdCFYxriNxX2uizi7t58eQ9pxebTjwzizAmEw\"]}},\"version\":1}",
+  "bytecode": "0x6101a0604052730d500b1d8e8ef31e21c99d1db9a6444d3adf12706080908152737ceb23fd6bc0add59e62ac25578270cff1b9f61960a052731bfd67037b42cf73acf2047067bd4f2c47d9bfd660c052732791bca1f2de4661ed88a30c99a7a9449aa8417460e052738f3cf7ad23cd3cadbd9735aff958023239c6a063610100527353e0bca35ec356bd5dddfebbd1fc0fd03fabad3961012052739c2c5fd7b07e95ee044ddeba0e97a665f142394f6101405273b33eaad8d922b1083446dc23f610c2567fb5180f6101605273d6df932a45c0f255f85145f286ea0b292b21c90b610180526100f290600090600961035a565b506040805161010081018252730d500b1d8e8ef31e21c99d1db9a6444d3adf12708152737ceb23fd6bc0add59e62ac25578270cff1b9f6196020820152731bfd67037b42cf73acf2047067bd4f2c47d9bfd691810191909152738f3cf7ad23cd3cadbd9735aff958023239c6a06360608201527353e0bca35ec356bd5dddfebbd1fc0fd03fabad396080820152739c2c5fd7b07e95ee044ddeba0e97a665f142394f60a082015273b33eaad8d922b1083446dc23f610c2567fb5180f60c082015273d6df932a45c0f255f85145f286ea0b292b21c90b60e08201526101db90600190600861035a565b50600280546001600160a01b0319908116730326d887a6dde69e874ea70fd842658125eafc411790915560038054821673d79df7ec6ff4f5ddc53a3d60ecaf25316a532bad179055600680548216737a29befcb6d0c6febdd33003fa08b139c63c23671790556007805482167304673384398379a84d05895456ae02fc05b4a509179055600880549091167375508a1de2183a1f2bf1822d6794698c953a178817905534801561028a57600080fd5b50604051610f80380380610f80833981810160405260c08110156102ad57600080fd5b508051602082015160408301516060840151608085015160a09095015193949293919290916102e08686868686866102eb565b5050505050506103de565b600580546001600160a01b03199081166001600160a01b0398891617909155600280548216968816969096179095556003805486169487169490941790935560068054851692861692909217909155600780548416918516919091179055600880549092169216919091179055565b8280548282559060005260206000209081019282156103af579160200282015b828111156103af57825182546001600160a01b0319166001600160a01b0390911617825560209092019160019091019061037a565b506103bb9291506103bf565b5090565b5b808211156103bb5780546001600160a01b03191681556001016103c0565b610b93806103ed6000396000f3fe608060405234801561001057600080fd5b50600436106101165760003560e01c80638e80f160116100a2578063acd17aaa11610071578063acd17aaa146102a9578063c54e44eb146102b1578063d4d728da146102b9578063d57116a2146102c1578063fb1157ce146102c957610116565b80638e80f16014610213578063941f7cc71461023657806397d87393146102845780639ccae9171461028c57610116565b80634d95cad9116100e95780634d95cad91461019d5780635bb47808146101a557806375970e5b146101cb57806389a30271146101e85780638ce6b675146101f057610116565b8063059b2a101461011b578063155f48e81461013f5780631960e232146101675780632039a7f51461016f575b600080fd5b6101236102d1565b604080516001600160a01b039092168252519081900360200190f35b6101656004803603602081101561015557600080fd5b50356001600160a01b03166102e0565b005b6101236104e1565b6101656004803603604081101561018557600080fd5b506001600160a01b03813581169160200135166104f0565b610123610821565b610165600480360360208110156101bb57600080fd5b50356001600160a01b0316610839565b610123600480360360208110156101e157600080fd5b503561085b565b610123610882565b6101656004803603604081101561020657600080fd5b508035906020013561089a565b6101656004803603604081101561022957600080fd5b508035906020013561098f565b610165600480360360c081101561024c57600080fd5b506001600160a01b038135811691602081013582169160408201358116916060810135821691608082013581169160a0013516610a7e565b610123610aed565b610123600480360360208110156102a257600080fd5b5035610afc565b610123610b09565b610123610b18565b610123610b30565b610123610b3f565b610123610b4e565b6004546001600160a01b031681565b6002546040805163f2fde38b60e01b81526001600160a01b0384811660048301529151919092169163f2fde38b91602480830192600092919082900301818387803b15801561032e57600080fd5b505af1158015610342573d6000803e3d6000fd5b50506003546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561039457600080fd5b505af11580156103a8573d6000803e3d6000fd5b50506006546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156103fa57600080fd5b505af115801561040e573d6000803e3d6000fd5b50506007546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561046057600080fd5b505af1158015610474573d6000803e3d6000fd5b50506008546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156104c657600080fd5b505af11580156104da573d6000803e3d6000fd5b5050505050565b6003546001600160a01b031681565b600254604080516364e329cb60e11b81526001600160a01b03858116600483015284811660248301529151600093929092169163c9c653969160448082019260209290919082900301818787803b15801561054a57600080fd5b505af115801561055e573d6000803e3d6000fd5b505050506040513d602081101561057457600080fd5b505160065460408051631d33a31960e31b81526001600160a01b03928316600482015290519293509083169163e99d18c89160248082019260009290919082900301818387803b1580156105c757600080fd5b505af11580156105db573d6000803e3d6000fd5b50506005546040805163c0d7865560e01b81526001600160a01b0392831660048201529051918516935063c0d78655925060248082019260009290919082900301818387803b15801561062d57600080fd5b505af1158015610641573d6000803e3d6000fd5b505060075460408051634c1d96ab60e11b81526001600160a01b038681166004830152915191909216935063983b2d56925060248083019260209291908290030181600087803b15801561069457600080fd5b505af11580156106a8573d6000803e3d6000fd5b505050506040513d60208110156106be57600080fd5b505060085460408051634c1d96ab60e11b81526001600160a01b0384811660048301529151919092169163983b2d569160248083019260209291908290030181600087803b15801561070f57600080fd5b505af1158015610723573d6000803e3d6000fd5b505050506040513d602081101561073957600080fd5b50506003546040805163678e18b560e11b81526001600160a01b0384811660048301529151919092169163cf1c316a9160248083019260209291908290030181600087803b15801561078a57600080fd5b505af115801561079e573d6000803e3d6000fd5b505050506040513d60208110156107b457600080fd5b505060065460408051632a11112760e11b81526001600160a01b03848116600483015291519190921691635422224e91602480830192600092919082900301818387803b15801561080457600080fd5b505af1158015610818573d6000803e3d6000fd5b50505050505050565b730d500b1d8e8ef31e21c99d1db9a6444d3adf127081565b600280546001600160a01b0319166001600160a01b0392909216919091179055565b6001818154811061086857fe5b6000918252602090912001546001600160a01b0316905081565b732791bca1f2de4661ed88a30c99a7a9449aa8417481565b815b8181101561098a576000600182815481106108b357fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b0393841660048201819052732791bca1f2de4661ed88a30c99a7a9449aa8417460248301529151919650919092169263e6a4390592604480840193829003018186803b15801561092857600080fd5b505afa15801561093c573d6000803e3d6000fd5b505050506040513d602081101561095257600080fd5b50516001600160a01b031614156109815761098181732791bca1f2de4661ed88a30c99a7a9449aa841746104f0565b5060010161089c565b505050565b815b8181101561098a5760008082815481106109a757fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b039384166004820181905273c2132d05d31c914a87c6611c10748aeb04b58e8f60248301529151919650919092169263e6a4390592604480840193829003018186803b158015610a1c57600080fd5b505afa158015610a30573d6000803e3d6000fd5b505050506040513d6020811015610a4657600080fd5b50516001600160a01b03161415610a7557610a758173c2132d05d31c914a87c6611c10748aeb04b58e8f6104f0565b50600101610991565b600580546001600160a01b03199081166001600160a01b0398891617909155600280548216968816969096179095556003805486169487169490941790935560068054851692861692909217909155600780548416918516919091179055600880549092169216919091179055565b6006546001600160a01b031681565b6000818154811061086857fe5b6005546001600160a01b031681565b73c2132d05d31c914a87c6611c10748aeb04b58e8f81565b6007546001600160a01b031681565b6002546001600160a01b031681565b6008546001600160a01b03168156fea2646970667358221220adcc72212254a4a4c1c3aecbede0d1b91645709f7b213183a3599ab3254e6c4764736f6c634300060c0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101165760003560e01c80638e80f160116100a2578063acd17aaa11610071578063acd17aaa146102a9578063c54e44eb146102b1578063d4d728da146102b9578063d57116a2146102c1578063fb1157ce146102c957610116565b80638e80f16014610213578063941f7cc71461023657806397d87393146102845780639ccae9171461028c57610116565b80634d95cad9116100e95780634d95cad91461019d5780635bb47808146101a557806375970e5b146101cb57806389a30271146101e85780638ce6b675146101f057610116565b8063059b2a101461011b578063155f48e81461013f5780631960e232146101675780632039a7f51461016f575b600080fd5b6101236102d1565b604080516001600160a01b039092168252519081900360200190f35b6101656004803603602081101561015557600080fd5b50356001600160a01b03166102e0565b005b6101236104e1565b6101656004803603604081101561018557600080fd5b506001600160a01b03813581169160200135166104f0565b610123610821565b610165600480360360208110156101bb57600080fd5b50356001600160a01b0316610839565b610123600480360360208110156101e157600080fd5b503561085b565b610123610882565b6101656004803603604081101561020657600080fd5b508035906020013561089a565b6101656004803603604081101561022957600080fd5b508035906020013561098f565b610165600480360360c081101561024c57600080fd5b506001600160a01b038135811691602081013582169160408201358116916060810135821691608082013581169160a0013516610a7e565b610123610aed565b610123600480360360208110156102a257600080fd5b5035610afc565b610123610b09565b610123610b18565b610123610b30565b610123610b3f565b610123610b4e565b6004546001600160a01b031681565b6002546040805163f2fde38b60e01b81526001600160a01b0384811660048301529151919092169163f2fde38b91602480830192600092919082900301818387803b15801561032e57600080fd5b505af1158015610342573d6000803e3d6000fd5b50506003546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561039457600080fd5b505af11580156103a8573d6000803e3d6000fd5b50506006546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156103fa57600080fd5b505af115801561040e573d6000803e3d6000fd5b50506007546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b15801561046057600080fd5b505af1158015610474573d6000803e3d6000fd5b50506008546040805163f2fde38b60e01b81526001600160a01b038681166004830152915191909216935063f2fde38b9250602480830192600092919082900301818387803b1580156104c657600080fd5b505af11580156104da573d6000803e3d6000fd5b5050505050565b6003546001600160a01b031681565b600254604080516364e329cb60e11b81526001600160a01b03858116600483015284811660248301529151600093929092169163c9c653969160448082019260209290919082900301818787803b15801561054a57600080fd5b505af115801561055e573d6000803e3d6000fd5b505050506040513d602081101561057457600080fd5b505160065460408051631d33a31960e31b81526001600160a01b03928316600482015290519293509083169163e99d18c89160248082019260009290919082900301818387803b1580156105c757600080fd5b505af11580156105db573d6000803e3d6000fd5b50506005546040805163c0d7865560e01b81526001600160a01b0392831660048201529051918516935063c0d78655925060248082019260009290919082900301818387803b15801561062d57600080fd5b505af1158015610641573d6000803e3d6000fd5b505060075460408051634c1d96ab60e11b81526001600160a01b038681166004830152915191909216935063983b2d56925060248083019260209291908290030181600087803b15801561069457600080fd5b505af11580156106a8573d6000803e3d6000fd5b505050506040513d60208110156106be57600080fd5b505060085460408051634c1d96ab60e11b81526001600160a01b0384811660048301529151919092169163983b2d569160248083019260209291908290030181600087803b15801561070f57600080fd5b505af1158015610723573d6000803e3d6000fd5b505050506040513d602081101561073957600080fd5b50506003546040805163678e18b560e11b81526001600160a01b0384811660048301529151919092169163cf1c316a9160248083019260209291908290030181600087803b15801561078a57600080fd5b505af115801561079e573d6000803e3d6000fd5b505050506040513d60208110156107b457600080fd5b505060065460408051632a11112760e11b81526001600160a01b03848116600483015291519190921691635422224e91602480830192600092919082900301818387803b15801561080457600080fd5b505af1158015610818573d6000803e3d6000fd5b50505050505050565b730d500b1d8e8ef31e21c99d1db9a6444d3adf127081565b600280546001600160a01b0319166001600160a01b0392909216919091179055565b6001818154811061086857fe5b6000918252602090912001546001600160a01b0316905081565b732791bca1f2de4661ed88a30c99a7a9449aa8417481565b815b8181101561098a576000600182815481106108b357fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b0393841660048201819052732791bca1f2de4661ed88a30c99a7a9449aa8417460248301529151919650919092169263e6a4390592604480840193829003018186803b15801561092857600080fd5b505afa15801561093c573d6000803e3d6000fd5b505050506040513d602081101561095257600080fd5b50516001600160a01b031614156109815761098181732791bca1f2de4661ed88a30c99a7a9449aa841746104f0565b5060010161089c565b505050565b815b8181101561098a5760008082815481106109a757fe5b60009182526020808320909101546002546040805163e6a4390560e01b81526001600160a01b039384166004820181905273c2132d05d31c914a87c6611c10748aeb04b58e8f60248301529151919650919092169263e6a4390592604480840193829003018186803b158015610a1c57600080fd5b505afa158015610a30573d6000803e3d6000fd5b505050506040513d6020811015610a4657600080fd5b50516001600160a01b03161415610a7557610a758173c2132d05d31c914a87c6611c10748aeb04b58e8f6104f0565b50600101610991565b600580546001600160a01b03199081166001600160a01b0398891617909155600280548216968816969096179095556003805486169487169490941790935560068054851692861692909217909155600780548416918516919091179055600880549092169216919091179055565b6006546001600160a01b031681565b6000818154811061086857fe5b6005546001600160a01b031681565b73c2132d05d31c914a87c6611c10748aeb04b58e8f81565b6007546001600160a01b031681565b6002546001600160a01b031681565b6008546001600160a01b03168156fea2646970667358221220adcc72212254a4a4c1c3aecbede0d1b91645709f7b213183a3599ab3254e6c4764736f6c634300060c0033",
   "immutableReferences": {},
   "sourceMap": "806:611:19:-:0;347:4429;806:611;856:42;347:4429;806:611;;;918:42;806:611;;980:42;806:611;;1043:42;806:611;;1106:42;806:611;;1169:42;806:611;;1232:42;806:611;;1295:42;806:611;;1357:42;806:611;;;;-1:-1:-1;;806:611:19;;:::i;:::-;-1:-1:-1;1428:549:19;;;;;;;;1478:42;1428:549;;1540:42;1428:549;;;;1602:42;1428:549;;;;;;;1665:42;1428:549;;;;1728:42;1428:549;;;;1791:42;1428:549;;;;1854:42;1428:549;;;;1916:42;1428:549;;;;;;;;;;:::i;:::-;-1:-1:-1;2000:102:19;;;-1:-1:-1;;;;;;2000:102:19;;;2059:42;2000:102;;;;2108:85;;;;;2150:42;2108:85;;;2274:82;;;;;2313:42;2274:82;;;2362:79;;;;;2398:42;2362:79;;;2447:97;;;;;;2501:42;2447:97;;;2555:239;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;2555:239:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2707:80;2555:239;;;;;;2707:8;:80::i;:::-;2555:239;;;;;;347:4429;;2804:421;2959:10;:24;;-1:-1:-1;;;;;;2959:24:19;;;-1:-1:-1;;;;;2959:24:19;;;;;;;2993:11;:42;;;;;;;;;;;;;;-1:-1:-1;3045:32:19;;;;;;;;;;;;;;3087:9;:33;;;;;;;;;;;;;;3130:8;:30;;;;;;;;;;;;;3170:14;:48;;;;;;;;;;;;;2804:421::o;347:4429::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;347:4429:19;-1:-1:-1;;;;;347:4429:19;;;;;;;;;;;-1:-1:-1;347:4429:19;;;;;;;-1:-1:-1;347:4429:19;;;-1:-1:-1;347:4429:19;:::i;:::-;;;:::o;:::-;;;;;;;;;;-1:-1:-1;;;;;;347:4429:19;;;;;;;;;;;;;;",
   "deployedSourceMap": "347:4429:19:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2199:28;;;:::i;:::-;;;;-1:-1:-1;;;;;2199:28:19;;;;;;;;;;;;;;4468:306;;;;;;;;;;;;;;;;-1:-1:-1;4468:306:19;-1:-1:-1;;;;;4468:306:19;;:::i;:::-;;2108:85;;;:::i;3345:446::-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;3345:446:19;;;;;;;;;;:::i;715:75::-;;;:::i;3231:104::-;;;;;;;;;;;;;;;;-1:-1:-1;3231:104:19;-1:-1:-1;;;;;3231:104:19;;:::i;1428:549::-;;;;;;;;;;;;;;;;-1:-1:-1;1428:549:19;;:::i;636:73::-;;;:::i;4139:319::-;;;;;;;;;;;;;;;;-1:-1:-1;4139:319:19;;;;;;;:::i;3801:::-;;;;;;;;;;;;;;;;-1:-1:-1;3801:319:19;;;;;;;:::i;2804:421::-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;2804:421:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;2274:82::-;;;:::i;806:611::-;;;;;;;;;;;;;;;;-1:-1:-1;806:611:19;;:::i;2233:25::-;;;:::i;557:73::-;;;:::i;2362:79::-;;;:::i;2000:102::-;;;:::i;2447:97::-;;;:::i;2199:28::-;;;-1:-1:-1;;;;;2199:28:19;;:::o;4468:306::-;4530:11;;:40;;;-1:-1:-1;;;4530:40:19;;-1:-1:-1;;;;;4530:40:19;;;;;;;;;:11;;;;;:29;;:40;;;;;:11;;:40;;;;;;;:11;;:40;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;4580:10:19;;:39;;;-1:-1:-1;;;4580:39:19;;-1:-1:-1;;;;;4580:39:19;;;;;;;;;:10;;;;;-1:-1:-1;4580:28:19;;-1:-1:-1;4580:39:19;;;;;:10;;:39;;;;;;;:10;;:39;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;4629:9:19;;:38;;;-1:-1:-1;;;4629:38:19;;-1:-1:-1;;;;;4629:38:19;;;;;;;;;:9;;;;;-1:-1:-1;4629:27:19;;-1:-1:-1;4629:38:19;;;;;:9;;:38;;;;;;;:9;;:38;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;4677:8:19;;:37;;;-1:-1:-1;;;4677:37:19;;-1:-1:-1;;;;;4677:37:19;;;;;;;;;:8;;;;;-1:-1:-1;4677:26:19;;-1:-1:-1;4677:37:19;;;;;:8;;:37;;;;;;;:8;;:37;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;4724:14:19;;:43;;;-1:-1:-1;;;4724:43:19;;-1:-1:-1;;;;;4724:43:19;;;;;;;;;:14;;;;;-1:-1:-1;4724:32:19;;-1:-1:-1;4724:43:19;;;;;:14;;:43;;;;;;;:14;;:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4468:306;:::o;2108:85::-;;;-1:-1:-1;;;;;2108:85:19;;:::o;3345:446::-;3452:11;;:47;;;-1:-1:-1;;;3452:47:19;;-1:-1:-1;;;;;3452:47:19;;;;;;;;;;;;;;;;3433:16;;3452:11;;;;;:22;;:47;;;;;;;;;;;;;;;3433:16;3452:11;:47;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;3452:47:19;3549:9;;3509:51;;;-1:-1:-1;;;3509:51:19;;-1:-1:-1;;;;;3549:9:19;;;3509:51;;;;;;3452:47;;-1:-1:-1;3509:31:19;;;;;;:51;;;;;3549:9;;3509:51;;;;;;;;3549:9;3509:31;:51;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;3599:10:19;;3570:40;;;-1:-1:-1;;;3570:40:19;;-1:-1:-1;;;;;3599:10:19;;;3570:40;;;;;;:28;;;;-1:-1:-1;3570:28:19;;-1:-1:-1;3570:40:19;;;;;3599:10;;3570:40;;;;;;;;3599:10;3570:28;:40;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;3620:8:19;;:28;;;-1:-1:-1;;;3620:28:19;;-1:-1:-1;;;;;3620:28:19;;;;;;;;;:8;;;;;-1:-1:-1;3620:18:19;;-1:-1:-1;3620:28:19;;;;;;;;;;;;;;:8;;:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;3658:14:19;;:34;;;-1:-1:-1;;;3658:34:19;;-1:-1:-1;;;;;3658:34:19;;;;;;;;;:14;;;;;:24;;:34;;;;;3620:28;;3658:34;;;;;;;:14;;:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;3702:10:19;;:34;;;-1:-1:-1;;;3702:34:19;;-1:-1:-1;;;;;3702:34:19;;;;;;;;;:10;;;;;:24;;:34;;;;;3658;;3702;;;;;;;:10;;:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;3756:9:19;;3746:38;;;-1:-1:-1;;;3746:38:19;;-1:-1:-1;;;;;3746:38:19;;;;;;;;;3756:9;;;;;3746:28;;:38;;;;;3756:9;;3746:38;;;;;;;3756:9;;3746:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3345:446;;;:::o;715:75::-;748:42;715:75;:::o;3231:104::-;3286:11;:42;;-1:-1:-1;;;;;;3286:42:19;-1:-1:-1;;;;;3286:42:19;;;;;;;;;;3231:104::o;1428:549::-;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1428:549:19;;-1:-1:-1;1428:549:19;:::o;636:73::-;667:42;636:73;:::o;4139:319::-;4235:10;4218:234;4251:8;4247:1;:12;4218:234;;;4280:16;4299:10;4310:1;4299:13;;;;;;;;;;;;;;;;;;;;4330:11;;:35;;;-1:-1:-1;;;4330:35:19;;-1:-1:-1;;;;;4299:13:19;;;4330:35;;;;;;667:42;4330:35;;;;;;4299:13;;-1:-1:-1;4330:11:19;;;;;:19;;:35;;;;;;;;;;:11;:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;4330:35:19;-1:-1:-1;;;;;4330:49:19;;4326:116;;;4399:28;4412:8;667:42;4399:12;:28::i;:::-;-1:-1:-1;4261:3:19;;4218:234;;;;4139:319;;:::o;3801:::-;3897:10;3880:234;3913:8;3909:1;:12;3880:234;;;3942:16;3961:10;3972:1;3961:13;;;;;;;;;;;;;;;;;;;;3992:11;;:35;;;-1:-1:-1;;;3992:35:19;;-1:-1:-1;;;;;3961:13:19;;;3992:35;;;;;;588:42;3992:35;;;;;;3961:13;;-1:-1:-1;3992:11:19;;;;;:19;;:35;;;;;;;;;;:11;:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;3992:35:19;-1:-1:-1;;;;;3992:49:19;;3988:116;;;4061:28;4074:8;588:42;4061:12;:28::i;:::-;-1:-1:-1;3923:3:19;;3880:234;;2804:421;2959:10;:24;;-1:-1:-1;;;;;;2959:24:19;;;-1:-1:-1;;;;;2959:24:19;;;;;;;2993:11;:42;;;;;;;;;;;;;;-1:-1:-1;3045:32:19;;;;;;;;;;;;;;3087:9;:33;;;;;;;;;;;;;;3130:8;:30;;;;;;;;;;;;;3170:14;:48;;;;;;;;;;;;;2804:421::o;2274:82::-;;;-1:-1:-1;;;;;2274:82:19;;:::o;806:611::-;;;;;;;;;;2233:25;;;-1:-1:-1;;;;;2233:25:19;;:::o;557:73::-;588:42;557:73;:::o;2362:79::-;;;-1:-1:-1;;;;;2362:79:19;;:::o;2000:102::-;;;-1:-1:-1;;;;;2000:102:19;;:::o;2447:97::-;;;-1:-1:-1;;;;;2447:97:19;;:::o",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.6.0;\n\nimport \"./BoboFactory.sol\";\nimport \"./BoboFarmer.sol\";\nimport \"./BoboRouter.sol\";\nimport \"./BoboPair.sol\";\nimport \"./StratMaticSushi.sol\";\nimport \"./manager/EXManager.sol\";\nimport \"./common/orderNFT.sol\";\nimport \"./common/orderDetailNFT.sol\";\n\n// 0x1393A1581652E2Bf204A5cA55D64dF9Ea89416f4\ncontract BatchCreatPairs {\n    using SafeMath for uint256;\n    using SafeERC20 for IERC20;\n    using EnumerableSet for EnumerableSet.UintSet;\n    using EnumerableSet for EnumerableSet.AddressSet;\n    \n    \n    address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;\n    address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;\n    address public constant WMATIC = 0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270;\n    \n    \n    address[] public USDT_PEERS = [\n                  0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270,\n                  0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619,\n                  0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6, \n                  0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174, \n                  0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063, \n                  0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39, \n                  0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f, \n                  0xb33EaAd8d922B1083446DC23f610c2567fB5180f,\n                  0xD6DF932A45C0f255f85145f286eA0b292B21C90B\n                ];\n    \n    address[] public USDC_PEERS = [\n                  0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270,\n                  0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619,\n                  0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6, \n                  0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063, \n                  0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39, \n                  0x9c2C5fd7b07E95EE044DDeba0E97a665F142394f, \n                  0xb33EaAd8d922B1083446DC23f610c2567fB5180f,\n                  0xD6DF932A45C0f255f85145f286eA0b292B21C90B \n                ];\n                \n    BoboFactoryOnMatic public boboFactory = BoboFactoryOnMatic(0x0326D887A6dde69E874EA70Fd842658125Eafc41);\n    BoboFarmer public boboFarmer = BoboFarmer(0xd79Df7Ec6Ff4f5dDc53A3D60ecaf25316a532baD);\n    StratMaticSushi public strat;\n    address public boboRouter;\n    \n    \n    EXManager public exManager = EXManager(0x7a29BefCb6d0c6FEBdD33003Fa08b139C63C2367);\n    OrderNFT public orderNFT = OrderNFT(0x04673384398379a84d05895456AE02fc05B4a509);\n    OrderDetailNFT public orderDetailNFT = OrderDetailNFT(0x75508A1de2183a1F2Bf1822d6794698c953A1788);\n    \n    constructor (address _boboRouter, address _factory, address _farmer, address _exManager, address _orderNFT, address _orderDetailNFT) public {  \n        setAddrs(_boboRouter, _factory, _farmer, _exManager, _orderNFT, _orderDetailNFT);\n    }\n    \n    function setAddrs(address _boboRouter, address _factory, address _farmer, address _exManager, address _orderNFT, address _orderDetailNFT) public {\n        boboRouter = _boboRouter;\n        boboFactory = BoboFactoryOnMatic(_factory);\n        boboFarmer = BoboFarmer(_farmer);\n        exManager = EXManager(_exManager);\n        orderNFT = OrderNFT(_orderNFT);\n        orderDetailNFT = OrderDetailNFT(_orderDetailNFT);\n    }\n\n    function setFactory(address _factory) public {\n        boboFactory = BoboFactoryOnMatic(_factory);\n    }\n    \n    function creatOnePair(address _quoteToken, address _baseToken) public {        \n        address pairAddr = boboFactory.createPair(_quoteToken, _baseToken);\n        BoboPair(pairAddr).setExManager(address(exManager));\n        BoboPair(pairAddr).setRouter(boboRouter);\n        orderNFT.addMinter(pairAddr);\n        orderDetailNFT.addMinter(pairAddr);\n        boboFarmer.addAuthorized(pairAddr);\n        EXManager(exManager).addAuth(pairAddr);\n    }\n    \n    function creatUSDTPeers(uint256 _fromIndex, uint256 _toIndex) public {\n        for (uint256 i = _fromIndex; i < _toIndex; i++) {\n            address usdtPeer = USDT_PEERS[i];\n            if (boboFactory.getPair(usdtPeer, USDT) == address(0)) {\n                creatOnePair(usdtPeer, USDT);\n            }\n        }\n    }\n    \n        \n    function creatUSDCPeers(uint256 _fromIndex, uint256 _toIndex) public {\n        for (uint256 i = _fromIndex; i < _toIndex; i++) {\n            address usdcPeer = USDC_PEERS[i];\n            if (boboFactory.getPair(usdcPeer, USDC) == address(0)) {\n                creatOnePair(usdcPeer, USDC);\n            }\n        }\n    }\n    \n    function transferAllOwner(address _newOwner) public {\n        boboFactory.transferOwnership(_newOwner);\n        boboFarmer.transferOwnership(_newOwner);\n        exManager.transferOwnership(_newOwner);\n        orderNFT.transferOwnership(_newOwner);\n        orderDetailNFT.transferOwnership(_newOwner);\n    }\n}",
-  "sourcePath": "/Users/sam/go/src/github.com/bobo-metaverse/boboswap-contract/contracts/BatchCreatePairs.sol",
+  "sourcePath": "/Users/mryu/blockchain/bobo-metaverse/boboswap-contract/contracts/BatchCreatePairs.sol",
   "ast": {
     "absolutePath": "project:/contracts/BatchCreatePairs.sol",
     "exportedSymbols": {
@@ -382,7 +382,7 @@
         "id": 3714,
         "nodeType": "ImportDirective",
         "scope": 4063,
-        "sourceUnit": 9203,
+        "sourceUnit": 10251,
         "src": "112:26:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -393,7 +393,7 @@
         "id": 3715,
         "nodeType": "ImportDirective",
         "scope": 4063,
-        "sourceUnit": 7333,
+        "sourceUnit": 8381,
         "src": "139:24:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -404,7 +404,7 @@
         "id": 3716,
         "nodeType": "ImportDirective",
         "scope": 4063,
-        "sourceUnit": 11115,
+        "sourceUnit": 12163,
         "src": "164:31:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -415,7 +415,7 @@
         "id": 3717,
         "nodeType": "ImportDirective",
         "scope": 4063,
-        "sourceUnit": 16585,
+        "sourceUnit": 17640,
         "src": "196:33:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -426,7 +426,7 @@
         "id": 3718,
         "nodeType": "ImportDirective",
         "scope": 4063,
-        "sourceUnit": 15771,
+        "sourceUnit": 16826,
         "src": "230:31:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -437,7 +437,7 @@
         "id": 3719,
         "nodeType": "ImportDirective",
         "scope": 4063,
-        "sourceUnit": 15349,
+        "sourceUnit": 16404,
         "src": "262:37:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1312,7 +1312,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_StratMaticSushi_$11114",
+              "typeIdentifier": "t_contract$_StratMaticSushi_$12162",
               "typeString": "contract StratMaticSushi"
             },
             "typeName": {
@@ -1320,10 +1320,10 @@
               "id": 3776,
               "name": "StratMaticSushi",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 11114,
+              "referencedDeclaration": 12162,
               "src": "2199:15:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StratMaticSushi_$11114",
+                "typeIdentifier": "t_contract$_StratMaticSushi_$12162",
                 "typeString": "contract StratMaticSushi"
               }
             },
@@ -1373,7 +1373,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_EXManager_$16584",
+              "typeIdentifier": "t_contract$_EXManager_$17639",
               "typeString": "contract EXManager"
             },
             "typeName": {
@@ -1381,10 +1381,10 @@
               "id": 3780,
               "name": "EXManager",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 16584,
+              "referencedDeclaration": 17639,
               "src": "2274:9:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EXManager_$16584",
+                "typeIdentifier": "t_contract$_EXManager_$17639",
                 "typeString": "contract EXManager"
               }
             },
@@ -1421,10 +1421,10 @@
                 "name": "EXManager",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 16584,
+                "referencedDeclaration": 17639,
                 "src": "2303:9:19",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_EXManager_$16584_$",
+                  "typeIdentifier": "t_type$_t_contract$_EXManager_$17639_$",
                   "typeString": "type(contract EXManager)"
                 }
               },
@@ -1439,7 +1439,7 @@
               "src": "2303:53:19",
               "tryCall": false,
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EXManager_$16584",
+                "typeIdentifier": "t_contract$_EXManager_$17639",
                 "typeString": "contract EXManager"
               }
             },
@@ -1458,7 +1458,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_OrderNFT_$15770",
+              "typeIdentifier": "t_contract$_OrderNFT_$16825",
               "typeString": "contract OrderNFT"
             },
             "typeName": {
@@ -1466,10 +1466,10 @@
               "id": 3785,
               "name": "OrderNFT",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 15770,
+              "referencedDeclaration": 16825,
               "src": "2362:8:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                "typeIdentifier": "t_contract$_OrderNFT_$16825",
                 "typeString": "contract OrderNFT"
               }
             },
@@ -1506,10 +1506,10 @@
                 "name": "OrderNFT",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 15770,
+                "referencedDeclaration": 16825,
                 "src": "2389:8:19",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_OrderNFT_$15770_$",
+                  "typeIdentifier": "t_type$_t_contract$_OrderNFT_$16825_$",
                   "typeString": "type(contract OrderNFT)"
                 }
               },
@@ -1524,7 +1524,7 @@
               "src": "2389:52:19",
               "tryCall": false,
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                "typeIdentifier": "t_contract$_OrderNFT_$16825",
                 "typeString": "contract OrderNFT"
               }
             },
@@ -1543,7 +1543,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+              "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
               "typeString": "contract OrderDetailNFT"
             },
             "typeName": {
@@ -1551,10 +1551,10 @@
               "id": 3790,
               "name": "OrderDetailNFT",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 15348,
+              "referencedDeclaration": 16403,
               "src": "2447:14:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                 "typeString": "contract OrderDetailNFT"
               }
             },
@@ -1591,10 +1591,10 @@
                 "name": "OrderDetailNFT",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 15348,
+                "referencedDeclaration": 16403,
                 "src": "2486:14:19",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$15348_$",
+                  "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$16403_$",
                   "typeString": "type(contract OrderDetailNFT)"
                 }
               },
@@ -1609,7 +1609,7 @@
               "src": "2486:58:19",
               "tryCall": false,
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                 "typeString": "contract OrderDetailNFT"
               }
             },
@@ -2199,7 +2199,7 @@
                       "referencedDeclaration": 3784,
                       "src": "3087:9:19",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_EXManager_$16584",
+                        "typeIdentifier": "t_contract$_EXManager_$17639",
                         "typeString": "contract EXManager"
                       }
                     },
@@ -2233,10 +2233,10 @@
                         "name": "EXManager",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 16584,
+                        "referencedDeclaration": 17639,
                         "src": "3099:9:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_EXManager_$16584_$",
+                          "typeIdentifier": "t_type$_t_contract$_EXManager_$17639_$",
                           "typeString": "type(contract EXManager)"
                         }
                       },
@@ -2251,13 +2251,13 @@
                       "src": "3099:21:19",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_EXManager_$16584",
+                        "typeIdentifier": "t_contract$_EXManager_$17639",
                         "typeString": "contract EXManager"
                       }
                     },
                     "src": "3087:33:19",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_EXManager_$16584",
+                      "typeIdentifier": "t_contract$_EXManager_$17639",
                       "typeString": "contract EXManager"
                     }
                   },
@@ -2282,7 +2282,7 @@
                       "referencedDeclaration": 3789,
                       "src": "3130:8:19",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                        "typeIdentifier": "t_contract$_OrderNFT_$16825",
                         "typeString": "contract OrderNFT"
                       }
                     },
@@ -2316,10 +2316,10 @@
                         "name": "OrderNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 15770,
+                        "referencedDeclaration": 16825,
                         "src": "3141:8:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_OrderNFT_$15770_$",
+                          "typeIdentifier": "t_type$_t_contract$_OrderNFT_$16825_$",
                           "typeString": "type(contract OrderNFT)"
                         }
                       },
@@ -2334,13 +2334,13 @@
                       "src": "3141:19:19",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                        "typeIdentifier": "t_contract$_OrderNFT_$16825",
                         "typeString": "contract OrderNFT"
                       }
                     },
                     "src": "3130:30:19",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                      "typeIdentifier": "t_contract$_OrderNFT_$16825",
                       "typeString": "contract OrderNFT"
                     }
                   },
@@ -2365,7 +2365,7 @@
                       "referencedDeclaration": 3794,
                       "src": "3170:14:19",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                        "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                         "typeString": "contract OrderDetailNFT"
                       }
                     },
@@ -2399,10 +2399,10 @@
                         "name": "OrderDetailNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 15348,
+                        "referencedDeclaration": 16403,
                         "src": "3187:14:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$15348_$",
+                          "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$16403_$",
                           "typeString": "type(contract OrderDetailNFT)"
                         }
                       },
@@ -2417,13 +2417,13 @@
                       "src": "3187:31:19",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                        "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                         "typeString": "contract OrderDetailNFT"
                       }
                     },
                     "src": "3170:48:19",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                      "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                       "typeString": "contract OrderDetailNFT"
                     }
                   },
@@ -2927,7 +2927,7 @@
                             "referencedDeclaration": 3784,
                             "src": "3549:9:19",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_EXManager_$16584",
+                              "typeIdentifier": "t_contract$_EXManager_$17639",
                               "typeString": "contract EXManager"
                             }
                           }
@@ -2935,7 +2935,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_EXManager_$16584",
+                              "typeIdentifier": "t_contract$_EXManager_$17639",
                               "typeString": "contract EXManager"
                             }
                           ],
@@ -3012,10 +3012,10 @@
                           "name": "BoboPair",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 7332,
+                          "referencedDeclaration": 8380,
                           "src": "3509:8:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$7332_$",
+                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$8380_$",
                             "typeString": "type(contract BoboPair)"
                           }
                         },
@@ -3030,7 +3030,7 @@
                         "src": "3509:18:19",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BoboPair_$7332",
+                          "typeIdentifier": "t_contract$_BoboPair_$8380",
                           "typeString": "contract BoboPair"
                         }
                       },
@@ -3041,7 +3041,7 @@
                       "lValueRequested": false,
                       "memberName": "setExManager",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 6288,
+                      "referencedDeclaration": 7336,
                       "src": "3509:31:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
@@ -3120,10 +3120,10 @@
                           "name": "BoboPair",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 7332,
+                          "referencedDeclaration": 8380,
                           "src": "3570:8:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$7332_$",
+                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$8380_$",
                             "typeString": "type(contract BoboPair)"
                           }
                         },
@@ -3138,7 +3138,7 @@
                         "src": "3570:18:19",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_BoboPair_$7332",
+                          "typeIdentifier": "t_contract$_BoboPair_$8380",
                           "typeString": "contract BoboPair"
                         }
                       },
@@ -3149,7 +3149,7 @@
                       "lValueRequested": false,
                       "memberName": "setRouter",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 6302,
+                      "referencedDeclaration": 7350,
                       "src": "3570:28:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
@@ -3209,7 +3209,7 @@
                         "referencedDeclaration": 3789,
                         "src": "3620:8:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                          "typeIdentifier": "t_contract$_OrderNFT_$16825",
                           "typeString": "contract OrderNFT"
                         }
                       },
@@ -3220,7 +3220,7 @@
                       "lValueRequested": false,
                       "memberName": "addMinter",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 12134,
+                      "referencedDeclaration": 13189,
                       "src": "3620:18:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -3280,7 +3280,7 @@
                         "referencedDeclaration": 3794,
                         "src": "3658:14:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                          "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                           "typeString": "contract OrderDetailNFT"
                         }
                       },
@@ -3291,7 +3291,7 @@
                       "lValueRequested": false,
                       "memberName": "addMinter",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 12134,
+                      "referencedDeclaration": 13189,
                       "src": "3658:24:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -3362,7 +3362,7 @@
                       "lValueRequested": false,
                       "memberName": "addAuthorized",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 12264,
+                      "referencedDeclaration": 13319,
                       "src": "3702:24:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -3425,7 +3425,7 @@
                             "referencedDeclaration": 3784,
                             "src": "3756:9:19",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_EXManager_$16584",
+                              "typeIdentifier": "t_contract$_EXManager_$17639",
                               "typeString": "contract EXManager"
                             }
                           }
@@ -3433,7 +3433,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_EXManager_$16584",
+                              "typeIdentifier": "t_contract$_EXManager_$17639",
                               "typeString": "contract EXManager"
                             }
                           ],
@@ -3441,10 +3441,10 @@
                           "name": "EXManager",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 16584,
+                          "referencedDeclaration": 17639,
                           "src": "3746:9:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EXManager_$16584_$",
+                            "typeIdentifier": "t_type$_t_contract$_EXManager_$17639_$",
                             "typeString": "type(contract EXManager)"
                           }
                         },
@@ -3459,7 +3459,7 @@
                         "src": "3746:20:19",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_EXManager_$16584",
+                          "typeIdentifier": "t_contract$_EXManager_$17639",
                           "typeString": "contract EXManager"
                         }
                       },
@@ -3470,7 +3470,7 @@
                       "lValueRequested": false,
                       "memberName": "addAuth",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 15887,
+                      "referencedDeclaration": 16942,
                       "src": "3746:28:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
@@ -4898,7 +4898,7 @@
                         "referencedDeclaration": 3784,
                         "src": "4629:9:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_EXManager_$16584",
+                          "typeIdentifier": "t_contract$_EXManager_$17639",
                           "typeString": "contract EXManager"
                         }
                       },
@@ -4969,7 +4969,7 @@
                         "referencedDeclaration": 3789,
                         "src": "4677:8:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_OrderNFT_$15770",
+                          "typeIdentifier": "t_contract$_OrderNFT_$16825",
                           "typeString": "contract OrderNFT"
                         }
                       },
@@ -5040,7 +5040,7 @@
                         "referencedDeclaration": 3794,
                         "src": "4724:14:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_OrderDetailNFT_$15348",
+                          "typeIdentifier": "t_contract$_OrderDetailNFT_$16403",
                           "typeString": "contract OrderDetailNFT"
                         }
                       },
@@ -5199,7 +5199,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 9203,
+          "SourceUnit": 10251,
           "absolutePath": "project:/contracts/BoboRouter.sol",
           "file": "./BoboRouter.sol",
           "scope": 4063,
@@ -5214,7 +5214,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 7333,
+          "SourceUnit": 8381,
           "absolutePath": "project:/contracts/BoboPair.sol",
           "file": "./BoboPair.sol",
           "scope": 4063,
@@ -5229,7 +5229,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 11115,
+          "SourceUnit": 12163,
           "absolutePath": "project:/contracts/StratMaticSushi.sol",
           "file": "./StratMaticSushi.sol",
           "scope": 4063,
@@ -5244,7 +5244,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 16585,
+          "SourceUnit": 17640,
           "absolutePath": "project:/contracts/manager/EXManager.sol",
           "file": "./manager/EXManager.sol",
           "scope": 4063,
@@ -5259,7 +5259,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 15771,
+          "SourceUnit": 16826,
           "absolutePath": "project:/contracts/common/orderNFT.sol",
           "file": "./common/orderNFT.sol",
           "scope": 4063,
@@ -5274,7 +5274,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 15349,
+          "SourceUnit": 16404,
           "absolutePath": "project:/contracts/common/orderDetailNFT.sol",
           "file": "./common/orderDetailNFT.sol",
           "scope": 4063,
@@ -6152,7 +6152,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "StratMaticSushi",
-                  "referencedDeclaration": 11114,
+                  "referencedDeclaration": 12162,
                   "type": "contract StratMaticSushi"
                 },
                 "id": 3776,
@@ -6212,7 +6212,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "EXManager",
-                  "referencedDeclaration": 16584,
+                  "referencedDeclaration": 17639,
                   "type": "contract EXManager"
                 },
                 "id": 3780,
@@ -6246,7 +6246,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 16584,
+                      "referencedDeclaration": 17639,
                       "type": "type(contract EXManager)",
                       "value": "EXManager"
                     },
@@ -6299,7 +6299,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "OrderNFT",
-                  "referencedDeclaration": 15770,
+                  "referencedDeclaration": 16825,
                   "type": "contract OrderNFT"
                 },
                 "id": 3785,
@@ -6333,7 +6333,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 15770,
+                      "referencedDeclaration": 16825,
                       "type": "type(contract OrderNFT)",
                       "value": "OrderNFT"
                     },
@@ -6386,7 +6386,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "OrderDetailNFT",
-                  "referencedDeclaration": 15348,
+                  "referencedDeclaration": 16403,
                   "type": "contract OrderDetailNFT"
                 },
                 "id": 3790,
@@ -6420,7 +6420,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 15348,
+                      "referencedDeclaration": 16403,
                       "type": "type(contract OrderDetailNFT)",
                       "value": "OrderDetailNFT"
                     },
@@ -7326,7 +7326,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 16584,
+                                  "referencedDeclaration": 17639,
                                   "type": "type(contract EXManager)",
                                   "value": "EXManager"
                                 },
@@ -7417,7 +7417,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15770,
+                                  "referencedDeclaration": 16825,
                                   "type": "type(contract OrderNFT)",
                                   "value": "OrderNFT"
                                 },
@@ -7508,7 +7508,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 15348,
+                                  "referencedDeclaration": 16403,
                                   "type": "type(contract OrderDetailNFT)",
                                   "value": "OrderDetailNFT"
                                 },
@@ -7980,7 +7980,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "setExManager",
-                              "referencedDeclaration": 6288,
+                              "referencedDeclaration": 7336,
                               "type": "function (address) external"
                             },
                             "children": [
@@ -8011,7 +8011,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 7332,
+                                      "referencedDeclaration": 8380,
                                       "type": "type(contract BoboPair)",
                                       "value": "BoboPair"
                                     },
@@ -8063,7 +8063,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_EXManager_$16584",
+                                      "typeIdentifier": "t_contract$_EXManager_$17639",
                                       "typeString": "contract EXManager"
                                     }
                                   ],
@@ -8148,7 +8148,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "setRouter",
-                              "referencedDeclaration": 6302,
+                              "referencedDeclaration": 7350,
                               "type": "function (address) external"
                             },
                             "children": [
@@ -8179,7 +8179,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 7332,
+                                      "referencedDeclaration": 8380,
                                       "type": "type(contract BoboPair)",
                                       "value": "BoboPair"
                                     },
@@ -8266,7 +8266,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addMinter",
-                              "referencedDeclaration": 12134,
+                              "referencedDeclaration": 13189,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -8344,7 +8344,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addMinter",
-                              "referencedDeclaration": 12134,
+                              "referencedDeclaration": 13189,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -8422,7 +8422,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addAuthorized",
-                              "referencedDeclaration": 12264,
+                              "referencedDeclaration": 13319,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -8500,7 +8500,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addAuth",
-                              "referencedDeclaration": 15887,
+                              "referencedDeclaration": 16942,
                               "type": "function (address) external"
                             },
                             "children": [
@@ -8524,14 +8524,14 @@
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_EXManager_$16584",
+                                          "typeIdentifier": "t_contract$_EXManager_$17639",
                                           "typeString": "contract EXManager"
                                         }
                                       ],
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 16584,
+                                      "referencedDeclaration": 17639,
                                       "type": "type(contract EXManager)",
                                       "value": "EXManager"
                                     },
@@ -10307,8 +10307,8 @@
     "version": "0.6.12+commit.27d51765.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.2",
-  "updatedAt": "2021-08-17T01:40:14.661Z",
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-08-20T15:32:38.886Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
