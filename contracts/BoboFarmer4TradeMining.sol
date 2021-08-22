@@ -141,8 +141,8 @@ contract BoboFarmer4TradeMining is Ownable {
             bobo.mint(address(this), boboReward.add(fundAmount));
             bobo.approve(fundContractAddr, fundAmount);
             IBoboFund(fundContractAddr).transferBobo(fundAmount);
+            pool.accBoboPerShare = pool.accBoboPerShare.add(boboReward.mul(1e12).div(totalWeight));
         }
-        pool.accBoboPerShare = pool.accBoboPerShare.add(boboReward.mul(1e12).div(totalWeight));
         pool.lastRewardBlock = block.number;
     }
 

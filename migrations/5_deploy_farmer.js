@@ -1,22 +1,22 @@
 
 const BoboToken = artifacts.require("BoboToken");
-const BoboBetaToken = artifacts.require("BOBOBetaToken");
-
+const BoboFund = artifacts.require("BoboFund");
 const BoboFarmer = artifacts.require("BoboFarmer");
 const StratMaticSushi = artifacts.require("StratMaticSushi");
 
 module.exports = async function(deployer, network, accounts) {
-  var boboBetaToken = await BoboBetaToken.deployed();
   var boboToken = await BoboToken.deployed();
 
-  await deployer.deploy(BoboFarmer, boboBetaToken.address, 17609065, accounts[0]);
-  var boboFarmer = await BoboFarmer.deployed();
-  boboFarmer.setBoboPerBlock(10);
+  await deployer.deploy(BoboFund);
+  var boboFund = await BoboFund.deployed();
 
-  boboBetaToken.addMinter(boboFarmer.address);
+  await deployer.deploy(BoboFarmer, boboToken.address, boboFund.address);
+  var boboFarmer = await BoboFarmer.deployed();
+  // boboFarmer.setBoboPerBlock(10);  // 试运营阶段不挖bobo，待正式运营后开通
+
   boboToken.addMinter(boboFarmer.address);
 
-  await deployer.deploy(StratMaticSushi, boboBetaToken.address, boboFarmer.address);
+  await deployer.deploy(StratMaticSushi, boboToken.address, boboFarmer.address);
   var stratMaticSushi = await StratMaticSushi.deployed();
 
   var USDT = '0xc2132D05D31c914a87C6611C10748AEb04B58e8F';

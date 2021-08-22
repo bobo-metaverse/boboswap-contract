@@ -4,17 +4,15 @@ const BoboPair = artifacts.require("BoboPair");
 const OrderNFT = artifacts.require("OrderNFT");
 const OrderDetailNFT = artifacts.require("OrderDetailNFT");
 const ERC20 = artifacts.require("ERC20");
-const BatchCreatPairs = artifacts.require("BatchCreatPairs");
+//const BatchCreatePairs = artifacts.require("BatchCreatePairs");
 
 async function createFactory(deployer) {
     await deployer.deploy(BoboFactoryOnMatic, OrderNFT.address, OrderDetailNFT.address, BoboFarmer.address);
     var boboFactory = await BoboFactoryOnMatic.deployed();
-    boboFactory.transferOwnership(BatchCreatPairs.address);
+    //boboFactory.transferOwnership(BatchCreatPairs.address);
     
     var boboFarmer = await BoboFarmer.deployed();
     boboFarmer.addAuthorized(boboFactory.address);
-
-    
 }
 
 async function getPair(deployer, factoryAddr, tokenA, tokenB) {

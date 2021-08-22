@@ -52,9 +52,9 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
     uint256 public constant burnedBOBORateUL = 8000;
     uint256 public totalBurnedBOT;
 
-    // 开发者基金，默认提10%
+    // 开发者基金，试运营期间提取50%，正式运营期间提10%
     address public devFundAddr;
-    uint256 public devFundFee = 1000; 
+    uint256 public devFundFee = 5000; 
     uint256 public constant devFundFeeUL = 2000;
 
     modifier onlyGov() {

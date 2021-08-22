@@ -11,7 +11,7 @@ import "./common/orderNFT.sol";
 import "./common/orderDetailNFT.sol";
 
 // 0x1393A1581652E2Bf204A5cA55D64dF9Ea89416f4
-contract BatchCreatPairs {
+contract BatchCreatePairs {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
     using EnumerableSet for EnumerableSet.UintSet;

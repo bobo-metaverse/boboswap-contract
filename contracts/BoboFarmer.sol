@@ -73,11 +73,9 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
     
     constructor(
         address _boboTokenAddress, 
-        uint256 _startBlock,
         address _fundAddr
     ) public {
         boboTokenAddr = _boboTokenAddress;
-        startBlock = _startBlock;
         fundAddr = _fundAddr;
     }
 
@@ -108,13 +106,12 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
         if (_withUpdate) {
             massUpdatePools();
         }
-        uint256 lastRewardBlock = block.number > startBlock ? block.number : startBlock;
         totalAllocPoint = totalAllocPoint.add(_allocPoint);
         poolInfo.push(
             PoolInfo({
                 want: IERC20(_want),
                 allocPoint: _allocPoint,
-                lastRewardBlock: lastRewardBlock,
+                lastRewardBlock: block.number,
                 accBOBOPerShare: 0,
                 strat: _strat
             })
@@ -199,8 +196,8 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
             IBOBOToken(boboTokenAddr).mint(address(this), boboReward.add(fundAmount));
             IERC20(boboTokenAddr).approve(fundAddr, fundAmount);
             IBoboFund(fundAddr).transferBobo(fundAmount);
+            pool.accBOBOPerShare = pool.accBOBOPerShare.add(boboReward.mul(1e12).div(sharesTotal));
         }
-        pool.accBOBOPerShare = pool.accBOBOPerShare.add(boboReward.mul(1e12).div(sharesTotal));
 
         pool.lastRewardBlock = block.number;
     }
