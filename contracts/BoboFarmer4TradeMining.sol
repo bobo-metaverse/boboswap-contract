@@ -4,10 +4,6 @@ pragma experimental ABIEncoderV2;
         
 import "./common/BasicStruct.sol";
 
-interface BOBOToken is IERC20 {
-    function mint(address _to, uint256 _amount) external returns(bool);
-}
-
 // 预挖期的订单NFT, 按时间分三个批次，第一批次的可连续参与后续四个周期的挖矿，第二批次参与三个周期的挖矿，第三批次参与二个周期
 // 预挖部分占5%，独立挖，16周挖完
 // 剩下占95%，一共分95个周期挖，每周期分配1%份额，8周挖完
@@ -30,10 +26,12 @@ contract BoboFarmer4TradeMining is Ownable {
     }
 
     // The BOBO TOKEN!
-    BOBOToken public bobo;
+    IBOBOToken public bobo;
     IERC721 nftToken;           // Address of LP token contract.
     // fund contract address
     address public fundContractAddr;
+    uint256 public denominator;
+    uint256 public numerator;
     // BOBO tokens created per block.
     uint256 public boboPerBlock;
     // Bonus muliplier for early bobo makers.
@@ -60,7 +58,7 @@ contract BoboFarmer4TradeMining is Ownable {
     event EmergencyWithdraw(address indexed user, uint256 indexed pid);
 
     constructor(
-        BOBOToken _bobo,
+        IBOBOToken _bobo,
         IERC721 _nftToken,
         address _fundContractAddr,
         uint256 _boboPerBlock,
@@ -84,6 +82,11 @@ contract BoboFarmer4TradeMining is Ownable {
             lastRewardBlock: startBlock,
             accBoboPerShare: 0
         }));
+    }
+
+    function setFundScale(uint256 _numerator, uint256 _denominator) public onlyOwner {
+        numerator = _numerator;
+        denominator = _denominator;
     }
 
     function poolLength() external view returns (uint256) {
@@ -132,9 +135,13 @@ contract BoboFarmer4TradeMining is Ownable {
             return;
         }
         uint256 multiplier = getMultiplier(pool.lastRewardBlock, block.number);
-        uint256 boboReward = multiplier.mul(boboPerBlock);
-        bobo.mint(address(this), boboReward);
-        bobo.mint(fundContractAddr, boboReward.mul(3).div(7));   
+        uint256 boboReward = multiplier.mul(boboPerBlock);  
+        if (boboReward > 0) {
+            uint256 fundAmount = boboReward.mul(numerator).div(denominator);
+            bobo.mint(address(this), boboReward.add(fundAmount));
+            bobo.approve(fundContractAddr, fundAmount);
+            IBoboFund(fundContractAddr).transferBobo(fundAmount);
+        }
         pool.accBoboPerShare = pool.accBoboPerShare.add(boboReward.mul(1e12).div(totalWeight));
         pool.lastRewardBlock = block.number;
     }
@@ -229,5 +236,19 @@ contract BoboFarmer4TradeMining is Ownable {
     // Safe bobo transfer function, just in case if rounding error causes pool to not have enough BOBOs.
     function safeBOBOTransfer(address _to, uint256 _amount) internal {
         IERC20(fundContractAddr).safeTransferFrom(address(this), _to, _amount);
+    }
+
+    function getUserNFTNumber(address _user) view public returns(uint256) {
+        return userNFTIds[_user].length();
+    }
+
+    function getUserNFTIds(address _user, uint256 _fromIndex, uint256 _toIndex) view public returns(uint256[] memory nftIds) {
+        uint256 length = userNFTIds[_user].length();
+        if (_toIndex > length) _toIndex = length;
+        require(_fromIndex < _toIndex, "Index is out of range.");
+        nftIds = new uint256[](_toIndex - _fromIndex);
+        for (uint256 i = _fromIndex; _fromIndex < _toIndex; i++) {
+            nftIds[i - _fromIndex] = userNFTIds[_user].at(i);
+        }
     }
 }

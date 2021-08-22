@@ -91,3 +91,11 @@ interface IBoboRouter {
     function getBestSwapPath(address inToken, address outToken, uint256 amountIn) external view returns(uint256[] memory amountsOut, ResultInfo memory bestResultInfo);
     function swap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external returns(uint256);
 }
+
+interface IBoboFund {
+    function transferBobo(uint256 _boboAmount) external;
+}
+
+interface IBOBOToken is IERC20 {
+    function mint(address _to, uint256 _amount) external returns(bool);
+}

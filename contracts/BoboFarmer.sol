@@ -29,10 +29,6 @@ interface IStrategy {
     function owner() external returns(address);
 }
 
-interface BOBOToken is IERC20 {
-    function mint(address _to, uint256 _amount) external returns(bool);
-}
-
 contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
@@ -54,6 +50,8 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
 
     address public burnAddress = 0x000000000000000000000000000000000000dEaD;
     address public fundAddr;
+    uint256 public denominator;
+    uint256 public numerator;
 
     uint256 public boboPerBlock; 
     uint256 public startBlock; 
@@ -86,6 +84,11 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
 
     function setFundAddr(address _fundAddr) public onlyOwner {
         fundAddr = _fundAddr;
+    }
+
+    function setFundScale(uint256 _numerator, uint256 _denominator) public onlyOwner {
+        numerator = _numerator;
+        denominator = _denominator;
     }
     
     function setBoboPerBlock(          
@@ -191,8 +194,12 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
             return;
         }
         uint256 boboReward = multiplier.mul(boboPerBlock).mul(pool.allocPoint).div(totalAllocPoint);
-        BOBOToken(boboTokenAddr).mint(address(this), boboReward);
-        BOBOToken(boboTokenAddr).mint(fundAddr, boboReward.div(3));
+        if (boboReward > 0) {
+            uint256 fundAmount = boboReward.mul(numerator).div(denominator);
+            IBOBOToken(boboTokenAddr).mint(address(this), boboReward.add(fundAmount));
+            IERC20(boboTokenAddr).approve(fundAddr, fundAmount);
+            IBoboFund(fundAddr).transferBobo(fundAmount);
+        }
         pool.accBOBOPerShare = pool.accBOBOPerShare.add(boboReward.mul(1e12).div(sharesTotal));
 
         pool.lastRewardBlock = block.number;
