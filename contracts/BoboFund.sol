@@ -31,18 +31,15 @@ contract BoboFund is Ownable {
     PoolInfo[] public poolInfo;
     mapping (uint256 => mapping (address => UserInfo)) public userInfo;
     uint256 public totalAllocPoint = 0;
-    uint256 public startBlock;
     uint256 public totalBoboAmount;
 
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
     event Withdraw(address indexed user, uint256 indexed pid, uint256 amount);
 
     constructor(
-        IERC20 _bobo,              
-        uint256 _startBlock
+        IERC20 _bobo
     ) public {
         bobo = _bobo;
-        startBlock = _startBlock;
     }
 
     function poolLength() external view returns (uint256) {
@@ -50,7 +47,7 @@ contract BoboFund is Ownable {
     }
 
     // 添加新矿池，指定矿池权重、LP代币合约地址以及是否更新所有矿池
-    function add(uint256 _allocPoint, IERC20 _lpToken, bool _withUpdate) public onlyOwner {
+    function add(uint256 _allocPoint, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
         }

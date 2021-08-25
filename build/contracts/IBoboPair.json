@@ -129,7 +129,7 @@
         "id": 4065,
         "nodeType": "ImportDirective",
         "scope": 4640,
-        "sourceUnit": 14659,
+        "sourceUnit": 12980,
         "src": "57:33:20",
         "symbolAliases": [],
         "unitAlias": ""
@@ -140,7 +140,7 @@
         "id": 4066,
         "nodeType": "ImportDirective",
         "scope": 4640,
-        "sourceUnit": 8977,
+        "sourceUnit": 7298,
         "src": "91:24:20",
         "symbolAliases": [],
         "unitAlias": ""
@@ -626,7 +626,7 @@
         "contractDependencies": [
           22,
           131,
-          8976
+          7297
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1075,7 +1075,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+              "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
               "typeString": "contract IBoboFarmer"
             },
             "typeName": {
@@ -1083,10 +1083,10 @@
               "id": 4139,
               "name": "IBoboFarmer",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 7727,
+              "referencedDeclaration": 6048,
               "src": "1173:11:20",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                 "typeString": "contract IBoboFarmer"
               }
             },
@@ -1574,7 +1574,7 @@
                       "referencedDeclaration": 4140,
                       "src": "1656:10:20",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
@@ -1608,10 +1608,10 @@
                         "name": "IBoboFarmer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 7727,
+                        "referencedDeclaration": 6048,
                         "src": "1669:11:20",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$7727_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$6048_$",
                           "typeString": "type(contract IBoboFarmer)"
                         }
                       },
@@ -1626,13 +1626,13 @@
                       "src": "1669:24:20",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
                     "src": "1656:37:20",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                      "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                       "typeString": "contract IBoboFarmer"
                     }
                   },
@@ -1779,7 +1779,7 @@
                       "referencedDeclaration": 4140,
                       "src": "1777:10:20",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
@@ -1813,10 +1813,10 @@
                         "name": "IBoboFarmer",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 7727,
+                        "referencedDeclaration": 6048,
                         "src": "1790:11:20",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$7727_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBoboFarmer_$6048_$",
                           "typeString": "type(contract IBoboFarmer)"
                         }
                       },
@@ -1831,13 +1831,13 @@
                       "src": "1790:24:20",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                        "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                         "typeString": "contract IBoboFarmer"
                       }
                     },
                     "src": "1777:37:20",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                      "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                       "typeString": "contract IBoboFarmer"
                     }
                   },
@@ -2910,10 +2910,10 @@
                           "name": "BoboPair",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8976,
+                          "referencedDeclaration": 7297,
                           "src": "2521:8:20",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$8976_$",
+                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$7297_$",
                             "typeString": "type(contract BoboPair)"
                           }
                         }
@@ -2921,7 +2921,7 @@
                       "expression": {
                         "argumentTypes": [
                           {
-                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$8976_$",
+                            "typeIdentifier": "t_type$_t_contract$_BoboPair_$7297_$",
                             "typeString": "type(contract BoboPair)"
                           }
                         ],
@@ -2947,7 +2947,7 @@
                       "src": "2516:14:20",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_magic_meta_type_t_contract$_BoboPair_$8976",
+                        "typeIdentifier": "t_magic_meta_type_t_contract$_BoboPair_$7297",
                         "typeString": "type(contract BoboPair)"
                       }
                     },
@@ -3312,7 +3312,7 @@
                             "referencedDeclaration": 4140,
                             "src": "2812:10:20",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                              "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                               "typeString": "contract IBoboFarmer"
                             }
                           }
@@ -3320,7 +3320,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                              "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                               "typeString": "contract IBoboFarmer"
                             }
                           ],
@@ -6710,7 +6710,7 @@
                         "referencedDeclaration": 4140,
                         "src": "4996:10:20",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                          "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                           "typeString": "contract IBoboFarmer"
                         }
                       },
@@ -6721,7 +6721,7 @@
                       "lValueRequested": false,
                       "memberName": "stakedWantTokens",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 7719,
+                      "referencedDeclaration": 6040,
                       "src": "4996:27:20",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$returns$_t_uint256_$",
@@ -7212,7 +7212,7 @@
                           "referencedDeclaration": 4140,
                           "src": "5430:10:20",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                            "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                             "typeString": "contract IBoboFarmer"
                           }
                         },
@@ -7223,7 +7223,7 @@
                         "lValueRequested": false,
                         "memberName": "tokenPidMap",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 7726,
+                        "referencedDeclaration": 6047,
                         "src": "5430:22:20",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -7553,7 +7553,7 @@
                               "referencedDeclaration": 4140,
                               "src": "5570:10:20",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                                "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                                 "typeString": "contract IBoboFarmer"
                               }
                             },
@@ -7564,7 +7564,7 @@
                             "lValueRequested": false,
                             "memberName": "withdraw",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 7701,
+                            "referencedDeclaration": 6022,
                             "src": "5570:19:20",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -8071,7 +8071,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 14659,
+          "SourceUnit": 12980,
           "absolutePath": "project:/contracts/common/OrderStore.sol",
           "file": "./common/OrderStore.sol",
           "scope": 4640,
@@ -8086,7 +8086,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 8977,
+          "SourceUnit": 7298,
           "absolutePath": "project:/contracts/BoboPair.sol",
           "file": "./BoboPair.sol",
           "scope": 4640,
@@ -8610,7 +8610,7 @@
           "contractDependencies": [
             22,
             131,
-            8976
+            7297
           ],
           "contractKind": "contract",
           "documentation": null,
@@ -9085,7 +9085,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "IBoboFarmer",
-                  "referencedDeclaration": 7727,
+                  "referencedDeclaration": 6048,
                   "type": "contract IBoboFarmer"
                 },
                 "id": 4139,
@@ -9761,7 +9761,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 7727,
+                                  "referencedDeclaration": 6048,
                                   "type": "type(contract IBoboFarmer)",
                                   "value": "IBoboFarmer"
                                 },
@@ -9950,7 +9950,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 7727,
+                                  "referencedDeclaration": 6048,
                                   "type": "type(contract IBoboFarmer)",
                                   "value": "IBoboFarmer"
                                 },
@@ -11194,7 +11194,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_type$_t_contract$_BoboPair_$8976_$",
+                                      "typeIdentifier": "t_type$_t_contract$_BoboPair_$7297_$",
                                       "typeString": "type(contract BoboPair)"
                                     }
                                   ],
@@ -11215,7 +11215,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8976,
+                                  "referencedDeclaration": 7297,
                                   "type": "type(contract BoboPair)",
                                   "value": "BoboPair"
                                 },
@@ -11640,7 +11640,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_IBoboFarmer_$7727",
+                                      "typeIdentifier": "t_contract$_IBoboFarmer_$6048",
                                       "typeString": "contract IBoboFarmer"
                                     }
                                   ],
@@ -15142,7 +15142,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "stakedWantTokens",
-                              "referencedDeclaration": 7719,
+                              "referencedDeclaration": 6040,
                               "type": "function (address,address) view external returns (uint256)"
                             },
                             "children": [
@@ -15651,7 +15651,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "tokenPidMap",
-                                  "referencedDeclaration": 7726,
+                                  "referencedDeclaration": 6047,
                                   "type": "function (address) view external returns (uint256)"
                                 },
                                 "children": [
@@ -15957,7 +15957,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "withdraw",
-                                      "referencedDeclaration": 7701,
+                                      "referencedDeclaration": 6022,
                                       "type": "function (address,address,uint256) external"
                                     },
                                     "children": [
@@ -16496,7 +16496,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-08-22T12:14:56.379Z",
+  "updatedAt": "2021-08-23T05:28:13.163Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -7,7 +7,7 @@ const StratMaticSushi = artifacts.require("StratMaticSushi");
 module.exports = async function(deployer, network, accounts) {
   var boboToken = await BoboToken.deployed();
 
-  await deployer.deploy(BoboFund);
+  await deployer.deploy(BoboFund, BoboToken.address);
   var boboFund = await BoboFund.deployed();
 
   await deployer.deploy(BoboFarmer, boboToken.address, boboFund.address);

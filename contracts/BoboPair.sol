@@ -111,13 +111,16 @@ contract BoboPair is Ownable, OrderStore {
         uint256 orderId = addOrder(_bBuyQuoteToken, _spotPrice, _amountIn, minOutAmount);
         
         (address inToken, address outToken) = _bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
+        // 判断是否满足最小下单量
         require(_amountIn >= exManager.tokenMinAmountMap(inToken), "BoboPair: inAmount MUST larger than min amount.");
 
+        // 评估手续费
         (uint256 deductedAmountIn, ) = exManager.evaluateDeductedAmountIn(msg.sender, inToken, _amountIn);
         (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, _amountIn.sub(deductedAmountIn));
         
         // 下限价单时满足交易条件
         if (bestSwapInfo.totalAmountOut >= minOutAmount) {  
+            // 扣除手续费
             uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
             if (deductAmount > 0) {
                 ERC20(inToken).transferFrom(msg.sender, address(exManager), deductAmount);
@@ -146,6 +149,8 @@ contract BoboPair is Ownable, OrderStore {
         (, ResultInfo memory bestSwapInfo) = boboRouter.getBestSwapPath(inToken, outToken, _amountIn);
         require(bestSwapInfo.totalAmountOut >= _minOutAmount, "BoboPair: can NOT satisfy your trade request.");
         // 下限价单时满足交易条件
+        if (_minOutAmount == 0) 
+            _minOutAmount = bestSwapInfo.totalAmountOut;
         uint256 spotPrice = _bBuyQuoteToken ? _amountIn.mul(10**quoteTokenDecimals).div(_minOutAmount) : _minOutAmount.mul(10**quoteTokenDecimals).div(_amountIn);
         uint256 orderId = addOrder(_bBuyQuoteToken, spotPrice, _amountIn, _minOutAmount);
         swap(orderId, bestSwapInfo, inToken, outToken, _amountIn, false);

@@ -14,10 +14,14 @@ contract BoboSwapTester {
     address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
     address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;
     address public constant WMATIC = 0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270;
-    BoboFactoryOnMatic public boboFactory = BoboFactoryOnMatic(0xD33322d3fF6D7c5c32EE36cE20Bc063A74751efb);
-    BoboFarmer public boboFarmer = BoboFarmer(0xe64cA15ECdF65A228C6d27A34e250492976953A3);
-    StratMaticSushi public stratMaticSushi = StratMaticSushi(0xEb3a1133B5E11251F6c2Fa87767C18079f488d07);
-    OrderNFT public orderNFT = OrderNFT(0xB104BeAb3c4045dcc963225140c74bE4968Fb3a4);
+    BoboFactoryOnMatic public boboFactory;
+    BoboFarmer public boboFarmer;
+    StratMaticSushi public stratMaticSushi;
+    OrderNFT public orderNFT;
+
+    constructor (address _boboFactory, address _boboFarmer, address _stratMaticSushi, address _orderNFT) public {  
+        setAddrs(_boboFactory, _boboFarmer, _stratMaticSushi, _orderNFT);
+    }
 
     function setAddrs(address _boboFactory, address _boboFarmer, address _stratMaticSushi, address _orderNFT) public {
         boboFactory = BoboFactoryOnMatic(_boboFactory);
@@ -48,13 +52,11 @@ contract BoboSwapTester {
         uint256 preWantTokenAmount = boboFarmer.stakedWantTokens(inToken, address(this));
 
         boboPair.addLimitedOrder(_bBuy, _spotPrice, _amountIn, _slippagePercent);
-        if (_amountIn > 900000)
-            checkBoboPair(boboPair, _bBuy, _amountIn, preOrderNumber, preBaseTokenAmount, preQuoteTokenAmount);
-        if (_amountIn > 1000000)
-            checkBoboFarmer(_bBuy, _amountIn, inToken, prePendingBobo, preWantTokenAmount);
+        checkBoboPair(boboPair, _bBuy, _amountIn, preOrderNumber, preBaseTokenAmount, preQuoteTokenAmount);
+        checkBoboFarmer(_bBuy, _amountIn, inToken, prePendingBobo, preWantTokenAmount);
     }
     
-    function checkBoboPair(BoboPair boboPair, bool _bBuy, uint256 _amountIn, uint256 preOrderNumber, uint256 preBaseTokenAmount, uint256 preQuoteTokenAmount) private {
+    function checkBoboPair(BoboPair boboPair, bool _bBuy, uint256 _amountIn, uint256 preOrderNumber, uint256 preBaseTokenAmount, uint256 preQuoteTokenAmount) view private {
         (uint256 baseTokenAmount, uint256 quoteTokenAmount) = boboPair.getTotalHangingTokenAmount(address(this));
         uint256 orderNumber = boboPair.getTotalOrderNumber(_bBuy);
 
@@ -66,7 +68,7 @@ contract BoboSwapTester {
         require(orderNumber.sub(preOrderNumber) == 1, "OrderNumber error");
     }
     
-    function checkBoboFarmer(bool _bBuy, uint256 _amountIn, address inToken, uint256 prePendingBobo, uint256 preWantTokenAmount) private {
+    function checkBoboFarmer(bool _bBuy, uint256 _amountIn, address inToken, uint256 prePendingBobo, uint256 preWantTokenAmount) view private {
         uint256 pendingBobo = boboFarmer.pendingBOBO(inToken, address(this));   // 剩余可领取的bobo
         uint256 wantTokenAmount = boboFarmer.stakedWantTokens(inToken, address(this));  //
         if (_bBuy) {
@@ -79,17 +81,17 @@ contract BoboSwapTester {
         }
     }
     
-    function pendingBobo() public returns(uint256 usdtBobo, uint256 usdcBobo) {
+    function pendingBobo() view public returns(uint256 usdtBobo, uint256 usdcBobo) {
         usdtBobo = boboFarmer.pendingBOBO(USDT, address(this));
         usdcBobo = boboFarmer.pendingBOBO(USDC, address(this));
     }
 
-    function stakedWantTokens() public returns(uint256 usdt, uint256 usdc) {
+    function stakedWantTokens() view public returns(uint256 usdt, uint256 usdc) {
         usdt = boboFarmer.stakedWantTokens(USDT, address(this));
         usdc = boboFarmer.stakedWantTokens(USDC, address(this));
     }
 
-    function getAllOrders(bool bUsdt) public returns(NFTInfo[] memory orders) {
+    function getAllOrders(bool bUsdt) view public returns(NFTInfo[] memory orders) {
         address baseToken = bUsdt ? USDT : USDC;
         address pairAddr = boboFactory.getPair(baseToken, WMATIC);        
         BoboPair boboPair = BoboPair(pairAddr);

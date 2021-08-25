@@ -28,7 +28,7 @@ contract EXManager is Ownable {
     uint256 public stopFreeBlockNum;
 
     address public boboToken;
-    uint256 public maxBoboTokenAmount;  // 至少拥有此数量的Bobo可为手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
+    uint256 public maxBoboTokenAmount = 1e23;  // 至少拥有此数量的Bobo（默认10万）可为手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
 
     modifier onlyAuth {
         require(_auth[msg.sender], "no permission");
@@ -80,13 +80,14 @@ contract EXManager is Ownable {
         feeEarnedContract = _feeEarnedContract;
     }
     
-    // 充值平台币，购买点数，需要按整数充值
+    // 充值平台币，用U购买点数
     function buyTradePoints(uint256 _usdtAmount) public {
         require(_usdtAmount >= minDepositValue, "EXManager: USDT amount must be bigger than minDepositValue.");
         ERC20(USDT).transferFrom(msg.sender, address(this), _usdtAmount);
         usableTradePointsMap[msg.sender] = usableTradePointsMap[msg.sender].add(_usdtAmount);
     }
 
+    // 转让点数
     function transferTradePoints(address _userAddr, uint256 _transferAmount) public {
         require(usableTradePointsMap[msg.sender] >= _transferAmount, "EXManager: your left trade points must be bigger than _transferAmount.");
 
@@ -107,9 +108,9 @@ contract EXManager is Ownable {
         uint256 tokenPrice = getTokenPrice(_token);  // *10^8
         
         uint256 scalePercent = getScalePercent(_userAddr);  // 根据用户当前持有的BOBO数量获取折扣比例
-        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent * 2);
-
-        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).div(10**FACTOR.add(tokenDecimals).sub(usdtDecimals));
+        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent).div(BasePercent);
+                                 
+        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).mul(10**usdtDecimals).div(FACTOR).div(10**tokenDecimals);
         if (usableTradePointsMap[_userAddr] >= usdtAmount4Fee) {
             usableTradePointsMap[_userAddr] = usableTradePointsMap[_userAddr].sub(usdtAmount4Fee);
             return 0;
@@ -124,9 +125,9 @@ contract EXManager is Ownable {
         uint256 tokenPrice = getTokenPrice(_token);  // *10^8
         
         uint256 scalePercent = getScalePercent(_userAddr);  // 根据用户当前持有的BOBO数量获取折扣比例
-        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent * 2);
+        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent).div(BasePercent);
 
-        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).div(10**FACTOR.add(tokenDecimals).sub(usdtDecimals));
+        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).mul(10**usdtDecimals).div(FACTOR).div(10**tokenDecimals);
         if (usableTradePointsMap[_userAddr] >= usdtAmount4Fee) {
             return (0, usdtAmount4Fee);
         } else {
@@ -150,19 +151,19 @@ contract EXManager is Ownable {
     }
 
     function getTokenPriceOnAMM(address _token) public view returns(uint256) {
-        if (_token == USDT || _token == USDC) return 1;
+        if (_token == USDT || _token == USDC) return 1 * FACTOR;
 
         (address token0, address token1) = USDT < _token ? (USDT, _token) : (_token, USDT);
         address pairAddr = ICommonFactory(swapFactory).getPair(token0, token1);
         (uint256 reserveA, uint256 reserveB,) = ICommonPair(pairAddr).getReserves();
         uint256 decimalsGap = ERC20(_token).decimals() - ERC20(USDT).decimals();
-        // 为匹配chainlink，此处的价格也乘上10^8（FACTOR）
-        return token0 == USDT ? reserveA.mul(FACTOR).mul(decimalsGap).div(reserveB) : reserveB.mul(FACTOR).mul(decimalsGap).div(reserveA);
+        // 为匹配chainlink，此处的价格也乘上10^8（FACTOR）, 除以此FACTOR后的实际单位是U（如1.1U,1.12U）
+        return token0 == USDT ? reserveA.mul(FACTOR).mul(10**decimalsGap).div(reserveB) : reserveB.mul(FACTOR).mul(10**decimalsGap).div(reserveA);
     }
     
     // chainlink返回的价格是U，但乘上了10^8
     function getTokenPriceOnChainlink(address _token) public view returns(uint256) {
-        if (_token == USDT || _token == USDC) return 1;
+        if (_token == USDT || _token == USDC) return 1 * FACTOR;
 
         address aggregatorAddr = tokenAggregatorMap[_token];
         if (aggregatorAddr == address(0)) return 0;
