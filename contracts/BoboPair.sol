@@ -3,6 +3,7 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "./common/OrderStore.sol";
+import "./common/MixinAuthorizable.sol";
 
 interface IExchangeManager {
     function evaluateDeductedAmountIn(address _userAddr, address _token, uint256 _amountIn) view external returns(uint256, uint256);
@@ -23,7 +24,7 @@ interface IBoboFarmer {
 }
 
 
-contract BoboPair is Ownable, OrderStore {
+contract BoboPair is MixinAuthorizable, OrderStore {
     using SafeMath for uint256;
     
     uint256 public constant BasePercent = 10000;
@@ -49,11 +50,6 @@ contract BoboPair is Ownable, OrderStore {
     
     mapping(address => bool) public _auth;
 
-    modifier onlyAuth {
-        require(_auth[msg.sender], "BoboPair: no permission");
-        _;
-    }
-    
     event SwapSuccess(address indexed owner, address indexed spender, uint value);
     
     constructor () public OrderStore() {  
@@ -75,20 +71,11 @@ contract BoboPair is Ownable, OrderStore {
         orderDetailNFT = IOrderDetailNFT(_orderDetailNFT);
     }
     
-    
-    function addAuth(address _authAddr) public onlyOwner {
-        _auth[_authAddr] = true;
-    }
-
-    function removeAuth(address _authAddr) public onlyOwner {
-        _auth[_authAddr] = false;
-    }
-    
-    function setExManager(address _exManager) external onlyAuth {
+    function setExManager(address _exManager) external onlyAuthorized {
         exManager = IExchangeManager(_exManager);
     }
     
-    function setRouter(address _router) external onlyAuth {
+    function setRouter(address _router) external onlyAuthorized {
         boboRouter = IBoboRouter(_router);
     }
 

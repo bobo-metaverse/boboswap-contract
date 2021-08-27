@@ -18,7 +18,7 @@ module.exports = {
       skipDryRun: true,
       gasPrice: 5000000000,
       networkCheckTimeout:1000000,
-      gasLimit: 8000000
+      gasLimit: 20000000
     },
   },
 

@@ -3,8 +3,9 @@ pragma solidity ^0.6.0;
 
 import "../common/BasicStruct.sol";
 import "../SwapInterfaces.sol";
+import "../common/MixinAuthorizable.sol";
 
-contract EXManager is Ownable {
+contract EXManager is MixinAuthorizable {
     using SafeMath for uint256;
 
     address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
@@ -21,7 +22,7 @@ contract EXManager is Ownable {
     uint256 public minDepositValue = 1e6;       // 充值点卡时的最小金额U
     uint256 public maxNumberPerAMMSwap = 10;    // 一次最多可成交的AMM订单数
     address public feeEarnedContract;           // 项目方抽成资金需打入此合约中，此合约可关联矿池
-    mapping(address => bool) public _auth;
+    
     mapping(address => uint256) public accountFreePointMap;   // 账号免手续费交易次数，累加
     mapping(address => uint256) public tokenMinAmountMap;     // 一次交易最小金额
     mapping(address => address) public tokenAggregatorMap;    // token对应的chainlink聚合器合约地址
@@ -29,24 +30,11 @@ contract EXManager is Ownable {
 
     address public boboToken;
     uint256 public maxBoboTokenAmount = 1e23;  // 至少拥有此数量的Bobo（默认10万）可为手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
-
-    modifier onlyAuth {
-        require(_auth[msg.sender], "no permission");
-        _;
-    }
     
     constructor (address _boboToken) public {
         usableTradePointsMap[msg.sender] = 10000;
         stopFreeBlockNum = block.number + 300000;
         boboToken = _boboToken;
-    }
-    
-    function addAuth(address _addr) public onlyOwner {
-        _auth[_addr] = true;
-    }
-
-    function removeAuth(address _addr) public onlyOwner {
-        _auth[_addr] = false;
     }
 
     function setMaxBoboTokenAmount(uint256 _maxBoboTokenAmount) public onlyOwner {
@@ -97,7 +85,7 @@ contract EXManager is Ownable {
 
     // 消耗点卡
     // 在到达区块(区块号为stopFreeBlockNum)之前，前十次(maxFreePointPerAccount)交易免交易费
-    function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) public onlyAuth returns(uint256) {
+    function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) public onlyAuthorized returns(uint256) {
         if (accountFreePointMap[_userAddr] < maxFreePointPerAccount && block.number < stopFreeBlockNum) {
             accountFreePointMap[_userAddr]++;
             return 0;

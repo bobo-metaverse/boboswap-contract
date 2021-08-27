@@ -4,20 +4,23 @@ pragma solidity ^0.6.0;
 import "./common/OrderStore.sol";
 import "./BoboPair.sol";
 
+interface IMinter {
+    function addMinter(address _addMinter) external returns (bool);
+}
 
-interface IBoboPair {
+interface IAuthorizable {
+    function addAuthorized(address _authorizedAddr) external returns (bool);
+}
+
+interface IBoboPair is IAuthorizable {
     function initialize(address _token0, address _token1, address _authAddr, address _boboFarmer, address _orderNFT, address _orderDetailNFT) external;
     function setRouter(address _router) external;
-    function addAuth(address _authAddr) external;
+    function setExManager(address _exManager) external;
     function getTotalHangingTokenAmount(address _userAddr) view external returns(uint256 baseTokenAmount, uint256 quoteTokenAmount);
 }
 
 contract BoboFactoryOnMatic is Ownable {
     using SafeMath for uint256;
-    using SafeERC20 for IERC20;
-    using EnumerableSet for EnumerableSet.UintSet;
-    using EnumerableSet for EnumerableSet.AddressSet;
-    
     
     address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
     address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;
@@ -30,30 +33,29 @@ contract BoboFactoryOnMatic is Ownable {
     IBoboFarmer public boboFarmer;
     address public orderNFT;
     address public orderDetailNFT;
-    
-    EnumerableSet.AddressSet private baseTokens;
+    address public exManager;
+    address public boboRouter;
     
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
     
-    constructor (address _orderNFT, address _orderDetailNFT, address _boboFarmer) public {  
-        baseTokens.add(USDT);
-        baseTokens.add(USDC);
+    constructor (address _orderNFT, address _orderDetailNFT, address _boboFarmer, address _exManager, address _boboRouter) public {  
         orderNFT = _orderNFT;
         orderDetailNFT = _orderDetailNFT;
         boboFarmer = IBoboFarmer(_boboFarmer);
+        exManager = _exManager;
+        boboRouter = _boboRouter;
     }
 
-    function setBoboFarmer(address _boboFarmer) public onlyOwner {
-        boboFarmer = IBoboFarmer(_boboFarmer);
-    }
-    
-    function addBaseToken(address _baseToken) public onlyOwner {
-        require (!baseTokens.contains(_baseToken), "BoboFactory: EXIST");
-        baseTokens.add(_baseToken);
+    function setAddresses(address _boboFarmer, address _exManager, address _boboRouter) public onlyOwner {
+        if (_boboFarmer != address(0))
+            boboFarmer = IBoboFarmer(_boboFarmer);
+        if (_exManager != address(0))
+            exManager = _exManager;
+        if (_boboRouter != address(0))
+            boboRouter = _boboRouter;
     }
     
     function createPair(address _quoteToken, address _baseToken) public onlyOwner returns (address pairAddr) {
-        require(baseTokens.contains(_baseToken), "BoboFactory: base token ERROR.");
         require(_quoteToken != _baseToken, "BoboFactory: IDENTICAL_ADDRESSES");
         require(_quoteToken != address(0), "BoboFactory: ZERO_ADDRESS");
         require(getPair[_quoteToken][_baseToken] == address(0), "BoboFactory: PAIR_EXISTS"); // single check is sufficient
@@ -63,34 +65,34 @@ contract BoboFactoryOnMatic is Ownable {
             pairAddr := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
         IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT, orderDetailNFT);
+        
+        setBoboPairInfo(pairAddr);
+        
         getPair[_quoteToken][_baseToken] = pairAddr;
         getPair[_baseToken][_quoteToken] = pairAddr; // populate mapping in the reverse direction
         allPairs.push(pairAddr);
         baseTokenPairs[_baseToken].push(_quoteToken);
         emit PairCreated(_quoteToken, _baseToken, pairAddr, allPairs.length);
     }
-    
-    // 批量增加支持的交易对
-    function createPairs(address[] memory _quoteTokens, address _baseToken) public onlyOwner {
-        for (uint256 i = 0; i < _quoteTokens.length; i++) {
-            createPair(_quoteTokens[i], _baseToken);
-        }
-    }
 
+    function setBoboPairInfo(address _pairAddr) private {
+        IBoboPair(_pairAddr).setExManager(exManager);
+        IBoboPair(_pairAddr).setRouter(boboRouter);
+        
+        IMinter(orderNFT).addMinter(_pairAddr);
+        IMinter(orderDetailNFT).addMinter(_pairAddr);
+        IAuthorizable(address(boboFarmer)).addAuthorized(_pairAddr);
+        IAuthorizable(exManager).addAuthorized(_pairAddr);
+    }
+    
     function pairNumber() view public returns(uint256) {
         return allPairs.length;
-    }
-    
-    function setPairRouter(address _quoteToken, address _baseToken, address _router) external onlyOwner {
-        address pairAddr = getPair[_quoteToken][_baseToken];
-        require(pairAddr != address(0), 'BoboFactory: PAIR_NOT_EXISTS');
-        IBoboPair(pairAddr).setRouter(_router);
     }
     
     function addPairAuth(address _quoteToken, address _baseToken, address _auth) external onlyOwner {
         address pairAddr = getPair[_quoteToken][_baseToken];
         require(pairAddr != address(0), 'BoboFactory: PAIR_NOT_EXISTS');
-        IBoboPair(pairAddr).addAuth(_auth);
+        IBoboPair(pairAddr).addAuthorized(_auth);
     }
 
     function getBaseTokenPairLength(address _baseToken) view external returns(uint256) {
