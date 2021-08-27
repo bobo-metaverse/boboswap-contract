@@ -10,4 +10,5 @@ module.exports = async function(deployer) {
   var orderDetailNFT = await OrderDetailNFT.deployed();
 
   orderNFT.setOrderDetailNFTContract(orderDetailNFT.address);
+  orderDetailNFT.setOrderNFT(orderNFT.address);
 };

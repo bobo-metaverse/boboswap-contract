@@ -77,6 +77,8 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
     ) public {
         boboTokenAddr = _boboTokenAddress;
         fundAddr = _fundAddr;
+        numerator = 2;
+        denominator = 3;
     }
 
 

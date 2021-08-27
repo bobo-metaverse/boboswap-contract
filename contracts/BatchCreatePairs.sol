@@ -75,8 +75,10 @@ contract BatchCreatePairs {
     
     function creatOnePair(address _quoteToken, address _baseToken) public {        
         address pairAddr = boboFactory.createPair(_quoteToken, _baseToken);
+        
         BoboPair(pairAddr).setExManager(address(exManager));
         BoboPair(pairAddr).setRouter(boboRouter);
+        
         orderNFT.addMinter(pairAddr);
         orderDetailNFT.addMinter(pairAddr);
         boboFarmer.addAuthorized(pairAddr);
@@ -103,10 +105,24 @@ contract BatchCreatePairs {
     }
     
     function transferAllOwner(address _newOwner) public {
-        boboFactory.transferOwnership(_newOwner);
-        boboFarmer.transferOwnership(_newOwner);
-        exManager.transferOwnership(_newOwner);
-        orderNFT.transferOwnership(_newOwner);
-        orderDetailNFT.transferOwnership(_newOwner);
+        if (boboFactory.owner() == address(this))
+            boboFactory.transferOwnership(_newOwner);
+        if (boboFarmer.owner() == address(this))
+            boboFarmer.transferOwnership(_newOwner);
+        if (exManager.owner() == address(this))
+            exManager.transferOwnership(_newOwner);
+        if (orderNFT.owner() == address(this))
+            orderNFT.transferOwnership(_newOwner);
+        if (orderDetailNFT.owner() == address(this))
+            orderDetailNFT.transferOwnership(_newOwner);
+    }
+    
+    function getOwners() view public returns(address[] memory ownerAddrs) {
+        ownerAddrs = new address[](5);
+        ownerAddrs[0] = boboFactory.owner();
+        ownerAddrs[1] = boboFarmer.owner();
+        ownerAddrs[2] = exManager.owner();
+        ownerAddrs[3] = orderNFT.owner();
+        ownerAddrs[4] = orderDetailNFT.owner();
     }
 }

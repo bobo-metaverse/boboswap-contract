@@ -66,7 +66,7 @@ contract OrderNFT is Minter, ERC721 {
         
         require(nftInfo.status == OrderStatus.AMMDeal, "OrderNFT: only dealed order has weight.");
         uint256 spanTime = nftInfo.dealedTime.sub(nftInfo.delegateTime);
-        uint256 spanTimeFactor = sqrt(spanTime);
+        uint256 spanTimeFactor = spanTime == 0 ? 1 : sqrt(spanTime);
         uint256 dealedAmountU = nftInfo.bBuyQuoteToken ? nftInfo.inAmount : nftInfo.outAmount;
         return dealedAmountU.div(spanTimeFactor);
     }

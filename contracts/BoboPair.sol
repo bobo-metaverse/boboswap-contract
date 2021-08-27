@@ -26,7 +26,6 @@ interface IBoboFarmer {
 contract BoboPair is Ownable, OrderStore {
     using SafeMath for uint256;
     
-    address private bestSwapRouter;
     uint256 public constant BasePercent = 10000;
     uint256 public constant BasePriceAmount = 1e9;
     
