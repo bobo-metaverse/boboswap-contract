@@ -74,7 +74,12 @@ contract BatchCreatePairs {
     }
     
     function creatOnePair(address _quoteToken, address _baseToken) public {        
-        boboFactory.createPair(_quoteToken, _baseToken);
+        address pairAddr = boboFactory.createPair(_quoteToken, _baseToken);
+        
+        orderNFT.addMinter(pairAddr);
+        orderDetailNFT.addMinter(pairAddr);
+        boboFarmer.addAuthorized(pairAddr);
+        EXManager(exManager).addAuthorized(pairAddr);
     }
     
     function creatUSDTPeers(uint256 _fromIndex, uint256 _toIndex) public {
@@ -86,7 +91,6 @@ contract BatchCreatePairs {
         }
     }
     
-        
     function creatUSDCPeers(uint256 _fromIndex, uint256 _toIndex) public {
         for (uint256 i = _fromIndex; i < _toIndex; i++) {
             address usdcPeer = USDC_PEERS[i];

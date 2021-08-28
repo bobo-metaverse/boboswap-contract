@@ -65,24 +65,14 @@ contract BoboFactoryOnMatic is Ownable {
             pairAddr := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
         IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT, orderDetailNFT);
-        
-        setBoboPairInfo(pairAddr);
+        IBoboPair(pairAddr).setExManager(exManager);
+        IBoboPair(pairAddr).setRouter(boboRouter);
         
         getPair[_quoteToken][_baseToken] = pairAddr;
         getPair[_baseToken][_quoteToken] = pairAddr; // populate mapping in the reverse direction
         allPairs.push(pairAddr);
         baseTokenPairs[_baseToken].push(_quoteToken);
         emit PairCreated(_quoteToken, _baseToken, pairAddr, allPairs.length);
-    }
-
-    function setBoboPairInfo(address _pairAddr) private {
-        IBoboPair(_pairAddr).setExManager(exManager);
-        IBoboPair(_pairAddr).setRouter(boboRouter);
-        
-        IMinter(orderNFT).addMinter(_pairAddr);
-        IMinter(orderDetailNFT).addMinter(_pairAddr);
-        IAuthorizable(address(boboFarmer)).addAuthorized(_pairAddr);
-        IAuthorizable(exManager).addAuthorized(_pairAddr);
     }
     
     function pairNumber() view public returns(uint256) {
