@@ -102,8 +102,8 @@ contract BoboFarmer4TradeMining is Ownable {
 
     // View function to see pending BOBOs on frontend.
     function pendingBOBO(uint256 _pid, address _user) external view returns (uint256) {
-        PoolInfo storage pool = poolInfo[_pid];
-        UserInfo storage user = userInfo[_pid][_user];
+        PoolInfo memory pool = poolInfo[_pid];
+        UserInfo memory user = userInfo[_pid][_user];
         uint256 accBoboPerShare = pool.accBoboPerShare;
         uint256 totalWeight = pool.totalWeightOfNFT;
         if (block.number > pool.lastRewardBlock && totalWeight != 0) {
@@ -163,7 +163,9 @@ contract BoboFarmer4TradeMining is Ownable {
                 require(nftInfo.status == OrderStatus.AMMDeal, "The status of order is NOT dealed.");
                 require(nftInfo.dealedTime >= nftStartTime && nftInfo.dealedTime < nftEndTime, "The dealed time of order is NOT statisfied by this contract.");
                 nftToken.safeTransferFrom(address(msg.sender), address(this), _nftIds[i]);
-                user.weight = user.weight.add(IOrderNFT(address(nftToken)).getWeight(_nftIds[i]));
+                uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(_nftIds[i]);
+                user.weight = user.weight.add(nftWeight);
+                pool.totalWeightOfNFT = pool.totalWeightOfNFT.add(nftWeight);
                 userNFTIds[msg.sender].add(_nftIds[i]);
             }
         }
@@ -184,8 +186,9 @@ contract BoboFarmer4TradeMining is Ownable {
         for (uint256 i = 0; i < _nftIds.length; i++) {
             require(userNFTIds[msg.sender].contains(_nftIds[i]), "NFT id is NOT contained in user's list.");
             userNFTIds[msg.sender].remove(_nftIds[i]);
-
-            user.weight = user.weight.sub(IOrderNFT(address(nftToken)).getWeight(_nftIds[i]));
+            uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(_nftIds[i]);
+            user.weight = user.weight.sub(nftWeight);
+            pool.totalWeightOfNFT = pool.totalWeightOfNFT.sub(nftWeight);
             nftToken.safeTransferFrom(address(this), address(msg.sender), _nftIds[i]);
         }
         user.rewardDebt = user.weight.mul(pool.accBoboPerShare).div(1e12);
@@ -204,7 +207,9 @@ contract BoboFarmer4TradeMining is Ownable {
         for (uint256 i = 0; i < length; i++) {
             uint256 nftId = userNFTIds[msg.sender].at(i);
             if (nftId == 0) break;
-            user.weight = user.weight.sub(IOrderNFT(address(nftToken)).getWeight(nftId));
+            uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(nftId);
+            user.weight = user.weight.sub(nftWeight);
+            pool.totalWeightOfNFT = pool.totalWeightOfNFT.sub(nftWeight);
             nftToken.safeTransferFrom(address(this), address(msg.sender), nftId);
             userNFTIds[msg.sender].remove(nftId);
             i--;
@@ -222,7 +227,9 @@ contract BoboFarmer4TradeMining is Ownable {
         for (uint256 i = 0; i < length; i++) {
             uint256 nftId = userNFTIds[msg.sender].at(i);
             if (nftId == 0) break;
-            user.weight = user.weight.sub(IOrderNFT(address(nftToken)).getWeight(nftId));
+            uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(nftId);
+            user.weight = user.weight.sub(nftWeight);
+            pool.totalWeightOfNFT = pool.totalWeightOfNFT.sub(nftWeight);
             nftToken.safeTransferFrom(address(this), address(msg.sender), nftId);
             userNFTIds[msg.sender].remove(nftId);
             i--;

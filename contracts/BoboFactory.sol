@@ -89,6 +89,7 @@ contract BoboFactoryOnMatic is Ownable {
         return baseTokenPairs[_baseToken].length;
     }
 
+    // 针对某种BaseToken，获取用户的挂单总金额
     function getTotalHangingTokenAmount(address _baseToken, address _userAddr) view public returns(uint256) {
         uint256 totalBaseTokenAmount;
         address[] memory quoteTokens = baseTokenPairs[_baseToken];
@@ -100,11 +101,13 @@ contract BoboFactoryOnMatic is Ownable {
         return totalBaseTokenAmount;
     }
 
+    // 针对某种BaseToken，获取用户可提取的挖矿金额
     function getClaimBaseTokenAmount(address _baseToken, address _userAddr) view public returns(uint256) {
         uint256 hangingBaseTokenAmount = boboFarmer.stakedWantTokens(_baseToken, _userAddr);
         uint256 baseTokenAmount = getTotalHangingTokenAmount(_baseToken, _userAddr);
         return hangingBaseTokenAmount.sub(baseTokenAmount);
     }
+    
     // 此接口调用前提：需要在boboFarmer合约上为Factory合约开通权限
     function claimBaseToken(address _baseToken) public {
         uint256 amount = getClaimBaseTokenAmount(_baseToken, msg.sender);

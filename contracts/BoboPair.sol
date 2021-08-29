@@ -9,7 +9,7 @@ interface IExchangeManager {
     function evaluateDeductedAmountIn(address _userAddr, address _token, uint256 _amountIn) view external returns(uint256, uint256);
     function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) external returns(uint256);
     function feeEarnedContract() view external returns(uint256);
-    function maxNumberPerAMMSwap() view external returns(uint256);
+    function maxOrderNumberPerMatch() view external returns(uint256);
     function tokenInvestRateMap(address _tokenAddr) view external returns(uint256);
     function tokenMinAmountMap(address _tokenAddr) view external returns(uint256);
 }
@@ -258,8 +258,8 @@ contract BoboPair is MixinAuthorizable, OrderStore {
     // 根据配置连续检查并执行多笔订单
     // 当当前价格不满足要求时，便退出
     function checkOrderList() public {
-        uint256 maxNumberPerAMMSwap = exManager.maxNumberPerAMMSwap();
-        while(maxNumberPerAMMSwap-- > 0) {
+        uint256 maxOrderNumberPerMatch = exManager.maxOrderNumberPerMatch();
+        while(maxOrderNumberPerMatch-- > 0) {
             bool result = executeHeaderOrder();
             if (!result) break;
         }

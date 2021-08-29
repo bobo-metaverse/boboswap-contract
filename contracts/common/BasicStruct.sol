@@ -27,8 +27,8 @@ struct NFTInfo {
     uint256 id;
     address owner;
     address pairAddr;       // the address of pair
-    bool bBuyQuoteToken;        // true: buy token0, false: sale token0
-    uint256 spotPrice;      // spot price of token1/token0，此值已经乘上了10**token0Decmials (每个token0价值多少token1，token0用了最大单位, token1用了最小单位)
+    bool bBuyQuoteToken;    // true: buy quoteToken, false: sale quoteToken
+    uint256 spotPrice;      // spot price of quoteToken
     uint256 inAmount;       // if bBuyQuoteToken is true, inAmount is the amount of base token, otherwise quote token
     uint256 minOutAmount;   // if bBuyQuoteToken is true, minOutAmount is the amount of quote token, otherwise base token
     uint256 outAmount;      // out amount in the end of the swap
@@ -44,10 +44,6 @@ struct NFTDetailInfo {
     uint256 inAmount;        // inAmount指哪种代币，根据订单类型而定，如果是卖单，则inAmount是买入的那个基础token，否则就是被卖出的那个token
     uint256 outAmount;
     uint256 orderNFTId;      // 主订单编号
-    // uint256 matchedOrderId;  // 同本订单成交的那个订单编号，matchedOrderId和exchangeObject两者必定一个为0，一个有值
-    // 本订单交易对象，AMM中的router地址，或者某个个人账户地址，router地址可以是不同的uniswapV2一族的交易合约，如mdex, dodo, pancake, 1inch, uniswap, sushiswap等等
-    // 如果address为0，表示被本订单薄自己吃了
-    // address exchangeObject;
     SwapPool swapPool;
     address[] path;          // 交易路径
 }

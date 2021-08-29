@@ -12,7 +12,6 @@ contract EXManager is MixinAuthorizable {
     address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;
     address public constant swapFactory = 0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32;      // quickswap
 
-    uint256 constant public vipBaseline = 10;
     mapping(address => uint256) public usableTradePointsMap;  // 用户剩余可用的点卡金额，手续费可由此出
     
     uint256 public constant FACTOR = 1e8;
@@ -20,8 +19,7 @@ contract EXManager is MixinAuthorizable {
     uint256 constant public BasePercent = 10000;
     uint256 public maxFreePointPerAccount = 10;
     uint256 public minDepositValue = 1e6;       // 充值点卡时的最小金额U
-    uint256 public maxNumberPerAMMSwap = 10;    // 一次最多可成交的AMM订单数
-    address public feeEarnedContract;           // 项目方抽成资金需打入此合约中，此合约可关联矿池
+    uint256 public maxOrderNumberPerMatch = 5;    // 一次撮合最多可成交的订单数
     
     mapping(address => uint256) public accountFreePointMap;   // 账号免手续费交易次数，累加
     mapping(address => uint256) public tokenMinAmountMap;     // 一次交易最小金额
@@ -29,7 +27,7 @@ contract EXManager is MixinAuthorizable {
     uint256 public stopFreeBlockNum;
 
     address public boboToken;
-    uint256 public maxBoboTokenAmount = 1e23;  // 至少拥有此数量的Bobo（默认10万）可为手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
+    uint256 public maxBoboTokenAmount = 1e23;  // 至少拥有此数量的Bobo（默认10万），手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
     
     constructor (address _boboToken) public {
         usableTradePointsMap[msg.sender] = 10000;
@@ -55,17 +53,8 @@ contract EXManager is MixinAuthorizable {
         tokenMinAmountMap[_tokenAddr] = _minAmount;
     }
     
-    function setMaxNumberPerAMMSwap(uint256 _maxNumber) public onlyOwner {
-        maxNumberPerAMMSwap = _maxNumber;
-    }
-    
-    function setFeeEarnedContract(address _feeEarnedContract) public onlyOwner {
-        uint256 size;
-        assembly {
-            size := extcodesize(_feeEarnedContract)
-        }
-        require(size > 0, "EXManager: Only support contract address.");
-        feeEarnedContract = _feeEarnedContract;
+    function setMaxOrderNumberPerMatch(uint256 _maxNumber) public onlyOwner {
+        maxOrderNumberPerMatch = _maxNumber;
     }
     
     // 充值平台币，用U购买点数

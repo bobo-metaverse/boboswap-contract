@@ -44,8 +44,8 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     }
 
     // 将订单插入有序的挂单列表中，按照下单价格排序
-    // 1: 买单，队列按照从大到小排列，相同值，后进的排在下面
-    // 2: 卖单，队列按照从小到大排列，相同值，后进的排上面
+    // 1: 买单，队列按照从大到小排列，先进先出
+    // 2: 卖单，队列按照从小到大排列，先进先出
     function addHangingOrder(uint256 _orderId, bool _bBuyQuoteToken, uint256 _spotPrice) private returns(bool) {
         uint256 next = bBuyOrdersMap[_bBuyQuoteToken].getSortedSpot(address(this), _spotPrice, _bBuyQuoteToken);
         
