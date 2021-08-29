@@ -36,7 +36,7 @@ contract BoboFactoryOnMatic is Ownable {
     address public exManager;
     address public boboRouter;
     
-    event PairCreated(address indexed token0, address indexed token1, address pair, uint);
+    event PairCreated(address indexed quoteToken, address indexed baseToken, address pairAddr);
     
     constructor (address _orderNFT, address _orderDetailNFT, address _boboFarmer, address _exManager, address _boboRouter) public {  
         orderNFT = _orderNFT;
@@ -72,7 +72,7 @@ contract BoboFactoryOnMatic is Ownable {
         getPair[_baseToken][_quoteToken] = pairAddr; // populate mapping in the reverse direction
         allPairs.push(pairAddr);
         baseTokenPairs[_baseToken].push(_quoteToken);
-        emit PairCreated(_quoteToken, _baseToken, pairAddr, allPairs.length);
+        emit PairCreated(_quoteToken, _baseToken, pairAddr);
     }
     
     function pairNumber() view public returns(uint256) {
@@ -101,7 +101,7 @@ contract BoboFactoryOnMatic is Ownable {
         return totalBaseTokenAmount;
     }
 
-    // 针对某种BaseToken，获取用户可提取的挖矿金额
+    // 针对某种BaseToken，获取用户可提取的挖矿金额，此金额是通过机枪池产生的利润，不包含本金
     function getClaimBaseTokenAmount(address _baseToken, address _userAddr) view public returns(uint256) {
         uint256 hangingBaseTokenAmount = boboFarmer.stakedWantTokens(_baseToken, _userAddr);
         uint256 baseTokenAmount = getTotalHangingTokenAmount(_baseToken, _userAddr);

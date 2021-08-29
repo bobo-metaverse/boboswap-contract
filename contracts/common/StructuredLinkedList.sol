@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
-import "./BasicStruct.sol";
+interface  IStructureInterface {
+    function getValue(uint256 _id) external view returns (uint256);
+}
 
 /**
  * @title StructuredLinkedList

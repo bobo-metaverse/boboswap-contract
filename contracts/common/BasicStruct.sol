@@ -5,19 +5,11 @@ pragma experimental ABIEncoderV2;
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.3
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/math/SafeMath.sol";
-import "@openzeppelin/contracts/utils/EnumerableSet.sol";
-import "@openzeppelin/contracts/utils/Address.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
 
-import "./MathEX.sol";
 import "./StructuredLinkedList.sol";
 
 enum OrderStatus { Hanging, ManualCanceled, AMMDeal, Exception }
@@ -46,10 +38,6 @@ struct NFTDetailInfo {
     uint256 orderNFTId;      // 主订单编号
     SwapPool swapPool;
     address[] path;          // 交易路径
-}
-
-interface  IStructureInterface {
-    function getValue(uint256 _id) external view returns (uint256);
 }
 
 

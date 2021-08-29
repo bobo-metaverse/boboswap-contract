@@ -1,9 +1,9 @@
 const BoboFarmer = artifacts.require("BoboFarmer");
 const BoboFactoryOnMatic = artifacts.require("BoboFactoryOnMatic");
-const BoboPair = artifacts.require("BoboPair");
+const EXManager = artifacts.require("EXManager");
 const OrderNFT = artifacts.require("OrderNFT");
 const OrderDetailNFT = artifacts.require("OrderDetailNFT");
-const ERC20 = artifacts.require("ERC20");
+const BoboRouter = artifacts.require("BoboRouter");
 //const BatchCreatePairs = artifacts.require("BatchCreatePairs");
 
 // async function createFactory(deployer) {
@@ -61,7 +61,7 @@ const ERC20 = artifacts.require("ERC20");
 // }
 
 module.exports = async function(deployer, network, accounts) {
-    await deployer.deploy(BoboFactoryOnMatic, OrderNFT.address, OrderDetailNFT.address, BoboFarmer.address);
+    await deployer.deploy(BoboFactoryOnMatic, OrderNFT.address, OrderDetailNFT.address, BoboFarmer.address, EXManager.address, BoboRouter.address);
     var boboFactory = await BoboFactoryOnMatic.deployed();
     //boboFactory.transferOwnership(BatchCreatPairs.address);
     
