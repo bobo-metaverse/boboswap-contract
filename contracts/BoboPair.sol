@@ -47,14 +47,12 @@ contract BoboPair is MixinAuthorizable, OrderStore {
     uint256 public volumnOf24Hours;
     uint256 public totalVolumn;
     uint256[] public volumnList;
-    
-    mapping(address => bool) public _auth;
 
     event SwapSuccess(address indexed owner, address indexed spender, uint value);
     
     constructor () public OrderStore() {  
         factory = msg.sender;
-        _auth[msg.sender] = true;
+        addAuthorized(msg.sender);
         startTime = now;
         lastRecordTime = startTime;
     }
@@ -65,7 +63,7 @@ contract BoboPair is MixinAuthorizable, OrderStore {
         baseToken = _baseToken;
         quoteTokenDecimals = ERC20(quoteToken).decimals();
         baseTokenDecimals = ERC20(baseToken).decimals();
-        _auth[_authAddr] = true;
+        addAuthorized(_authAddr);
         boboFarmer = IBoboFarmer(_boboFarmer);
         orderNFT = IOrderNFT(_orderNFT);
         orderDetailNFT = IOrderDetailNFT(_orderDetailNFT);
