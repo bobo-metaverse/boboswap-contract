@@ -92,7 +92,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -105,7 +106,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -139,7 +141,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -159,7 +162,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -172,7 +176,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -214,7 +219,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -227,7 +233,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -292,7 +299,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -386,7 +394,7 @@
         "id": 7270,
         "nodeType": "ImportDirective",
         "scope": 7774,
-        "sourceUnit": 13768,
+        "sourceUnit": 13801,
         "src": "99:34:24",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7317,7 +7325,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 13768,
+          "SourceUnit": 13801,
           "absolutePath": "project:/contracts/common/BasicStruct.sol",
           "file": "./common/BasicStruct.sol",
           "scope": 7774,
@@ -14767,12 +14775,13 @@
     "137": {
       "events": {},
       "links": {},
-      "address": "0xd515Dd498B7aC568c963B85F0B2fc56D69d7b399",
-      "transactionHash": "0x1b7c0222d47a9d88ccbc5b1851b64144a4d788b960baa0ab28522e4e909a7f15"
+      "address": "0xB2d5A0d6E29dda9791D7D1ed130E96bf1c4544E4",
+      "transactionHash": "0x663f11b394f9e334024887445dcbb472971f5da896681c146c293c030f9cd99a"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-08-29T16:50:31.376Z",
+  "updatedAt": "2021-08-30T02:43:17.325Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

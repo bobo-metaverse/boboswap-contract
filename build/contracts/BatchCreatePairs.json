@@ -417,7 +417,7 @@
         "id": 3716,
         "nodeType": "ImportDirective",
         "scope": 4146,
-        "sourceUnit": 12837,
+        "sourceUnit": 12870,
         "src": "164:31:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -428,7 +428,7 @@
         "id": 3717,
         "nodeType": "ImportDirective",
         "scope": 4146,
-        "sourceUnit": 17275,
+        "sourceUnit": 17354,
         "src": "196:33:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -439,7 +439,7 @@
         "id": 3718,
         "nodeType": "ImportDirective",
         "scope": 4146,
-        "sourceUnit": 16517,
+        "sourceUnit": 16596,
         "src": "230:31:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -450,7 +450,7 @@
         "id": 3719,
         "nodeType": "ImportDirective",
         "scope": 4146,
-        "sourceUnit": 16090,
+        "sourceUnit": 16169,
         "src": "262:37:19",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1325,7 +1325,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_StratMaticSushi_$12836",
+              "typeIdentifier": "t_contract$_StratMaticSushi_$12869",
               "typeString": "contract StratMaticSushi"
             },
             "typeName": {
@@ -1333,10 +1333,10 @@
               "id": 3776,
               "name": "StratMaticSushi",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 12836,
+              "referencedDeclaration": 12869,
               "src": "2200:15:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StratMaticSushi_$12836",
+                "typeIdentifier": "t_contract$_StratMaticSushi_$12869",
                 "typeString": "contract StratMaticSushi"
               }
             },
@@ -1386,7 +1386,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_EXManager_$17274",
+              "typeIdentifier": "t_contract$_EXManager_$17353",
               "typeString": "contract EXManager"
             },
             "typeName": {
@@ -1394,10 +1394,10 @@
               "id": 3780,
               "name": "EXManager",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 17274,
+              "referencedDeclaration": 17353,
               "src": "2275:9:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EXManager_$17274",
+                "typeIdentifier": "t_contract$_EXManager_$17353",
                 "typeString": "contract EXManager"
               }
             },
@@ -1434,10 +1434,10 @@
                 "name": "EXManager",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 17274,
+                "referencedDeclaration": 17353,
                 "src": "2304:9:19",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_EXManager_$17274_$",
+                  "typeIdentifier": "t_type$_t_contract$_EXManager_$17353_$",
                   "typeString": "type(contract EXManager)"
                 }
               },
@@ -1452,7 +1452,7 @@
               "src": "2304:53:19",
               "tryCall": false,
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EXManager_$17274",
+                "typeIdentifier": "t_contract$_EXManager_$17353",
                 "typeString": "contract EXManager"
               }
             },
@@ -1471,7 +1471,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_OrderNFT_$16516",
+              "typeIdentifier": "t_contract$_OrderNFT_$16595",
               "typeString": "contract OrderNFT"
             },
             "typeName": {
@@ -1479,10 +1479,10 @@
               "id": 3785,
               "name": "OrderNFT",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 16516,
+              "referencedDeclaration": 16595,
               "src": "2363:8:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                "typeIdentifier": "t_contract$_OrderNFT_$16595",
                 "typeString": "contract OrderNFT"
               }
             },
@@ -1519,10 +1519,10 @@
                 "name": "OrderNFT",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 16516,
+                "referencedDeclaration": 16595,
                 "src": "2390:8:19",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_OrderNFT_$16516_$",
+                  "typeIdentifier": "t_type$_t_contract$_OrderNFT_$16595_$",
                   "typeString": "type(contract OrderNFT)"
                 }
               },
@@ -1537,7 +1537,7 @@
               "src": "2390:52:19",
               "tryCall": false,
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                "typeIdentifier": "t_contract$_OrderNFT_$16595",
                 "typeString": "contract OrderNFT"
               }
             },
@@ -1556,7 +1556,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+              "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
               "typeString": "contract OrderDetailNFT"
             },
             "typeName": {
@@ -1564,10 +1564,10 @@
               "id": 3790,
               "name": "OrderDetailNFT",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 16089,
+              "referencedDeclaration": 16168,
               "src": "2448:14:19",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                 "typeString": "contract OrderDetailNFT"
               }
             },
@@ -1604,10 +1604,10 @@
                 "name": "OrderDetailNFT",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
-                "referencedDeclaration": 16089,
+                "referencedDeclaration": 16168,
                 "src": "2487:14:19",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$16089_$",
+                  "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$16168_$",
                   "typeString": "type(contract OrderDetailNFT)"
                 }
               },
@@ -1622,7 +1622,7 @@
               "src": "2487:58:19",
               "tryCall": false,
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                 "typeString": "contract OrderDetailNFT"
               }
             },
@@ -2212,7 +2212,7 @@
                       "referencedDeclaration": 3784,
                       "src": "3088:9:19",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_EXManager_$17274",
+                        "typeIdentifier": "t_contract$_EXManager_$17353",
                         "typeString": "contract EXManager"
                       }
                     },
@@ -2246,10 +2246,10 @@
                         "name": "EXManager",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 17274,
+                        "referencedDeclaration": 17353,
                         "src": "3100:9:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_EXManager_$17274_$",
+                          "typeIdentifier": "t_type$_t_contract$_EXManager_$17353_$",
                           "typeString": "type(contract EXManager)"
                         }
                       },
@@ -2264,13 +2264,13 @@
                       "src": "3100:21:19",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_EXManager_$17274",
+                        "typeIdentifier": "t_contract$_EXManager_$17353",
                         "typeString": "contract EXManager"
                       }
                     },
                     "src": "3088:33:19",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_EXManager_$17274",
+                      "typeIdentifier": "t_contract$_EXManager_$17353",
                       "typeString": "contract EXManager"
                     }
                   },
@@ -2295,7 +2295,7 @@
                       "referencedDeclaration": 3789,
                       "src": "3131:8:19",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                        "typeIdentifier": "t_contract$_OrderNFT_$16595",
                         "typeString": "contract OrderNFT"
                       }
                     },
@@ -2329,10 +2329,10 @@
                         "name": "OrderNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 16516,
+                        "referencedDeclaration": 16595,
                         "src": "3142:8:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_OrderNFT_$16516_$",
+                          "typeIdentifier": "t_type$_t_contract$_OrderNFT_$16595_$",
                           "typeString": "type(contract OrderNFT)"
                         }
                       },
@@ -2347,13 +2347,13 @@
                       "src": "3142:19:19",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                        "typeIdentifier": "t_contract$_OrderNFT_$16595",
                         "typeString": "contract OrderNFT"
                       }
                     },
                     "src": "3131:30:19",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                      "typeIdentifier": "t_contract$_OrderNFT_$16595",
                       "typeString": "contract OrderNFT"
                     }
                   },
@@ -2378,7 +2378,7 @@
                       "referencedDeclaration": 3794,
                       "src": "3171:14:19",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                        "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                         "typeString": "contract OrderDetailNFT"
                       }
                     },
@@ -2412,10 +2412,10 @@
                         "name": "OrderDetailNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 16089,
+                        "referencedDeclaration": 16168,
                         "src": "3188:14:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$16089_$",
+                          "typeIdentifier": "t_type$_t_contract$_OrderDetailNFT_$16168_$",
                           "typeString": "type(contract OrderDetailNFT)"
                         }
                       },
@@ -2430,13 +2430,13 @@
                       "src": "3188:31:19",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                        "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                         "typeString": "contract OrderDetailNFT"
                       }
                     },
                     "src": "3171:48:19",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                      "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                       "typeString": "contract OrderDetailNFT"
                     }
                   },
@@ -2958,7 +2958,7 @@
                         "referencedDeclaration": 3789,
                         "src": "3519:8:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                          "typeIdentifier": "t_contract$_OrderNFT_$16595",
                           "typeString": "contract OrderNFT"
                         }
                       },
@@ -2969,7 +2969,7 @@
                       "lValueRequested": false,
                       "memberName": "addMinter",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13819,
+                      "referencedDeclaration": 13898,
                       "src": "3519:18:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -3029,7 +3029,7 @@
                         "referencedDeclaration": 3794,
                         "src": "3557:14:19",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                          "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                           "typeString": "contract OrderDetailNFT"
                         }
                       },
@@ -3040,7 +3040,7 @@
                       "lValueRequested": false,
                       "memberName": "addMinter",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13819,
+                      "referencedDeclaration": 13898,
                       "src": "3557:24:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -3111,7 +3111,7 @@
                       "lValueRequested": false,
                       "memberName": "addAuthorized",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13949,
+                      "referencedDeclaration": 14028,
                       "src": "3601:24:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -3174,7 +3174,7 @@
                             "referencedDeclaration": 3784,
                             "src": "3655:9:19",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_EXManager_$17274",
+                              "typeIdentifier": "t_contract$_EXManager_$17353",
                               "typeString": "contract EXManager"
                             }
                           }
@@ -3182,7 +3182,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_EXManager_$17274",
+                              "typeIdentifier": "t_contract$_EXManager_$17353",
                               "typeString": "contract EXManager"
                             }
                           ],
@@ -3190,10 +3190,10 @@
                           "name": "EXManager",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 17274,
+                          "referencedDeclaration": 17353,
                           "src": "3645:9:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EXManager_$17274_$",
+                            "typeIdentifier": "t_type$_t_contract$_EXManager_$17353_$",
                             "typeString": "type(contract EXManager)"
                           }
                         },
@@ -3208,7 +3208,7 @@
                         "src": "3645:20:19",
                         "tryCall": false,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_EXManager_$17274",
+                          "typeIdentifier": "t_contract$_EXManager_$17353",
                           "typeString": "contract EXManager"
                         }
                       },
@@ -3219,7 +3219,7 @@
                       "lValueRequested": false,
                       "memberName": "addAuthorized",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13949,
+                      "referencedDeclaration": 14028,
                       "src": "3645:34:19",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
@@ -4905,7 +4905,7 @@
                           "referencedDeclaration": 3784,
                           "src": "4636:9:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_EXManager_$17274",
+                            "typeIdentifier": "t_contract$_EXManager_$17353",
                             "typeString": "contract EXManager"
                           }
                         },
@@ -5045,7 +5045,7 @@
                           "referencedDeclaration": 3784,
                           "src": "4684:9:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_EXManager_$17274",
+                            "typeIdentifier": "t_contract$_EXManager_$17353",
                             "typeString": "contract EXManager"
                           }
                         },
@@ -5109,7 +5109,7 @@
                           "referencedDeclaration": 3789,
                           "src": "4736:8:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                            "typeIdentifier": "t_contract$_OrderNFT_$16595",
                             "typeString": "contract OrderNFT"
                           }
                         },
@@ -5249,7 +5249,7 @@
                           "referencedDeclaration": 3789,
                           "src": "4783:8:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                            "typeIdentifier": "t_contract$_OrderNFT_$16595",
                             "typeString": "contract OrderNFT"
                           }
                         },
@@ -5313,7 +5313,7 @@
                           "referencedDeclaration": 3794,
                           "src": "4834:14:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                            "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                             "typeString": "contract OrderDetailNFT"
                           }
                         },
@@ -5453,7 +5453,7 @@
                           "referencedDeclaration": 3794,
                           "src": "4887:14:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                            "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                             "typeString": "contract OrderDetailNFT"
                           }
                         },
@@ -5959,7 +5959,7 @@
                           "referencedDeclaration": 3784,
                           "src": "5171:9:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_EXManager_$17274",
+                            "typeIdentifier": "t_contract$_EXManager_$17353",
                             "typeString": "contract EXManager"
                           }
                         },
@@ -6071,7 +6071,7 @@
                           "referencedDeclaration": 3789,
                           "src": "5214:8:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_OrderNFT_$16516",
+                            "typeIdentifier": "t_contract$_OrderNFT_$16595",
                             "typeString": "contract OrderNFT"
                           }
                         },
@@ -6183,7 +6183,7 @@
                           "referencedDeclaration": 3794,
                           "src": "5256:14:19",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_OrderDetailNFT_$16089",
+                            "typeIdentifier": "t_contract$_OrderDetailNFT_$16168",
                             "typeString": "contract OrderDetailNFT"
                           }
                         },
@@ -6388,7 +6388,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 12837,
+          "SourceUnit": 12870,
           "absolutePath": "project:/contracts/StratMaticSushi.sol",
           "file": "./StratMaticSushi.sol",
           "scope": 4146,
@@ -6403,7 +6403,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 17275,
+          "SourceUnit": 17354,
           "absolutePath": "project:/contracts/manager/EXManager.sol",
           "file": "./manager/EXManager.sol",
           "scope": 4146,
@@ -6418,7 +6418,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 16517,
+          "SourceUnit": 16596,
           "absolutePath": "project:/contracts/common/orderNFT.sol",
           "file": "./common/orderNFT.sol",
           "scope": 4146,
@@ -6433,7 +6433,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 16090,
+          "SourceUnit": 16169,
           "absolutePath": "project:/contracts/common/orderDetailNFT.sol",
           "file": "./common/orderDetailNFT.sol",
           "scope": 4146,
@@ -7311,7 +7311,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "StratMaticSushi",
-                  "referencedDeclaration": 12836,
+                  "referencedDeclaration": 12869,
                   "type": "contract StratMaticSushi"
                 },
                 "id": 3776,
@@ -7371,7 +7371,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "EXManager",
-                  "referencedDeclaration": 17274,
+                  "referencedDeclaration": 17353,
                   "type": "contract EXManager"
                 },
                 "id": 3780,
@@ -7405,7 +7405,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 17274,
+                      "referencedDeclaration": 17353,
                       "type": "type(contract EXManager)",
                       "value": "EXManager"
                     },
@@ -7458,7 +7458,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "OrderNFT",
-                  "referencedDeclaration": 16516,
+                  "referencedDeclaration": 16595,
                   "type": "contract OrderNFT"
                 },
                 "id": 3785,
@@ -7492,7 +7492,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 16516,
+                      "referencedDeclaration": 16595,
                       "type": "type(contract OrderNFT)",
                       "value": "OrderNFT"
                     },
@@ -7545,7 +7545,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "OrderDetailNFT",
-                  "referencedDeclaration": 16089,
+                  "referencedDeclaration": 16168,
                   "type": "contract OrderDetailNFT"
                 },
                 "id": 3790,
@@ -7579,7 +7579,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 16089,
+                      "referencedDeclaration": 16168,
                       "type": "type(contract OrderDetailNFT)",
                       "value": "OrderDetailNFT"
                     },
@@ -8485,7 +8485,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 17274,
+                                  "referencedDeclaration": 17353,
                                   "type": "type(contract EXManager)",
                                   "value": "EXManager"
                                 },
@@ -8576,7 +8576,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 16516,
+                                  "referencedDeclaration": 16595,
                                   "type": "type(contract OrderNFT)",
                                   "value": "OrderNFT"
                                 },
@@ -8667,7 +8667,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 16089,
+                                  "referencedDeclaration": 16168,
                                   "type": "type(contract OrderDetailNFT)",
                                   "value": "OrderDetailNFT"
                                 },
@@ -9139,7 +9139,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addMinter",
-                              "referencedDeclaration": 13819,
+                              "referencedDeclaration": 13898,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -9217,7 +9217,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addMinter",
-                              "referencedDeclaration": 13819,
+                              "referencedDeclaration": 13898,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -9295,7 +9295,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addAuthorized",
-                              "referencedDeclaration": 13949,
+                              "referencedDeclaration": 14028,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -9373,7 +9373,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "addAuthorized",
-                              "referencedDeclaration": 13949,
+                              "referencedDeclaration": 14028,
                               "type": "function (address) external returns (bool)"
                             },
                             "children": [
@@ -9397,14 +9397,14 @@
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_contract$_EXManager_$17274",
+                                          "typeIdentifier": "t_contract$_EXManager_$17353",
                                           "typeString": "contract EXManager"
                                         }
                                       ],
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 17274,
+                                      "referencedDeclaration": 17353,
                                       "type": "type(contract EXManager)",
                                       "value": "EXManager"
                                     },
@@ -12768,16 +12768,9 @@
     "name": "solc",
     "version": "0.6.12+commit.27d51765.Emscripten.clang"
   },
-  "networks": {
-    "137": {
-      "events": {},
-      "links": {},
-      "address": "0x6d85487766170acBBe723d8A6ED33030F51De814",
-      "transactionHash": "0xbcbba51cda87e229254c5ae823e4b1fc33fc19753452b8b9f0659c84a7601485"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-08-29T16:50:31.223Z",
+  "updatedAt": "2021-08-29T16:54:37.338Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -210,7 +210,7 @@
         "id": 4732,
         "nodeType": "ImportDirective",
         "scope": 6049,
-        "sourceUnit": 14026,
+        "sourceUnit": 14105,
         "src": "99:40:22",
         "symbolAliases": [],
         "unitAlias": ""
@@ -999,10 +999,10 @@
               "id": 4795,
               "name": "MixinAuthorizable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 14025,
+              "referencedDeclaration": 14104,
               "src": "1089:17:22",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MixinAuthorizable_$14025",
+                "typeIdentifier": "t_contract$_MixinAuthorizable_$14104",
                 "typeString": "contract MixinAuthorizable"
               }
             },
@@ -1033,7 +1033,7 @@
           22,
           131,
           3622,
-          14025
+          14104
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1042,7 +1042,7 @@
         "linearizedBaseContracts": [
           6048,
           3622,
-          14025,
+          14104,
           131,
           22
         ],
@@ -9694,10 +9694,10 @@
                                 "name": "IBOBOToken",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 13767,
+                                "referencedDeclaration": 13800,
                                 "src": "7574:10:22",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_contract$_IBOBOToken_$13767_$",
+                                  "typeIdentifier": "t_type$_t_contract$_IBOBOToken_$13800_$",
                                   "typeString": "type(contract IBOBOToken)"
                                 }
                               },
@@ -9712,7 +9712,7 @@
                               "src": "7574:25:22",
                               "tryCall": false,
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IBOBOToken_$13767",
+                                "typeIdentifier": "t_contract$_IBOBOToken_$13800",
                                 "typeString": "contract IBOBOToken"
                               }
                             },
@@ -9723,7 +9723,7 @@
                             "lValueRequested": false,
                             "memberName": "mint",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 13766,
+                            "referencedDeclaration": 13799,
                             "src": "7574:30:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -9927,10 +9927,10 @@
                                 "name": "IBoboFund",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 13755,
+                                "referencedDeclaration": 13788,
                                 "src": "7726:9:22",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_contract$_IBoboFund_$13755_$",
+                                  "typeIdentifier": "t_type$_t_contract$_IBoboFund_$13788_$",
                                   "typeString": "type(contract IBoboFund)"
                                 }
                               },
@@ -9945,7 +9945,7 @@
                               "src": "7726:19:22",
                               "tryCall": false,
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IBoboFund_$13755",
+                                "typeIdentifier": "t_contract$_IBoboFund_$13788",
                                 "typeString": "contract IBoboFund"
                               }
                             },
@@ -9956,7 +9956,7 @@
                             "lValueRequested": false,
                             "memberName": "transferBobo",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 13754,
+                            "referencedDeclaration": 13787,
                             "src": "7726:32:22",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
@@ -12414,7 +12414,7 @@
                   "name": "onlyAuthorized",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 13919,
+                  "referencedDeclaration": 13998,
                   "src": "8103:14:22",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -15856,7 +15856,7 @@
                   "name": "onlyAuthorized",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 13919,
+                  "referencedDeclaration": 13998,
                   "src": "9866:14:22",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -18626,7 +18626,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 14026,
+          "SourceUnit": 14105,
           "absolutePath": "project:/contracts/common/MixinAuthorizable.sol",
           "file": "./common/MixinAuthorizable.sol",
           "scope": 6049,
@@ -19519,7 +19519,7 @@
             22,
             131,
             3622,
-            14025
+            14104
           ],
           "contractKind": "contract",
           "documentation": null,
@@ -19527,7 +19527,7 @@
           "linearizedBaseContracts": [
             6048,
             3622,
-            14025,
+            14104,
             131,
             22
           ],
@@ -19544,7 +19544,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "MixinAuthorizable",
-                  "referencedDeclaration": 14025,
+                  "referencedDeclaration": 14104,
                   "type": "contract MixinAuthorizable"
                 },
                 "id": 4795,
@@ -28756,7 +28756,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "mint",
-                                      "referencedDeclaration": 13766,
+                                      "referencedDeclaration": 13799,
                                       "type": "function (address,uint256) external returns (bool)"
                                     },
                                     "children": [
@@ -28787,7 +28787,7 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13767,
+                                              "referencedDeclaration": 13800,
                                               "type": "type(contract IBOBOToken)",
                                               "value": "IBOBOToken"
                                             },
@@ -29131,7 +29131,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "transferBobo",
-                                      "referencedDeclaration": 13754,
+                                      "referencedDeclaration": 13787,
                                       "type": "function (uint256) external"
                                     },
                                     "children": [
@@ -29162,7 +29162,7 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 13755,
+                                              "referencedDeclaration": 13788,
                                               "type": "type(contract IBoboFund)",
                                               "value": "IBoboFund"
                                             },
@@ -29736,7 +29736,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13919,
+                      "referencedDeclaration": 13998,
                       "type": "modifier ()",
                       "value": "onlyAuthorized"
                     },
@@ -32142,7 +32142,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13919,
+                      "referencedDeclaration": 13998,
                       "type": "modifier ()",
                       "value": "onlyAuthorized"
                     },
@@ -38432,7 +38432,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-08-29T16:50:31.327Z",
+  "updatedAt": "2021-08-29T16:54:37.386Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -180,7 +180,7 @@
         "id": 7777,
         "nodeType": "ImportDirective",
         "scope": 9088,
-        "sourceUnit": 15315,
+        "sourceUnit": 15394,
         "src": "91:33:25",
         "symbolAliases": [],
         "unitAlias": ""
@@ -191,7 +191,7 @@
         "id": 7778,
         "nodeType": "ImportDirective",
         "scope": 9088,
-        "sourceUnit": 14026,
+        "sourceUnit": 14105,
         "src": "125:40:25",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1406,10 +1406,10 @@
               "id": 7872,
               "name": "MixinAuthorizable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 14025,
+              "referencedDeclaration": 14104,
               "src": "1237:17:25",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MixinAuthorizable_$14025",
+                "typeIdentifier": "t_contract$_MixinAuthorizable_$14104",
                 "typeString": "contract MixinAuthorizable"
               }
             },
@@ -1424,10 +1424,10 @@
               "id": 7874,
               "name": "OrderStore",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 15314,
+              "referencedDeclaration": 15393,
               "src": "1256:10:25",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_OrderStore_$15314",
+                "typeIdentifier": "t_contract$_OrderStore_$15393",
                 "typeString": "contract OrderStore"
               }
             },
@@ -1440,9 +1440,9 @@
           22,
           131,
           2313,
-          14025,
-          15314,
-          15324
+          14104,
+          15393,
+          15403
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1450,10 +1450,10 @@
         "id": 9087,
         "linearizedBaseContracts": [
           9087,
-          15314,
+          15393,
           2313,
-          15324,
-          14025,
+          15403,
+          14104,
           131,
           22
         ],
@@ -1684,7 +1684,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+              "typeIdentifier": "t_contract$_IBoboRouter_$13782",
               "typeString": "contract IBoboRouter"
             },
             "typeName": {
@@ -1692,10 +1692,10 @@
               "id": 7891,
               "name": "IBoboRouter",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 13749,
+              "referencedDeclaration": 13782,
               "src": "1522:11:25",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                 "typeString": "contract IBoboRouter"
               }
             },
@@ -2480,10 +2480,10 @@
                   "name": "OrderStore",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 15314,
+                  "referencedDeclaration": 15393,
                   "src": "2085:10:25",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_OrderStore_$15314_$",
+                    "typeIdentifier": "t_type$_t_contract$_OrderStore_$15393_$",
                     "typeString": "type(contract OrderStore)"
                   }
                 },
@@ -3019,10 +3019,10 @@
                       "name": "orderNFT",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14600,
+                      "referencedDeclaration": 14679,
                       "src": "2730:8:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                        "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                         "typeString": "contract IOrderNFT"
                       }
                     },
@@ -3056,10 +3056,10 @@
                         "name": "IOrderNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 13657,
+                        "referencedDeclaration": 13690,
                         "src": "2741:9:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IOrderNFT_$13657_$",
+                          "typeIdentifier": "t_type$_t_contract$_IOrderNFT_$13690_$",
                           "typeString": "type(contract IOrderNFT)"
                         }
                       },
@@ -3074,13 +3074,13 @@
                       "src": "2741:20:25",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                        "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                         "typeString": "contract IOrderNFT"
                       }
                     },
                     "src": "2730:31:25",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                      "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                       "typeString": "contract IOrderNFT"
                     }
                   },
@@ -3102,10 +3102,10 @@
                       "name": "orderDetailNFT",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14602,
+                      "referencedDeclaration": 14681,
                       "src": "2771:14:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IOrderDetailNFT_$13702",
+                        "typeIdentifier": "t_contract$_IOrderDetailNFT_$13735",
                         "typeString": "contract IOrderDetailNFT"
                       }
                     },
@@ -3139,10 +3139,10 @@
                         "name": "IOrderDetailNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 13702,
+                        "referencedDeclaration": 13735,
                         "src": "2788:15:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IOrderDetailNFT_$13702_$",
+                          "typeIdentifier": "t_type$_t_contract$_IOrderDetailNFT_$13735_$",
                           "typeString": "type(contract IOrderDetailNFT)"
                         }
                       },
@@ -3157,13 +3157,13 @@
                       "src": "2788:32:25",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IOrderDetailNFT_$13702",
+                        "typeIdentifier": "t_contract$_IOrderDetailNFT_$13735",
                         "typeString": "contract IOrderDetailNFT"
                       }
                     },
                     "src": "2771:49:25",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IOrderDetailNFT_$13702",
+                      "typeIdentifier": "t_contract$_IOrderDetailNFT_$13735",
                       "typeString": "contract IOrderDetailNFT"
                     }
                   },
@@ -3501,7 +3501,7 @@
                   "name": "onlyAuthorized",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 13919,
+                  "referencedDeclaration": 13998,
                   "src": "2888:14:25",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3586,7 +3586,7 @@
                       "referencedDeclaration": 7892,
                       "src": "3040:10:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                        "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                         "typeString": "contract IBoboRouter"
                       }
                     },
@@ -3620,10 +3620,10 @@
                         "name": "IBoboRouter",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 13749,
+                        "referencedDeclaration": 13782,
                         "src": "3053:11:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_IBoboRouter_$13749_$",
+                          "typeIdentifier": "t_type$_t_contract$_IBoboRouter_$13782_$",
                           "typeString": "type(contract IBoboRouter)"
                         }
                       },
@@ -3638,13 +3638,13 @@
                       "src": "3053:20:25",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                        "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                         "typeString": "contract IBoboRouter"
                       }
                     },
                     "src": "3040:33:25",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                      "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                       "typeString": "contract IBoboRouter"
                     }
                   },
@@ -3669,7 +3669,7 @@
                   "name": "onlyAuthorized",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 13919,
+                  "referencedDeclaration": 13998,
                   "src": "3015:14:25",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -4853,7 +4853,7 @@
                       "name": "addOrder",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14703,
+                      "referencedDeclaration": 14782,
                       "src": "3888:8:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bool_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -5400,7 +5400,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                        "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                         "typeString": "struct ResultInfo"
                       },
                       "typeName": {
@@ -5408,10 +5408,10 @@
                         "id": 8168,
                         "name": "ResultInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13719,
+                        "referencedDeclaration": 13752,
                         "src": "4386:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_storage_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_storage_ptr",
                           "typeString": "struct ResultInfo"
                         }
                       },
@@ -5540,7 +5540,7 @@
                         "referencedDeclaration": 7892,
                         "src": "4420:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                          "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                           "typeString": "contract IBoboRouter"
                         }
                       },
@@ -5551,10 +5551,10 @@
                       "lValueRequested": false,
                       "memberName": "getBestSwapPath",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13733,
+                      "referencedDeclaration": 13766,
                       "src": "4420:26:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                         "typeString": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                       }
                     },
@@ -5569,7 +5569,7 @@
                     "src": "4420:78:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                       "typeString": "tuple(uint256[] memory,struct ResultInfo memory)"
                     }
                   },
@@ -5599,7 +5599,7 @@
                         "referencedDeclaration": 8169,
                         "src": "4566:12:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                           "typeString": "struct ResultInfo memory"
                         }
                       },
@@ -5610,7 +5610,7 @@
                       "lValueRequested": false,
                       "memberName": "totalAmountOut",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13704,
+                      "referencedDeclaration": 13737,
                       "src": "4566:27:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -6718,7 +6718,7 @@
                               "referencedDeclaration": 8169,
                               "src": "4906:12:25",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                 "typeString": "struct ResultInfo memory"
                               }
                             },
@@ -6840,7 +6840,7 @@
                                 "typeString": "uint256"
                               },
                               {
-                                "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                 "typeString": "struct ResultInfo memory"
                               },
                               {
@@ -6867,7 +6867,7 @@
                             "referencedDeclaration": 8698,
                             "src": "4892:4:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_struct$_ResultInfo_$13719_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_bool_$returns$_t_uint256_$",
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_struct$_ResultInfo_$13752_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_bool_$returns$_t_uint256_$",
                               "typeString": "function (uint256,struct ResultInfo memory,address,address,uint256,bool) returns (uint256)"
                             }
                           },
@@ -7929,7 +7929,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                        "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                         "typeString": "struct ResultInfo"
                       },
                       "typeName": {
@@ -7937,10 +7937,10 @@
                         "id": 8336,
                         "name": "ResultInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13719,
+                        "referencedDeclaration": 13752,
                         "src": "5934:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_storage_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_storage_ptr",
                           "typeString": "struct ResultInfo"
                         }
                       },
@@ -8016,7 +8016,7 @@
                         "referencedDeclaration": 7892,
                         "src": "5968:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                          "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                           "typeString": "contract IBoboRouter"
                         }
                       },
@@ -8027,10 +8027,10 @@
                       "lValueRequested": false,
                       "memberName": "getBestSwapPath",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13733,
+                      "referencedDeclaration": 13766,
                       "src": "5968:26:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                         "typeString": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                       }
                     },
@@ -8045,7 +8045,7 @@
                     "src": "5968:56:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                       "typeString": "tuple(uint256[] memory,struct ResultInfo memory)"
                     }
                   },
@@ -8078,7 +8078,7 @@
                             "referencedDeclaration": 8337,
                             "src": "6042:12:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                              "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                               "typeString": "struct ResultInfo memory"
                             }
                           },
@@ -8089,7 +8089,7 @@
                           "lValueRequested": false,
                           "memberName": "totalAmountOut",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 13704,
+                          "referencedDeclaration": 13737,
                           "src": "6042:27:25",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -8269,7 +8269,7 @@
                           "referencedDeclaration": 8337,
                           "src": "6244:12:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                            "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                             "typeString": "struct ResultInfo memory"
                           }
                         },
@@ -8280,7 +8280,7 @@
                         "lValueRequested": false,
                         "memberName": "totalAmountOut",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 13704,
+                        "referencedDeclaration": 13737,
                         "src": "6244:27:25",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -8789,7 +8789,7 @@
                       "name": "addOrder",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14703,
+                      "referencedDeclaration": 14782,
                       "src": "6462:8:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bool_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -8840,7 +8840,7 @@
                         "referencedDeclaration": 8337,
                         "src": "6548:12:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                           "typeString": "struct ResultInfo memory"
                         }
                       },
@@ -8909,7 +8909,7 @@
                           "typeString": "uint256"
                         },
                         {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                           "typeString": "struct ResultInfo memory"
                         },
                         {
@@ -8936,7 +8936,7 @@
                       "referencedDeclaration": 8698,
                       "src": "6534:4:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_struct$_ResultInfo_$13719_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_bool_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_struct$_ResultInfo_$13752_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_bool_$returns$_t_uint256_$",
                         "typeString": "function (uint256,struct ResultInfo memory,address,address,uint256,bool) returns (uint256)"
                       }
                     },
@@ -11170,7 +11170,7 @@
                             "referencedDeclaration": 7892,
                             "src": "7936:10:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                              "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                               "typeString": "contract IBoboRouter"
                             }
                           }
@@ -11178,7 +11178,7 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                              "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                               "typeString": "contract IBoboRouter"
                             }
                           ],
@@ -11374,7 +11374,7 @@
                         "referencedDeclaration": 8549,
                         "src": "8005:13:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                           "typeString": "struct ResultInfo memory"
                         }
                       },
@@ -11450,7 +11450,7 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                           "typeString": "struct ResultInfo memory"
                         },
                         {
@@ -11479,7 +11479,7 @@
                         "referencedDeclaration": 7892,
                         "src": "7989:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                          "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                           "typeString": "contract IBoboRouter"
                         }
                       },
@@ -11490,10 +11490,10 @@
                       "lValueRequested": false,
                       "memberName": "swap",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13748,
+                      "referencedDeclaration": 13781,
                       "src": "7989:15:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$_t_struct$_ResultInfo_$13719_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_address_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_external_nonpayable$_t_struct$_ResultInfo_$13752_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_address_$returns$_t_uint256_$",
                         "typeString": "function (struct ResultInfo memory,address,address,uint256,address) external returns (uint256)"
                       }
                     },
@@ -11561,7 +11561,7 @@
                       "name": "setAMMDealOrder",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14927,
+                      "referencedDeclaration": 15006,
                       "src": "8073:15:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_uint256_$returns$_t_bool_$",
@@ -11604,7 +11604,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                        "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                         "typeString": "struct NFTInfo"
                       },
                       "typeName": {
@@ -11612,10 +11612,10 @@
                         "id": 8607,
                         "name": "NFTInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13557,
+                        "referencedDeclaration": 13590,
                         "src": "8128:7:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_NFTInfo_$13557_storage_ptr",
+                          "typeIdentifier": "t_struct$_NFTInfo_$13590_storage_ptr",
                           "typeString": "struct NFTInfo"
                         }
                       },
@@ -11654,10 +11654,10 @@
                         "name": "orderNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14600,
+                        "referencedDeclaration": 14679,
                         "src": "8155:8:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                          "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                           "typeString": "contract IOrderNFT"
                         }
                       },
@@ -11668,10 +11668,10 @@
                       "lValueRequested": false,
                       "memberName": "getOrderInfo",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13623,
+                      "referencedDeclaration": 13656,
                       "src": "8155:21:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13557_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13590_memory_ptr_$",
                         "typeString": "function (uint256) view external returns (struct NFTInfo memory)"
                       }
                     },
@@ -11686,7 +11686,7 @@
                     "src": "8155:31:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                      "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                       "typeString": "struct NFTInfo memory"
                     }
                   },
@@ -11748,7 +11748,7 @@
                               "referencedDeclaration": 8549,
                               "src": "8331:13:25",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                 "typeString": "struct ResultInfo memory"
                               }
                             },
@@ -11759,7 +11759,7 @@
                             "lValueRequested": false,
                             "memberName": "middleTokens",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 13712,
+                            "referencedDeclaration": 13745,
                             "src": "8331:26:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
@@ -12142,7 +12142,7 @@
                                 "referencedDeclaration": 8608,
                                 "src": "8547:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -12153,7 +12153,7 @@
                               "lValueRequested": false,
                               "memberName": "owner",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13536,
+                              "referencedDeclaration": 13569,
                               "src": "8547:15:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -12186,7 +12186,7 @@
                                   "referencedDeclaration": 8549,
                                   "src": "8602:13:25",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                    "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                     "typeString": "struct ResultInfo memory"
                                   }
                                 },
@@ -12197,7 +12197,7 @@
                                 "lValueRequested": false,
                                 "memberName": "partialAmountIns",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 13715,
+                                "referencedDeclaration": 13748,
                                 "src": "8602:30:25",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
@@ -12242,7 +12242,7 @@
                                   "referencedDeclaration": 8549,
                                   "src": "8665:13:25",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                    "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                     "typeString": "struct ResultInfo memory"
                                   }
                                 },
@@ -12253,7 +12253,7 @@
                                 "lValueRequested": false,
                                 "memberName": "partialAmountOuts",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 13718,
+                                "referencedDeclaration": 13751,
                                 "src": "8665:31:25",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
@@ -12298,7 +12298,7 @@
                                   "referencedDeclaration": 8549,
                                   "src": "8729:13:25",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                    "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                     "typeString": "struct ResultInfo memory"
                                   }
                                 },
@@ -12309,10 +12309,10 @@
                                 "lValueRequested": false,
                                 "memberName": "types",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 13709,
+                                "referencedDeclaration": 13742,
                                 "src": "8729:19:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_array$_t_enum$_SwapPool_$13532_$dyn_memory_ptr",
+                                  "typeIdentifier": "t_array$_t_enum$_SwapPool_$13565_$dyn_memory_ptr",
                                   "typeString": "enum SwapPool[] memory"
                                 }
                               },
@@ -12337,7 +12337,7 @@
                               "nodeType": "IndexAccess",
                               "src": "8729:22:25",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_enum$_SwapPool_$13532",
+                                "typeIdentifier": "t_enum$_SwapPool_$13565",
                                 "typeString": "enum SwapPool"
                               }
                             },
@@ -12374,7 +12374,7 @@
                                 "typeString": "uint256"
                               },
                               {
-                                "typeIdentifier": "t_enum$_SwapPool_$13532",
+                                "typeIdentifier": "t_enum$_SwapPool_$13565",
                                 "typeString": "enum SwapPool"
                               },
                               {
@@ -12386,10 +12386,10 @@
                             "name": "addOrderDetail",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14736,
+                            "referencedDeclaration": 14815,
                             "src": "8532:14:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_enum$_SwapPool_$13532_$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_uint256_$",
+                              "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_uint256_$_t_enum$_SwapPool_$13565_$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_uint256_$",
                               "typeString": "function (address,uint256,uint256,uint256,enum SwapPool,address[] memory) returns (uint256)"
                             }
                           },
@@ -12464,7 +12464,7 @@
                             "referencedDeclaration": 8549,
                             "src": "8221:13:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                              "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                               "typeString": "struct ResultInfo memory"
                             }
                           },
@@ -12475,10 +12475,10 @@
                           "lValueRequested": false,
                           "memberName": "types",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 13709,
+                          "referencedDeclaration": 13742,
                           "src": "8221:19:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_enum$_SwapPool_$13532_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_enum$_SwapPool_$13565_$dyn_memory_ptr",
                             "typeString": "enum SwapPool[] memory"
                           }
                         },
@@ -12507,7 +12507,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "commonType": {
-                        "typeIdentifier": "t_enum$_SwapPool_$13532",
+                        "typeIdentifier": "t_enum$_SwapPool_$13565",
                         "typeString": "enum SwapPool"
                       },
                       "id": 8629,
@@ -12528,7 +12528,7 @@
                             "referencedDeclaration": 8549,
                             "src": "8251:13:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                              "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                               "typeString": "struct ResultInfo memory"
                             }
                           },
@@ -12539,10 +12539,10 @@
                           "lValueRequested": false,
                           "memberName": "types",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 13709,
+                          "referencedDeclaration": 13742,
                           "src": "8251:19:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_enum$_SwapPool_$13532_$dyn_memory_ptr",
+                            "typeIdentifier": "t_array$_t_enum$_SwapPool_$13565_$dyn_memory_ptr",
                             "typeString": "enum SwapPool[] memory"
                           }
                         },
@@ -12567,7 +12567,7 @@
                         "nodeType": "IndexAccess",
                         "src": "8251:22:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_SwapPool_$13532",
+                          "typeIdentifier": "t_enum$_SwapPool_$13565",
                           "typeString": "enum SwapPool"
                         }
                       },
@@ -12581,10 +12581,10 @@
                           "name": "SwapPool",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 13532,
+                          "referencedDeclaration": 13565,
                           "src": "8277:8:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_SwapPool_$13532_$",
+                            "typeIdentifier": "t_type$_t_enum$_SwapPool_$13565_$",
                             "typeString": "type(enum SwapPool)"
                           }
                         },
@@ -12598,7 +12598,7 @@
                         "referencedDeclaration": null,
                         "src": "8277:11:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_SwapPool_$13532",
+                          "typeIdentifier": "t_enum$_SwapPool_$13565",
                           "typeString": "enum SwapPool"
                         }
                       },
@@ -12908,7 +12908,7 @@
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                    "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                     "typeString": "struct ResultInfo"
                   },
                   "typeName": {
@@ -12916,10 +12916,10 @@
                     "id": 8548,
                     "name": "ResultInfo",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 13719,
+                    "referencedDeclaration": 13752,
                     "src": "7652:10:25",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_ResultInfo_$13719_storage_ptr",
+                      "typeIdentifier": "t_struct$_ResultInfo_$13752_storage_ptr",
                       "typeString": "struct ResultInfo"
                     }
                   },
@@ -13109,7 +13109,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                        "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                         "typeString": "struct ResultInfo"
                       },
                       "typeName": {
@@ -13117,10 +13117,10 @@
                         "id": 8703,
                         "name": "ResultInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13719,
+                        "referencedDeclaration": 13752,
                         "src": "8977:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_storage_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_storage_ptr",
                           "typeString": "struct ResultInfo"
                         }
                       },
@@ -13196,7 +13196,7 @@
                         "referencedDeclaration": 7892,
                         "src": "9011:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                          "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                           "typeString": "contract IBoboRouter"
                         }
                       },
@@ -13207,10 +13207,10 @@
                       "lValueRequested": false,
                       "memberName": "getBestSwapPath",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13733,
+                      "referencedDeclaration": 13766,
                       "src": "9011:26:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                         "typeString": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                       }
                     },
@@ -13225,7 +13225,7 @@
                     "src": "9011:66:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                       "typeString": "tuple(uint256[] memory,struct ResultInfo memory)"
                     }
                   },
@@ -13278,7 +13278,7 @@
                       "referencedDeclaration": 8704,
                       "src": "9107:12:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                        "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                         "typeString": "struct ResultInfo memory"
                       }
                     },
@@ -13289,7 +13289,7 @@
                     "lValueRequested": false,
                     "memberName": "totalAmountOut",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 13704,
+                    "referencedDeclaration": 13737,
                     "src": "9107:27:25",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -13639,7 +13639,7 @@
                       "name": "getUserHangingOrderNumber",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 15195,
+                      "referencedDeclaration": 15274,
                       "src": "9414:25:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_uint256_$",
@@ -13750,7 +13750,7 @@
                             "name": "getUserHangingOrderId",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 15212,
+                            "referencedDeclaration": 15291,
                             "src": "9529:21:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_view$_t_address_$_t_uint256_$returns$_t_uint256_$",
@@ -13792,7 +13792,7 @@
                             "stateVariable": false,
                             "storageLocation": "memory",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                              "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                               "typeString": "struct NFTInfo"
                             },
                             "typeName": {
@@ -13800,10 +13800,10 @@
                               "id": 8764,
                               "name": "NFTInfo",
                               "nodeType": "UserDefinedTypeName",
-                              "referencedDeclaration": 13557,
+                              "referencedDeclaration": 13590,
                               "src": "9578:7:25",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_NFTInfo_$13557_storage_ptr",
+                                "typeIdentifier": "t_struct$_NFTInfo_$13590_storage_ptr",
                                 "typeString": "struct NFTInfo"
                               }
                             },
@@ -13842,10 +13842,10 @@
                               "name": "orderNFT",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 14600,
+                              "referencedDeclaration": 14679,
                               "src": "9605:8:25",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                                "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                                 "typeString": "contract IOrderNFT"
                               }
                             },
@@ -13856,10 +13856,10 @@
                             "lValueRequested": false,
                             "memberName": "getOrderInfo",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 13623,
+                            "referencedDeclaration": 13656,
                             "src": "9605:21:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13557_memory_ptr_$",
+                              "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13590_memory_ptr_$",
                               "typeString": "function (uint256) view external returns (struct NFTInfo memory)"
                             }
                           },
@@ -13874,7 +13874,7 @@
                           "src": "9605:30:25",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                            "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                             "typeString": "struct NFTInfo memory"
                           }
                         },
@@ -13893,7 +13893,7 @@
                             "referencedDeclaration": 8765,
                             "src": "9654:9:25",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                              "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                               "typeString": "struct NFTInfo memory"
                             }
                           },
@@ -13904,7 +13904,7 @@
                           "lValueRequested": false,
                           "memberName": "bBuyQuoteToken",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 13540,
+                          "referencedDeclaration": 13573,
                           "src": "9654:24:25",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -13953,7 +13953,7 @@
                                         "referencedDeclaration": 8765,
                                         "src": "9834:9:25",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                          "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                           "typeString": "struct NFTInfo memory"
                                         }
                                       },
@@ -13964,7 +13964,7 @@
                                       "lValueRequested": false,
                                       "memberName": "inAmount",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 13544,
+                                      "referencedDeclaration": 13577,
                                       "src": "9834:18:25",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -14078,7 +14078,7 @@
                                         "referencedDeclaration": 8765,
                                         "src": "9736:9:25",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                          "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                           "typeString": "struct NFTInfo memory"
                                         }
                                       },
@@ -14089,7 +14089,7 @@
                                       "lValueRequested": false,
                                       "memberName": "inAmount",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 13544,
+                                      "referencedDeclaration": 13577,
                                       "src": "9736:18:25",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -14439,7 +14439,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                        "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                         "typeString": "struct NFTInfo"
                       },
                       "typeName": {
@@ -14447,10 +14447,10 @@
                         "id": 8802,
                         "name": "NFTInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13557,
+                        "referencedDeclaration": 13590,
                         "src": "9988:7:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_NFTInfo_$13557_storage_ptr",
+                          "typeIdentifier": "t_struct$_NFTInfo_$13590_storage_ptr",
                           "typeString": "struct NFTInfo"
                         }
                       },
@@ -14489,10 +14489,10 @@
                         "name": "orderNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14600,
+                        "referencedDeclaration": 14679,
                         "src": "10015:8:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                          "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                           "typeString": "contract IOrderNFT"
                         }
                       },
@@ -14503,10 +14503,10 @@
                       "lValueRequested": false,
                       "memberName": "getOrderInfo",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13623,
+                      "referencedDeclaration": 13656,
                       "src": "10015:21:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13557_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13590_memory_ptr_$",
                         "typeString": "function (uint256) view external returns (struct NFTInfo memory)"
                       }
                     },
@@ -14521,7 +14521,7 @@
                     "src": "10015:31:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                      "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                       "typeString": "struct NFTInfo memory"
                     }
                   },
@@ -14607,7 +14607,7 @@
                         "referencedDeclaration": 8803,
                         "src": "10095:9:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                          "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                           "typeString": "struct NFTInfo memory"
                         }
                       },
@@ -14618,7 +14618,7 @@
                       "lValueRequested": false,
                       "memberName": "bBuyQuoteToken",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13540,
+                      "referencedDeclaration": 13573,
                       "src": "10095:24:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -14775,7 +14775,7 @@
                           "referencedDeclaration": 8803,
                           "src": "10238:9:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                            "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                             "typeString": "struct NFTInfo memory"
                           }
                         },
@@ -14786,7 +14786,7 @@
                         "lValueRequested": false,
                         "memberName": "owner",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 13536,
+                        "referencedDeclaration": 13569,
                         "src": "10238:15:25",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -14817,7 +14817,7 @@
                           "referencedDeclaration": 8803,
                           "src": "10264:9:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                            "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                             "typeString": "struct NFTInfo memory"
                           }
                         },
@@ -14828,7 +14828,7 @@
                         "lValueRequested": false,
                         "memberName": "inAmount",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 13544,
+                        "referencedDeclaration": 13577,
                         "src": "10264:18:25",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -15235,7 +15235,7 @@
                           "referencedDeclaration": 8803,
                           "src": "10441:9:25",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                            "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                             "typeString": "struct NFTInfo memory"
                           }
                         },
@@ -15246,7 +15246,7 @@
                         "lValueRequested": false,
                         "memberName": "inAmount",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 13544,
+                        "referencedDeclaration": 13577,
                         "src": "10441:18:25",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -15304,7 +15304,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                        "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                         "typeString": "struct ResultInfo"
                       },
                       "typeName": {
@@ -15312,10 +15312,10 @@
                         "id": 8860,
                         "name": "ResultInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13719,
+                        "referencedDeclaration": 13752,
                         "src": "10491:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_storage_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_storage_ptr",
                           "typeString": "struct ResultInfo"
                         }
                       },
@@ -15391,7 +15391,7 @@
                         "referencedDeclaration": 7892,
                         "src": "10525:10:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                          "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                           "typeString": "contract IBoboRouter"
                         }
                       },
@@ -15402,10 +15402,10 @@
                       "lValueRequested": false,
                       "memberName": "getBestSwapPath",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13733,
+                      "referencedDeclaration": 13766,
                       "src": "10525:26:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_uint256_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                         "typeString": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                       }
                     },
@@ -15420,7 +15420,7 @@
                     "src": "10525:55:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13719_memory_ptr_$",
+                      "typeIdentifier": "t_tuple$_t_array$_t_uint256_$dyn_memory_ptr_$_t_struct$_ResultInfo_$13752_memory_ptr_$",
                       "typeString": "tuple(uint256[] memory,struct ResultInfo memory)"
                     }
                   },
@@ -15450,7 +15450,7 @@
                         "referencedDeclaration": 8861,
                         "src": "10594:12:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                           "typeString": "struct ResultInfo memory"
                         }
                       },
@@ -15461,7 +15461,7 @@
                       "lValueRequested": false,
                       "memberName": "totalAmountOut",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13704,
+                      "referencedDeclaration": 13737,
                       "src": "10594:27:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -15481,7 +15481,7 @@
                         "referencedDeclaration": 8803,
                         "src": "10625:9:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                          "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                           "typeString": "struct NFTInfo memory"
                         }
                       },
@@ -15492,7 +15492,7 @@
                       "lValueRequested": false,
                       "memberName": "minOutAmount",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13546,
+                      "referencedDeclaration": 13579,
                       "src": "10625:22:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -15561,7 +15561,7 @@
                             "name": "setExceptionOrder",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14975,
+                            "referencedDeclaration": 15054,
                             "src": "10911:17:25",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_string_memory_ptr_$returns$_t_bool_$",
@@ -15738,7 +15738,7 @@
                                       "referencedDeclaration": 8803,
                                       "src": "10751:9:25",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                        "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                         "typeString": "struct NFTInfo memory"
                                       }
                                     },
@@ -15749,7 +15749,7 @@
                                     "lValueRequested": false,
                                     "memberName": "owner",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 13536,
+                                    "referencedDeclaration": 13569,
                                     "src": "10751:15:25",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_address",
@@ -15882,7 +15882,7 @@
                                 "referencedDeclaration": 8861,
                                 "src": "10832:12:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                  "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                   "typeString": "struct ResultInfo memory"
                                 }
                               },
@@ -15951,7 +15951,7 @@
                                   "typeString": "uint256"
                                 },
                                 {
-                                  "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                  "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                   "typeString": "struct ResultInfo memory"
                                 },
                                 {
@@ -15978,7 +15978,7 @@
                               "referencedDeclaration": 8698,
                               "src": "10817:4:25",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_struct$_ResultInfo_$13719_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_bool_$returns$_t_uint256_$",
+                                "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$_t_struct$_ResultInfo_$13752_memory_ptr_$_t_address_$_t_address_$_t_uint256_$_t_bool_$returns$_t_uint256_$",
                                 "typeString": "function (uint256,struct ResultInfo memory,address,address,uint256,bool) returns (uint256)"
                               }
                             },
@@ -16268,7 +16268,7 @@
                       "name": "getHeaderOrderIndex",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14993,
+                      "referencedDeclaration": 15072,
                       "src": "11245:19:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_bool_$returns$_t_bool_$_t_uint256_$",
@@ -16396,7 +16396,7 @@
                         "name": "getValue",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14649,
+                        "referencedDeclaration": 14728,
                         "src": "11321:8:25",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_uint256_$returns$_t_uint256_$",
@@ -16523,7 +16523,7 @@
                       "name": "getHeaderOrderIndex",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14993,
+                      "referencedDeclaration": 15072,
                       "src": "11410:19:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$_t_bool_$returns$_t_bool_$_t_uint256_$",
@@ -16715,7 +16715,7 @@
                         "name": "getValue",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14649,
+                        "referencedDeclaration": 14728,
                         "src": "11488:8:25",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_view$_t_uint256_$returns$_t_uint256_$",
@@ -17574,7 +17574,7 @@
                       "name": "setManualCancelOrder",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14879,
+                      "referencedDeclaration": 14958,
                       "src": "12372:20:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$_t_bool_$",
@@ -17617,7 +17617,7 @@
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                        "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                         "typeString": "struct NFTInfo"
                       },
                       "typeName": {
@@ -17625,10 +17625,10 @@
                         "id": 9031,
                         "name": "NFTInfo",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 13557,
+                        "referencedDeclaration": 13590,
                         "src": "12414:7:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_NFTInfo_$13557_storage_ptr",
+                          "typeIdentifier": "t_struct$_NFTInfo_$13590_storage_ptr",
                           "typeString": "struct NFTInfo"
                         }
                       },
@@ -17667,10 +17667,10 @@
                         "name": "orderNFT",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14600,
+                        "referencedDeclaration": 14679,
                         "src": "12441:8:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IOrderNFT_$13657",
+                          "typeIdentifier": "t_contract$_IOrderNFT_$13690",
                           "typeString": "contract IOrderNFT"
                         }
                       },
@@ -17681,10 +17681,10 @@
                       "lValueRequested": false,
                       "memberName": "getOrderInfo",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13623,
+                      "referencedDeclaration": 13656,
                       "src": "12441:21:25",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13557_memory_ptr_$",
+                        "typeIdentifier": "t_function_external_view$_t_uint256_$returns$_t_struct$_NFTInfo_$13590_memory_ptr_$",
                         "typeString": "function (uint256) view external returns (struct NFTInfo memory)"
                       }
                     },
@@ -17699,7 +17699,7 @@
                     "src": "12441:31:25",
                     "tryCall": false,
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                      "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                       "typeString": "struct NFTInfo memory"
                     }
                   },
@@ -17755,7 +17755,7 @@
                         "referencedDeclaration": 9032,
                         "src": "12501:9:25",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                          "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                           "typeString": "struct NFTInfo memory"
                         }
                       },
@@ -17766,7 +17766,7 @@
                       "lValueRequested": false,
                       "memberName": "bBuyQuoteToken",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 13540,
+                      "referencedDeclaration": 13573,
                       "src": "12501:24:25",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -17938,7 +17938,7 @@
                                 "referencedDeclaration": 9032,
                                 "src": "12809:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -17949,7 +17949,7 @@
                               "lValueRequested": false,
                               "memberName": "owner",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13536,
+                              "referencedDeclaration": 13569,
                               "src": "12809:15:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -17967,7 +17967,7 @@
                                 "referencedDeclaration": 9032,
                                 "src": "12826:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -17978,7 +17978,7 @@
                               "lValueRequested": false,
                               "memberName": "inAmount",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13544,
+                              "referencedDeclaration": 13577,
                               "src": "12826:18:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -18118,7 +18118,7 @@
                                 "referencedDeclaration": 9032,
                                 "src": "12644:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -18129,7 +18129,7 @@
                               "lValueRequested": false,
                               "memberName": "owner",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13536,
+                              "referencedDeclaration": 13569,
                               "src": "12644:15:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -18147,7 +18147,7 @@
                                 "referencedDeclaration": 9032,
                                 "src": "12661:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -18158,7 +18158,7 @@
                               "lValueRequested": false,
                               "memberName": "inAmount",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13544,
+                              "referencedDeclaration": 13577,
                               "src": "12661:18:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -18242,7 +18242,7 @@
                                 "referencedDeclaration": 9032,
                                 "src": "12718:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -18253,7 +18253,7 @@
                               "lValueRequested": false,
                               "memberName": "owner",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13536,
+                              "referencedDeclaration": 13569,
                               "src": "12718:15:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
@@ -18271,7 +18271,7 @@
                                 "referencedDeclaration": 9032,
                                 "src": "12735:9:25",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_NFTInfo_$13557_memory_ptr",
+                                  "typeIdentifier": "t_struct$_NFTInfo_$13590_memory_ptr",
                                   "typeString": "struct NFTInfo memory"
                                 }
                               },
@@ -18282,7 +18282,7 @@
                               "lValueRequested": false,
                               "memberName": "inAmount",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 13544,
+                              "referencedDeclaration": 13577,
                               "src": "12735:18:25",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -18524,7 +18524,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 15315,
+          "SourceUnit": 15394,
           "absolutePath": "project:/contracts/common/OrderStore.sol",
           "file": "./common/OrderStore.sol",
           "scope": 9088,
@@ -18539,7 +18539,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 14026,
+          "SourceUnit": 14105,
           "absolutePath": "project:/contracts/common/MixinAuthorizable.sol",
           "file": "./common/MixinAuthorizable.sol",
           "scope": 9088,
@@ -19868,19 +19868,19 @@
             22,
             131,
             2313,
-            14025,
-            15314,
-            15324
+            14104,
+            15393,
+            15403
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             9087,
-            15314,
+            15393,
             2313,
-            15324,
-            14025,
+            15403,
+            14104,
             131,
             22
           ],
@@ -19897,7 +19897,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "MixinAuthorizable",
-                  "referencedDeclaration": 14025,
+                  "referencedDeclaration": 14104,
                   "type": "contract MixinAuthorizable"
                 },
                 "id": 7872,
@@ -19918,7 +19918,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "OrderStore",
-                  "referencedDeclaration": 15314,
+                  "referencedDeclaration": 15393,
                   "type": "contract OrderStore"
                 },
                 "id": 7874,
@@ -20158,7 +20158,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "IBoboRouter",
-                  "referencedDeclaration": 13749,
+                  "referencedDeclaration": 13782,
                   "type": "contract IBoboRouter"
                 },
                 "id": 7891,
@@ -20731,7 +20731,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 15314,
+                      "referencedDeclaration": 15393,
                       "type": "type(contract OrderStore)",
                       "value": "OrderStore"
                     },
@@ -21822,7 +21822,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14600,
+                              "referencedDeclaration": 14679,
                               "type": "contract IOrderNFT",
                               "value": "orderNFT"
                             },
@@ -21857,7 +21857,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13657,
+                                  "referencedDeclaration": 13690,
                                   "type": "type(contract IOrderNFT)",
                                   "value": "IOrderNFT"
                                 },
@@ -21913,7 +21913,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14602,
+                              "referencedDeclaration": 14681,
                               "type": "contract IOrderDetailNFT",
                               "value": "orderDetailNFT"
                             },
@@ -21948,7 +21948,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13702,
+                                  "referencedDeclaration": 13735,
                                   "type": "type(contract IOrderDetailNFT)",
                                   "value": "IOrderDetailNFT"
                                 },
@@ -22068,7 +22068,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13919,
+                      "referencedDeclaration": 13998,
                       "type": "modifier ()",
                       "value": "onlyAuthorized"
                     },
@@ -22257,7 +22257,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 13919,
+                      "referencedDeclaration": 13998,
                       "type": "modifier ()",
                       "value": "onlyAuthorized"
                     },
@@ -22326,7 +22326,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 13749,
+                                  "referencedDeclaration": 13782,
                                   "type": "type(contract IBoboRouter)",
                                   "value": "IBoboRouter"
                                 },
@@ -23669,7 +23669,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14703,
+                              "referencedDeclaration": 14782,
                               "type": "function (bool,uint256,uint256,uint256) returns (uint256)",
                               "value": "addOrder"
                             },
@@ -24296,7 +24296,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "ResultInfo",
-                              "referencedDeclaration": 13719,
+                              "referencedDeclaration": 13752,
                               "type": "struct ResultInfo"
                             },
                             "id": 8168,
@@ -24345,7 +24345,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBestSwapPath",
-                              "referencedDeclaration": 13733,
+                              "referencedDeclaration": 13766,
                               "type": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                             },
                             "children": [
@@ -24502,7 +24502,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "totalAmountOut",
-                              "referencedDeclaration": 13704,
+                              "referencedDeclaration": 13737,
                               "type": "uint256"
                             },
                             "children": [
@@ -25025,7 +25025,7 @@
                                           "typeString": "uint256"
                                         },
                                         {
-                                          "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                          "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                           "typeString": "struct ResultInfo memory"
                                         },
                                         {
@@ -26971,7 +26971,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "ResultInfo",
-                              "referencedDeclaration": 13719,
+                              "referencedDeclaration": 13752,
                               "type": "struct ResultInfo"
                             },
                             "id": 8336,
@@ -27020,7 +27020,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBestSwapPath",
-                              "referencedDeclaration": 13733,
+                              "referencedDeclaration": 13766,
                               "type": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                             },
                             "children": [
@@ -27160,7 +27160,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "totalAmountOut",
-                                  "referencedDeclaration": 13704,
+                                  "referencedDeclaration": 13737,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -27320,7 +27320,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "totalAmountOut",
-                                  "referencedDeclaration": 13704,
+                                  "referencedDeclaration": 13737,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -27831,7 +27831,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14703,
+                              "referencedDeclaration": 14782,
                               "type": "function (bool,uint256,uint256,uint256) returns (uint256)",
                               "value": "addOrder"
                             },
@@ -27931,7 +27931,7 @@
                                   "typeString": "uint256"
                                 },
                                 {
-                                  "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                  "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                   "typeString": "struct ResultInfo memory"
                                 },
                                 {
@@ -30106,7 +30106,7 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "ResultInfo",
-                          "referencedDeclaration": 13719,
+                          "referencedDeclaration": 13752,
                           "type": "struct ResultInfo"
                         },
                         "id": 8548,
@@ -30661,7 +30661,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_contract$_IBoboRouter_$13749",
+                                      "typeIdentifier": "t_contract$_IBoboRouter_$13782",
                                       "typeString": "contract IBoboRouter"
                                     }
                                   ],
@@ -30784,7 +30784,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                  "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                   "typeString": "struct ResultInfo memory"
                                 },
                                 {
@@ -30809,7 +30809,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "swap",
-                              "referencedDeclaration": 13748,
+                              "referencedDeclaration": 13781,
                               "type": "function (struct ResultInfo memory,address,address,uint256,address) external returns (uint256)"
                             },
                             "children": [
@@ -30962,7 +30962,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14927,
+                              "referencedDeclaration": 15006,
                               "type": "function (uint256,uint256) returns (bool)",
                               "value": "setAMMDealOrder"
                             },
@@ -31033,7 +31033,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "NFTInfo",
-                              "referencedDeclaration": 13557,
+                              "referencedDeclaration": 13590,
                               "type": "struct NFTInfo"
                             },
                             "id": 8607,
@@ -31074,7 +31074,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getOrderInfo",
-                              "referencedDeclaration": 13623,
+                              "referencedDeclaration": 13656,
                               "type": "function (uint256) view external returns (struct NFTInfo memory)"
                             },
                             "children": [
@@ -31084,7 +31084,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14600,
+                                  "referencedDeclaration": 14679,
                                   "type": "contract IOrderNFT",
                                   "value": "orderNFT"
                                 },
@@ -31244,7 +31244,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "types",
-                                      "referencedDeclaration": 13709,
+                                      "referencedDeclaration": 13742,
                                       "type": "enum SwapPool[] memory"
                                     },
                                     "children": [
@@ -31281,7 +31281,7 @@
                             "attributes": {
                               "argumentTypes": null,
                               "commonType": {
-                                "typeIdentifier": "t_enum$_SwapPool_$13532",
+                                "typeIdentifier": "t_enum$_SwapPool_$13565",
                                 "typeString": "enum SwapPool"
                               },
                               "isConstant": false,
@@ -31310,7 +31310,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "types",
-                                      "referencedDeclaration": 13709,
+                                      "referencedDeclaration": 13742,
                                       "type": "enum SwapPool[] memory"
                                     },
                                     "children": [
@@ -31370,7 +31370,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 13532,
+                                      "referencedDeclaration": 13565,
                                       "type": "type(enum SwapPool)",
                                       "value": "SwapPool"
                                     },
@@ -31487,7 +31487,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "middleTokens",
-                                      "referencedDeclaration": 13712,
+                                      "referencedDeclaration": 13745,
                                       "type": "address[] memory"
                                     },
                                     "children": [
@@ -31921,7 +31921,7 @@
                                           "typeString": "uint256"
                                         },
                                         {
-                                          "typeIdentifier": "t_enum$_SwapPool_$13532",
+                                          "typeIdentifier": "t_enum$_SwapPool_$13565",
                                           "typeString": "enum SwapPool"
                                         },
                                         {
@@ -31932,7 +31932,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14736,
+                                      "referencedDeclaration": 14815,
                                       "type": "function (address,uint256,uint256,uint256,enum SwapPool,address[] memory) returns (uint256)",
                                       "value": "addOrderDetail"
                                     },
@@ -31948,7 +31948,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "owner",
-                                      "referencedDeclaration": 13536,
+                                      "referencedDeclaration": 13569,
                                       "type": "address"
                                     },
                                     "children": [
@@ -32003,7 +32003,7 @@
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "partialAmountIns",
-                                          "referencedDeclaration": 13715,
+                                          "referencedDeclaration": 13748,
                                           "type": "uint256[] memory"
                                         },
                                         "children": [
@@ -32063,7 +32063,7 @@
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "partialAmountOuts",
-                                          "referencedDeclaration": 13718,
+                                          "referencedDeclaration": 13751,
                                           "type": "uint256[] memory"
                                         },
                                         "children": [
@@ -32123,7 +32123,7 @@
                                           "isPure": false,
                                           "lValueRequested": false,
                                           "member_name": "types",
-                                          "referencedDeclaration": 13709,
+                                          "referencedDeclaration": 13742,
                                           "type": "enum SwapPool[] memory"
                                         },
                                         "children": [
@@ -32463,7 +32463,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "ResultInfo",
-                              "referencedDeclaration": 13719,
+                              "referencedDeclaration": 13752,
                               "type": "struct ResultInfo"
                             },
                             "id": 8703,
@@ -32512,7 +32512,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBestSwapPath",
-                              "referencedDeclaration": 13733,
+                              "referencedDeclaration": 13766,
                               "type": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                             },
                             "children": [
@@ -32630,7 +32630,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "member_name": "totalAmountOut",
-                          "referencedDeclaration": 13704,
+                          "referencedDeclaration": 13737,
                           "type": "uint256"
                         },
                         "children": [
@@ -33078,7 +33078,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15195,
+                              "referencedDeclaration": 15274,
                               "type": "function (address) view returns (uint256)",
                               "value": "getUserHangingOrderNumber"
                             },
@@ -33323,7 +33323,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 15212,
+                                      "referencedDeclaration": 15291,
                                       "type": "function (address,uint256) view returns (uint256)",
                                       "value": "getUserHangingOrderId"
                                     },
@@ -33394,7 +33394,7 @@
                                     "attributes": {
                                       "contractScope": null,
                                       "name": "NFTInfo",
-                                      "referencedDeclaration": 13557,
+                                      "referencedDeclaration": 13590,
                                       "type": "struct NFTInfo"
                                     },
                                     "id": 8764,
@@ -33435,7 +33435,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "getOrderInfo",
-                                      "referencedDeclaration": 13623,
+                                      "referencedDeclaration": 13656,
                                       "type": "function (uint256) view external returns (struct NFTInfo memory)"
                                     },
                                     "children": [
@@ -33445,7 +33445,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 14600,
+                                          "referencedDeclaration": 14679,
                                           "type": "contract IOrderNFT",
                                           "value": "orderNFT"
                                         },
@@ -33492,7 +33492,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "bBuyQuoteToken",
-                                  "referencedDeclaration": 13540,
+                                  "referencedDeclaration": 13573,
                                   "type": "bool"
                                 },
                                 "children": [
@@ -33604,7 +33604,7 @@
                                                   "isPure": false,
                                                   "lValueRequested": false,
                                                   "member_name": "inAmount",
-                                                  "referencedDeclaration": 13544,
+                                                  "referencedDeclaration": 13577,
                                                   "type": "uint256"
                                                 },
                                                 "children": [
@@ -33736,7 +33736,7 @@
                                                   "isPure": false,
                                                   "lValueRequested": false,
                                                   "member_name": "inAmount",
-                                                  "referencedDeclaration": 13544,
+                                                  "referencedDeclaration": 13577,
                                                   "type": "uint256"
                                                 },
                                                 "children": [
@@ -33918,7 +33918,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "NFTInfo",
-                              "referencedDeclaration": 13557,
+                              "referencedDeclaration": 13590,
                               "type": "struct NFTInfo"
                             },
                             "id": 8802,
@@ -33959,7 +33959,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getOrderInfo",
-                              "referencedDeclaration": 13623,
+                              "referencedDeclaration": 13656,
                               "type": "function (uint256) view external returns (struct NFTInfo memory)"
                             },
                             "children": [
@@ -33969,7 +33969,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14600,
+                                  "referencedDeclaration": 14679,
                                   "type": "contract IOrderNFT",
                                   "value": "orderNFT"
                                 },
@@ -34090,7 +34090,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "bBuyQuoteToken",
-                              "referencedDeclaration": 13540,
+                              "referencedDeclaration": 13573,
                               "type": "bool"
                             },
                             "children": [
@@ -34314,7 +34314,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "owner",
-                              "referencedDeclaration": 13536,
+                              "referencedDeclaration": 13569,
                               "type": "address"
                             },
                             "children": [
@@ -34359,7 +34359,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "inAmount",
-                              "referencedDeclaration": 13544,
+                              "referencedDeclaration": 13577,
                               "type": "uint256"
                             },
                             "children": [
@@ -34757,7 +34757,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "inAmount",
-                                  "referencedDeclaration": 13544,
+                                  "referencedDeclaration": 13577,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -34835,7 +34835,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "ResultInfo",
-                              "referencedDeclaration": 13719,
+                              "referencedDeclaration": 13752,
                               "type": "struct ResultInfo"
                             },
                             "id": 8860,
@@ -34884,7 +34884,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getBestSwapPath",
-                              "referencedDeclaration": 13733,
+                              "referencedDeclaration": 13766,
                               "type": "function (address,address,uint256) view external returns (uint256[] memory,struct ResultInfo memory)"
                             },
                             "children": [
@@ -34984,7 +34984,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "totalAmountOut",
-                              "referencedDeclaration": 13704,
+                              "referencedDeclaration": 13737,
                               "type": "uint256"
                             },
                             "children": [
@@ -35015,7 +35015,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "minOutAmount",
-                              "referencedDeclaration": 13546,
+                              "referencedDeclaration": 13579,
                               "type": "uint256"
                             },
                             "children": [
@@ -35244,7 +35244,7 @@
                                               "isPure": false,
                                               "lValueRequested": false,
                                               "member_name": "owner",
-                                              "referencedDeclaration": 13536,
+                                              "referencedDeclaration": 13569,
                                               "type": "address"
                                             },
                                             "children": [
@@ -35352,7 +35352,7 @@
                                               "typeString": "uint256"
                                             },
                                             {
-                                              "typeIdentifier": "t_struct$_ResultInfo_$13719_memory_ptr",
+                                              "typeIdentifier": "t_struct$_ResultInfo_$13752_memory_ptr",
                                               "typeString": "struct ResultInfo memory"
                                             },
                                             {
@@ -35525,7 +35525,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 14975,
+                                      "referencedDeclaration": 15054,
                                       "type": "function (uint256,string memory) returns (bool)",
                                       "value": "setExceptionOrder"
                                     },
@@ -35831,7 +35831,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14993,
+                              "referencedDeclaration": 15072,
                               "type": "function (bool) view returns (bool,uint256)",
                               "value": "getHeaderOrderIndex"
                             },
@@ -35952,7 +35952,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14649,
+                                  "referencedDeclaration": 14728,
                                   "type": "function (uint256) view returns (uint256)",
                                   "value": "getValue"
                                 },
@@ -36097,7 +36097,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14993,
+                              "referencedDeclaration": 15072,
                               "type": "function (bool) view returns (bool,uint256)",
                               "value": "getHeaderOrderIndex"
                             },
@@ -36218,7 +36218,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14649,
+                                  "referencedDeclaration": 14728,
                                   "type": "function (uint256) view returns (uint256)",
                                   "value": "getValue"
                                 },
@@ -37294,7 +37294,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 14879,
+                              "referencedDeclaration": 14958,
                               "type": "function (uint256) returns (bool)",
                               "value": "setManualCancelOrder"
                             },
@@ -37351,7 +37351,7 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "NFTInfo",
-                              "referencedDeclaration": 13557,
+                              "referencedDeclaration": 13590,
                               "type": "struct NFTInfo"
                             },
                             "id": 9031,
@@ -37392,7 +37392,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "getOrderInfo",
-                              "referencedDeclaration": 13623,
+                              "referencedDeclaration": 13656,
                               "type": "function (uint256) view external returns (struct NFTInfo memory)"
                             },
                             "children": [
@@ -37402,7 +37402,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 14600,
+                                  "referencedDeclaration": 14679,
                                   "type": "contract IOrderNFT",
                                   "value": "orderNFT"
                                 },
@@ -37493,7 +37493,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "bBuyQuoteToken",
-                              "referencedDeclaration": 13540,
+                              "referencedDeclaration": 13573,
                               "type": "bool"
                             },
                             "children": [
@@ -37750,7 +37750,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "owner",
-                                      "referencedDeclaration": 13536,
+                                      "referencedDeclaration": 13569,
                                       "type": "address"
                                     },
                                     "children": [
@@ -37781,7 +37781,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "inAmount",
-                                      "referencedDeclaration": 13544,
+                                      "referencedDeclaration": 13577,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -37920,7 +37920,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "owner",
-                                      "referencedDeclaration": 13536,
+                                      "referencedDeclaration": 13569,
                                       "type": "address"
                                     },
                                     "children": [
@@ -37951,7 +37951,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "inAmount",
-                                      "referencedDeclaration": 13544,
+                                      "referencedDeclaration": 13577,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -38097,7 +38097,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "owner",
-                                      "referencedDeclaration": 13536,
+                                      "referencedDeclaration": 13569,
                                       "type": "address"
                                     },
                                     "children": [
@@ -38128,7 +38128,7 @@
                                       "isPure": false,
                                       "lValueRequested": false,
                                       "member_name": "inAmount",
-                                      "referencedDeclaration": 13544,
+                                      "referencedDeclaration": 13577,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -38197,7 +38197,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-08-29T16:50:31.446Z",
+  "updatedAt": "2021-08-29T16:54:37.450Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
