@@ -61,8 +61,6 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
     uint256 public totalAllocPoint = 0; 
     mapping(address => uint256) public tokenPidMap;
 
-    mapping(address => bool) public _auth;
-
     event Deposit(address indexed _tokenAddr, address indexed user, uint256 amount);
     event Withdraw(address indexed _tokenAddr, address indexed user, uint256 amount);
     event EmergencyWithdraw(
