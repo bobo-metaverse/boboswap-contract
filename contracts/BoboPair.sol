@@ -92,7 +92,7 @@ contract BoboPair is MixinAuthorizable, OrderStore {
         if (_bBuyQuoteToken) {
             minOutAmount = _amountIn.mul(10**quoteTokenDecimals).div(_spotPrice).mul(BasePercent - _slippagePercent).div(BasePercent);
         } else {
-            minOutAmount = _amountIn.mul(_spotPrice).div(10**baseTokenDecimals).mul(BasePercent - _slippagePercent).div(BasePercent);
+            minOutAmount = _amountIn.mul(_spotPrice).div(10**quoteTokenDecimals).mul(BasePercent - _slippagePercent).div(BasePercent);
         }
         uint256 orderId = addOrder(_bBuyQuoteToken, _spotPrice, _amountIn, minOutAmount);
         

@@ -46,7 +46,7 @@ contract BatchCreatePairs {
                   0xD6DF932A45C0f255f85145f286eA0b292B21C90B 
                 ];
                 
-    BoboFactoryOnMatic public boboFactory = BoboFactoryOnMatic(0x0326D887A6dde69E874EA70Fd842658125Eafc41);
+    BoboFactory public boboFactory = BoboFactory(0x0326D887A6dde69E874EA70Fd842658125Eafc41);
     BoboFarmer public boboFarmer = BoboFarmer(0xd79Df7Ec6Ff4f5dDc53A3D60ecaf25316a532baD);
     StratMaticSushi public strat;
     address public boboRouter;
@@ -62,7 +62,7 @@ contract BatchCreatePairs {
     
     function setAddrs(address _boboRouter, address _factory, address _farmer, address _exManager, address _orderNFT, address _orderDetailNFT) public {
         boboRouter = _boboRouter;
-        boboFactory = BoboFactoryOnMatic(_factory);
+        boboFactory = BoboFactory(_factory);
         boboFarmer = BoboFarmer(_farmer);
         exManager = EXManager(_exManager);
         orderNFT = OrderNFT(_orderNFT);
@@ -70,7 +70,7 @@ contract BatchCreatePairs {
     }
 
     function setFactory(address _factory) public {
-        boboFactory = BoboFactoryOnMatic(_factory);
+        boboFactory = BoboFactory(_factory);
     }
     
     function creatOnePair(address _quoteToken, address _baseToken) public {        

@@ -19,7 +19,7 @@ interface IBoboPair is IAuthorizable {
     function getTotalHangingTokenAmount(address _userAddr) view external returns(uint256 baseTokenAmount, uint256 quoteTokenAmount);
 }
 
-contract BoboFactoryOnMatic is Ownable {
+contract BoboFactory is Ownable {
     using SafeMath for uint256;
     
     address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
