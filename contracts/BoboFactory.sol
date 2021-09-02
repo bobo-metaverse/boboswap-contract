@@ -10,6 +10,7 @@ interface IMinter {
 
 interface IAuthorizable {
     function addAuthorized(address _authorizedAddr) external returns (bool);
+    function isAuthorized(address _authorizedAddr) external view returns (bool);
 }
 
 interface IBoboPair is IAuthorizable {
@@ -65,6 +66,7 @@ contract BoboFactory is Ownable {
             pairAddr := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
         IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT, orderDetailNFT);
+        require(IBoboPair(pairAddr).isAuthorized(address(this)), "BoboFactory: factory NOT the auth of pair.");
         IBoboPair(pairAddr).setExManager(exManager);
         IBoboPair(pairAddr).setRouter(boboRouter);
         
