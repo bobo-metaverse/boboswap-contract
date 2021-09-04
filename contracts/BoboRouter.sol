@@ -10,7 +10,6 @@ contract BoboRouter is Ownable {
     
     address public constant quickSwapFactory = 0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32;
     address public constant quickSwapRouter = 0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff; 
-    address public constant quickSwapUsdtMaticPair = 0x604229c960e5CACF2aaEAc8Be68Ac07BA9dF81c3;
     
     address public constant sushiSwapFactory = 0xc35DADB65012eC5796536bD9864eD8773aBc74C4;
     address public constant sushiSwapRouter = 0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506;
@@ -18,13 +17,18 @@ contract BoboRouter is Ownable {
     address public constant USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;   // decimals = 6
     address public constant USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;   // decimals = 6
     address public constant WMATIC = 0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270; // decimals = 18
+    address public constant WETH = 0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619; // decimals = 18
+    address public constant QUICK = 0x831753DD7087CaC61aB5644b308642cc1c33Dc13; // decimals = 18
+
     address public constant burnAddress = 0x000000000000000000000000000000000000dEaD;
     uint256 public constant FACTOR = 1e8;
-    uint256 public constant DECIMALS_GAP = 1e12;
-    AggregatorV3Interface internal priceFeed = AggregatorV3Interface(0xAB594600376Ec9fD91F8e885dADF0CE036862dE0);
+    AggregatorV3Interface internal wmaticPriceFeed = AggregatorV3Interface(0xAB594600376Ec9fD91F8e885dADF0CE036862dE0);
+    AggregatorV3Interface internal wethPriceFeed = AggregatorV3Interface(0xF9680D99D6C9589e2a93a78A04A279e509205945);
+    AggregatorV3Interface internal quickPriceFeed = AggregatorV3Interface(0xa058689f4bCa95208bba3F265674AE95dED75B6D);
+    mapping(address => AggregatorV3Interface) public tokenAggregatorMap;
     
-    address[] public middleTokens = [USDT, USDC, WMATIC];
-    uint256 public MinLiquidityValue = 1e9;  // 流动性>=1000U 
+    address[] public middleTokens = [USDT, USDC, WMATIC, WETH, QUICK];
+    uint256 public MinLiquidityValue = 1e11;  // 流动性>=100000U 
     
     struct PathsInfo {
         address[] tokens;
@@ -33,19 +37,32 @@ contract BoboRouter is Ownable {
     }
     
     constructor() public {
+        tokenAggregatorMap[WMATIC] = wmaticPriceFeed;
+        tokenAggregatorMap[WETH] = wethPriceFeed;
+        tokenAggregatorMap[QUICK] = quickPriceFeed;
+    }
+
+    function addMiddleTokenAndAggregator(address _middleToken, address _aggregator) public onlyOwner {
+        require(tokenAggregatorMap[_middleToken] == AggregatorV3Interface(address(0)), "BoboRouter: middle token EXIST.");
+        middleTokens.push(_middleToken);
+        tokenAggregatorMap[_middleToken] = AggregatorV3Interface(_aggregator);
     }
     
     function isUToken(address token) public pure returns(bool) {
         return token == USDT || token == USDC;
     }
     
-    function getWMaticPriceOnQuickSwap() public view returns(uint256) {
-       (address token0, ) = USDT < WMATIC ? (USDT, WMATIC) : (WMATIC, USDT);
-       (uint256 reserveA, uint256 reserveB,) = ICommonPair(quickSwapUsdtMaticPair).getReserves();
-       return token0 == USDT ? reserveA.mul(FACTOR).mul(DECIMALS_GAP).div(reserveB) : reserveB.mul(FACTOR).mul(DECIMALS_GAP).div(reserveA);
+    function getBaseTokenPriceOnQuickSwap(address baseToken) public view returns(uint256) {
+       (address token0, ) = USDC < baseToken ? (USDC, baseToken) : (baseToken, USDC);
+       address pairAddr = ICommonFactory(quickSwapFactory).getPair(USDC, baseToken);
+       (uint256 reserveA, uint256 reserveB,) = ICommonPair(pairAddr).getReserves();
+       uint256 decimals = ERC20(baseToken).decimals();
+       uint256 decimalsGap = decimals - ERC20(USDC).decimals();
+       return token0 == USDC ? reserveA.mul(FACTOR).mul(10**decimalsGap).div(reserveB) : reserveB.mul(FACTOR).mul(10**decimalsGap).div(reserveA);
     }
     
-    function getWMaticPriceOnChainlink() public view returns(uint256) {
+    function getBaseTokenPriceOnChainlink(address baseToken) public view returns(uint256) {
+        AggregatorV3Interface priceFeed = tokenAggregatorMap[baseToken];
        (, int price,,,) = priceFeed.latestRoundData();
         return uint256(price);
     }
@@ -69,16 +86,19 @@ contract BoboRouter is Ownable {
            } else if (isUToken(token1)) {
                tmpUValue = reserveB;
            } else {
-               uint256 wMaticPriceOnQuickSwap = getWMaticPriceOnQuickSwap();
-               uint256 wMaticPriceOnChainlink = getWMaticPriceOnChainlink();
+               (address baseToken, uint256 reserve) = tokenAggregatorMap[token0] != AggregatorV3Interface(address(0)) ? (token0, reserveA) : (token1, reserveB); 
+               uint256 baseTokenPriceOnQuickSwap = getBaseTokenPriceOnQuickSwap(baseToken);
+               uint256 baseTokenPriceOnChainlink = getBaseTokenPriceOnChainlink(baseToken);
                uint256 gap = 0;
-               if (wMaticPriceOnQuickSwap > wMaticPriceOnChainlink) {
-                   gap = wMaticPriceOnQuickSwap.sub(wMaticPriceOnChainlink).mul(1000).div(wMaticPriceOnChainlink);
+               if (baseTokenPriceOnQuickSwap > baseTokenPriceOnChainlink) {
+                   gap = baseTokenPriceOnQuickSwap.sub(baseTokenPriceOnChainlink).mul(1000).div(baseTokenPriceOnChainlink);
                } else {
-                   gap = wMaticPriceOnChainlink.sub(wMaticPriceOnQuickSwap).mul(1000).div(wMaticPriceOnQuickSwap);
+                   gap = baseTokenPriceOnChainlink.sub(baseTokenPriceOnQuickSwap).mul(1000).div(baseTokenPriceOnQuickSwap);
                }
                require(gap <= 100, "BoboRouter: matic'price gap between chainlink and quickswap is large than 10%.");
-               tmpUValue = wMaticPriceOnChainlink.mul(token0 == WMATIC ? reserveA : reserveB).div(FACTOR);
+               uint256 decimals = ERC20(baseToken).decimals();
+               uint256 decimalsGap = decimals - ERC20(USDC).decimals();
+               tmpUValue = baseTokenPriceOnChainlink.mul(reserve).div(FACTOR).div(10**decimalsGap);
            }
            if (minUValue > tmpUValue) minUValue = tmpUValue;
        }
@@ -86,10 +106,7 @@ contract BoboRouter is Ownable {
     }
     
     function getPaths(address factoryAddr, address inToken, address outToken) public view returns(PathsInfo memory pathsInfo) {
-        pathsInfo = PathsInfo(new address[](3), new uint256[](3), 0);
-        // pathsInfo.tokens = new address[](3);
-        // pathsInfo.minUValues = new uint256[](3);
-        // pathsInfo.pathCount = 0;
+        pathsInfo = PathsInfo(new address[](middleTokens.length), new uint256[](middleTokens.length), 0);
         for (uint256 i = 0; i < middleTokens.length; i++) {
             if (middleTokens[i] == inToken || middleTokens[i] == outToken) continue;
             
@@ -104,6 +121,33 @@ contract BoboRouter is Ownable {
                 pathsInfo.pathCount++;
             }
         }
+    }
+
+    function caculateTotalLiquidity(address inToken, address outToken) public view returns(uint256 totalULiquidity) {
+        PathsInfo memory quickSwapPathsInfo = getPaths(quickSwapFactory, inToken, outToken);
+        PathsInfo memory sushiSwapPathsInfo = getPaths(sushiSwapFactory, inToken, outToken);
+        
+        address[] memory path = new address[](2);
+        path[0] = inToken;
+        path[1] = outToken;
+        
+        uint256 quickSwapMinUValue = getMinUValue(quickSwapFactory, path);
+        uint256 sushiSwapMinUValue = getMinUValue(sushiSwapFactory, path);
+        
+        if (quickSwapMinUValue > MinLiquidityValue) {
+            totalULiquidity = totalULiquidity.add(quickSwapMinUValue);
+        }
+        if (sushiSwapMinUValue > MinLiquidityValue) {
+            totalULiquidity = totalULiquidity.add(sushiSwapMinUValue);
+        }
+        
+        for (uint256 i = 0; i < quickSwapPathsInfo.pathCount; i++) {
+            totalULiquidity = totalULiquidity.add(quickSwapPathsInfo.minUValues[i]);
+        }
+        for (uint256 i = 0; i < sushiSwapPathsInfo.pathCount; i++) {
+            totalULiquidity = totalULiquidity.add(sushiSwapPathsInfo.minUValues[i]);
+        }
+        totalULiquidity = totalULiquidity.mul(2);
     }
     
     function getBestSwapPath(address inToken, address outToken, uint256 amountIn) public view returns(uint256[] memory amountsOut, ResultInfo memory bestResultInfo) {
@@ -123,7 +167,7 @@ contract BoboRouter is Ownable {
             totalAmountOut = quickSwapResultInfo.totalAmountOut;
         }
         
-        (ResultInfo memory sushiSwapResultInfo) = caculateOneDexAmountOut(quickSwapFactory, inToken, outToken, amountIn);
+        (ResultInfo memory sushiSwapResultInfo) = caculateOneDexAmountOut(sushiSwapFactory, inToken, outToken, amountIn);
         amountsOut[1] = sushiSwapResultInfo.totalAmountOut;
         if (sushiSwapResultInfo.totalAmountOut > totalAmountOut) {
             bestResultInfo = sushiSwapResultInfo;
@@ -326,6 +370,27 @@ contract BoboRouter is Ownable {
             } else if (swapPools[i] == SwapPool.SushiSwap) {
                 IERC20(_inToken).approve(sushiSwapRouter, partialAmountIn);
                 uint256[] memory amountOuts = ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
+                amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
+            } 
+        }
+    }
+
+    function swap(SwapPool[] memory _swapPools, address[] _middleTokens, uint256[] _partialAmountIns, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external returns(uint256 amountOut) {
+        require(swapPools.length == _middleTokens.length && swapPools.length == _partialAmountIns.length, "BoboRouter: length NOT matched.");
+        IERC20(_inToken).transferFrom(msg.sender, address(this), _amountIn);
+        
+        for (uint256 i = 0; i < _swapPools.length; i++) {
+            if (_swapPools[i] == SwapPool.No) break;
+            
+            address[] memory path = _middleTokens[i] == address(0) ? convertTwoPath([_inToken, _outToken]) :convertThreePath([_inToken, _middleTokens[i], _outToken]);
+            uint256 partialAmountIn = (i == _swapPools.length - 1) ? IERC20(_inToken).balanceOf(address(this)) : _partialAmountIns[i];
+            if (_swapPools[i] == SwapPool.QuickSwap) {
+                IERC20(_inToken).approve(quickSwapRouter, partialAmountIn);
+                uint256[] memory amountOuts = ICommonRouter(quickSwapRouter).swapExactTokensForTokens(partialAmountIn, 0, path, _receiver, now);
+                amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
+            } else if (_swapPools[i] == SwapPool.SushiSwap) {
+                IERC20(_inToken).approve(sushiSwapRouter, partialAmountIn);
+                uint256[] memory amountOuts = ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, 0, path, _receiver, now);
                 amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
             } 
         }
