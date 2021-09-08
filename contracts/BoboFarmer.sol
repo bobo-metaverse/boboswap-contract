@@ -228,10 +228,6 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
         emit Deposit(_tokenAddr, _userAddr, _wantAmt);
     }
     
-    function depositOrderNFT(uint256 _orderId) public {
-        
-    }
-
     // 提取BOBO和策略池中的want代币
     // 用户撤回订单、订单被动成交，订单是否为最后一个
     function withdraw(address _tokenAddr, address _userAddr, uint256 _wantAmt) public nonReentrant onlyAuthorized {
@@ -274,10 +270,8 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
             // 上面策略合约在withdraw的时候，实际是把want代币打给了本合约，需要由本合约将want代币给用户，
             // 由于本合约中不保存want代币，所以可以用本合约的want代币余额来获得策略合约打了多少want代币过来
             uint256 wantBal = IERC20(pool.want).balanceOf(address(this));  
-            if (wantBal < _wantAmt) {
-                _wantAmt = wantBal;
-            }
-            pool.want.safeTransfer(address(msg.sender), _wantAmt);
+            require (wantBal >= _wantAmt, "BoboFarmer: the amount of withdrawed token is NOT enough.");
+            pool.want.safeTransfer(msg.sender, _wantAmt);
         }
         user.rewardDebt = user.shares.mul(pool.accBOBOPerShare).div(1e12);
         emit Withdraw(_tokenAddr, _userAddr, _wantAmt);
@@ -304,12 +298,5 @@ contract BoboFarmer is MixinAuthorizable, ReentrancyGuard {
         } else {
             IERC20(boboTokenAddr).transfer(_to, _boboAmt);
         }
-    }
-
-    function returnU4Test() public {
-        address USDT = 0xc2132D05D31c914a87C6611C10748AEb04B58e8F;
-        address USDC = 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174;
-        IERC20(USDT).transfer(msg.sender, IERC20(USDT).balanceOf(address(this)));
-        IERC20(USDC).transfer(msg.sender, IERC20(USDC).balanceOf(address(this)));
     }
 }

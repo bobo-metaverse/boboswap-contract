@@ -22,7 +22,7 @@ contract OrderDetailNFT is Minter, ERC721 {
         orderNFT = IOrderNFT(_orderNFT);
     }
     
-    function mint(address _nftOwner, uint256 _inAmount, uint256 _outAmount, uint256 _orderNFTId, SwapPool _swapPool, address[] memory _path) public onlyMinter returns (uint256) {
+    function mint(address _nftOwner, uint256 _inAmount, uint256 _outAmount, uint256 _orderNFTId, SwapPool _swapPool, address[3] memory _path) public onlyMinter returns (uint256) {
         nftId++;
         
         _safeMint(_nftOwner, nftId);

@@ -43,14 +43,15 @@ module.exports = async function(deployer) {
   var exManager = await EXManager.deployed();
 
   
-  var pairAddr = await boboFactory.getPair(WMATIC, USDT);
+  var pairAddr = await boboFactory.getPair(WMATIC, USDC);
   console.log(pairAddr);
-  var isMinter1 = await orderNFT.isMinter(pairAddr);
-  var isMinter2 = await orderDetailNFT.isMinter(pairAddr);
-  var isMinter3 = await boboFarmer.isAuthorized(pairAddr);
-  var isMinter4 = await exManager.isAuthorized(pairAddr);
-  console.log(isMinter1, isMinter2, isMinter3, isMinter4);
-  // await boboFactory.createPair(WMATIC, USDT);
+  // var isMinter1 = await orderNFT.isMinter(pairAddr);
+  // var isMinter2 = await orderDetailNFT.isMinter(pairAddr);
+  // var isMinter3 = await boboFarmer.isAuthorized(pairAddr);
+  // var isMinter4 = await exManager.isAuthorized(pairAddr);
+  // console.log(isMinter1, isMinter2, isMinter3, isMinter4);
+  // await boboFactory.createPair(WMATIC, USDC);
+  // var pairAddr = await boboFactory.getPair(WMATIC, USDC);
 
   // await orderNFT.addMinter(pairAddr);
   // await orderDetailNFT.addMinter(pairAddr);

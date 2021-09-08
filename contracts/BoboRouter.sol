@@ -202,7 +202,7 @@ contract BoboRouter is Ownable {
         uint256 partialAmountIn;
         uint256 totalAmountOut = 0;
         
-        resultInfo.types = new SwapPool[](4);
+        resultInfo.swapPools = new SwapPool[](4);
         resultInfo.middleTokens = new address[](4);
         resultInfo.partialAmountIns = new uint256[](4);
         resultInfo.partialAmountOuts = new uint256[](4);
@@ -214,7 +214,7 @@ contract BoboRouter is Ownable {
             partialAmountIn = minUValue.mul(amountIn).div(totalULiquidity);
             uint256 amountOut = getAmountOut(routerAddr, partialAmountIn, path);
             
-            resultInfo.types[count] = middleTokeType;
+            resultInfo.swapPools[count] = middleTokeType;
             resultInfo.middleTokens[count] = address(0); 
             resultInfo.partialAmountIns[count] = partialAmountIn;
             resultInfo.partialAmountOuts[count] = amountOut;
@@ -230,7 +230,7 @@ contract BoboRouter is Ownable {
             partialAmountIn = pathsInfo.minUValues[i] * amountIn / totalULiquidity;
             uint256 amountOut = getAmountOut(routerAddr, partialAmountIn, tmpPath);
             
-            resultInfo.types[count] = middleTokeType;
+            resultInfo.swapPools[count] = middleTokeType;
             resultInfo.middleTokens[count] = pathsInfo.tokens[i]; 
             resultInfo.partialAmountIns[count] = partialAmountIn;
             resultInfo.partialAmountOuts[count] = amountOut;
@@ -271,7 +271,7 @@ contract BoboRouter is Ownable {
         uint256 partialAmountIn;
         uint256 totalAmountOut = 0;
         
-        resultInfo.types = new SwapPool[](10);
+        resultInfo.swapPools = new SwapPool[](10);
         resultInfo.middleTokens = new address[](10);
         resultInfo.partialAmountIns = new uint256[](10);
         resultInfo.partialAmountOuts = new uint256[](10);
@@ -281,7 +281,7 @@ contract BoboRouter is Ownable {
             partialAmountIn = quickSwapMinUValue.mul(amountIn).div(totalULiquidity);
             uint256 amountOut = getAmountOut(quickSwapRouter, partialAmountIn, path);
             
-            resultInfo.types[count] = SwapPool.QuickSwap;
+            resultInfo.swapPools[count] = SwapPool.QuickSwap;
             resultInfo.middleTokens[count] = address(0); 
             resultInfo.partialAmountIns[count] = partialAmountIn;
             resultInfo.partialAmountOuts[count] = amountOut;
@@ -293,7 +293,7 @@ contract BoboRouter is Ownable {
             partialAmountIn = sushiSwapMinUValue.mul(amountIn).div(totalULiquidity);
             uint256 amountOut = getAmountOut(sushiSwapRouter, partialAmountIn, path);
             
-            resultInfo.types[count] = SwapPool.SushiSwap;
+            resultInfo.swapPools[count] = SwapPool.SushiSwap;
             resultInfo.middleTokens[count] = address(0); 
             resultInfo.partialAmountIns[count] = partialAmountIn;
             resultInfo.partialAmountOuts[count] = amountOut;
@@ -309,7 +309,7 @@ contract BoboRouter is Ownable {
             partialAmountIn = quickSwapPathsInfo.minUValues[i] * amountIn / totalULiquidity;
             uint256 amountOut = getAmountOut(quickSwapRouter, partialAmountIn, tmpPath);
             
-            resultInfo.types[count] = SwapPool.QuickSwap;
+            resultInfo.swapPools[count] = SwapPool.QuickSwap;
             resultInfo.middleTokens[count] = quickSwapPathsInfo.tokens[i]; 
             resultInfo.partialAmountIns[count] = partialAmountIn;
             resultInfo.partialAmountOuts[count] = amountOut;
@@ -323,7 +323,7 @@ contract BoboRouter is Ownable {
             partialAmountIn = sushiSwapPathsInfo.minUValues[i] * amountIn / totalULiquidity;
             uint256 amountOut = getAmountOut(sushiSwapRouter, partialAmountIn, tmpPath);
             
-            resultInfo.types[count] = SwapPool.SushiSwap;
+            resultInfo.swapPools[count] = SwapPool.SushiSwap;
             resultInfo.middleTokens[count] = sushiSwapPathsInfo.tokens[i]; 
             resultInfo.partialAmountIns[count] = partialAmountIn;
             resultInfo.partialAmountOuts[count] = amountOut;
@@ -353,10 +353,10 @@ contract BoboRouter is Ownable {
         }
     }
     
-    function swap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external returns(uint256 amountOut) {
+    function swap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external {
         IERC20(_inToken).transferFrom(msg.sender, address(this), _amountIn);
         
-        SwapPool[] memory swapPools = _bestSwapInfo.types;
+        SwapPool[] memory swapPools = _bestSwapInfo.swapPools;
         for (uint256 i = 0; i < swapPools.length; i++) {
             if (swapPools[i] == SwapPool.No) break;
             
@@ -365,33 +365,10 @@ contract BoboRouter is Ownable {
             uint256 partialAmountOut = _bestSwapInfo.partialAmountOuts[i];
             if (swapPools[i] == SwapPool.QuickSwap) {
                 IERC20(_inToken).approve(quickSwapRouter, partialAmountIn);
-                uint256[] memory amountOuts = ICommonRouter(quickSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
-                amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
+                ICommonRouter(quickSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
             } else if (swapPools[i] == SwapPool.SushiSwap) {
                 IERC20(_inToken).approve(sushiSwapRouter, partialAmountIn);
-                uint256[] memory amountOuts = ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
-                amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
-            } 
-        }
-    }
-
-    function swap(SwapPool[] memory _swapPools, address[] _middleTokens, uint256[] _partialAmountIns, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external returns(uint256 amountOut) {
-        require(swapPools.length == _middleTokens.length && swapPools.length == _partialAmountIns.length, "BoboRouter: length NOT matched.");
-        IERC20(_inToken).transferFrom(msg.sender, address(this), _amountIn);
-        
-        for (uint256 i = 0; i < _swapPools.length; i++) {
-            if (_swapPools[i] == SwapPool.No) break;
-            
-            address[] memory path = _middleTokens[i] == address(0) ? convertTwoPath([_inToken, _outToken]) :convertThreePath([_inToken, _middleTokens[i], _outToken]);
-            uint256 partialAmountIn = (i == _swapPools.length - 1) ? IERC20(_inToken).balanceOf(address(this)) : _partialAmountIns[i];
-            if (_swapPools[i] == SwapPool.QuickSwap) {
-                IERC20(_inToken).approve(quickSwapRouter, partialAmountIn);
-                uint256[] memory amountOuts = ICommonRouter(quickSwapRouter).swapExactTokensForTokens(partialAmountIn, 0, path, _receiver, now);
-                amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
-            } else if (_swapPools[i] == SwapPool.SushiSwap) {
-                IERC20(_inToken).approve(sushiSwapRouter, partialAmountIn);
-                uint256[] memory amountOuts = ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, 0, path, _receiver, now);
-                amountOut = amountOut.add(amountOuts[amountOuts.length - 1]);
+                ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
             } 
         }
     }

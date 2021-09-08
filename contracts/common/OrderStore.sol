@@ -38,7 +38,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         return orderId;
     }
     
-    function addOrderDetail(address _orderOwner, uint256 _orderId, uint256 _inAmount, uint256 _outAmount, SwapPool _swapPool, address[] memory _path) internal returns(uint256) {
+    function addOrderDetail(address _orderOwner, uint256 _orderId, uint256 _inAmount, uint256 _outAmount, SwapPool _swapPool, address[3] memory _path) internal returns(uint256) {
         uint256 orderDetailId = orderDetailNFT.mint(_orderOwner, _inAmount, _outAmount, _orderId, _swapPool, _path);
         return orderDetailId;
     }

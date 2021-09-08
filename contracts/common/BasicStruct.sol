@@ -9,6 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Pausable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 import "./StructuredLinkedList.sol";
 
@@ -37,7 +38,7 @@ struct NFTDetailInfo {
     uint256 outAmount;
     uint256 orderNFTId;      // 主订单编号
     SwapPool swapPool;
-    address[] path;          // 交易路径
+    address[3] path;          // 交易路径
 }
 
 
@@ -57,7 +58,7 @@ interface IOrderNFT is IERC721 {
 interface IOrderDetailNFT is IERC721 {
     function transferOwnership(address newOwner) external;
     function addMinter(address _addMinter) external returns (bool);
-    function mint(address _nftOwner, uint256 _inAmount, uint256 _outAmount, uint256 _orderNFTId, SwapPool _swapPool, address[] memory _path) external returns (uint256);
+    function mint(address _nftOwner, uint256 _inAmount, uint256 _outAmount, uint256 _orderNFTId, SwapPool _swapPool, address[3] memory _path) external returns (uint256);
     function totalSupply() external returns(uint256);
     function getOrderDetailInfo(uint256 _nftId) view external returns(NFTDetailInfo memory nftDetailInfo);
 }
@@ -66,7 +67,7 @@ struct ResultInfo {
     uint256 totalAmountOut;
     uint256 totalULiquidity;
 
-    SwapPool[] types;
+    SwapPool[] swapPools;
     address[] middleTokens;
     uint256[] partialAmountIns;
     uint256[] partialAmountOuts;
@@ -74,7 +75,8 @@ struct ResultInfo {
 
 interface IBoboRouter {
     function getBestSwapPath(address inToken, address outToken, uint256 amountIn) external view returns(uint256[] memory amountsOut, ResultInfo memory bestResultInfo);
-    function swap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external returns(uint256);
+    function swap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, 
+                  uint256 _amountIn, address _receiver) external returns(uint256[] memory partialAmountOuts);  // uint256 totalAmountOut, 
 }
 
 interface IBoboFund {

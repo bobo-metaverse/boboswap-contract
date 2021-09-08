@@ -7,8 +7,9 @@ import "./SwapInterfaces.sol";
 
 // 交易在 quickSwap
 // 挖矿在 sushiSwap => matic&sushi
-contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
+contract NewStratMaticSushi is Ownable, ReentrancyGuard {
     using SafeMath for uint256;
+    using Strings for uint256;
     using SafeERC20 for IERC20;
     using EnumerableSet for EnumerableSet.AddressSet;
 
@@ -153,7 +154,7 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
     }
 
     // 从Farm合约中获取新的抵押
-    function deposit(uint256 _wantAmt, address _wantAddr) public onlyOwner whenNotPaused returns (uint256) {
+    function deposit(uint256 _wantAmt, address _wantAddr) public onlyOwner returns (uint256) {
         require(isFarmToken(_wantAddr), "StratMaticSushi: NOT farm token.");
         // 先将want代币从挖矿合约中转移到策略合约
         IERC20(_wantAddr).safeTransferFrom(
@@ -333,12 +334,20 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
     function withdrawOneToken(uint256 _wantAmt, address _withdrawToken, address _peerToken) internal returns(uint256) {
         uint256 curAmount = IERC20(_withdrawToken).balanceOf(address(this));
         if (curAmount < _wantAmt) {
-            uint256 restAmountOut = _wantAmt.sub(curAmount);
+            uint256 restAmountOut = _wantAmt;
             (uint256 amount0, ) = getBalances(_withdrawToken, _peerToken);  // 获取当前流动性挖矿中的token数量
 
             // 从流动性挖矿中提取出token
             if (amount0 >= restAmountOut) {
+                // uint256 preAmount = IERC20(_withdrawToken).balanceOf(address(this));
+                // withdrawToken0FromLP(restAmountOut, amount0, _withdrawToken, _peerToken);
+                // uint256 afterAmount = IERC20(_withdrawToken).balanceOf(address(this));
+                // string memory restAmountOutStr = restAmountOut.toString();
+                // string memory realAmountOutStr = afterAmount.sub(preAmount).toString();
+                // string memory outString = string(abi.encodePacked("StratMaticSushi: token amount is NOT enough after remove LP,", restAmountOutStr, ",", realAmountOutStr));
+
                 withdrawToken0FromLP(restAmountOut, amount0, _withdrawToken, _peerToken);
+                require(IERC20(_withdrawToken).balanceOf(address(this)) >= _wantAmt, "StratMaticSushi: token amount is NOT enough after remove LP");
                 restAmountOut = 0;
             } else if (amount0 > 0) {
                 withdrawToken0FromLP(amount0, amount0, _withdrawToken, _peerToken);  // 此处已把所有流动性都取出了
@@ -372,7 +381,9 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         (myLPBalance, ) = ICommonMasterChef(curMasterChef).userInfo(curPidMap[_token0][_token1], address(this));
 
         uint256 withdrawLPBalance = _withrawAmount.mul(myLPBalance).div(_totalAmount);
-        // 此处会提取指定数量的LP token，以及所有WMATIC&Sushi奖励
+        withdrawLPBalance = withdrawLPBalance.mul(101).div(100); // 多提取1/100，防止提取金额不足，导致提取失败
+        if (withdrawLPBalance > myLPBalance) withdrawLPBalance = myLPBalance;
+        // 此处会提取指定数量的LP token，以及所有WMATIC&Sushi奖励，在earn的时候会转化为usdt和usdc
         ICommonMasterChef(curMasterChef).withdrawAndHarvest(curPidMap[_token0][_token1], withdrawLPBalance, address(this));  
 
         ICommonRouter(curRouter).removeLiquidity(
@@ -429,14 +440,6 @@ contract StratMaticSushi is Ownable, ReentrancyGuard, Pausable {
         wantLockedTotalMap[_wantAddr] = wantLockedTotalMap[_wantAddr].sub(realAmount);
 
         return sharesRemoved;
-    }
-
-    function pause() external onlyGov {
-        _pause();
-    }
-
-    function unpause() external onlyGov {
-        _unpause();
     }
 
     function setDevFundFee(uint256 _devFundFee) public onlyGov {
