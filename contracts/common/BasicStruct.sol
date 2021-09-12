@@ -29,6 +29,7 @@ struct NFTInfo {
     string  comment;        // reason of unsettled
     uint256 delegateTime;   // 下单时间
     uint256 dealedTime;     //
+    uint256 weight;
 }
 
 struct NFTDetailInfo {

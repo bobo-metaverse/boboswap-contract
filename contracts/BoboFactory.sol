@@ -104,6 +104,7 @@ contract BoboFactory is Ownable {
         return hangingBaseTokenAmount.sub(baseTokenAmount);
     }
     
+    // 收割挖到的baseToken
     // 此接口调用前提：需要在boboFarmer合约上为Factory合约开通权限
     function claimBaseToken(address _baseToken) public {
         uint256 amount = getClaimBaseTokenAmount(_baseToken, msg.sender);
@@ -112,6 +113,13 @@ contract BoboFactory is Ownable {
             boboFarmer.withdraw(_baseToken, msg.sender, amount);
             uint256 newBaseTokenAmount = IERC20(_baseToken).balanceOf(address(this));
             IERC20(_baseToken).transfer(msg.sender, newBaseTokenAmount.sub(preBaseTokenAmount));
+        }
+    }
+
+    // 收割挖到的Bobo Token
+    function claimBoboToken(address _baseToken) public {
+        if (boboFarmer.tokenPidMap(_baseToken) > 0) {
+            boboFarmer.withdraw(_baseToken, msg.sender, 0);
         }
     }
 }

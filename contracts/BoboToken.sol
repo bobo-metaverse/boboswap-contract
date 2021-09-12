@@ -3,10 +3,10 @@ pragma solidity ^0.6.0;
 import "./common/Minter.sol";
 
 
-contract BOBOToken is ERC20, Minter {
+contract BoboToken is ERC20, Minter {
     uint256 private constant maxSupply = 100000000 * 1e18;     // the total supply
 
-    constructor() public ERC20("Bobo meta Token", "BOBO") {
+    constructor() public ERC20("Bobo Token", "BOBO") {
     }
 
     // mint with max supply

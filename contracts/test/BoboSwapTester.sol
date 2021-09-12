@@ -3,7 +3,7 @@ pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "../BoboFactory.sol";
-import "../BoboFarmer.sol";
+import "../BoboFarmer4HangingOrder.sol";
 import "../BoboPair.sol";
 import "../StratMaticSushi.sol";
 import "../common/orderNFT.sol";

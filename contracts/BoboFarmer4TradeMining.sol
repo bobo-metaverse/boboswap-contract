@@ -34,8 +34,6 @@ contract BoboFarmer4TradeMining is Ownable {
     uint256 public numerator;
     // BOBO tokens created per block.
     uint256 public boboPerBlock;
-    // Bonus muliplier for early bobo makers.
-    uint256 public BONUS_MULTIPLIER = 1;
 
     // Info of each pool.
     PoolInfo[] public poolInfo;
@@ -43,8 +41,6 @@ contract BoboFarmer4TradeMining is Ownable {
     mapping (uint256 => mapping (address => UserInfo)) public userInfo;
     // Staked NFTs of each user 
     mapping (address => EnumerableSet.UintSet) private userNFTIds;
-    // Total allocation poitns. Must be the sum of all allocation points in all pools.
-    uint256 public totalAllocPoint = 0;
     // The block number when BOBO mining starts.
     uint256 public startBlock;
     uint256 public endBlock;
@@ -60,12 +56,12 @@ contract BoboFarmer4TradeMining is Ownable {
     constructor(
         IBOBOToken _bobo,
         IERC721 _nftToken,
-        address _fundContractAddr,
-        uint256 _boboPerBlock,
-        uint256 _startBlock,
-        uint256 _endBlock,
-        uint256 _nftStartTime,
-        uint256 _nftEndTime
+        address _fundContractAddr, 
+        uint256 _boboPerBlock,   // 每区块产出
+        uint256 _startBlock,     // 开始挖矿的区块号
+        uint256 _endBlock,       // 结束挖矿的区块号
+        uint256 _nftStartTime,   // 可抵押的nft的成交时间需大于等于此时间
+        uint256 _nftEndTime      // 可抵押的nft的成交时间需小于此时间
     ) public {
         bobo = _bobo;
         nftToken = _nftToken;
@@ -146,7 +142,7 @@ contract BoboFarmer4TradeMining is Ownable {
         pool.lastRewardBlock = block.number;
     }
 
-    // Deposit LP tokens to MasterChef for BOBO allocation.
+    // Deposit NFT to MasterChef for BOBO allocation.
     function deposit(uint256[] memory _nftIds) public {
         PoolInfo storage pool = poolInfo[0];
         UserInfo storage user = userInfo[0][msg.sender];
@@ -162,7 +158,7 @@ contract BoboFarmer4TradeMining is Ownable {
                 NFTInfo memory nftInfo = IOrderNFT(address(nftToken)).getOrderInfo(_nftIds[i]);
                 require(nftInfo.status == OrderStatus.AMMDeal, "The status of order is NOT dealed.");
                 require(nftInfo.dealedTime >= nftStartTime && nftInfo.dealedTime < nftEndTime, "The dealed time of order is NOT statisfied by this contract.");
-                nftToken.safeTransferFrom(address(msg.sender), address(this), _nftIds[i]);
+                nftToken.transferFrom(address(msg.sender), address(this), _nftIds[i]);
                 uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(_nftIds[i]);
                 user.weight = user.weight.add(nftWeight);
                 pool.totalWeightOfNFT = pool.totalWeightOfNFT.add(nftWeight);
@@ -189,7 +185,7 @@ contract BoboFarmer4TradeMining is Ownable {
             uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(_nftIds[i]);
             user.weight = user.weight.sub(nftWeight);
             pool.totalWeightOfNFT = pool.totalWeightOfNFT.sub(nftWeight);
-            nftToken.safeTransferFrom(address(this), address(msg.sender), _nftIds[i]);
+            nftToken.transferFrom(address(this), address(msg.sender), _nftIds[i]);
         }
         user.rewardDebt = user.weight.mul(pool.accBoboPerShare).div(1e12);
         emit Withdraw(msg.sender, 0, _nftIds);
@@ -210,9 +206,10 @@ contract BoboFarmer4TradeMining is Ownable {
             uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(nftId);
             user.weight = user.weight.sub(nftWeight);
             pool.totalWeightOfNFT = pool.totalWeightOfNFT.sub(nftWeight);
-            nftToken.safeTransferFrom(address(this), address(msg.sender), nftId);
+            nftToken.transferFrom(address(this), address(msg.sender), nftId);
             userNFTIds[msg.sender].remove(nftId);
             i--;
+            length--;
         }
         user.rewardDebt = user.weight.mul(pool.accBoboPerShare).div(1e12);
         emit WithdrawAll(msg.sender, 0);
@@ -230,9 +227,10 @@ contract BoboFarmer4TradeMining is Ownable {
             uint256 nftWeight = IOrderNFT(address(nftToken)).getWeight(nftId);
             user.weight = user.weight.sub(nftWeight);
             pool.totalWeightOfNFT = pool.totalWeightOfNFT.sub(nftWeight);
-            nftToken.safeTransferFrom(address(this), address(msg.sender), nftId);
+            nftToken.transferFrom(address(this), address(msg.sender), nftId);
             userNFTIds[msg.sender].remove(nftId);
             i--;
+            length--;
         }
         
         emit EmergencyWithdraw(msg.sender, 0);
@@ -242,7 +240,12 @@ contract BoboFarmer4TradeMining is Ownable {
 
     // Safe bobo transfer function, just in case if rounding error causes pool to not have enough BOBOs.
     function safeBOBOTransfer(address _to, uint256 _amount) internal {
-        IERC20(fundContractAddr).safeTransferFrom(address(this), _to, _amount);
+        uint256 boboBal = bobo.balanceOf(address(this));
+        if (_amount > boboBal) {
+            bobo.transfer(_to, boboBal);
+        } else {
+            bobo.transfer(_to, _amount);
+        }
     }
 
     function getUserNFTNumber(address _user) view public returns(uint256) {

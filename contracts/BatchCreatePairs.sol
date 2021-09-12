@@ -2,7 +2,7 @@
 pragma solidity ^0.6.0;
 
 import "./BoboFactory.sol";
-import "./BoboFarmer.sol";
+import "./BoboFarmer4HangingOrder.sol";
 import "./BoboRouter.sol";
 import "./BoboPair.sol";
 import "./StratMaticSushi.sol";

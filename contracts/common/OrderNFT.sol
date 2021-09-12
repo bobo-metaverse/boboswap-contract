@@ -31,7 +31,7 @@ contract OrderNFT is Minter, ERC721 {
         
         _safeMint(msg.sender, nftId);   // msg.sender is contract address of book pool, so the new NFT is belong to book pool at first, NOT bookOwner
         
-        id2NFTInfoMap[nftId] = NFTInfo(nftId, bookOwner, _pairAddr, _bBuyQuoteToken, _spotPrice, _inAmount, _minOutAmount, 0, OrderStatus.Hanging, "", now, 0);
+        id2NFTInfoMap[nftId] = NFTInfo(nftId, bookOwner, _pairAddr, _bBuyQuoteToken, _spotPrice, _inAmount, _minOutAmount, 0, OrderStatus.Hanging, "", now, 0, 0);
         owner2PairAddr2OrderIDsMap[bookOwner][_pairAddr].push(nftId);    
             
         emit Mint(msg.sender, nftId);
@@ -44,6 +44,12 @@ contract OrderNFT is Minter, ERC721 {
         id2NFTInfoMap[_nftId].dealedTime = now;
         id2NFTInfoMap[_nftId].outAmount = _outAmount;
         id2NFTInfoMap[_nftId].comment = _comment;
+        if (_status == OrderStatus.AMMDeal) {
+            uint256 spanTime = now.sub(id2NFTInfoMap[_nftId].delegateTime);
+            uint256 spanTimeFactor = spanTime == 0 ? 1 : sqrt(spanTime);
+            uint256 dealedAmountU = id2NFTInfoMap[_nftId].bBuyQuoteToken ? id2NFTInfoMap[_nftId].inAmount : _outAmount;
+            id2NFTInfoMap[_nftId].weight =  dealedAmountU.div(spanTimeFactor);
+        }
     }
     
     function bindDetailNFT(uint256 _nftId, uint256 detailNFTId) public {
@@ -63,12 +69,7 @@ contract OrderNFT is Minter, ERC721 {
     function getWeight(uint256 _nftId) view public returns(uint256 weight) {
         require( _exists(_nftId), "OrderNFT: nft is not exist.");
         NFTInfo memory nftInfo = id2NFTInfoMap[_nftId];
-        
-        require(nftInfo.status == OrderStatus.AMMDeal, "OrderNFT: only dealed order has weight.");
-        uint256 spanTime = nftInfo.dealedTime.sub(nftInfo.delegateTime);
-        uint256 spanTimeFactor = spanTime == 0 ? 1 : sqrt(spanTime);
-        uint256 dealedAmountU = nftInfo.bBuyQuoteToken ? nftInfo.inAmount : nftInfo.outAmount;
-        return dealedAmountU.div(spanTimeFactor);
+        return nftInfo.weight;
     }
 
     function sqrt(uint256 x) public pure returns(uint256) {

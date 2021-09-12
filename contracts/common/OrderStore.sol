@@ -11,6 +11,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
 
     IOrderNFT public orderNFT;
     IOrderDetailNFT public orderDetailNFT;
+    mapping(address => uint256[]) public userDealedOrdersMap;  // 用户所有成功成交的订单
     mapping(address => uint256[]) public userOrdersMap;  // 用户所有订单
     mapping(address => EnumerableSet.UintSet) private userHangingOrdersMap;  // 用户所有挂单
     mapping(bool => StructuredLinkedList.List) private bBuyOrdersMap;  // 交易对正挂着的订单, bool: true-买单，false-卖单
@@ -79,6 +80,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         
         orderNFT.sealNFT(_orderId, OrderStatus.AMMDeal, _outAmount, "");
         sealedOrdersMap[OrderStatus.AMMDeal].push(_orderId);
+        userDealedOrdersMap[orderInfo.owner].push(_orderId);
         removeOrder(orderInfo);
     }
     
@@ -135,6 +137,12 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     function getOrderDetailNumber(uint256 _orderId) view public returns(uint256) {
         return orderNFT.getOrderDetailNumber(_orderId);
     }
+
+    // 获取用户所有已成交的订单数量
+    function getUserDealedOrderNumber(address _userAddr) view public returns(uint256) {
+        return userDealedOrdersMap[_userAddr].length;
+    }
+
     // 获取用户所有订单数量
     function getUserOrderNumber(address _userAddr) view public returns(uint256) {
         return userOrdersMap[_userAddr].length;
