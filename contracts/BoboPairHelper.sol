@@ -12,6 +12,12 @@ interface IBoboPair {
     function getUserOrderNumber(address _userAddr) view external returns(uint256);
 }
 
+interface IBoboTradeMining {
+    function nftToken() view external returns(address);
+    function getUserNFTNumber(address _user) view external returns(uint256);
+    function getUserNFTIds(address _user, uint256 _fromIndex, uint256 _toIndex) view external returns(uint256[] memory nftIds);
+}
+
 
 contract BoboPairHelper {
     function getDepositableOrders(IBoboPair _boboPair, address _userAddr, uint256 _startTime, uint256 _endTime) 
@@ -44,7 +50,7 @@ contract BoboPairHelper {
         for (uint256 i; i < orderNumber; i++) {
             uint256 orderId = _boboPair.userOrdersMap(_userAddr, i);
             NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
-            address ownerAddr = orderNFT.ownerOf(nftInfo.id);
+            address ownerAddr = orderNFT.ownerOf(nftInfo.id);   // 即便是用户下的订单，也会因为其它操作而失去owner身份，譬如抵押、交易后owner转移
             if (nftInfo.status == OrderStatus.AMMDeal && ownerAddr == _userAddr && nftInfo.dealedTime >= _startTime && nftInfo.dealedTime < _endTime) {
                 uint256 weight = orderNFT.getWeight(nftInfo.id);
                 orderIds[count] = nftInfo.id;
@@ -54,24 +60,48 @@ contract BoboPairHelper {
         }
     }
 
-    function getUnhangingOrders(IBoboPair _boboPair, address _userAddr, bool _onlyDealed, uint256 _fromIndex, uint256 _pageSize) 
+    function getAllUnhangingOrders(IBoboPair _boboPair, address _userAddr, uint256 _fromIndex, uint256 _pageSize) 
         view public returns(NFTInfo[] memory nftInfos, uint256 count) {
         uint256 orderNumber = _boboPair.getUserOrderNumber(_userAddr);
-        _pageSize = orderNumber < _pageSize ? orderNumber : _pageSize;
-
-        require(_fromIndex < orderNumber - 1 && _toIndex > _fromIndex, "BoboPairHelper: index input is ERROR.");
-
-        nftInfos = new NFTInfo[](_toIndex - _fromIndex > orderNumber ? orderNumber : _toIndex - _fromIndex);
-        for (uint256 i; i < orderNumber; i++) {
-            uint256 orderId = _boboPair.userOrdersMap(_userAddr, i);
-            NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
-            address ownerAddr = orderNFT.ownerOf(nftInfo.id);
-            if (nftInfo.status == OrderStatus.AMMDeal && ownerAddr == _userAddr && nftInfo.dealedTime >= _startTime && nftInfo.dealedTime < _endTime) {
-                uint256 weight = orderNFT.getWeight(nftInfo.id);
-                orderIds[count] = nftInfo.id;
-                weights[count] = weight;
+        if (_fromIndex <= orderNumber - 1) {
+            _pageSize = (_fromIndex + _pageSize) > orderNumber ? (orderNumber - _fromIndex) : _pageSize;
+            nftInfos = new NFTInfo[](_pageSize);
+            IOrderNFT orderNFT = IOrderNFT(_boboPair.orderNFT());
+            for (uint256 i = _fromIndex; i < _fromIndex + _pageSize; i++) {
+                uint256 orderId = _boboPair.userOrdersMap(_userAddr, i);
+                NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
+                nftInfos[count] = nftInfo;
                 count++;
-            }
+            } 
         }
+    }
+
+    function getAllDealedOrders(IBoboPair _boboPair, address _userAddr, uint256 _fromIndex, uint256 _pageSize) 
+        view public returns(NFTInfo[] memory nftInfos, uint256 count) {
+        uint256 orderNumber = _boboPair.getUserDealedOrderNumber(_userAddr);
+
+        if (_fromIndex <= orderNumber - 1) {
+            _pageSize = (_fromIndex + _pageSize) > orderNumber ? (orderNumber - _fromIndex) : _pageSize;
+            nftInfos = new NFTInfo[](_pageSize);
+            IOrderNFT orderNFT = IOrderNFT(_boboPair.orderNFT());
+            for (uint256 i = _fromIndex; i < _fromIndex + _pageSize; i++) {
+                uint256 orderId = _boboPair.userDealedOrdersMap(_userAddr, i);
+                NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
+                nftInfos[count] = nftInfo;
+                count++;
+            } 
+        }
+    }
+
+    function getAllDepositedOrders(IBoboTradeMining _boboTradeMining, address _usderAddr) view public returns(NFTInfo[] memory nftInfos) {
+        uint256 orderLength = _boboTradeMining.getUserNFTNumber(_usderAddr);
+        uint256[] memory orderIds = _boboTradeMining.getUserNFTIds(_usderAddr, 0, orderLength);
+        nftInfos = new NFTInfo[](orderLength);
+        IOrderNFT orderNFT = IOrderNFT(_boboTradeMining.nftToken());
+        for (uint256 i = 0; i < orderLength; i++) {
+            uint256 orderId = orderIds[i];
+            NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
+            nftInfos[i] = nftInfo;
+        } 
     }
 }

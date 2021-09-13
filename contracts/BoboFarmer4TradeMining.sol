@@ -27,7 +27,7 @@ contract BoboFarmer4TradeMining is Ownable {
 
     // The BOBO TOKEN!
     IBOBOToken public bobo;
-    IERC721 nftToken;           // Address of LP token contract.
+    IERC721 public nftToken;           // Address of LP token contract.
     // fund contract address
     address public fundContractAddr;
     uint256 public denominator;
@@ -257,7 +257,7 @@ contract BoboFarmer4TradeMining is Ownable {
         if (_toIndex > length) _toIndex = length;
         require(_fromIndex < _toIndex, "Index is out of range.");
         nftIds = new uint256[](_toIndex - _fromIndex);
-        for (uint256 i = _fromIndex; _fromIndex < _toIndex; i++) {
+        for (uint256 i = _fromIndex; i < _toIndex; i++) {
             nftIds[i - _fromIndex] = userNFTIds[_user].at(i);
         }
     }
