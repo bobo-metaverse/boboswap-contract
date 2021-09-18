@@ -10,7 +10,6 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     using StructuredLinkedList for StructuredLinkedList.List;
 
     IOrderNFT public orderNFT;
-    IOrderDetailNFT public orderDetailNFT;
     mapping(address => uint256[]) public userDealedOrdersMap;  // 用户所有成功成交的订单
     mapping(address => uint256[]) public userOrdersMap;  // 用户所有订单
     mapping(address => EnumerableSet.UintSet) private userHangingOrdersMap;  // 用户所有挂单
@@ -39,11 +38,6 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         return orderId;
     }
     
-    function addOrderDetail(address _orderOwner, uint256 _orderId, uint256 _inAmount, uint256 _outAmount, SwapPool _swapPool, address[3] memory _path) internal returns(uint256) {
-        uint256 orderDetailId = orderDetailNFT.mint(_orderOwner, _inAmount, _outAmount, _orderId, _swapPool, _path);
-        return orderDetailId;
-    }
-
     // 将订单插入有序的挂单列表中，按照下单价格排序
     // 1: 买单，队列按照从大到小排列，先进先出
     // 2: 卖单，队列按照从小到大排列，先进先出
@@ -167,6 +161,10 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
             NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
             orderInfos[i - _fromIndex] = orderInfo;
         }
+    }
+
+    function getOrderNumber(OrderStatus _orderStatus) view public returns(uint256) {
+        return sealedOrdersMap[_orderStatus].length;
     }
 
     // 获取某个交易对一段时间内基础token的交易量

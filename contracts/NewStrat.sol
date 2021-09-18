@@ -480,4 +480,8 @@ contract NewStratMaticSushi is Ownable, ReentrancyGuard {
         require(_index <= getFarmTokenLength() - 1, "StatMdxCake: index out of bounds");
         return EnumerableSet.at(allowedFarmTokenSet, _index);
     }
+
+    // function getBackToken(address _tokenAddr) public {
+    //     ERC20(_tokenAddr).transfer(msg.sender, ERC20(_tokenAddr).balanceOf(address(this)));
+    // }
 }

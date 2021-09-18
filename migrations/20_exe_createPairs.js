@@ -38,23 +38,22 @@ const WMATIC = "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270";
 module.exports = async function(deployer) {
   var boboFactory = await BoboFactory.deployed();
   var orderNFT = await OrderNFT.deployed();
-  var orderDetailNFT = await OrderDetailNFT.deployed();
   var boboFarmer = await BoboFarmer.deployed();
   var exManager = await EXManager.deployed();
 
   
   var pairAddr = await boboFactory.getPair(WMATIC, USDC);
   console.log(pairAddr);
+  pairAddr = await boboFactory.getPair(WMATIC, USDT);
+  console.log(pairAddr);
   // var isMinter1 = await orderNFT.isMinter(pairAddr);
-  // var isMinter2 = await orderDetailNFT.isMinter(pairAddr);
   // var isMinter3 = await boboFarmer.isAuthorized(pairAddr);
   // var isMinter4 = await exManager.isAuthorized(pairAddr);
   // console.log(isMinter1, isMinter2, isMinter3, isMinter4);
-  // await boboFactory.createPair(WMATIC, USDC);
-  // var pairAddr = await boboFactory.getPair(WMATIC, USDC);
+  // await boboFactory.createPair(WMATIC, USDT);
+  // var pairAddr = await boboFactory.getPair(WMATIC, USDT);
 
   // await orderNFT.addMinter(pairAddr);
-  // await orderDetailNFT.addMinter(pairAddr);
   // await boboFarmer.addAuthorized(pairAddr);
   // await exManager.addAuthorized(pairAddr);
 };

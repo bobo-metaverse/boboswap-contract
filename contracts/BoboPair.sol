@@ -12,6 +12,7 @@ interface IExchangeManager {
     function maxOrderNumberPerMatch() view external returns(uint256);
     function tokenInvestRateMap(address _tokenAddr) view external returns(uint256);
     function tokenMinAmountMap(address _tokenAddr) view external returns(uint256);
+    function routerWhiteList(address _router) view external returns(bool);
 }
 
 interface IBoboFarmer {
@@ -23,6 +24,10 @@ interface IBoboFarmer {
     function tokenPidMap(address _tokenAddr) external view returns (uint256);
 }
 
+interface IBoboRouter {
+    function getBestSwapPath(address inToken, address outToken, uint256 amountIn) external view returns(uint256[] memory amountsOut, ResultInfo memory bestResultInfo);
+    function swap(address _inToken, address _outToken, uint256 _amountIn, uint256 _minAmountOut, address _orderOwner) external;  // uint256 totalAmountOut, 
+}
 
 contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
     using SafeMath for uint256;
@@ -57,7 +62,7 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
     }
 
     // called once by the factory at time of deployment
-    function initialize(address _quoteToken, address _baseToken, address _authAddr, address _boboFarmer, address _orderNFT, address _orderDetailNFT) external onlyOwner {
+    function initialize(address _quoteToken, address _baseToken, address _authAddr, address _boboFarmer, address _orderNFT) external onlyOwner {
         quoteToken = _quoteToken;
         baseToken = _baseToken;
         quoteTokenDecimals = ERC20(quoteToken).decimals();
@@ -65,7 +70,6 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
         addAuthorized(_authAddr);
         boboFarmer = IBoboFarmer(_boboFarmer);
         orderNFT = IOrderNFT(_orderNFT);
-        orderDetailNFT = IOrderDetailNFT(_orderDetailNFT);
     }
     
     function setExManager(address _exManager) external onlyAuthorized {
@@ -78,7 +82,7 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
     
     // 限价单
     // _spotPrice: 以U为单位，如1000000表示下单价格为1U
-    function addLimitedOrder(address _boboRouter, bool _bBuyQuoteToken, uint256 _spotPrice, uint256 _amountIn, uint256 _slippagePercent) public nonReentrant {
+    function addLimitedOrder(bool _bBuyQuoteToken, uint256 _spotPrice, uint256 _amountIn, uint256 _slippagePercent) public nonReentrant {
         require(_slippagePercent <= 1000, "BoboPair: slippage MUST <= 1000(10%)");
         
         uint256 minOutAmount = 0;
@@ -87,53 +91,36 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
         } else {
             minOutAmount = _amountIn.mul(_spotPrice).div(10**quoteTokenDecimals).mul(BasePercent - _slippagePercent).div(BasePercent);
         }
-        uint256 orderId = addOrder(_bBuyQuoteToken, _spotPrice, _amountIn, minOutAmount);
-        
-        (address inToken, address outToken) = _bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
+        (address inToken, ) = _bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
         // 判断是否满足最小下单量
         require(_amountIn >= exManager.tokenMinAmountMap(inToken), "BoboPair: inAmount MUST larger than min amount.");
-
-        // 评估手续费
-        (uint256 deductedAmountIn, ) = exManager.evaluateDeductedAmountIn(msg.sender, inToken, _amountIn);
-        (, ResultInfo memory bestSwapInfo) = IBoboRouter(_boboRouter).getBestSwapPath(inToken, outToken, _amountIn.sub(deductedAmountIn));
         
-        // 下限价单时满足交易条件
-        if (bestSwapInfo.totalAmountOut >= minOutAmount) {  
-            // 扣除手续费
-            uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
-            if (deductAmount > 0) {
-                ERC20(inToken).transferFrom(msg.sender, address(exManager), deductAmount);
-            }
-            uint256 amountIn = _amountIn.sub(deductAmount);
-            swap(_boboRouter, orderId, bestSwapInfo, inToken, outToken, amountIn, false);
-        } else {
-            ERC20(inToken).transferFrom(msg.sender, address(this), _amountIn);
-            if (boboFarmer.tokenPidMap(inToken) > 0) {
-                ERC20(inToken).approve(address(boboFarmer), _amountIn);
-                boboFarmer.deposit(inToken, msg.sender, _amountIn);
-            }
+        addOrder(_bBuyQuoteToken, _spotPrice, _amountIn, minOutAmount);
+        
+        ERC20(inToken).transferFrom(msg.sender, address(this), _amountIn);
+        if (boboFarmer.tokenPidMap(inToken) > 0) {
+            ERC20(inToken).approve(address(boboFarmer), _amountIn);
+            boboFarmer.deposit(inToken, msg.sender, _amountIn);
         }
     }
     
     // 市价单
     function addMarketOrder(address _boboRouter, bool _bBuyQuoteToken, uint256 _amountIn, uint256 _minOutAmount) public nonReentrant {
         (address inToken, address outToken) = _bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
+        require(_minOutAmount >= 0, "BoboPair: _minOutAmount should be > 0.");
         require(_amountIn >= exManager.tokenMinAmountMap(inToken), "BoboPair: inAmount MUST larger than min amount.");
-
+        require(exManager.routerWhiteList(_boboRouter), "BoboPair: router NOT in whitelist!");
+        
+        // 扣手续费
         uint256 deductAmount = exManager.deductTradeFee(msg.sender, inToken, _amountIn);
         if (deductAmount > 0) {
             ERC20(inToken).transferFrom(msg.sender, address(exManager), deductAmount);
         }
         _amountIn = _amountIn.sub(deductAmount);
 
-        (, ResultInfo memory bestSwapInfo) = IBoboRouter(_boboRouter).getBestSwapPath(inToken, outToken, _amountIn);
-        require(bestSwapInfo.totalAmountOut >= _minOutAmount, "BoboPair: can NOT satisfy your trade request.");
-        // 下限价单时满足交易条件
-        if (_minOutAmount == 0) 
-            _minOutAmount = bestSwapInfo.totalAmountOut;
         uint256 spotPrice = _bBuyQuoteToken ? _amountIn.mul(10**quoteTokenDecimals).div(_minOutAmount) : _minOutAmount.mul(10**quoteTokenDecimals).div(_amountIn);
         uint256 orderId = addOrder(_bBuyQuoteToken, spotPrice, _amountIn, _minOutAmount);
-        swap(_boboRouter, orderId, bestSwapInfo, inToken, outToken, _amountIn, false);
+        swap(_boboRouter, orderId, inToken, outToken, _amountIn, _minOutAmount, msg.sender, false);
     }
        
     function makeStatistic(uint256 _amount) private {
@@ -167,30 +154,25 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
                 quoteTokenAmount = quoteTokenAmount.add(orderInfo.inAmount);
             }
         }
-    }        
+    }     
 
-    function swap(address _boboRouter, uint256 _orderId, ResultInfo memory _bestSwapInfo, 
-                  address _inToken, address _outToken, uint256 _amountIn, bool _bInner) private returns(uint256) {
+    function swap(address _boboRouter, uint256 _orderId, 
+                  address _inToken, address _outToken, 
+                  uint256 _amountIn, uint256 _minAmountOut, 
+                  address _orderOwner, bool _bInner) private returns(uint256) {
         if (!_bInner) {
             ERC20(_inToken).transferFrom(msg.sender, address(this), _amountIn);
         }
-        ERC20(_inToken).approve(_boboRouter, _amountIn);
+
         uint256 outTokenAmount = ERC20(_outToken).balanceOf(address(this));
-        IBoboRouter(_boboRouter).swap(_bestSwapInfo, _inToken, _outToken, _amountIn, address(this));
-        uint256 totalAmountOut = ERC20(_outToken).balanceOf(address(this)).sub(outTokenAmount);
+
+        ERC20(_inToken).approve(_boboRouter, _amountIn);
+        IBoboRouter(_boboRouter).swap(_inToken, _outToken, _amountIn, _minAmountOut, _orderOwner);
+        uint256 totalAmountOut = ERC20(_outToken).balanceOf(address(this)).sub(outTokenAmount);   // 兑换出来的outToken数量
+        require(totalAmountOut >= _minAmountOut, "BoboPair: the amount of outToken is NOT enough!");
+        ERC20(_outToken).transfer(_orderOwner, totalAmountOut);
 
         setAMMDealOrder(_orderId, totalAmountOut);
-        
-        // NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId); 
-        // for (uint256 i = 0; i < _bestSwapInfo.swapPools.length && _bestSwapInfo.swapPools[i] != SwapPool.No; i++) {
-        //     address[3] memory path = [_inToken, _bestSwapInfo.middleTokens[i], _outToken];
-        //     addOrderDetail(orderInfo.owner, 
-        //                    _orderId, 
-        //                    _bestSwapInfo.partialAmountIns[i], 
-        //                    partialAmountOuts[i], 
-        //                    _bestSwapInfo.swapPools[i],
-        //                    path);
-        // }
         makeStatistic(_inToken == baseToken ? _amountIn : totalAmountOut);
         return totalAmountOut;
     }
@@ -200,8 +182,8 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
     // _partialAmountIns: 每笔交易投入的inToken的数量，注意它们的和要小于用户初始投入的金额（因为有手续费要扣除）
     //   (1) 在通过BoboRouter.getBestSwapPath获取最佳交易路劲之前，需要先通过EXManager.evaluateDeductedAmountIn获取用户需要扣除的手续费，之后再在getBestSwapPath中传入amountIn
     //   (2) 通过预付手续费，可以降低交易执行
-    function executeSpecifiedOrder(address _boboRouter, uint256 _orderId, 
-                                   SwapPool[] memory _swapPools, address[] memory _middleTokens, uint256[] memory _partialAmountIns) public nonReentrant {                                       
+    function executeSpecifiedOrder(address _boboRouter, uint256 _orderId) public nonReentrant {  
+        require(exManager.routerWhiteList(_boboRouter), "BoboPair: router NOT in whitelist!");                 
         NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId); 
         (address inToken, address outToken) = orderInfo.bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
         
@@ -214,14 +196,8 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
         if (deductAmount > 0) {
             ERC20(inToken).transferFrom(address(this), address(exManager), deductAmount);
         }
-        ResultInfo memory resultInfo;
-        resultInfo.swapPools = _swapPools;
-        resultInfo.middleTokens = _middleTokens;
-        resultInfo.partialAmountIns = _partialAmountIns;
-        resultInfo.partialAmountOuts = new uint256[](4);
-
-        uint256 amountOut = swap(_boboRouter, _orderId, resultInfo, inToken, outToken, amountIn, true);
-        require(amountOut >= orderInfo.minOutAmount, "BoboPair: amountOut NOT enough");
+        
+        swap(_boboRouter, _orderId, inToken, outToken, amountIn, orderInfo.minOutAmount, orderInfo.owner, true);
     }    
     
     function cancelOrder(uint256 _orderId) public returns(bool) {

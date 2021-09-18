@@ -61,19 +61,10 @@ const BoboRouter = artifacts.require("BoboRouter");
 // }
 
 module.exports = async function(deployer, network, accounts) {
-    await deployer.deploy(BoboFactory, OrderNFT.address, OrderDetailNFT.address, BoboFarmer.address, EXManager.address, BoboRouter.address);
+    console.log(OrderNFT.address, BoboFarmer.address, EXManager.address, BoboRouter.address);
+    await deployer.deploy(BoboFactory, OrderNFT.address, BoboFarmer.address, EXManager.address);
     var boboFactory = await BoboFactory.deployed();
-    //boboFactory.transferOwnership(BatchCreatPairs.address);
     
     var boboFarmer = await BoboFarmer.deployed();
     boboFarmer.addAuthorized(boboFactory.address);
-    //createFactory(deployer);
-    // var boboFactory = await BoboFactoryOnMatic.deployed();
-    // var pairNumber = await boboFactory.pairNumber();
-    // console.log('pairNumber', pairNumber.toString(10));
-    // var pairAddr = await getPair(deployer, BoboFactoryOnMatic.address, 
-    //                                        '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 
-    //                                        '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270');
-    // // await cancelOrder(pairAddr, accounts[0]);
-    // await addOrders(pairAddr, accounts[0]);
 };

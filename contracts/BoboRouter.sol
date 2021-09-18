@@ -7,6 +7,7 @@ import "./SwapInterfaces.sol";
 
 contract BoboRouter is Ownable {
     using SafeMath for uint256;
+    using EnumerableSet for EnumerableSet.AddressSet;
     
     address public constant quickSwapFactory = 0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32;
     address public constant quickSwapRouter = 0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff; 
@@ -29,6 +30,11 @@ contract BoboRouter is Ownable {
     
     address[] public middleTokens = [USDT, USDC, WMATIC, WETH, QUICK];
     uint256 public MinLiquidityValue = 1e11;  // 流动性>=100000U 
+
+    uint256 public feeRate = 0;
+    uint256 public constant BaseRate = 10000;
+
+    EnumerableSet.AddressSet private orderOwnerSet;
     
     struct PathsInfo {
         address[] tokens;
@@ -353,7 +359,7 @@ contract BoboRouter is Ownable {
         }
     }
     
-    function swap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, uint256 _amountIn, address _receiver) external {
+    function exeSwap(ResultInfo memory _bestSwapInfo, address _inToken, address _outToken, uint256 _amountIn) private returns(uint256 totalAmountOut) {
         IERC20(_inToken).transferFrom(msg.sender, address(this), _amountIn);
         
         SwapPool[] memory swapPools = _bestSwapInfo.swapPools;
@@ -365,11 +371,32 @@ contract BoboRouter is Ownable {
             uint256 partialAmountOut = _bestSwapInfo.partialAmountOuts[i];
             if (swapPools[i] == SwapPool.QuickSwap) {
                 IERC20(_inToken).approve(quickSwapRouter, partialAmountIn);
-                ICommonRouter(quickSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
+                uint256[] memory amountOuts = ICommonRouter(quickSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, address(this), now);
+                totalAmountOut = totalAmountOut.add(amountOuts[amountOuts.length - 1]);
             } else if (swapPools[i] == SwapPool.SushiSwap) {
                 IERC20(_inToken).approve(sushiSwapRouter, partialAmountIn);
-                ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, _receiver, now);
+                uint256[] memory amountOuts = ICommonRouter(sushiSwapRouter).swapExactTokensForTokens(partialAmountIn, partialAmountOut, path, address(this), now);
+                totalAmountOut = totalAmountOut.add(amountOuts[amountOuts.length - 1]);
             } 
         }
+    }
+
+    function swap(address _inToken, address _outToken, uint256 _amountIn, uint256 _minAmountOut, address _orderOwner) external {
+        (, ResultInfo memory bestResultInfo) = getBestSwapPath(_inToken, _outToken, _amountIn);
+        if (bestResultInfo.totalAmountOut < _minAmountOut) return;
+
+        uint256 totalAmountOut = exeSwap(bestResultInfo, _inToken, _outToken, _amountIn);
+        uint256 profitAmount = totalAmountOut.sub(_minAmountOut).mul(feeRate).div(BaseRate);
+
+        IERC20(_outToken).transfer(msg.sender, totalAmountOut.sub(profitAmount));
+        orderOwnerSet.add(_orderOwner);
+    }
+
+    function withdrawToken(address _tokenAddr) public onlyOwner {
+        ERC20(_tokenAddr).transfer(msg.sender, ERC20(_tokenAddr).balanceOf(address(this)));
+    }
+
+    function setFeeRate(uint256 _feeRate) public onlyOwner {
+        feeRate = _feeRate;
     }
  }

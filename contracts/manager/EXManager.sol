@@ -5,6 +5,7 @@ import "../common/BasicStruct.sol";
 import "../SwapInterfaces.sol";
 import "../common/MixinAuthorizable.sol";
 
+// 用户在截至区块前的前十次交易，免手续费
 contract EXManager is MixinAuthorizable {
     using SafeMath for uint256;
 
@@ -24,6 +25,7 @@ contract EXManager is MixinAuthorizable {
     mapping(address => uint256) public accountFreePointMap;   // 账号免手续费交易次数，累加
     mapping(address => uint256) public tokenMinAmountMap;     // 一次交易最小金额
     mapping(address => address) public tokenAggregatorMap;    // token对应的chainlink聚合器合约地址
+    mapping(address => bool) public routerWhiteList;          // router白名单
     uint256 public stopFreeBlockNum;
 
     address public boboToken;
@@ -37,6 +39,10 @@ contract EXManager is MixinAuthorizable {
 
     function setMaxBoboTokenAmount(uint256 _maxBoboTokenAmount) public onlyOwner {
         maxBoboTokenAmount = _maxBoboTokenAmount;
+    }
+
+    function setRouter(address _router, bool _bInWhiteList) public onlyOwner {
+        routerWhiteList[_router] = _bInWhiteList;
     }
 
     // 根据Bobo持有数量获取折扣比例，最大50%，最小5%

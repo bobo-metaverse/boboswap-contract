@@ -11,20 +11,13 @@ contract OrderNFT is Minter, ERC721 {
     
     
     uint256 public nftId = 0;
-    address public orderDetailNFTContractAddr;
     mapping(uint256 => NFTInfo) public id2NFTInfoMap;
     mapping(address => mapping(address => uint256[])) public owner2PairAddr2OrderIDsMap;   // 通过用户地址以及交易对地址获取其所有的订单
-    mapping(uint256 => uint256[]) public orderDetailIds;                          // nft -> nft detail
-    
-    
+        
     event Mint(address indexed _to, uint256 _tokenId);
     
     constructor() ERC721("Bobo Order NFT", "BOT")  public {
     }        
-    
-    function setOrderDetailNFTContract(address _orderDetailNFTContractAddr) public onlyOwner {
-        orderDetailNFTContractAddr = _orderDetailNFTContractAddr;
-    }
     
     function mint(address _pairAddr, address bookOwner, bool _bBuyQuoteToken, uint256 _spotPrice, uint256 _inAmount, uint256 _minOutAmount) public onlyMinter returns (uint256) {
         nftId++;
@@ -52,12 +45,6 @@ contract OrderNFT is Minter, ERC721 {
         }
     }
     
-    function bindDetailNFT(uint256 _nftId, uint256 detailNFTId) public {
-        require(msg.sender == orderDetailNFTContractAddr, "OrderNFT: only order detial contract could invoke this interface.");
-        require( _exists(_nftId), "OrderNFT: nft is not exist.");
-        orderDetailIds[nftId].push(detailNFTId);
-    }
-
     function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual override {
     }
 
@@ -80,20 +67,5 @@ contract OrderNFT is Minter, ERC721 {
             z = ( x / z + z ) / 2;
         }
         return y;
-    }
-    
-    function getOrderDetailNumber(uint256 _nftId) view public returns(uint256) {
-        return orderDetailIds[_nftId].length;
-    }
-    
-    function getChildrenIds(uint256 _nftId, uint256 _fromId, uint256 _toId) view public returns(uint256[] memory ids) {
-        uint256 length = orderDetailIds[_nftId].length;
-        require(_fromId < _toId && _toId <= length, "LoserNFT: index out of range!");
-        
-        ids = new uint256[](_toId - _fromId);
-        uint256 count = 0;
-        for(uint256 i = _fromId; i < _toId; i++) {
-            ids[count++] = orderDetailIds[_nftId][i];
-        }
     }
 }

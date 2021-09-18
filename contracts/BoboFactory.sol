@@ -14,7 +14,7 @@ interface IAuthorizable {
 }
 
 interface IBoboPair is IAuthorizable {
-    function initialize(address _token0, address _token1, address _authAddr, address _boboFarmer, address _orderNFT, address _orderDetailNFT) external;
+    function initialize(address _token0, address _token1, address _authAddr, address _boboFarmer, address _orderNFT) external;
     function setExManager(address _exManager) external;
     function getTotalHangingTokenAmount(address _userAddr) view external returns(uint256 baseTokenAmount, uint256 quoteTokenAmount);
 }
@@ -32,14 +32,12 @@ contract BoboFactory is Ownable {
 
     IBoboFarmer public boboFarmer;
     address public orderNFT;
-    address public orderDetailNFT;
     address public exManager;
     
     event PairCreated(address indexed quoteToken, address indexed baseToken, address pairAddr);
     
-    constructor (address _orderNFT, address _orderDetailNFT, address _boboFarmer, address _exManager) public {  
+    constructor (address _orderNFT, address _boboFarmer, address _exManager) public {  
         orderNFT = _orderNFT;
-        orderDetailNFT = _orderDetailNFT;
         boboFarmer = IBoboFarmer(_boboFarmer);
         exManager = _exManager;
     }
@@ -60,7 +58,7 @@ contract BoboFactory is Ownable {
         assembly {
             pairAddr := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
-        IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT, orderDetailNFT);
+        IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT);
         require(IBoboPair(pairAddr).isAuthorized(address(this)), "BoboFactory: factory NOT the auth of pair.");
         IBoboPair(pairAddr).setExManager(exManager);
         

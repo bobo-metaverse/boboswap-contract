@@ -12,7 +12,6 @@ module.exports = async function(deployer, network, accounts) {
 
   await deployer.deploy(BoboFarmer, boboToken.address, boboFund.address);
   var boboFarmer = await BoboFarmer.deployed();
-  // boboFarmer.setBoboPerBlock(10);  // 试运营阶段不挖bobo，待正式运营后开通
 
   boboToken.addMinter(boboFarmer.address);
 

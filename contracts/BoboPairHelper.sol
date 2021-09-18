@@ -10,12 +10,20 @@ interface IBoboPair {
     function userOrdersMap(address _userAddr, uint256 _index) view external returns(uint256);
     function orderNFT() view external returns(address);
     function getUserOrderNumber(address _userAddr) view external returns(uint256);
+    function getOrderNumber(OrderStatus _orderStatus) view external returns(uint256);
+    function sealedOrdersMap(OrderStatus _orderStatus, uint256 _index) view external returns(uint256);
+    function getCurrentPrice(address _boboRouter) view external returns(uint256);
+    function volumnOf24Hours() view external returns(uint256);
 }
 
 interface IBoboTradeMining {
     function nftToken() view external returns(address);
     function getUserNFTNumber(address _user) view external returns(uint256);
     function getUserNFTIds(address _user, uint256 _fromIndex, uint256 _toIndex) view external returns(uint256[] memory nftIds);
+}
+
+interface IBoboFactory {
+    function getPair(address tokenA, address tokenB) view external returns(address);
 }
 
 
@@ -76,6 +84,22 @@ contract BoboPairHelper {
         }
     }
 
+    function getOneStatusOrders(IBoboPair _boboPair, OrderStatus _orderStatus, uint256 _fromIndex, uint256 _pageSize) 
+        view public returns(NFTInfo[] memory nftInfos, uint256 count) {
+        uint256 orderNumber = _boboPair.getOrderNumber(_orderStatus);
+        if (_fromIndex <= orderNumber - 1) {
+            _pageSize = (_fromIndex + _pageSize) > orderNumber ? (orderNumber - _fromIndex) : _pageSize;
+            nftInfos = new NFTInfo[](_pageSize);
+            IOrderNFT orderNFT = IOrderNFT(_boboPair.orderNFT());
+            for (uint256 i = _fromIndex; i < _fromIndex + _pageSize; i++) {
+                uint256 orderId = _boboPair.sealedOrdersMap(_orderStatus, i);
+                NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
+                nftInfos[count] = nftInfo;
+                count++;
+            } 
+        }
+    }
+
     function getAllDealedOrders(IBoboPair _boboPair, address _userAddr, uint256 _fromIndex, uint256 _pageSize) 
         view public returns(NFTInfo[] memory nftInfos, uint256 count) {
         uint256 orderNumber = _boboPair.getUserDealedOrderNumber(_userAddr);
@@ -103,5 +127,33 @@ contract BoboPairHelper {
             NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
             nftInfos[i] = nftInfo;
         } 
+    }
+
+    function getPairInfo(address boboFactory, address boboRouter, address[] memory quoteTokenOfUsdt, address usdtAddr, address[] memory quoteTokenOfUsdc, address usdcAddr) 
+        view public returns(uint256[] memory pricesOfUsdt, uint256[] memory volumnsOfUsdt, uint256[] memory pricesOfUsdc, uint256[] memory volumnsOfUsdc) {
+        
+        uint256 usdtTokenLength = quoteTokenOfUsdt.length;
+        pricesOfUsdt = new uint256[](usdtTokenLength);
+        volumnsOfUsdt = new uint256[](usdtTokenLength);
+
+        uint256 usdcTokenLength = quoteTokenOfUsdc.length;
+        pricesOfUsdc = new uint256[](usdcTokenLength);
+        volumnsOfUsdc = new uint256[](usdcTokenLength);
+
+        for (uint256 i = 0; i < usdtTokenLength; i++) {
+            address quoteTokenAddr = quoteTokenOfUsdt[i];
+            address pairAddr = IBoboFactory(boboFactory).getPair(quoteTokenAddr, usdtAddr);
+            if (pairAddr == address(0)) continue;
+            pricesOfUsdt[i] = IBoboPair(pairAddr).getCurrentPrice(boboRouter);
+            volumnsOfUsdt[i] = IBoboPair(pairAddr).volumnOf24Hours();
+        }
+
+        for (uint256 i = 0; i < usdcTokenLength; i++) {
+            address quoteTokenAddr = quoteTokenOfUsdc[i];
+            address pairAddr = IBoboFactory(boboFactory).getPair(quoteTokenAddr, usdcAddr);
+            if (pairAddr == address(0)) continue;
+            pricesOfUsdc[i] = IBoboPair(pairAddr).getCurrentPrice(boboRouter);
+            volumnsOfUsdc[i] = IBoboPair(pairAddr).volumnOf24Hours();
+        }
     }
 }

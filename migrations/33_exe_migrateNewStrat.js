@@ -15,8 +15,8 @@ module.exports = async function(deployer, network, accounts) {
   await boboFarmer.migrateNewStrat(USDC, newStratMaticSushi.address);
 
 
-  // console.log("get back USDT");
-  // await newStratMaticSushi.getBackToken(USDT);
-  // console.log("get back USDc");
-  // await newStratMaticSushi.getBackToken(USDC);
+  console.log("get back USDT");
+  await newStratMaticSushi.getBackToken(USDT);
+  console.log("get back USDc");
+  await newStratMaticSushi.getBackToken(USDC);
 };
