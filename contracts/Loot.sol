@@ -266,6 +266,8 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
     function pluck(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal view returns (string memory) {
         uint256 rand = random(string(abi.encodePacked(keyPrefix, toString(tokenId))));
         string memory output = sourceArray[rand % sourceArray.length];
+        
+        uint256 weight = tokenIdWeightMap[tokenId];
         uint256 greatness = rand % 21;
         if (greatness > 14) {
             output = string(abi.encodePacked(output, " ", suffixes[rand % suffixes.length]));
@@ -351,6 +353,7 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
         bytes32 hashed = keccak256(abi.encodePacked(totalEverMinted, block.timestamp, msg.sender));
         uint256 tokenId = uint256(hashed);
 
+        tokenIdWeightMap[tokenId] = totalWeight;
         _mint(msg.sender, tokenId);
         totalEverMinted +=1; 
         // disburse
