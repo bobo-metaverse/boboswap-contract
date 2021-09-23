@@ -25,7 +25,7 @@ interface IBoboFarmer {
 }
 
 interface IBoboRouter {
-    function getBestSwapPath(address inToken, address outToken, uint256 amountIn) external view returns(uint256[] memory amountsOut, ResultInfo memory bestResultInfo);
+    function getBaseAmountOut(address inToken, address outToken, uint256 amountIn) external view returns(uint256 amountOut);
     function swap(address _inToken, address _outToken, uint256 _amountIn, uint256 _minAmountOut, address _orderOwner) external;  // uint256 totalAmountOut, 
 }
 
@@ -33,7 +33,7 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
     using SafeMath for uint256;
     
     uint256 public constant BasePercent = 10000;
-    uint256 public constant BasePriceAmount = 1e9;
+    uint256 public constant BaseAmountIn = 1e9;
     
     IExchangeManager public exManager;
     IBoboFarmer public boboFarmer;
@@ -137,9 +137,8 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
     }
     
     function getCurrentPrice(address _boboRouter) view public returns(uint256) {
-        (, ResultInfo memory bestSwapInfo) = IBoboRouter(_boboRouter).getBestSwapPath(baseToken, quoteToken, BasePriceAmount);
-        uint256 amountOut = bestSwapInfo.totalAmountOut;
-        uint256 spotPrice = BasePriceAmount.mul(10**quoteTokenDecimals).div(amountOut);
+        uint256 amountOut = IBoboRouter(_boboRouter).getBaseAmountOut(baseToken, quoteToken, BaseAmountIn);
+        uint256 spotPrice = BaseAmountIn.mul(10**quoteTokenDecimals).div(amountOut);
         return spotPrice;
     }
 

@@ -130,7 +130,8 @@ contract BoboPairHelper {
     }
 
     function getPairInfo(address boboFactory, address boboRouter, address[] memory quoteTokenOfUsdt, address usdtAddr, address[] memory quoteTokenOfUsdc, address usdcAddr) 
-        view public returns(uint256[] memory pricesOfUsdt, uint256[] memory volumnsOfUsdt, uint256[] memory pricesOfUsdc, uint256[] memory volumnsOfUsdc) {
+        view public returns(uint256[] memory pricesOfUsdt, uint256[] memory volumnsOfUsdt, 
+                            uint256[] memory pricesOfUsdc, uint256[] memory volumnsOfUsdc) {
         
         uint256 usdtTokenLength = quoteTokenOfUsdt.length;
         pricesOfUsdt = new uint256[](usdtTokenLength);
@@ -154,6 +155,28 @@ contract BoboPairHelper {
             if (pairAddr == address(0)) continue;
             pricesOfUsdc[i] = IBoboPair(pairAddr).getCurrentPrice(boboRouter);
             volumnsOfUsdc[i] = IBoboPair(pairAddr).volumnOf24Hours();
+        }
+    }
+
+    function getPairAddressList(address boboFactory, address[] memory quoteTokenOfUsdt, address usdtAddr, address[] memory quoteTokenOfUsdc, address usdcAddr) 
+        view public returns(address[] memory pairAddressListOfUsdt, address[] memory pairAddressListOfUsdc) {
+        
+        uint256 usdtTokenLength = quoteTokenOfUsdt.length;
+        pairAddressListOfUsdt = new address[](usdtTokenLength);
+
+        uint256 usdcTokenLength = quoteTokenOfUsdc.length;
+        pairAddressListOfUsdc = new address[](usdcTokenLength);
+
+        for (uint256 i = 0; i < usdtTokenLength; i++) {
+            address quoteTokenAddr = quoteTokenOfUsdt[i];
+            address pairAddr = IBoboFactory(boboFactory).getPair(quoteTokenAddr, usdtAddr);
+            pairAddressListOfUsdt[i] = pairAddr;
+        }
+
+        for (uint256 i = 0; i < usdcTokenLength; i++) {
+            address quoteTokenAddr = quoteTokenOfUsdc[i];
+            address pairAddr = IBoboFactory(boboFactory).getPair(quoteTokenAddr, usdcAddr);
+            pairAddressListOfUsdc[i] = pairAddr;
         }
     }
 }

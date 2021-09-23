@@ -1,8 +1,7 @@
 
 const BoboToken = artifacts.require("BoboToken");
-//const BoboBetaToken = artifacts.require("BoboBetaToken");
 
-module.exports = async function(deployer) {
+module.exports = async function(deployer, network) {
+  console.log(network);
   await deployer.deploy(BoboToken);
-  //await deployer.deploy(BoboBetaToken);
 };

@@ -21,6 +21,15 @@ module.exports = {
       networkCheckTimeout:1000000
       //gasLimit: 20000000
     },
+    aurora: {
+      provider: () => new HDWalletProvider(mnemonic, `https://mainnet.aurora.dev`),
+      network_id: 1313161554,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      gasPrice: 10000000000,
+      networkCheckTimeout:1000000
+    }
   },
 
   // Set default mocha options here, use special reporters etc.
