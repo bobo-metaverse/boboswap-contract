@@ -2,8 +2,8 @@
 pragma solidity 0.6.12;
 
 
-import "./common/BasicStruct.sol";
-import "./SwapInterfaces.sol";
+import "../common/BasicStruct.sol";
+import "../SwapInterfaces.sol";
 
 // 交易在 quickSwap
 // 挖矿在 sushiSwap => matic&sushi

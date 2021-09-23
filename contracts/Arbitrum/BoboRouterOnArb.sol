@@ -2,8 +2,8 @@
 pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
         
-import "./common/BasicStruct.sol";
-import "./SwapInterfaces.sol";
+import "../common/BasicStruct.sol";
+import "../SwapInterfaces.sol";
 
 contract BoboRouter is Ownable {
     using SafeMath for uint256;

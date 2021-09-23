@@ -40,7 +40,7 @@ contract BoboPairHelper {
             NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
             address ownerAddr = orderNFT.ownerOf(nftInfo.id);
             if (ownerAddr == _userAddr && nftInfo.dealedTime >= _startTime && nftInfo.dealedTime < _endTime) {
-                uint256 weight = orderNFT.getWeight(nftInfo.id);
+                uint256 weight = nftInfo.weight;
                 orderIds[count] = nftInfo.id;
                 weights[count] = weight;
                 count++;
@@ -60,7 +60,7 @@ contract BoboPairHelper {
             NFTInfo memory nftInfo = orderNFT.getOrderInfo(orderId);
             address ownerAddr = orderNFT.ownerOf(nftInfo.id);   // 即便是用户下的订单，也会因为其它操作而失去owner身份，譬如抵押、交易后owner转移
             if (nftInfo.status == OrderStatus.AMMDeal && ownerAddr == _userAddr && nftInfo.dealedTime >= _startTime && nftInfo.dealedTime < _endTime) {
-                uint256 weight = orderNFT.getWeight(nftInfo.id);
+                uint256 weight = nftInfo.weight;
                 orderIds[count] = nftInfo.id;
                 weights[count] = weight;
                 count++;
