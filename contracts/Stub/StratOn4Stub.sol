@@ -4,7 +4,7 @@ pragma solidity 0.6.12;
 
 import "../common/BasicStruct.sol";
 
-contract Strategy is Ownable, ReentrancyGuard {
+contract Strategy4Stub is Ownable, ReentrancyGuard {
 
     using SafeMath for uint256;
     using Strings for uint256;

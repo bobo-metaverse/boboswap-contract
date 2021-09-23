@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 import "../common/BasicStruct.sol";
 import "../SwapInterfaces.sol";
 
-contract BoboRouter is Ownable {
+contract BoboRouter4Arb is Ownable {
     using SafeMath for uint256;
     using EnumerableSet for EnumerableSet.AddressSet;
     

@@ -7,7 +7,7 @@ import "../SwapInterfaces.sol";
 
 // 交易在 quickSwap
 // 挖矿在 sushiSwap => matic&sushi
-contract StratMaticSushi is Ownable, ReentrancyGuard {
+contract Strat4Arb is Ownable, ReentrancyGuard {
     using SafeMath for uint256;
     using Strings for uint256;
     using SafeERC20 for IERC20;
