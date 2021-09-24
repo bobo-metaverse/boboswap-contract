@@ -11,14 +11,16 @@ import "./common/BasicStruct.sol";
 
 contract Loot is ERC721, ReentrancyGuard, Ownable {
     
-    // this is currently 0.5%
+    // this is currently 1%
     uint256 public initMintPrice = 0.001 ether; // at 0
-    uint256 public initBurnPrice = 0.000995 ether; // at 1
+    uint256 public initBurnPrice = 0.00099 ether; // at 1
     address payable public creator;
     uint256 public totalEverMinted = 0;
     IERC721 public nftToken; 
     uint256 public reserve = 0;
+    uint256 public OrderNumber = 8;
     mapping(uint256 => uint256) public tokenIdWeightMap;
+    address public constant deadAddr = 0x000000000000000000000000000000000000dEaD;
 
     string[] private weapons = [
         "Warhammer",  
@@ -130,19 +132,6 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
         "Linen Gloves",
         "Gloves"
     ];
-    
-    string[] private skill = [
-        "Football",
-        "Basketball",
-        "Go",
-        "Chess",
-        "Speak",
-        "Chess",
-        "Basketball",
-        "Two Skills",
-        "Three Skills",
-        "Almighty"
-    ];
 
     string[] private necklaces = [
         "Necklace",
@@ -156,6 +145,13 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
         "Bronze Ring",
         "Platinum Ring",
         "Titanium Ring"
+    ];
+
+    string[] private roles = [
+        "Human Male",
+        "Human Female",
+        "AI Male",
+        "AI Female"
     ];
     
     string[] private suffixes = [
@@ -212,15 +208,19 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
     event Minted(uint256 indexed tokenId, uint256 indexed pricePaid, uint256 indexed reserveAfterMint);
     event Burned(uint256 indexed tokenId, uint256 indexed priceReceived, uint256 indexed reserveAfterBurn);
 
-    constructor(uint256 _initMintPrice, uint256 _initBurnPrice, IERC721 _nftToken) public ERC721("Bobo Loot", "RoBot") Ownable() {
+    constructor(uint256 _initMintPrice, IERC721 _nftToken) public ERC721("Bobo Loot", "BOT") Ownable() {
         initMintPrice = _initMintPrice;
-        initBurnPrice = _initBurnPrice;
+        initBurnPrice = _initMintPrice.mul(99).div(100);
         creator = msg.sender;
         nftToken = _nftToken;
     }
 
     function setCreator(address payable _creator) public onlyOwner {
         creator = _creator;
+    }
+
+    function setOrderNumber(uint256 _orderNumber) public onlyOwner {
+        OrderNumber = _orderNumber;
     }
 
     function random(string memory input) internal pure returns (uint256) {
@@ -254,13 +254,13 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
     function getNeck(uint256 tokenId) public view returns (string memory) {
         return pluck(tokenId, "NECK", necklaces);
     }
-
-    function getSkill(uint256 tokenId) public view returns (string memory) {
-        return pluck(tokenId, "SKILL", skill);
-    }
     
     function getRing(uint256 tokenId) public view returns (string memory) {
         return pluck(tokenId, "RING", rings);
+    }
+    
+    function getRole(uint256 tokenId) public view returns (string memory) {
+        return pluck(tokenId, "ROLE", roles);
     }
     
     function pluck(uint256 tokenId, string memory keyPrefix, string[] memory sourceArray) internal view returns (string memory) {
@@ -268,7 +268,13 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
         string memory output = sourceArray[rand % sourceArray.length];
         
         uint256 weight = tokenIdWeightMap[tokenId];
-        uint256 greatness = rand % 21;
+        uint256 decimals = 0;   
+        for (uint256 x = weight; x > 0; x /= 10) {
+            decimals++;
+        }
+        uint256 factor = decimals <= 9 ? 0 : decimals - 9;  // 1000~9999U = 1, 10000~99999 U=2
+
+        uint256 greatness = rand % 21 + factor;
         if (greatness > 14) {
             output = string(abi.encodePacked(output, " ", suffixes[rand % suffixes.length]));
         }
@@ -286,7 +292,7 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
     }
 
     function tokenURI(uint256 tokenId) override public view returns (string memory) {
-        string[17] memory parts;
+        string[19] memory parts;
         parts[0] = '<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350"><style>.base { fill: white; font-family: serif; font-size: 14px; }</style><rect width="100%" height="100%" fill="black" /><text x="10" y="20" class="base">';
 
         parts[1] = getWeapon(tokenId);
@@ -319,14 +325,15 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
 
         parts[15] = getRing(tokenId);
 
-        parts[14] = '</text><text x="10" y="180" class="base">';
+        parts[16] = '</text><text x="10" y="180" class="base">';
 
-        parts[15] = getSkill(tokenId);
+        parts[17] = getRole(tokenId);
 
-        parts[16] = '</text></svg>';
+        parts[18] = '</text></svg>';
 
         string memory output = string(abi.encodePacked(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8]));
         output = string(abi.encodePacked(output, parts[9], parts[10], parts[11], parts[12], parts[13], parts[14], parts[15], parts[16]));
+        output = string(abi.encodePacked(output, parts[17], parts[18]));
         
         string memory json = Base64.encode(bytes(string(abi.encodePacked('{"name": "Bag #', toString(tokenId), '", "description": "Loot is randomized adventurer gear generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Loot in any way you want.", "image": "data:image/svg+xml;base64,', Base64.encode(bytes(output)), '"}'))));
         output = string(abi.encodePacked('data:application/json;base64,', json));
@@ -336,22 +343,22 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
 
     function mint(uint256[] memory orderIds) payable public nonReentrant returns (uint256 _tokenId)  {
         require(msg.value > 0, "Loot: No ETH sent");
-        require(orderIds.length == 8, "Loot: order's number should be 8.");
+        require(orderIds.length == OrderNumber, "Loot: order's number should be 8.");
 
         uint256 mintPrice = getCurrentPriceToMint();
-        require(msg.value >= mintPrice, "C: Not enough ETH sent");
+        require(msg.value >= mintPrice, "Loot: Not enough ETH sent");
 
         uint256 totalWeight = 0;
         for (uint256 i = 0; i < orderIds.length; i++) {
             NFTInfo memory nftInfo = IOrderNFT(address(nftToken)).getOrderInfo(orderIds[i]);
-            require(nftInfo.status == OrderStatus.AMMDeal, "The status of order is NOT dealed.");
-            nftToken.transferFrom(address(msg.sender), address(this), orderIds[i]);
+            require(nftInfo.status == OrderStatus.AMMDeal, "Loot: The status of order is NOT dealed.");
+            nftToken.transferFrom(address(msg.sender), deadAddr, orderIds[i]);
             totalWeight += nftInfo.weight;
         }
 
         // mint first to increase supply
         bytes32 hashed = keccak256(abi.encodePacked(totalEverMinted, block.timestamp, msg.sender));
-        uint256 tokenId = uint256(hashed);
+        uint256 tokenId = uint256(uint32(uint256(hashed)));
 
         tokenIdWeightMap[tokenId] = totalWeight;
         _mint(msg.sender, tokenId);
