@@ -78,15 +78,15 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         removeOrder(orderInfo);
     }
     
-    function setExceptionOrder(uint256 _orderId, string memory _comment) internal returns(bool) {
-        NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
+    // function setExceptionOrder(uint256 _orderId, string memory _comment) internal returns(bool) {
+    //     NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
         
-        require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can become exception status.");
+    //     require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can become exception status.");
         
-        orderNFT.sealNFT(_orderId, OrderStatus.Exception, 0, _comment);
-        sealedOrdersMap[OrderStatus.Exception].push(_orderId);
-        removeOrder(orderInfo);
-    }
+    //     orderNFT.sealNFT(_orderId, OrderStatus.Exception, 0, _comment);
+    //     sealedOrdersMap[OrderStatus.Exception].push(_orderId);
+    //     removeOrder(orderInfo);
+    // }
 
     // 获取盘口第一笔卖单或买单数据
     function getHeaderOrderIndex(bool _bBuy) view internal returns(bool exist, uint256 index) {

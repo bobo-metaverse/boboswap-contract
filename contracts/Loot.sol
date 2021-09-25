@@ -150,8 +150,8 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
     string[] private roles = [
         "Human Male",
         "Human Female",
-        "AI Male",
-        "AI Female"
+        "Male Robot",
+        "Female Robot"
     ];
     
     string[] private suffixes = [

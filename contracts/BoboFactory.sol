@@ -49,7 +49,7 @@ contract BoboFactory is Ownable {
             exManager = _exManager;
     }
     
-    function createPair(address _quoteToken, address _baseToken) public onlyOwner returns (address pairAddr) {
+    function createPair(address _quoteToken, address _baseToken) public returns (address pairAddr) {
         require(_quoteToken != _baseToken, "BoboFactory: IDENTICAL_ADDRESSES");
         require(_quoteToken != address(0), "BoboFactory: ZERO_ADDRESS");
         require(getPair[_quoteToken][_baseToken] == address(0), "BoboFactory: PAIR_EXISTS"); // single check is sufficient
@@ -59,7 +59,6 @@ contract BoboFactory is Ownable {
             pairAddr := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
         IBoboPair(pairAddr).initialize(_quoteToken, _baseToken, msg.sender, address(boboFarmer), orderNFT);
-        require(IBoboPair(pairAddr).isAuthorized(address(this)), "BoboFactory: factory NOT the auth of pair.");
         IBoboPair(pairAddr).setExManager(exManager);
         
         getPair[_quoteToken][_baseToken] = pairAddr;
