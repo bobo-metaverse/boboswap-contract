@@ -37,7 +37,7 @@ contract OrderNFT is Minter, ERC721 {
         id2NFTInfoMap[_nftId].dealedTime = now;
         id2NFTInfoMap[_nftId].outAmount = _outAmount;
         id2NFTInfoMap[_nftId].comment = _comment;
-        if (_status == OrderStatus.AMMDeal) {
+        if (_status == OrderStatus.Dealed) {
             uint256 spanTime = now.sub(id2NFTInfoMap[_nftId].delegateTime);
             uint256 spanTimeFactor = spanTime == 0 ? 1 : sqrt(spanTime);
             uint256 dealedAmountU = id2NFTInfoMap[_nftId].bBuyQuoteToken ? id2NFTInfoMap[_nftId].inAmount : _outAmount;

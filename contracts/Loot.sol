@@ -351,7 +351,7 @@ contract Loot is ERC721, ReentrancyGuard, Ownable {
         uint256 totalWeight = 0;
         for (uint256 i = 0; i < orderIds.length; i++) {
             NFTInfo memory nftInfo = IOrderNFT(address(nftToken)).getOrderInfo(orderIds[i]);
-            require(nftInfo.status == OrderStatus.AMMDeal, "Loot: The status of order is NOT dealed.");
+            require(nftInfo.status == OrderStatus.Dealed, "Loot: The status of order is NOT dealed.");
             nftToken.transferFrom(address(msg.sender), deadAddr, orderIds[i]);
             totalWeight += nftInfo.weight;
         }

@@ -174,10 +174,6 @@ contract EXManager is MixinAuthorizable {
         (, int price,,,) = priceFeed.latestRoundData();
         return uint256(price);
     }
-    
-    function setStopFreeBlockNum(uint256 _blockNum) public onlyOwner {
-        stopFreeBlockNum = _blockNum;
-    }
 
     function setFeePercent(uint256 _feePercent) public onlyOwner {
         feePercent = _feePercent;

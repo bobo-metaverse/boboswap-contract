@@ -13,7 +13,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 
 import "./StructuredLinkedList.sol";
 
-enum OrderStatus { Hanging, ManualCanceled, AMMDeal }
+enum OrderStatus { Hanging, ManualCanceled, Dealed }
 enum SwapPool {No, Mdex, Pancake, OneInch, Uniswap, SushiSwap, Dodo, QuickSwap}
 
 struct NFTInfo {

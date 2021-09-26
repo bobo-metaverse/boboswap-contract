@@ -70,10 +70,10 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     function setAMMDealOrder(uint256 _orderId, uint256 _outAmount) internal returns(bool) {
         NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
         
-        require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can become AMMDeal status.");
+        require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can become Dealed status.");
         
-        orderNFT.sealNFT(_orderId, OrderStatus.AMMDeal, _outAmount, "");
-        sealedOrdersMap[OrderStatus.AMMDeal].push(_orderId);
+        orderNFT.sealNFT(_orderId, OrderStatus.Dealed, _outAmount, "");
+        sealedOrdersMap[OrderStatus.Dealed].push(_orderId);
         userDealedOrdersMap[orderInfo.owner].push(_orderId);
         removeOrder(orderInfo);
     }
@@ -169,7 +169,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
 
     // 获取某个交易对一段时间内基础token的交易量
     // function getTotalDealedAmount(uint256 _fromTime, uint256 _endTime) view public returns(uint256 fromIndex, uint256 totalAmount) {
-    //     uint256 orderLength = sealedOrdersMap[OrderStatus.AMMDeal].length;
+    //     uint256 orderLength = sealedOrdersMap[OrderStatus.Dealed].length;
         
     //     uint256 lowIndex = 0;
     //     uint256 highIndex = 0;
@@ -179,8 +179,8 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     //             fromIndex = 0;
     //             break;
     //         }
-    //         uint256 orderId = sealedOrdersMap[OrderStatus.AMMDeal][midIndex];
-    //         uint256 preOrderId = sealedOrdersMap[OrderStatus.AMMDeal][midIndex - 1];
+    //         uint256 orderId = sealedOrdersMap[OrderStatus.Dealed][midIndex];
+    //         uint256 preOrderId = sealedOrdersMap[OrderStatus.Dealed][midIndex - 1];
     //         NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
     //         NFTInfo memory preOrderInfo = orderNFT.getOrderInfo(preOrderId);
     //         if (orderInfo.dealedTime == _fromTime || preOrderInfo.dealedTime == _fromTime) {
@@ -198,7 +198,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         
     //     uint256 index = fromIndex;
     //     while (index < orderLength) {
-    //         uint256 orderId = sealedOrdersMap[OrderStatus.AMMDeal][index];
+    //         uint256 orderId = sealedOrdersMap[OrderStatus.Dealed][index];
     //         NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
             
     //         if (orderInfo.dealedTime > _endTime) break;

@@ -156,7 +156,7 @@ contract BoboFarmer4TradeMining is Ownable {
         if (_nftIds.length > 0) {
             for (uint256 i = 0; i < _nftIds.length; i++) {
                 NFTInfo memory nftInfo = IOrderNFT(address(nftToken)).getOrderInfo(_nftIds[i]);
-                require(nftInfo.status == OrderStatus.AMMDeal, "The status of order is NOT dealed.");
+                require(nftInfo.status == OrderStatus.Dealed, "The status of order is NOT dealed.");
                 require(nftInfo.dealedTime >= nftStartTime && nftInfo.dealedTime < nftEndTime, "The dealed time of order is NOT statisfied by this contract.");
                 nftToken.transferFrom(address(msg.sender), address(this), _nftIds[i]);
                 uint256 nftWeight = nftInfo.weight;
