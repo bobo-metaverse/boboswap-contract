@@ -26,14 +26,21 @@ contract EXManager is MixinAuthorizable {
     mapping(address => uint256) public tokenMinAmountMap;     // 一次交易最小金额
     mapping(address => address) public tokenAggregatorMap;    // token对应的chainlink聚合器合约地址
     mapping(address => bool) public routerWhiteList;          // router白名单
-    uint256 public stopFreeBlockNum;
 
     address public boboToken;
     uint256 public maxBoboTokenAmount = 1e23;  // 至少拥有此数量的Bobo（默认10万），手续费打五折，至少拥有其十分之一的Bobo才开始打折（9折）
     
+    mapping(uint256 => SpreadInfo) public spreadInfoMap;
+    struct SpreadInfo {
+        uint256 spreadCode;         // 推广码
+        uint256 endBlock;           // 推广终止时间
+        uint256 userRate;           // 用户充值提升比例
+        uint256 commissionRate;     // 推广者佣金比例
+        address spreaderAddr;       // 推广者地址
+    }
+
     constructor (address _boboToken) public {
-        usableTradePointsMap[msg.sender] = 10000;
-        stopFreeBlockNum = block.number + 300000;
+        usableTradePointsMap[msg.sender] = 10000;   // 给合约部署者提供1万U的手续费
         boboToken = _boboToken;
     }
 
@@ -63,11 +70,23 @@ contract EXManager is MixinAuthorizable {
         maxOrderNumberPerMatch = _maxNumber;
     }
     
+    function setSpreadInfo(uint256 _spreadCode, uint256 _endBlock, uint256 _userRate, uint256 _commissionRate, address _spreaderAddr) public onlyOwner {
+        require(_spreadCode > 0 && _endBlock > block.number, "EXManager: parameter ERROR");
+        spreadInfoMap[_spreadCode] = SpreadInfo(_spreadCode, _endBlock, _userRate, _commissionRate, _spreaderAddr);
+    }
+    
     // 充值平台币，用U购买点数
-    function buyTradePoints(uint256 _usdtAmount) public {
+    function buyTradePoints(uint256 _usdtAmount, uint256 _spreadCode) public {
         require(_usdtAmount >= minDepositValue, "EXManager: USDT amount must be bigger than minDepositValue.");
-        ERC20(USDT).transferFrom(msg.sender, address(this), _usdtAmount);
-        usableTradePointsMap[msg.sender] = usableTradePointsMap[msg.sender].add(_usdtAmount);
+        ERC20(USDT).transferFrom(msg.sender, address(this), _usdtAmount);        
+        SpreadInfo memory spreadInfo = spreadInfoMap[_spreadCode];
+        if (spreadInfo.endBlock > block.number) {
+            usableTradePointsMap[msg.sender] = usableTradePointsMap[msg.sender].add(_usdtAmount.add(_usdtAmount.mul(spreadInfo.userRate).div(100)));
+            uint256 awardAmount = _usdtAmount.mul(spreadInfo.commissionRate).div(100);
+            ERC20(USDT).transfer(spreadInfo.spreaderAddr, awardAmount);  
+        } else {
+            usableTradePointsMap[msg.sender] = usableTradePointsMap[msg.sender].add(_usdtAmount);
+        }
     }
 
     // 转让点数
@@ -81,7 +100,7 @@ contract EXManager is MixinAuthorizable {
     // 消耗点卡
     // 在到达区块(区块号为stopFreeBlockNum)之前，前十次(maxFreePointPerAccount)交易免交易费
     function deductTradeFee(address _userAddr, address _token, uint256 _amountIn) public onlyAuthorized returns(uint256) {
-        if (accountFreePointMap[_userAddr] < maxFreePointPerAccount && block.number < stopFreeBlockNum) {
+        if (accountFreePointMap[_userAddr] < maxFreePointPerAccount) {
             accountFreePointMap[_userAddr]++;
             return 0;
         }

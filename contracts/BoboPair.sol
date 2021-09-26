@@ -176,11 +176,7 @@ contract BoboPair is MixinAuthorizable, OrderStore, ReentrancyGuard {
         return totalAmountOut;
     }
 
-    // _swapPools: 聚合交易时具体的AMM池子, Mdex, Pancake, OneInch, Uniswap, SushiSwap, Dodo, QuickSwap
-    // _middleTokens: 两种代币在兑换过程中的中间代币，如=address(0)，表示无中间代币
-    // _partialAmountIns: 每笔交易投入的inToken的数量，注意它们的和要小于用户初始投入的金额（因为有手续费要扣除）
-    //   (1) 在通过BoboRouter.getBestSwapPath获取最佳交易路劲之前，需要先通过EXManager.evaluateDeductedAmountIn获取用户需要扣除的手续费，之后再在getBestSwapPath中传入amountIn
-    //   (2) 通过预付手续费，可以降低交易执行
+    // taker
     function executeSpecifiedOrder(address _boboRouter, uint256 _orderId) public nonReentrant {  
         require(exManager.routerWhiteList(_boboRouter), "BoboPair: router NOT in whitelist!");                 
         NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId); 
