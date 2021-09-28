@@ -28,8 +28,8 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     
     // 增加订单，并将订单插入挂单列表中，参数包括：
     // 交易对地址、下单用户、是否买入token0，下单价格，下单数量、最小成交量、订单类型（仅交易，交易后提矿，交易后提矿并将矿转成U），订单状态
-    function addOrder(bool _bBuyQuoteToken, uint256 _spotPrice, uint256 _inAmount, uint256 _minOutAmount) internal returns(uint256) {
-        uint256 orderId = orderNFT.mint(address(this), msg.sender, _bBuyQuoteToken, _spotPrice, _inAmount, _minOutAmount);
+    function addOrder(uint256 _parentId, bool _bBuyQuoteToken, uint256 _spotPrice, uint256 _inAmount, uint256 _minOutAmount) internal returns(uint256) {
+        uint256 orderId = orderNFT.mint(_parentId, address(this), msg.sender, _bBuyQuoteToken, _spotPrice, _inAmount, _minOutAmount);
         
         userOrdersMap[msg.sender].push(orderId);
         addHangingOrder(orderId, _bBuyQuoteToken, _spotPrice);
@@ -67,7 +67,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         removeOrder(orderInfo);
     }
     
-    function setAMMDealOrder(uint256 _orderId, uint256 _outAmount) internal returns(bool) {
+    function setDealedOrder(uint256 _orderId, uint256 _outAmount) internal returns(bool) {
         NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
         
         require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can become Dealed status.");
@@ -79,7 +79,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     }
 
     // 获取盘口第一笔卖单或买单数据
-    function getHeaderOrderIndex(bool _bBuy) view internal returns(bool exist, uint256 index) {
+    function getHeaderOrderIndex(bool _bBuy) view public returns(bool exist, uint256 index) {
         return bBuyOrdersMap[_bBuy].getAdjacent(0, true);   // get the first node of the list
     }
     
@@ -118,6 +118,11 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         return bBuyOrdersMap[_bBuy].pushFront(_index);
     }
 
+    // 获取订单细节数量
+    function getOrderDetailNumber(uint256 _orderId) view public returns(uint256) {
+        return orderNFT.getOrderDetailNumber(_orderId);
+    }
+
     // 获取用户所有已成交的订单数量
     function getUserDealedOrderNumber(address _userAddr) view public returns(uint256) {
         return userDealedOrdersMap[_userAddr].length;
@@ -152,46 +157,6 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     function getOrderNumber(OrderStatus _orderStatus) view public returns(uint256) {
         return sealedOrdersMap[_orderStatus].length;
     }
-
-    // 获取某个交易对一段时间内基础token的交易量
-    // function getTotalDealedAmount(uint256 _fromTime, uint256 _endTime) view public returns(uint256 fromIndex, uint256 totalAmount) {
-    //     uint256 orderLength = sealedOrdersMap[OrderStatus.Dealed].length;
-        
-    //     uint256 lowIndex = 0;
-    //     uint256 highIndex = 0;
-    //     while(lowIndex <= highIndex) {
-    //         uint256 midIndex = lowIndex.add(highIndex).div(2);
-    //         if (midIndex == 0) {
-    //             fromIndex = 0;
-    //             break;
-    //         }
-    //         uint256 orderId = sealedOrdersMap[OrderStatus.Dealed][midIndex];
-    //         uint256 preOrderId = sealedOrdersMap[OrderStatus.Dealed][midIndex - 1];
-    //         NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
-    //         NFTInfo memory preOrderInfo = orderNFT.getOrderInfo(preOrderId);
-    //         if (orderInfo.dealedTime == _fromTime || preOrderInfo.dealedTime == _fromTime) {
-    //             fromIndex = orderInfo.dealedTime == _fromTime ? midIndex : midIndex - 1;
-    //             break;
-    //         } else if (preOrderInfo.dealedTime < _fromTime && orderInfo.dealedTime > _fromTime) {
-    //             fromIndex = midIndex;
-    //             break;
-    //         } else if (orderInfo.dealedTime > _fromTime) {
-    //             highIndex = midIndex;
-    //         } else {
-    //             lowIndex = midIndex;
-    //         }
-    //     }
-        
-    //     uint256 index = fromIndex;
-    //     while (index < orderLength) {
-    //         uint256 orderId = sealedOrdersMap[OrderStatus.Dealed][index];
-    //         NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
-            
-    //         if (orderInfo.dealedTime > _endTime) break;
-            
-    //         totalAmount = totalAmount.add(orderInfo.bBuyQuoteToken ? orderInfo.inAmount : orderInfo.outAmount);
-    //     }
-    // }
     
     function onERC721Received(address, address, uint256, bytes memory) public virtual override returns (bytes4) {
         return this.onERC721Received.selector;

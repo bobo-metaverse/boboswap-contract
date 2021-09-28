@@ -26,7 +26,6 @@ struct NFTInfo {
     uint256 minOutAmount;   // if bBuyQuoteToken is true, minOutAmount is the amount of quote token, otherwise base token
     uint256 outAmount;      // out amount in the end of the swap
     OrderStatus  status;
-    string  comment;        // reason of unsettled
     uint256 delegateTime;   // 下单时间
     uint256 dealedTime;     //
     uint256 weight;
@@ -40,11 +39,9 @@ interface IOrderNFT is IERC721 {
     function getOrderInfo(uint256 _nftId) view external returns(NFTInfo memory nftInfo);
     function orderDetailIds(uint256 _nftId) view external returns(uint256[] memory ids);
     function getOrderDetailNumber(uint256 _nftId) view external returns(uint256);
-    function sealNFT(uint256 _nftId, OrderStatus _status, uint256 _outAmount, string memory _comment) external;
+    function sealNFT(uint256 _nftId, OrderStatus _status, uint256 _outAmount) external;
     function getWeight(uint256 _nftId) view external returns(uint256 weight);
 }
-
-
 
 struct ResultInfo {
     uint256 totalAmountOut;

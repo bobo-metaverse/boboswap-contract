@@ -11,8 +11,6 @@ struct NFTDetailInfo {
     uint256 inAmount;        // inAmount指哪种代币，根据订单类型而定，如果是卖单，则inAmount是买入的那个基础token，否则就是被卖出的那个token
     uint256 outAmount;
     uint256 orderNFTId;      // 主订单编号
-    SwapPool swapPool;
-    address[3] path;          // 交易路径
 }
 
 interface IOrderDetailNFT is IERC721 {
@@ -40,12 +38,12 @@ contract OrderDetailNFT is Minter, ERC721 {
         orderNFT = IOrderNFT(_orderNFT);
     }
     
-    function mint(address _nftOwner, uint256 _inAmount, uint256 _outAmount, uint256 _orderNFTId, SwapPool _swapPool, address[3] memory _path) public onlyMinter returns (uint256) {
+    function mint(address _nftOwner, uint256 _inAmount, uint256 _outAmount, uint256 _orderNFTId) public onlyMinter returns (uint256) {
         nftId++;
         
         _safeMint(_nftOwner, nftId);
         
-        id2NFTDetailInfoMap[nftId] = NFTDetailInfo(nftId, now, _inAmount, _outAmount, _orderNFTId, _swapPool, _path);
+        id2NFTDetailInfoMap[nftId] = NFTDetailInfo(nftId, now, _inAmount, _outAmount, _orderNFTId);
         
         //orderNFT.bindDetailNFT(_orderNFTId, nftId);
         
