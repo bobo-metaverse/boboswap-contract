@@ -2,8 +2,7 @@
 pragma solidity ^0.6.0;
 pragma experimental ABIEncoderV2;
 
-import "./Minter.sol";
-import "./BasicStruct.sol";
+import "../common/Minter.sol";
 
 
 enum OrderStatus { Hanging, ManualCanceled, Dealed }

@@ -121,15 +121,17 @@ contract EXManager is MixinAuthorizable {
         }
     }
 
+    // 评估手续费
+    // 返回【需要扣除的token数量，token对应的usdt数量】,如果token数量返回为0，表示只需要扣除预存的usdt即可
     function evaluateDeductedAmountIn(address _userAddr, address _token, uint256 _amountIn) view public returns(uint256, uint256) {
         uint256 usdtDecimals = ERC20(USDT).decimals();
         uint256 tokenDecimals = ERC20(_token).decimals();
         uint256 tokenPrice = getTokenPrice(_token);  // *10^8
         
         uint256 scalePercent = getScalePercent(_userAddr);  // 根据用户当前持有的BOBO数量获取折扣比例
-        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent).div(BasePercent);
+        uint256 tokenAmount4Fee = _amountIn.mul(feePercent).mul(scalePercent).div(BasePercent).div(BasePercent);  // 需要扣除的token数量
 
-        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).mul(10**usdtDecimals).div(FACTOR).div(10**tokenDecimals);
+        uint256 usdtAmount4Fee = tokenPrice.mul(tokenAmount4Fee).mul(10**usdtDecimals).div(FACTOR).div(10**tokenDecimals);   // 需要扣除的usdt数量(即token的价值)
         if (usableTradePointsMap[_userAddr] >= usdtAmount4Fee) {
             return (0, usdtAmount4Fee);
         } else {
