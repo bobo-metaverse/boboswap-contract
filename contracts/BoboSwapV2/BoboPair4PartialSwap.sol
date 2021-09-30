@@ -26,7 +26,7 @@ interface IBoboFarmer {
 
 interface IBoboRouter {
     function getBaseAmountOut(address inToken, address outToken, uint256 amountIn) external view returns(uint256 amountOut);
-    function swap(address _inToken, address _outToken, uint256 _amountIn, uint256 _minAmountOut, address _orderOwner) external;  // uint256 totalAmountOut, 
+    function swap(address _inToken, address _outToken, uint256 _amountIn, uint256 _maxAmountOut, uint256 _minAmountOut, address _orderOwner) external;  // uint256 totalAmountOut, 
 }
 
 contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
@@ -120,7 +120,7 @@ contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
 
         uint256 spotPrice = _bBuyQuoteToken ? _amountIn.mul(10**quoteTokenDecimals).div(_minOutAmount) : _minOutAmount.mul(10**quoteTokenDecimals).div(_amountIn);
         uint256 orderId = addOrder(_bBuyQuoteToken, spotPrice, _amountIn, _minOutAmount);
-        NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);  
+        OrderInfo memory orderInfo = orderNFT.getOrderInfo(orderId);  
         swap(_boboRouter, orderInfo, inToken, outToken, _amountIn, _minOutAmount, msg.sender, false);
     }
        
@@ -147,7 +147,7 @@ contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
         uint256 length = getUserHangingOrderNumber(_userAddr);
         for (uint256 i = 0; i < length; i++) {
             uint256 orderId = getUserHangingOrderId(_userAddr, i);
-            NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId); 
+            OrderInfo memory orderInfo = orderNFT.getOrderInfo(orderId); 
             if (orderInfo.bBuyQuoteToken) {
                 baseTokenAmount = baseTokenAmount.add(orderInfo.inAmount);
             } else {
@@ -156,7 +156,7 @@ contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
         }
     }     
 
-    function swap(address _boboRouter, NFTInfo storage _orderInfo, 
+    function swap(address _boboRouter, OrderInfo storage _orderInfo, 
                   address _inToken, address _outToken, 
                   uint256 _amountIn, uint256 _minAmountOut, bool _bInner) private returns(uint256) {
         if (!_bInner) {
@@ -169,7 +169,9 @@ contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
         uint256 outTokenAmount = ERC20(_outToken).balanceOf(address(this));
 
         ERC20(_inToken).approve(_boboRouter, _amountIn);
-        IBoboRouter(_boboRouter).swap(_inToken, _outToken, _amountIn, _minAmountOut, orderOwner);
+        uint256 maxAmountOut = getMaxOutAmountExpected(_orderInfo.id);
+        IBoboRouter(_boboRouter).swap(_inToken, _outToken, _amountIn, maxAmountOut, _minAmountOut, orderOwner);
+        
         uint256 totalAmountOut = ERC20(_outToken).balanceOf(address(this)).sub(outTokenAmount);   // 兑换出来的outToken数量
         require(totalAmountOut >= _minAmountOut, "BoboPair: the amount of outToken is NOT enough!");
 
@@ -188,38 +190,49 @@ contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
     }
 
     // taker
-    function swapExactTokensForTokens(address _boboRouter, uint256 _orderId, uint256 _amountIn) public nonReentrant {  
-        require(exManager.routerWhiteList(_boboRouter), "BoboPair: router NOT in whitelist!");                 
-        NFTInfo storage orderInfo = orderNFT.getOrderInfo(_orderId);  
-        require(orderInfo.status == OrderStatus.Hanging, "BoboPair: order's status is NOT hanging!");
-        require(orderInfo.inAmount >= _amountIn, "BoboPair: order does NOT have enough amount of inToken.");
-        (address inToken, address outToken) = orderInfo.bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
+    // function swapExactTokensForTokens(address _boboRouter, uint256 _orderId, uint256 _amountIn) public nonReentrant {  
+    //     require(exManager.routerWhiteList(_boboRouter), "BoboPair: router NOT in whitelist!");                 
+    //     OrderInfo storage orderInfo = orderNFT.getOrderInfo(_orderId);  
+    //     require(orderInfo.status == OrderStatus.Hanging, "BoboPair: order's status is NOT hanging!");
+    //     require(orderInfo.inAmount >= _amountIn, "BoboPair: order does NOT have enough amount of inToken.");
+    //     (address inToken, address outToken) = orderInfo.bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
         
-        uint256 deductAmount = exManager.deductTradeFee(orderInfo.owner, inToken, _amountIn);
+    //     uint256 deductAmount = exManager.deductTradeFee(orderInfo.owner, inToken, _amountIn);
         
-        if (boboFarmer.tokenPidMap(inToken) > 0) {
-            boboFarmer.withdraw(inToken, orderInfo.owner, amountIn);
-        }
-        uint256 amountIn = _amountIn.sub(deductAmount);
-        if (deductAmount > 0) {
-            ERC20(inToken).transferFrom(address(this), address(exManager), deductAmount);
-        }
-        uint256 minAmountOut = orderInfo.minOutAmount.mul(_amountIn).div(orderInfo.inAmount);  // 根据amountIn计算出等比例的minAmountOut
-        swap(_boboRouter, orderInfo, inToken, outToken, amountIn, minAmountOut, true);
-    }    
+    //     if (boboFarmer.tokenPidMap(inToken) > 0) {
+    //         boboFarmer.withdraw(inToken, orderInfo.owner, amountIn);
+    //     }
+    //     uint256 amountIn = _amountIn.sub(deductAmount);
+    //     if (deductAmount > 0) {
+    //         ERC20(inToken).transferFrom(address(this), address(exManager), deductAmount);
+    //     }
+    //     uint256 minAmountOut = orderInfo.minOutAmount.mul(_amountIn).div(orderInfo.inAmount);  // 根据amountIn计算出等比例的minAmountOut
+    //     swap(_boboRouter, orderInfo, inToken, outToken, amountIn, minAmountOut, true);
+    // }    
 
-    // _outTokenAmountSwapIn: 指定订单需要获得的outToken数量
-    // 通过_outTokenAmountSwapIn以及订单情况，可计算出外部可获得多少inToken，并transfer出去
-    // maker支付手续费，taker免手续费
-    function swapTokensForExactTokens(uint256 _orderId, uint256 _outTokenAmountSwapIn) public {
-        NFTInfo storage orderInfo = orderNFT.getOrderInfo(_orderId); 
-        require(orderInfo.status == OrderStatus.Hanging, "BoboPair: order's status is NOT hanging!");
+    // 获取此订单用户所期待的可兑换出的最多outToken数量
+    function getMaxOutAmountExpected(uint256 _orderId) view public returns(uint256) {
+        OrderInfo storage orderInfo = orderNFT.getOrderInfo(_orderId); 
         (address inToken, address outToken) = orderInfo.bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
         
         // 计算出本订单最多可接受的outToken数量，此处已扣除maker需要支付的手续费
         (uint256 maxDeductAmount, ) = exManager.evaluateDeductedAmountIn(orderInfo.owner, inToken, orderInfo.inAmount);
         uint256 maxAmountSwapOut = orderInfo.bBuyQuoteToken ? orderInfo.inAmount.sub(maxDeductAmount).mul(10**quoteTokenDecimals).div(orderInfo.spotPrice) 
                                                             : orderInfo.inAmount.sub(maxDeductAmount).mul(orderInfo.spotPrice).div(10**quoteTokenDecimals);        
+        return maxAmountSwapOut;
+    }
+    
+    // 作为taker去吃订单
+    // _outTokenAmountSwapIn: 指定订单需要获得的outToken数量，当此值过大的时候，会进行处理
+    // 通过_outTokenAmountSwapIn以及订单情况，可计算出外部可获得多少inToken，并transfer出去
+    // maker支付手续费，taker免手续费
+    function swapTokensForExactTokens(uint256 _orderId, uint256 _outTokenAmountSwapIn) public returns(uint256) {
+        OrderInfo storage orderInfo = orderNFT.getOrderInfo(_orderId); 
+        require(orderInfo.status == OrderStatus.Hanging, "BoboPair: order's status is NOT hanging!");
+        (address inToken, address outToken) = orderInfo.bBuyQuoteToken ? (baseToken, quoteToken) : (quoteToken, baseToken);
+        
+        // 计算出本订单最多可接受的outToken数量，此处已扣除maker需要支付的手续费
+        uint256 maxAmountSwapOut = getMaxOutAmountExpected(_orderId);      
         _outTokenAmountSwapIn = _outTokenAmountSwapIn > maxAmountSwapOut ? maxAmountSwapOut : _outTokenAmountSwapIn;
 
         // 使用maxAmountSwapOut，而不是orderInfo.minOutAmount，可以使挂单者获得不带滑点的收益
@@ -252,14 +265,14 @@ contract BoboPairV2 is MixinAuthorizable, OrderStore, ReentrancyGuard {
             orderInfo.minOutAmount = orderInfo.minOutAmount.sub(_outTokenAmountSwapIn);
         }
         
-        makeStatistic(_inToken == baseToken ? _amountIn : totalAmountOut);
-        return totalAmountOut;
+        makeStatistic(inToken == baseToken ? amountIn : _outTokenAmountSwapIn);
+        return _outTokenAmountSwapIn;
     }
     
     function cancelOrder(uint256 _orderId) public returns(bool) {
         setManualCancelOrder(_orderId); 
 
-        NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId); 
+        OrderInfo memory orderInfo = orderNFT.getOrderInfo(_orderId); 
         address inToken = orderInfo.bBuyQuoteToken ? baseToken : quoteToken;
         if (boboFarmer.tokenPidMap(inToken) > 0) {
             boboFarmer.withdraw(inToken, orderInfo.owner, orderInfo.inAmount);

@@ -22,7 +22,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     // 根据订单ID获得下单价格
     function getValue(uint256 _nftId) view public override returns(uint256) {
         if (_nftId == 0) return 0;
-        NFTInfo memory nftInfo = orderNFT.getOrderInfo(_nftId);
+        OrderInfo memory nftInfo = orderNFT.getOrderInfo(_nftId);
         return nftInfo.spotPrice;
     }
     
@@ -47,7 +47,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         return bBuyOrdersMap[_bBuyQuoteToken].insertBefore(next, _orderId);
     }
     
-    function removeOrder(NFTInfo memory _orderInfo) private returns(bool) {
+    function removeOrder(OrderInfo memory _orderInfo) private returns(bool) {
         orderNFT.transferFrom(address(this), _orderInfo.owner, _orderInfo.id);
         sealedOrdersMap[_orderInfo.status].push(_orderInfo.id);
         userHangingOrdersMap[msg.sender].remove(_orderInfo.id);
@@ -57,7 +57,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     
     // 被用户手动取消订单
     function setManualCancelOrder(uint256 _orderId) internal returns(bool) {
-        NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
+        OrderInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
         
         require(orderInfo.owner == msg.sender, "OrderStore: only book owner can cancel the order.");
         require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can be canceled.");
@@ -68,7 +68,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
     }
     
     function setDealedOrder(uint256 _orderId, uint256 _outAmount) internal returns(bool) {
-        NFTInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
+        OrderInfo memory orderInfo = orderNFT.getOrderInfo(_orderId);
         
         require(orderInfo.status == OrderStatus.Hanging, "OrderStore: only hanging order can become Dealed status.");
         
@@ -87,12 +87,12 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         return bBuyOrdersMap[_bBuy].sizeOf();
     }
     // 按序获取交易对的挂单信息
-    function getOrderInfos(bool _bBuy, uint256 _fromIndex, uint256 _toIndex) view public returns(NFTInfo[] memory orderInfos) {
+    function getOrderInfos(bool _bBuy, uint256 _fromIndex, uint256 _toIndex) view public returns(OrderInfo[] memory orderInfos) {
         uint256 length = bBuyOrdersMap[_bBuy].sizeOf();
         if (_toIndex > length) _toIndex = length;
         require(_fromIndex < _toIndex, "OrderStore: index is out of bound.");
         
-        orderInfos = new NFTInfo[](_toIndex - _fromIndex);
+        orderInfos = new OrderInfo[](_toIndex - _fromIndex);
         uint256 index = 0;
         (bool exist, uint256 currentId) = bBuyOrdersMap[_bBuy].getNextNode(0);
         while(index < _toIndex && exist) {
@@ -101,7 +101,7 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
                 index++;
                 continue;
             }
-            NFTInfo memory orderInfo = orderNFT.getOrderInfo(currentId);
+            OrderInfo memory orderInfo = orderNFT.getOrderInfo(currentId);
             orderInfos[index - _fromIndex] = orderInfo;
             
             (exist, currentId) = bBuyOrdersMap[_bBuy].getNextNode(currentId);
@@ -141,15 +141,15 @@ contract OrderStore is IStructureInterface, IERC721Receiver {
         return userHangingOrdersMap[_userAddr].at(_index);
     }
 
-    function getUserHangingOrderInfos(address _userAddr, uint256 _fromIndex, uint256 _toIndex) view public returns(NFTInfo[] memory orderInfos) {
+    function getUserHangingOrderInfos(address _userAddr, uint256 _fromIndex, uint256 _toIndex) view public returns(OrderInfo[] memory orderInfos) {
         uint256 length = userHangingOrdersMap[_userAddr].length();
         if (_toIndex > length) _toIndex = length;
         require(_fromIndex < _toIndex, "OrderStore: index is out of bound.");
         
-        orderInfos = new NFTInfo[](_toIndex - _fromIndex);
+        orderInfos = new OrderInfo[](_toIndex - _fromIndex);
         for (uint256 i = _fromIndex; i < _toIndex; i++) {
             uint256 orderId = userHangingOrdersMap[_userAddr].at(i);
-            NFTInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
+            OrderInfo memory orderInfo = orderNFT.getOrderInfo(orderId);
             orderInfos[i - _fromIndex] = orderInfo;
         }
     }

@@ -8,7 +8,7 @@ import "../common/Minter.sol";
 enum OrderStatus { Hanging, ManualCanceled, Dealed }
 enum SwapPool {No, Mdex, Pancake, OneInch, Uniswap, SushiSwap, Dodo, QuickSwap}
 
-struct NFTInfo {
+struct OrderInfo {
     uint256 id;
     uint256 parentId;
     address owner;
@@ -30,7 +30,7 @@ contract OrderNFT is Minter, ERC721 {
     
     
     uint256 public nftId = 0;
-    mapping(uint256 => NFTInfo) public id2NFTInfoMap;
+    mapping(uint256 => OrderInfo) public id2NFTInfoMap;
     mapping(uint256 => uint256[]) public parentChildrenNFTMap;
         
     event Mint(address indexed _to, uint256 _tokenId);
@@ -44,7 +44,7 @@ contract OrderNFT is Minter, ERC721 {
         
         _safeMint(msg.sender, nftId);   // msg.sender is contract address of book pool, so the new NFT is belong to book pool at first, NOT bookOwner
         
-        id2NFTInfoMap[nftId] = NFTInfo(nftId, _parentNFTId, bookOwner, _pairAddr, _bBuyQuoteToken, _spotPrice, 
+        id2NFTInfoMap[nftId] = OrderInfo(nftId, _parentNFTId, bookOwner, _pairAddr, _bBuyQuoteToken, _spotPrice, 
                                        _inAmount, _minOutAmount, 0, OrderStatus.Hanging, "", now, 0, 0);
         if (_parentNFTId > 0)
             parentChildrenNFTMap[_parentNFTId].push(nftId);    
@@ -69,14 +69,14 @@ contract OrderNFT is Minter, ERC721 {
     function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal virtual override {
     }
 
-    function getOrderInfo(uint256 _nftId) view public returns(NFTInfo memory nftInfo) {
+    function getOrderInfo(uint256 _nftId) view public returns(OrderInfo memory nftInfo) {
         require( _exists(_nftId), "OrderNFT: nft is not exist.");
         return id2NFTInfoMap[_nftId];
     }
 
     function getWeight(uint256 _nftId) view public returns(uint256 weight) {
         require( _exists(_nftId), "OrderNFT: nft is not exist.");
-        NFTInfo memory nftInfo = id2NFTInfoMap[_nftId];
+        OrderInfo memory nftInfo = id2NFTInfoMap[_nftId];
         return nftInfo.weight;
     }
 
